@@ -66,10 +66,21 @@ export default function ChatInterface({
           0
         );
 
+        const topResult = results[0];
+        const cleanCode = topResult.equipmentCode.split(' ')[0];
+        const normCode = cleanCode.toLowerCase().replace(/[\._\-\s]/g, '');
+        const normQuery = trimmedQuery.toLowerCase().replace(/[\._\-\s]/g, '');
+
+        let msgText = `Found **${results.length}** equipment match${results.length !== 1 ? 'es' : ''} with **${totalPoints}** I/O point${totalPoints !== 1 ? 's' : ''}${selectedLocation ? ' in selected location' : ''}:`;
+
+        if (cleanCode.toLowerCase() !== trimmedQuery.toLowerCase() && normCode === normQuery) {
+          msgText = `Did you mean **${cleanCode}**? Showing matching results for it:`;
+        }
+
         systemMsg = {
           id: Date.now() + 1,
           type: 'system',
-          text: `Found **${results.length}** equipment match${results.length !== 1 ? 'es' : ''} with **${totalPoints}** I/O point${totalPoints !== 1 ? 's' : ''}${selectedLocation ? ' in selected location' : ''}:`,
+          text: msgText,
           results,
         };
       } else {

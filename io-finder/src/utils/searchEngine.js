@@ -138,14 +138,27 @@ function scoreMatch(entry, query) {
   const address = (entry.address || '').toLowerCase();
   const signal = (entry.signalName || '').toLowerCase();
 
+  // Normalize by ignoring dots, underscores, hyphens, and spaces
+  const normCode = code.replace(/[\._\-\s]/g, '');
+  const normQuery = query.replace(/[\._\-\s]/g, '');
+
   // Exact equipment code match
   if (code === query) return 100;
+
+  // Normalized equipment code match (e.g. V5_22 vs V5.22)
+  if (normCode && normQuery && normCode === normQuery) return 95;
 
   // Equipment code starts with query
   if (code.startsWith(query)) return 80;
 
+  // Normalized equipment code starts with query
+  if (normCode && normQuery && normCode.startsWith(normQuery)) return 78;
+
   // Equipment code contains query
   if (code.includes(query)) return 70;
+
+  // Normalized equipment code contains query
+  if (normCode && normQuery && normCode.includes(normQuery)) return 68;
 
   // Equipment name exact match
   if (name === query) return 60;
@@ -185,6 +198,7 @@ export function getSuggestions(query, searchIndex, maxResults = 8, locationFilte
   if (!query || !searchIndex || query.trim().length < 1) return [];
 
   const normalizedQuery = query.trim().toLowerCase();
+  const normQuery = normalizedQuery.replace(/[\._\-\s]/g, '');
 
   const scored = searchIndex
     .filter(item => {
@@ -195,11 +209,15 @@ export function getSuggestions(query, searchIndex, maxResults = 8, locationFilte
     .map(item => {
       const code = (item.code || '').toLowerCase();
       const name = (item.name || '').toLowerCase();
+      const normCode = code.replace(/[\._\-\s]/g, '');
 
       let score = 0;
       if (code === normalizedQuery) score = 100;
+      else if (normCode && normQuery && normCode === normQuery) score = 95; // Normalized match
       else if (code.startsWith(normalizedQuery)) score = 80;
+      else if (normCode && normQuery && normCode.startsWith(normQuery)) score = 78; // Normalized starts with
       else if (code.includes(normalizedQuery)) score = 60;
+      else if (normCode && normQuery && normCode.includes(normQuery)) score = 58; // Normalized contains
       else if (name === normalizedQuery) score = 55;
       else if (name.startsWith(normalizedQuery)) score = 50;
       else if (name.split(/\s+/).some(w => w.startsWith(normalizedQuery))) score = 40;
