@@ -2,8 +2,10 @@
  * build-pdf-mapping.cjs
  * ────────────────────────────────────────────────────────────
  * Scans the Tower 3 PDF drawing file page-by-page, extracts
- * internal page numbers, and maps them to cabinet locations
- * based on standard page number ranges.
+ * internal page numbers, and maps both:
+ *  1) Cabinet names to PDF pages (by standard ranges)
+ *  2) I/O Addresses (like I166.2, Q118.1) directly to their 
+ *     wiring diagram pages.
  * Generates public/data/pdf-page-map.json.
  * ────────────────────────────────────────────────────────────
  * Usage: node scripts/build-pdf-mapping.cjs
@@ -41,7 +43,7 @@ function getCabinetForPage(pageNum) {
 
 async function main() {
   console.log('╔════════════════════════════════════════════════╗');
-  console.log('║  PDF Drawing Page Mapping Builder              ║');
+  console.log('║  PDF Drawing Page Mapping Builder (V2)         ║');
   console.log('╚════════════════════════════════════════════════╝\n');
 
   if (!fs.existsSync(PDF_PATH)) {
@@ -60,7 +62,11 @@ async function main() {
   const res = await pdfParser.getText();
   console.log(`📊 Total pages: ${res.pages.length}`);
 
-  const pageMap = {};
+  const cabinetMap = {};
+  const addressMap = {};
+  const tempAddressRecords = {}; // For resolving multiple page references
+
+  const addrRegex = /\b(?:I|Q)\d+\.\d+\b|\b(?:PIW|PQW)\d+\b/g;
 
   res.pages.forEach(page => {
     const text = page.text;
@@ -68,40 +74,68 @@ async function main() {
 
     // Extract internal page number
     const pageMatch = text.match(/页数\s+([0-9a-zA-Z\.\-_]+)/i);
-    const internalPage = pageMatch ? pageMatch[1].trim() : null;
+    const internalPageStr = pageMatch ? pageMatch[1].trim() : null;
 
-    if (!internalPage) return;
+    if (!internalPageStr) return;
 
-    // Determine which cabinet this page belongs to
-    const cabinet = getCabinetForPage(internalPage);
-    if (!cabinet) return;
-
-    if (!pageMap[cabinet]) {
-      pageMap[cabinet] = {};
+    // A. Cabinet mapping
+    const cabinet = getCabinetForPage(internalPageStr);
+    if (cabinet) {
+      if (!cabinetMap[cabinet]) {
+        cabinetMap[cabinet] = {};
+      }
+      cabinetMap[cabinet][internalPageStr] = pageNum;
     }
 
-    // Save mapping: internalPage -> pdfPage
-    pageMap[cabinet][internalPage] = pageNum;
+    // B. Address mapping
+    const matches = text.match(addrRegex);
+    if (matches) {
+      const internalPageNum = parseInt(internalPageStr, 10);
+      matches.forEach(addr => {
+        const uppercaseAddr = addr.toUpperCase();
+        
+        // If we haven't seen this address, or this page has a smaller internal page number
+        // (which usually points to the wiring diagram sheet rather than the overview sheet)
+        if (!tempAddressRecords[uppercaseAddr] || 
+            (!isNaN(internalPageNum) && internalPageNum < tempAddressRecords[uppercaseAddr].internalPage)) {
+          
+          tempAddressRecords[uppercaseAddr] = {
+            pdfPage: pageNum,
+            internalPage: isNaN(internalPageNum) ? Infinity : internalPageNum,
+            internalPageStr
+          };
+        }
+      });
+    }
+  });
+
+  // Convert tempAddressRecords to flat addressMap
+  Object.keys(tempAddressRecords).forEach(addr => {
+    addressMap[addr] = {
+      page: tempAddressRecords[addr].pdfPage,
+      internalPage: tempAddressRecords[addr].internalPageStr
+    };
   });
 
   // Ensure output directory exists
   fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true });
 
+  const finalOutput = {
+    cabinets: cabinetMap,
+    addresses: addressMap
+  };
+
   // Write mapping JSON
-  fs.writeFileSync(OUT_PATH, JSON.stringify(pageMap, null, 2), 'utf8');
-  console.log(`✅ Success! Created: ${OUT_PATH}`);
+  fs.writeFileSync(OUT_PATH, JSON.stringify(finalOutput, null, 2), 'utf8');
+  console.log(`\n✅ Success! Created: ${OUT_PATH}`);
 
   // Summary stats
   console.log('\n═══════════════════════════════════════════════');
   console.log('  SUMMARY');
   console.log('═══════════════════════════════════════════════');
-  Object.keys(pageMap).sort().forEach(cab => {
-    const pages = Object.keys(pageMap[cab]);
-    const minPage = Math.min(...pages.map(Number));
-    const maxPage = Math.max(...pages.map(Number));
-    console.log(`  📦 ${cab}: ${pages.length} pages mapped (Internal pages: ${minPage} - ${maxPage})`);
-  });
-
+  console.log(`  🔗 Unique I/O Addresses mapped: ${Object.keys(addressMap).length}`);
+  console.log(`  📦 Cabinets mapped: ${Object.keys(cabinetMap).length}`);
+  
   await pdfParser.destroy();
 }
 

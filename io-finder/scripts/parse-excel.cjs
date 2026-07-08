@@ -366,11 +366,20 @@ function parseSheet(wb, sheetName) {
 
       let drawingPage = null;
       let internalPage = null;
+
+      // 1. Direct address lookup (most accurate wiring page)
+      const uppercaseAddr = address.toUpperCase();
+      if (pdfPageMap.addresses && pdfPageMap.addresses[uppercaseAddr]) {
+        drawingPage = pdfPageMap.addresses[uppercaseAddr].page;
+        internalPage = pdfPageMap.addresses[uppercaseAddr].internalPage;
+      }
+
+      // 2. Base page calculation fallback
       const basePage = CABINET_BASE_PAGES[cabinet];
-      if (basePage !== undefined && drawingPageOffset !== null) {
+      if (!drawingPage && basePage !== undefined && drawingPageOffset !== null) {
         internalPage = String(basePage + drawingPageOffset);
-        if (pdfPageMap[cabinet] && pdfPageMap[cabinet][internalPage]) {
-          drawingPage = pdfPageMap[cabinet][internalPage];
+        if (pdfPageMap.cabinets && pdfPageMap.cabinets[cabinet] && pdfPageMap.cabinets[cabinet][internalPage]) {
+          drawingPage = pdfPageMap.cabinets[cabinet][internalPage];
         }
       }
 
