@@ -79,6 +79,8 @@ export function searchEquipment(query, ioData, locationFilter) {
       address: entry.address,
       signalName: entry.signalName,
       type: entry.type,
+      drawingPage: entry.drawingPage,
+      internalPage: entry.internalPage,
     };
 
     switch (entry.type) {
