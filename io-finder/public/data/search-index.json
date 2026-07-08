@@ -1,6 +1,22 @@
 [
   {
     "code": "",
+    "name": "",
+    "signals": [],
+    "types": [
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "MCCY1_2",
+      "MCCY3",
+      "PLC"
+    ],
+    "location": "Premixer",
+    "locationId": "premixer"
+  },
+  {
+    "code": "",
     "name": "Control power",
     "signals": [],
     "types": [
@@ -41,6 +57,52 @@
     "locationId": "premixer"
   },
   {
+    "code": "",
+    "name": "",
+    "signals": [
+      "Start",
+      "小料1气锁",
+      "小料2气锁",
+      "电流检测"
+    ],
+    "types": [
+      "AI",
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "LCB_1",
+      "LCB_10",
+      "LCB_2",
+      "LCB_4",
+      "LCB_5",
+      "LCB_6A",
+      "LCB_6B",
+      "LCB_8",
+      "LCB_9",
+      "MCC11",
+      "MCC12_13",
+      "MCC14",
+      "MCC16_17",
+      "MCC18",
+      "MCC19",
+      "MCC2",
+      "MCC20_21",
+      "MCC21_22",
+      "MCC22_23",
+      "MCC25_26",
+      "MCC27",
+      "MCC3",
+      "MCC4",
+      "MCC6",
+      "MCC7",
+      "MCC8_9",
+      "PLC"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
     "code": "·",
     "name": "·",
     "signals": [],
@@ -49,6 +111,66 @@
     ],
     "cabinets": [
       "MCC7"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "",
+    "name": "制粒机2号电流",
+    "signals": [
+      "电流检测"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "MCC11"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "",
+    "name": "制粒机1号电流",
+    "signals": [
+      "电流检测"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "MCC11"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "",
+    "name": "制粒机3#",
+    "signals": [
+      "电流检测"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "MCC19"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "",
+    "name": "制粒机4#",
+    "signals": [
+      "电流检测"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "MCC19"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -71,7 +193,8 @@
     "name": "备用",
     "signals": [],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "PLC"
@@ -107,6 +230,19 @@
   },
   {
     "code": "",
+    "name": "System Alarm",
+    "signals": [],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "",
     "name": "Belt alignment",
     "signals": [
       "Power"
@@ -120,41 +256,6 @@
       "LCB_2",
       "LCB_8",
       "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "",
-    "name": "开门到位",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_5"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "",
-    "name": "11DC24V_5",
-    "signals": [
-      "P2530.11",
-      "P2530.31",
-      "P2531.11",
-      "P2531.31",
-      "P2532.11",
-      "P2532.31",
-      "P2533.11",
-      "P2533.31"
-    ],
-    "types": [
-      "DO"
-    ],
-    "cabinets": [
-      "12DC24V_5"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -303,6 +404,7 @@
     "signals": [
       "Start",
       "关门到位",
+      "开门",
       "开门到位"
     ],
     "types": [
@@ -424,9 +526,11 @@
       "Elevator",
       "Running",
       "Start",
-      "Switching in"
+      "Switching in",
+      "电流检测"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -447,9 +551,11 @@
       "Running",
       "Start",
       "Switching in",
+      "电流检测",
       "移动到LCB1"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -470,9 +576,11 @@
       "Running",
       "Start",
       "Switching in",
+      "电流检测",
       "移动到LCB1"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -491,9 +599,11 @@
       "E-STOP",
       "Elevator",
       "Running",
-      "Start"
+      "Start",
+      "电流检测"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -765,6 +875,7 @@
     "signals": [
       "Start",
       "关门到位",
+      "开门",
       "开门到位"
     ],
     "types": [
@@ -1467,7 +1578,8 @@
     "code": "2_9",
     "name": "粉碎机",
     "signals": [
-      "温度检测"
+      "温度检测",
+      "电流检测"
     ],
     "types": [
       "AI"
@@ -1484,9 +1596,11 @@
     "signals": [
       "Running",
       "Start",
-      "Switching in"
+      "Switching in",
+      "电流检测"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -1587,7 +1701,8 @@
       "Running",
       "Start",
       "Switching in",
-      "温度检测"
+      "温度检测",
+      "电流检测"
     ],
     "types": [
       "AI",
@@ -1606,9 +1721,11 @@
     "signals": [
       "Running",
       "Start",
-      "Switching in"
+      "Switching in",
+      "电流检测"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -1684,10 +1801,12 @@
     "code": "2_30A",
     "name": "Screw conveyor",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC25_26"
@@ -1701,16 +1820,23 @@
     "signals": [
       "E-STOP",
       "FOR. Limit",
+      "FOR. Limit/REV. Limit",
       "Gate Protect",
       "REV. Limit",
       "Running",
-      "Switching in"
+      "Start",
+      "Switching in",
+      "温度检测",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
     ],
     "cabinets": [
-      "MCC25_26"
+      "MCC25_26",
+      "MCC8_9"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -1720,13 +1846,18 @@
     "name": "Fan",
     "signals": [
       "Running",
-      "Switching in"
+      "Start",
+      "Switching in",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
     ],
     "cabinets": [
-      "MCC25_26"
+      "MCC25_26",
+      "MCC8_9"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -1751,10 +1882,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
@@ -1795,10 +1928,12 @@
     "code": "2_41A",
     "name": "Screw conveyor",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC14"
@@ -1812,16 +1947,19 @@
     "signals": [
       "E-STOP",
       "FOR. Limit",
+      "FOR. Limit/REV. Limit",
       "Gate Protect",
       "REV. Limit",
       "Running",
+      "Start",
       "Switching in",
       "温度检测",
       "电流检测"
     ],
     "types": [
       "AI",
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13",
@@ -1835,12 +1973,14 @@
     "name": "Fan",
     "signals": [
       "Running",
+      "Start",
       "Switching in",
       "电流检测"
     ],
     "types": [
       "AI",
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13",
@@ -1869,10 +2009,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
@@ -1916,11 +2058,13 @@
       "E-STOP",
       "Gate Protect",
       "Running",
+      "Start",
       "电流检测"
     ],
     "types": [
       "AI",
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13",
@@ -1949,10 +2093,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
@@ -1993,10 +2139,12 @@
     "code": "2_59A",
     "name": "Screw conveyor",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC25_26"
@@ -2010,16 +2158,23 @@
     "signals": [
       "E-STOP",
       "FOR. Limit",
+      "FOR. Limit/REV. Limit",
       "Gate Protect",
       "REV. Limit",
       "Running",
-      "Switching in"
+      "Start",
+      "Switching in",
+      "温度检测",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
     ],
     "cabinets": [
-      "MCC25_26"
+      "MCC25_26",
+      "MCC8_9"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -2029,13 +2184,18 @@
     "name": "Fan",
     "signals": [
       "Running",
-      "Switching in"
+      "Start",
+      "Switching in",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
     ],
     "cabinets": [
-      "MCC25_26"
+      "MCC25_26",
+      "MCC8_9"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -2060,10 +2220,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
@@ -2079,9 +2241,11 @@
       "E-STOP",
       "Elevator",
       "Running",
-      "Start"
+      "Start",
+      "电流检测"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -2100,9 +2264,11 @@
       "E-STOP",
       "Elevator",
       "Running",
-      "Start"
+      "Start",
+      "电流检测"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -2120,15 +2286,20 @@
     "signals": [
       "E-STOP",
       "Elevator",
-      "Running"
+      "Running",
+      "Start",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
       "LCB_10",
-      "MCC25_26"
+      "MCC25_26",
+      "MCC8_9"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -2139,14 +2310,19 @@
     "signals": [
       "E-STOP",
       "Elevator",
-      "Running"
+      "Running",
+      "Start",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
       "LCB_10",
+      "MCC12_13",
       "MCC14"
     ],
     "location": "Tower 3",
@@ -2158,15 +2334,20 @@
     "signals": [
       "E-STOP",
       "Elevator",
-      "Running"
+      "Running",
+      "Start",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
       "LCB_10",
-      "MCC25_26"
+      "MCC25_26",
+      "MCC8_9"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -2273,10 +2454,12 @@
     "code": "2_75",
     "name": "distributor",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC25_26"
@@ -2303,10 +2486,12 @@
     "code": "2_75A",
     "name": "Fan",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC25_26"
@@ -2321,10 +2506,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_9",
@@ -2337,10 +2524,12 @@
     "code": "2_77",
     "name": "distributor",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC14"
@@ -2367,10 +2556,12 @@
     "code": "2_77A",
     "name": "Fan",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC14"
@@ -2385,10 +2576,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_9",
@@ -2401,10 +2594,12 @@
     "code": "2_79",
     "name": "distributor",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC25_26"
@@ -2431,10 +2626,12 @@
     "code": "2_79A",
     "name": "Fan",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC25_26"
@@ -2471,6 +2668,7 @@
     "signals": [
       "Start",
       "关门到位",
+      "开门",
       "开门到位"
     ],
     "types": [
@@ -4041,10 +4239,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_2",
@@ -4253,10 +4453,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_2",
@@ -4585,10 +4787,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_2",
@@ -4604,10 +4808,14 @@
       "E-STOP",
       "Elevator",
       "Running",
-      "Switching in"
+      "Start",
+      "Switching in",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
@@ -4624,10 +4832,14 @@
       "E-STOP",
       "Elevator",
       "Running",
-      "Switching in"
+      "Start",
+      "Switching in",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
@@ -4644,10 +4856,14 @@
       "E-STOP",
       "Elevator",
       "Running",
-      "Switching in"
+      "Start",
+      "Switching in",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
@@ -4663,6 +4879,7 @@
     "signals": [
       "Start",
       "关门到位",
+      "开门",
       "开门到位"
     ],
     "types": [
@@ -4736,10 +4953,12 @@
     "code": "4_6",
     "name": "Fan",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -4756,10 +4975,42 @@
       "Gate Protect",
       "Opened",
       "Running",
+      "Start",
       "Switching in"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "MCC12_13"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "4_10.1",
+    "name": "混合机",
+    "signals": [
+      "电流检测"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "MCC12_13"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "4_10.2",
+    "name": "混合机",
+    "signals": [
+      "电流检测"
+    ],
+    "types": [
+      "AI"
     ],
     "cabinets": [
       "MCC12_13"
@@ -4817,10 +5068,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
@@ -4889,10 +5142,12 @@
     "code": "4_21",
     "name": "Fan",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -4907,10 +5162,42 @@
       "E-STOP",
       "Gate Protect",
       "Running",
+      "Start",
       "Switching in"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "MCC22_23"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "4_25.1",
+    "name": "混合机",
+    "signals": [
+      "电流检测"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "MCC22_23"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "4_25.2",
+    "name": "混合机",
+    "signals": [
+      "电流检测"
+    ],
+    "types": [
+      "AI"
     ],
     "cabinets": [
       "MCC22_23"
@@ -4923,10 +5210,12 @@
     "name": "Mixer",
     "signals": [
       "Closed",
+      "Open",
       "Opened"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -4984,10 +5273,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
@@ -5002,11 +5293,13 @@
     "signals": [
       "Elevator",
       "Running",
+      "开机",
       "电流检测"
     ],
     "types": [
       "AI",
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
@@ -5022,10 +5315,14 @@
     "signals": [
       "E-STOP",
       "Elevator",
-      "Running"
+      "Running",
+      "Start",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
@@ -5128,10 +5425,14 @@
       "E-STOP",
       "Gate Protect",
       "Running",
-      "Switching in"
+      "Start",
+      "Switching in",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -5145,10 +5446,12 @@
     "signals": [
       "E-STOP",
       "Running",
+      "Start",
       "Switching in"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -5160,10 +5463,12 @@
     "code": "4_45",
     "name": "distributor",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -5193,10 +5498,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_8",
@@ -5209,10 +5516,12 @@
     "code": "4_49",
     "name": "distributor",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -5242,10 +5551,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_9",
@@ -5261,10 +5572,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_10",
@@ -5366,10 +5679,14 @@
       "E-STOP",
       "Gate Protect",
       "Running",
-      "Switching in"
+      "Start",
+      "Switching in",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -5383,10 +5700,12 @@
     "signals": [
       "E-STOP",
       "Running",
+      "Start",
       "Switching in"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -5398,10 +5717,12 @@
     "code": "4_66",
     "name": "distributor",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -5431,10 +5752,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_9",
@@ -5450,10 +5773,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_8",
@@ -5466,10 +5791,12 @@
     "code": "4_74",
     "name": "distributor",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -5497,429 +5824,15 @@
     "name": "新增回风蝶阀",
     "signals": [
       "关门到位",
+      "开门",
       "开门到位"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.2_1_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.2_2_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.2_3_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.2_4_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.2_5_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.2_6_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.2_7_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.2_8_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.2_9_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.2_10_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.2_11_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.2_12_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.2_13_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.2_14_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.2_15_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.2_16_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.3_1_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.3_2_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.3_3_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.3_4_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.3_5_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.3_6_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.3_7_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.3_8_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.3_9_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.3_10_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.3_11_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.3_12_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.3_13_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.3_14_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.3_15_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "5.3_16_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -6298,16 +6211,19 @@
       "Elevator",
       "Running",
       "Start",
+      "电流检测",
       "移动到LCB1"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
     "cabinets": [
       "LCB_2",
       "LCB_8",
-      "MCC6"
+      "MCC6",
+      "MCC7"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -6551,9 +6467,11 @@
       "Elevator",
       "Running",
       "Start",
+      "电流检测",
       "移动到LCB1"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -6804,9 +6722,11 @@
       "Elevator",
       "Running",
       "Start",
+      "电流检测",
       "移动到LCB1"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -6931,16 +6851,19 @@
       "E-STOP",
       "Elevator",
       "Running",
-      "Start"
+      "Start",
+      "电流检测"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
     "cabinets": [
       "LCB_1",
       "LCB_10",
-      "MCC6"
+      "MCC6",
+      "MCC7"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -6952,9 +6875,11 @@
       "E-STOP",
       "Elevator",
       "Running",
-      "Start"
+      "Start",
+      "电流检测"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -6973,9 +6898,11 @@
       "E-STOP",
       "Elevator",
       "Running",
-      "Start"
+      "Start",
+      "电流检测"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -7270,9 +7197,11 @@
       "Elevator",
       "Running",
       "Start",
+      "电流检测",
       "移动到LCB1"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -7398,9 +7327,11 @@
       "E-STOP",
       "Elevator",
       "Running",
-      "Start"
+      "Start",
+      "电流检测"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -7458,1046 +7389,6 @@
     ],
     "cabinets": [
       "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_1_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_2_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_3_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_4_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_5_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_6_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_7_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_8_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_9_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_10_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_11_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_12_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_13_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_14_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_15_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_16_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_17_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_18_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_19_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_20_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_21_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_22_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_23_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_24_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_25_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_26_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_27_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_28_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_29_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_30_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_31_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_32_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_33_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_34_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_35_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_36_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_37_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_38_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_39_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.2_40_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_9"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_1_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_2_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_3_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_4_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_5_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_6_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_7_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_8_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_9_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_10_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_11_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_12_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_13_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_14_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_15_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_16_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_17_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_18_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_19_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_20_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_21_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_22_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_23_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_24_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_25_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_26_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_27_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_28_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_29_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_30_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_31_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_32_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_33_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_34_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_35_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_36_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_37_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_38_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_39_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "6.3_40_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6B"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -10026,58 +8917,6 @@
     "locationId": "tower3"
   },
   {
-    "code": "10.3_1_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "10.3_2_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "10.4_1_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_5"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "10.4_2_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_5"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
     "code": "10.7_LL",
     "name": "Low Level",
     "signals": [],
@@ -10109,10 +8948,12 @@
     "code": "10_8A",
     "name": "Screw conveyor",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC19"
@@ -10126,15 +8967,19 @@
     "signals": [
       "E-STOP",
       "FOR. Limit",
+      "FOR. Limit/REV. Limit",
       "Gate Protect",
       "REV. Limit",
       "Running",
+      "Start",
       "Switching in",
-      "温度检测"
+      "温度检测",
+      "电流检测"
     ],
     "types": [
       "AI",
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC19"
@@ -10147,10 +8992,14 @@
     "name": "Fan",
     "signals": [
       "Running",
-      "Switching in"
+      "Start",
+      "Switching in",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC19"
@@ -10178,10 +9027,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
@@ -10196,10 +9047,14 @@
     "signals": [
       "E-STOP",
       "Elevator",
-      "Running"
+      "Running",
+      "Start",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
@@ -10216,10 +9071,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_9",
@@ -10229,27 +9086,15 @@
     "locationId": "tower3"
   },
   {
-    "code": "10.20A_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A",
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
     "code": "10_26",
     "name": "Air lock",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC16_17"
@@ -10261,14 +9106,17 @@
     "code": "10_27",
     "name": "Cooler",
     "signals": [
+      "Close",
       "Closed",
       "E-STOP",
       "Gate Protect",
       "Low Level",
+      "Open",
       "Opened"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC16_17"
@@ -10280,10 +9128,12 @@
     "code": "10_27A",
     "name": "Cooler",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC16_17"
@@ -10295,10 +9145,12 @@
     "code": "10_27B",
     "name": "Cooler",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC16_17"
@@ -10312,10 +9164,12 @@
     "signals": [
       "Conveyor",
       "E-STOP",
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
@@ -10328,10 +9182,12 @@
     "code": "10_30",
     "name": "Air lock",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC16_17"
@@ -10344,10 +9200,12 @@
     "name": "Fan",
     "signals": [
       "Running",
+      "Start",
       "Switching in"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC16_17"
@@ -10359,13 +9217,30 @@
     "code": "10_35",
     "name": "Air lock",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC16_17"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "10-36",
+    "name": "",
+    "signals": [
+      "电流检测"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "MCC7"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -10376,15 +9251,20 @@
     "signals": [
       "E-STOP",
       "Elevator",
-      "Running"
+      "Running",
+      "Start",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
       "LCB_10",
-      "MCC16_17"
+      "MCC16_17",
+      "MCC19"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -10396,10 +9276,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_9",
@@ -10409,65 +9291,15 @@
     "locationId": "tower3"
   },
   {
-    "code": "11.4_1_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "11.4_2_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_8"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "11.5_1_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
-    "code": "11.5_2_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "LCB_6A"
-    ],
-    "location": "Tower 3",
-    "locationId": "tower3"
-  },
-  {
     "code": "11_12",
     "name": "Air lock",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC18"
@@ -10479,15 +9311,19 @@
     "code": "11_13",
     "name": "Cooler",
     "signals": [
+      "Close",
       "Closed",
       "E-STOP",
       "Gate Protect",
       "Low Level",
+      "Open",
       "Opened",
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC18"
@@ -10501,10 +9337,12 @@
     "signals": [
       "Conveyor",
       "E-STOP",
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
@@ -10517,10 +9355,12 @@
     "code": "11_16",
     "name": "Air lock",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC18"
@@ -10533,10 +9373,12 @@
     "name": "Fan",
     "signals": [
       "Running",
+      "Start",
       "Switching in"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC18"
@@ -10548,10 +9390,12 @@
     "code": "11_21",
     "name": "Air lock",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC18"
@@ -10565,15 +9409,20 @@
     "signals": [
       "E-STOP",
       "Elevator",
-      "Running"
+      "Running",
+      "Start",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_1",
       "LCB_10",
-      "MCC18"
+      "MCC18",
+      "MCC19"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -10585,10 +9434,12 @@
       "Conveyor",
       "E-STOP",
       "Running",
+      "Start",
       "conveyor"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_9",
@@ -10601,10 +9452,12 @@
     "code": "11_24",
     "name": "distributor",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC18"
@@ -10733,10 +9586,12 @@
     "code": "12_7",
     "name": "Fan",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC25_26"
@@ -10748,10 +9603,12 @@
     "code": "12_8",
     "name": "Fan",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC14"
@@ -10763,10 +9620,12 @@
     "code": "12_9",
     "name": "Fan",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC25_26"
@@ -10778,10 +9637,12 @@
     "code": "12_10",
     "name": "Fan",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -10793,10 +9654,12 @@
     "code": "12_11",
     "name": "Fan",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -10808,10 +9671,12 @@
     "code": "12_12",
     "name": "Fan",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -10823,10 +9688,12 @@
     "code": "12_13",
     "name": "Fan",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -10838,10 +9705,12 @@
     "code": "12_14",
     "name": "Fan",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -10853,10 +9722,12 @@
     "code": "12_16",
     "name": "Fan",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC16_17"
@@ -10868,10 +9739,12 @@
     "code": "12_17",
     "name": "Fan",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC18"
@@ -10883,10 +9756,12 @@
     "code": "12_18",
     "name": "Fan",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC19"
@@ -10981,10 +9856,12 @@
     "code": "13_3",
     "name": "Fan",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -11024,10 +9901,12 @@
     "code": "13_7C",
     "name": "Airlock",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -11039,10 +9918,12 @@
     "code": "13_8",
     "name": "Distributor",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -11069,10 +9950,12 @@
     "code": "13_9",
     "name": "Airlock",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -11084,10 +9967,12 @@
     "code": "13_10",
     "name": "Distributor",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -11100,10 +9985,12 @@
     "name": "Fan",
     "signals": [
       "Running",
+      "Start",
       "Switching in"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -11140,6 +10027,21 @@
     "locationId": "tower3"
   },
   {
+    "code": "14—7",
+    "name": "",
+    "signals": [
+      "电流检测"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "MCC7"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
     "code": "14_7",
     "name": "Mixer",
     "signals": [
@@ -11148,10 +10050,45 @@
       "Gate Protect",
       "Opened",
       "Running",
-      "Switching in"
+      "Start",
+      "Switching in",
+      "电流检测"
     ],
     "types": [
-      "DI"
+      "AI",
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "MCC16_17",
+      "MCC19"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "14_7_V1",
+    "name": "Mixer",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "MCC16_17"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "14_7_V2",
+    "name": "Pulse controller",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
     ],
     "cabinets": [
       "MCC16_17"
@@ -11192,6 +10129,7 @@
     "name": "Rota-shaker sifter",
     "signals": [
       "Running",
+      "Start",
       "TO  74",
       "TO  75",
       "TO  76",
@@ -11203,7 +10141,8 @@
       "TO  82"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_6A",
@@ -11217,6 +10156,7 @@
     "name": "Rota-shaker sifter",
     "signals": [
       "Running",
+      "Start",
       "TO  61",
       "TO  62",
       "TO  63",
@@ -11228,7 +10168,8 @@
       "TO  69"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "LCB_6A",
@@ -11241,10 +10182,12 @@
     "code": "21_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11256,10 +10199,12 @@
     "code": "21_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11271,10 +10216,12 @@
     "code": "22_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11286,10 +10233,12 @@
     "code": "22_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11301,10 +10250,12 @@
     "code": "23_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11316,10 +10267,12 @@
     "code": "23_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11331,10 +10284,12 @@
     "code": "24_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11346,10 +10301,12 @@
     "code": "24_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11361,10 +10318,12 @@
     "code": "25_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11376,10 +10335,12 @@
     "code": "25_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11391,10 +10352,12 @@
     "code": "26_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11406,10 +10369,12 @@
     "code": "26_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11421,10 +10386,12 @@
     "code": "27_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11436,10 +10403,12 @@
     "code": "27_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11451,10 +10420,12 @@
     "code": "28_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11466,10 +10437,12 @@
     "code": "28_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11481,10 +10454,12 @@
     "code": "29_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11496,10 +10471,12 @@
     "code": "29_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11511,10 +10488,12 @@
     "code": "30_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11526,10 +10505,12 @@
     "code": "30_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11541,10 +10522,12 @@
     "code": "31_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11556,10 +10539,12 @@
     "code": "31_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11571,10 +10556,12 @@
     "code": "32_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11586,10 +10573,12 @@
     "code": "32_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11601,10 +10590,12 @@
     "code": "33_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11616,10 +10607,12 @@
     "code": "33_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11631,10 +10624,12 @@
     "code": "34_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11646,10 +10641,12 @@
     "code": "34_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11661,10 +10658,12 @@
     "code": "35_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11676,10 +10675,12 @@
     "code": "35_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11691,10 +10692,12 @@
     "code": "36_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11706,10 +10709,12 @@
     "code": "36_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11721,10 +10726,12 @@
     "code": "37_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11736,10 +10743,12 @@
     "code": "37_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11751,10 +10760,12 @@
     "code": "38_1",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11766,10 +10777,12 @@
     "code": "38_2",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11781,10 +10794,12 @@
     "code": "39",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11796,10 +10811,12 @@
     "code": "40",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11811,10 +10828,12 @@
     "code": "41",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11826,10 +10845,12 @@
     "code": "42",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11841,10 +10862,12 @@
     "code": "43",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11856,10 +10879,12 @@
     "code": "44",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11871,10 +10896,12 @@
     "code": "45",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11886,10 +10913,12 @@
     "code": "46",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11901,10 +10930,12 @@
     "code": "47",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11916,10 +10947,12 @@
     "code": "48",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11931,10 +10964,12 @@
     "code": "49",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11946,10 +10981,12 @@
     "code": "50",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11961,10 +10998,12 @@
     "code": "51",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11976,10 +11015,12 @@
     "code": "52",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC20_21"
@@ -11991,10 +11032,12 @@
     "code": "54",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -12006,10 +11049,12 @@
     "code": "55",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -12021,10 +11066,12 @@
     "code": "56",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -12036,10 +11083,12 @@
     "code": "57",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -12051,10 +11100,12 @@
     "code": "58",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -12066,10 +11117,12 @@
     "code": "59",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -12081,10 +11134,12 @@
     "code": "60",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -12096,10 +11151,12 @@
     "code": "61",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -12111,10 +11168,12 @@
     "code": "62",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -12126,10 +11185,12 @@
     "code": "63",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -12141,10 +11202,12 @@
     "code": "64",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -12156,10 +11219,12 @@
     "code": "65",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -12171,10 +11236,12 @@
     "code": "66",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -12186,10 +11253,12 @@
     "code": "67",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -12201,10 +11270,12 @@
     "code": "68",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -12216,10 +11287,12 @@
     "code": "69",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC12_13"
@@ -12231,10 +11304,12 @@
     "code": "71",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -12246,10 +11321,12 @@
     "code": "72",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -12261,10 +11338,12 @@
     "code": "73",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -12276,10 +11355,12 @@
     "code": "74",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -12291,10 +11372,12 @@
     "code": "75",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -12306,10 +11389,12 @@
     "code": "76",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -12321,10 +11406,12 @@
     "code": "77",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -12336,10 +11423,12 @@
     "code": "78",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -12351,10 +11440,12 @@
     "code": "79",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -12366,10 +11457,12 @@
     "code": "80",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -12381,10 +11474,12 @@
     "code": "81",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -12396,10 +11491,12 @@
     "code": "82",
     "name": "Screw feeder",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "MCC22_23"
@@ -12453,9 +11550,11 @@
       "Low Belt alignment",
       "Running",
       "Speed",
-      "Start"
+      "Start",
+      "电流检测"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -12609,170 +11708,6 @@
     "locationId": "premixer"
   },
   {
-    "code": "2002_1_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "MCCY3"
-    ],
-    "location": "Premixer",
-    "locationId": "premixer"
-  },
-  {
-    "code": "2002_2_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "MCCY3"
-    ],
-    "location": "Premixer",
-    "locationId": "premixer"
-  },
-  {
-    "code": "2002_3_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "MCCY3"
-    ],
-    "location": "Premixer",
-    "locationId": "premixer"
-  },
-  {
-    "code": "2002_4_HL",
-    "name": "High Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "MCCY3"
-    ],
-    "location": "Premixer",
-    "locationId": "premixer"
-  },
-  {
-    "code": "2004_1_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "MCCY3"
-    ],
-    "location": "Premixer",
-    "locationId": "premixer"
-  },
-  {
-    "code": "2004_2_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "MCCY3"
-    ],
-    "location": "Premixer",
-    "locationId": "premixer"
-  },
-  {
-    "code": "2004_3_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "MCCY3"
-    ],
-    "location": "Premixer",
-    "locationId": "premixer"
-  },
-  {
-    "code": "2004_4_LL",
-    "name": "Low Level",
-    "signals": [],
-    "types": [
-      "DI"
-    ],
-    "cabinets": [
-      "MCCY3"
-    ],
-    "location": "Premixer",
-    "locationId": "premixer"
-  },
-  {
-    "code": "2005_AH1",
-    "name": "Bin vibrator",
-    "signals": [
-      "Start"
-    ],
-    "types": [
-      "DO"
-    ],
-    "cabinets": [
-      "MCCY3"
-    ],
-    "location": "Premixer",
-    "locationId": "premixer"
-  },
-  {
-    "code": "2005_AH2",
-    "name": "Bin vibrator",
-    "signals": [
-      "Start"
-    ],
-    "types": [
-      "DO"
-    ],
-    "cabinets": [
-      "MCCY3"
-    ],
-    "location": "Premixer",
-    "locationId": "premixer"
-  },
-  {
-    "code": "2005_AH3",
-    "name": "Bin vibrator",
-    "signals": [
-      "Start"
-    ],
-    "types": [
-      "DO"
-    ],
-    "cabinets": [
-      "MCCY3"
-    ],
-    "location": "Premixer",
-    "locationId": "premixer"
-  },
-  {
-    "code": "2005_AH4",
-    "name": "Bin vibrator",
-    "signals": [
-      "Start"
-    ],
-    "types": [
-      "DO"
-    ],
-    "cabinets": [
-      "MCCY3"
-    ],
-    "location": "Premixer",
-    "locationId": "premixer"
-  },
-  {
     "code": "2007",
     "name": "Screw feeder",
     "signals": [
@@ -12860,9 +11795,11 @@
       "Low Belt alignment",
       "Running",
       "Speed",
-      "Start"
+      "Start",
+      "电流检测"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -12941,9 +11878,11 @@
       "E-STOP",
       "Opened",
       "Running",
-      "Start"
+      "Start",
+      "电流检测"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -16195,9 +15134,11 @@
       "E-STOP",
       "Opened",
       "Running",
-      "Start"
+      "Start",
+      "电流检测"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -16437,6 +15378,176 @@
     "locationId": "premixer"
   },
   {
+    "code": "B54",
+    "name": "B54 开门到位",
+    "signals": [
+      "P2530.11"
+    ],
+    "types": [
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "12DC24V_5",
+      "LCB_5"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "B55",
+    "name": "B55 开门到位",
+    "signals": [
+      "P2530.31"
+    ],
+    "types": [
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "12DC24V_5",
+      "LCB_5"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "B56",
+    "name": "B56 开门到位",
+    "signals": [
+      "P2531.11"
+    ],
+    "types": [
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "12DC24V_5",
+      "LCB_5"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "B57",
+    "name": "B57 开门到位",
+    "signals": [
+      "P2531.31"
+    ],
+    "types": [
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "12DC24V_5",
+      "LCB_5"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "B58",
+    "name": "B58 开门到位",
+    "signals": [
+      "P2532.11"
+    ],
+    "types": [
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "12DC24V_5",
+      "LCB_5"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "B59",
+    "name": "B59 开门到位",
+    "signals": [
+      "P2532.31"
+    ],
+    "types": [
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "12DC24V_5",
+      "LCB_5"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "B60",
+    "name": "B60 开门到位",
+    "signals": [
+      "P2533.11"
+    ],
+    "types": [
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "12DC24V_5",
+      "LCB_5"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "B71",
+    "name": "B71 开门到位",
+    "signals": [
+      "P2533.31"
+    ],
+    "types": [
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "12DC24V_5",
+      "LCB_5"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "B72",
+    "name": "B72 开门到位",
+    "signals": [
+      "P2531.11"
+    ],
+    "types": [
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "12DC24V_5",
+      "LCB_5"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "B73",
+    "name": "B73 开门到位",
+    "signals": [
+      "P2531.31"
+    ],
+    "types": [
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "12DC24V_5",
+      "LCB_5"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
     "code": "D1",
     "name": "Screw feeder",
     "signals": [
@@ -16516,7 +15627,8 @@
     "name": "Add response",
     "signals": [],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "PLC"
@@ -16540,16 +15652,183 @@
     "locationId": "tower3"
   },
   {
+    "code": "E01 (10.3_1_HL)",
+    "name": "E01 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "E01 (10.4_1_LL)",
+    "name": "E01 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_5"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "E02 (10.3_2_HL)",
+    "name": "E02 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "E02 (10.4_2_LL)",
+    "name": "E02 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_5"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "E03 (10.20A_HL)",
+    "name": "E03 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A",
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "E04 (11.4_1_HL)",
+    "name": "E04 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "E04 (11.5_1_LL)",
+    "name": "E04 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "E05 (11.4_2_HL)",
+    "name": "E05 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "E05 (11.5_2_LL)",
+    "name": "E05 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
     "code": "LA101_1",
     "name": "Magnetic drive pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
+    ],
+    "types": [
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "LA101_1氯化胆碱泵开机",
+      "LA101_1氯化胆碱泵运行"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LA101_2",
+    "name": "LA101_2_press1",
+    "signals": [
+      "（4-20mA）"
     ],
     "types": [
       "DI"
     ],
     "cabinets": [
-      "LA101_1氯化胆碱泵运行"
+      "LA101_2液体管路压力检测",
+      "LA101_2液体管路流量检测"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LA101_2A",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LA101_2A喷油阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LA101_2B",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LA101_2B喷吹阀启动"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -16584,13 +15863,62 @@
     "code": "LA102_1",
     "name": "Magnetic drive pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
+    ],
+    "types": [
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "LA102_1氯化胆碱泵开机",
+      "LA102_1氯化胆碱泵运行"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LA102_2",
+    "name": "LA102_2_press1",
+    "signals": [
+      "（4-20mA）"
     ],
     "types": [
       "DI"
     ],
     "cabinets": [
-      "LA102_1氯化胆碱泵运行"
+      "LA102_2液体管路压力检测",
+      "LA102_2液体管路流量检测"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LA102_2A",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LA102_2A喷油阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LA102_2B",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LA102_2B喷吹阀启动"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -16599,12 +15927,15 @@
     "code": "LA201_1",
     "name": "Magnetic drive pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
+      "LA201_1蛋氨酸泵开机",
       "LA201_1蛋氨酸泵运行"
     ],
     "location": "Tower 3",
@@ -16614,12 +15945,15 @@
     "code": "LA201_2",
     "name": "Magnetic drive pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
+      "LA201_2蛋氨酸泵开机",
       "LA201_2蛋氨酸泵运行"
     ],
     "location": "Tower 3",
@@ -16655,12 +15989,15 @@
     "code": "LA301_1",
     "name": "Magnetic drive pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
+      "LA301_1谷氨酸开机",
       "LA301_1谷氨酸运行"
     ],
     "location": "Tower 3",
@@ -16670,12 +16007,15 @@
     "code": "LA301_2",
     "name": "Magnetic drive pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
+      "LA301_2谷氨酸开机",
       "LA301_2谷氨酸运行"
     ],
     "location": "Tower 3",
@@ -16711,12 +16051,15 @@
     "code": "LA401_1",
     "name": "Magnetic drive pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
+      "LA401_1赖氨酸开机",
       "LA401_1赖氨酸运行"
     ],
     "location": "Tower 3",
@@ -16726,12 +16069,15 @@
     "code": "LA401_2",
     "name": "Magnetic drive pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
+      "LA401_2赖氨酸开机",
       "LA401_2赖氨酸运行"
     ],
     "location": "Tower 3",
@@ -16767,12 +16113,15 @@
     "code": "LA501_1",
     "name": "Centrifugal pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
+      "LA501_1水泵开机",
       "LA501_1水泵运行"
     ],
     "location": "Tower 3",
@@ -16782,12 +16131,15 @@
     "code": "LA501_2",
     "name": "Centrifugal pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
+      "LA501_2水泵开机",
       "LA501_2水泵运行"
     ],
     "location": "Tower 3",
@@ -16823,12 +16175,15 @@
     "code": "LA601_1",
     "name": "Gear pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
+      "LA601_1DLN泵开机",
       "LA601_1DLN泵运行"
     ],
     "location": "Tower 3",
@@ -16838,12 +16193,15 @@
     "code": "LA601_2",
     "name": "Gear pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
+      "LA601_2DLN泵开机",
       "LA601_2DLN泵运行"
     ],
     "location": "Tower 3",
@@ -16879,12 +16237,15 @@
     "code": "LA701_1",
     "name": "Gear pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
+      "LA701_1粗甘油泵开机",
       "LA701_1粗甘油泵运行"
     ],
     "location": "Tower 3",
@@ -16894,12 +16255,15 @@
     "code": "LA701_2",
     "name": "Gear pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
+      "LA701_2粗甘油泵开机",
       "LA701_2粗甘油泵运行"
     ],
     "location": "Tower 3",
@@ -16935,12 +16299,15 @@
     "code": "LA801_1",
     "name": "Gear pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
+      "LA801_1大豆油泵开机",
       "LA801_1大豆油泵运行"
     ],
     "location": "Tower 3",
@@ -16950,13 +16317,13 @@
     "code": "LA801_2",
     "name": "Gear pump",
     "signals": [
-      "Running"
+      "Start"
     ],
     "types": [
-      "DI"
+      "DO"
     ],
     "cabinets": [
-      "LA801_2大豆油泵运行"
+      "LA801_2大豆油泵开机"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -16991,13 +16358,19 @@
     "code": "LA901",
     "name": "Agitator Motor",
     "signals": [
-      "Running"
+      "Running",
+      "Start",
+      "（4-20mA）"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
-      "LA901搅拌电机运行"
+      "LA901中间罐加热阀启动",
+      "LA901搅拌电机启动",
+      "LA901搅拌电机运行",
+      "LA901液体罐温度检测"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -17021,13 +16394,46 @@
     "code": "LA901_2",
     "name": "Gear pump",
     "signals": [
-      "Running"
+      "Running",
+      "（4-20mA）"
     ],
     "types": [
       "DI"
     ],
     "cabinets": [
-      "LA901_2喷糖电机运行"
+      "LA901_2喷糖电机运行",
+      "LA901_2液体管路压力检测",
+      "LA901_2液体管路流量检测"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LA901_2A",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LA901_2A喷油阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LA901_2B",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LA901_2B喷吹阀启动"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -17059,16 +16465,67 @@
     "locationId": "tower3"
   },
   {
-    "code": "LW101",
-    "name": "Agitator Motor",
+    "code": "LA902_2",
+    "name": "LA902_2_press",
     "signals": [
-      "Running"
+      "（4-20mA）"
     ],
     "types": [
       "DI"
     ],
     "cabinets": [
-      "LW101搅拌电机运行"
+      "LA902_2液体管路压力检测",
+      "LA902_2液体管路流量检测"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LA902_2A",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LA902_2A喷油阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LA902_2B",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LA902_2B喷吹阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW101",
+    "name": "Agitator Motor",
+    "signals": [
+      "Running",
+      "Start",
+      "（4-20mA）"
+    ],
+    "types": [
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "LW101搅拌电机开机",
+      "LW101搅拌电机运行",
+      "LW101液体称压力检测"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -17077,12 +16534,15 @@
     "code": "LW101_1",
     "name": "Gear pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
+      "LW101_1喷油电机开机",
       "LW101_1喷油电机运行"
     ],
     "location": "Tower 3",
@@ -17119,16 +16579,126 @@
     "locationId": "tower3"
   },
   {
+    "code": "LW101_V1",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW101_V11#进称阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW101_V2",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW101_V22#进称阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW101_V3",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW101_V33#进称阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW101_V4",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW101_V44#进称阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW101_V5",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW101_V5出料阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW101_V6",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW101_V6喷油阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW101_V7",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW101_V7喷吹阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
     "code": "LW102",
     "name": "Agitator Motor",
     "signals": [
-      "Running"
+      "Running",
+      "Start",
+      "（4-20mA）"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
-      "LW102搅拌电机运行"
+      "LW102搅拌电机开机",
+      "LW102搅拌电机运行",
+      "LW102液体称压力检测"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -17137,12 +16707,15 @@
     "code": "LW102_1",
     "name": "Gear pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
+      "LW102_1喷油电机开机",
       "LW102_1喷油电机运行"
     ],
     "location": "Tower 3",
@@ -17179,16 +16752,111 @@
     "locationId": "tower3"
   },
   {
+    "code": "LW102_V1",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW102_V11#进称阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW102_V2",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW102_V22#进称阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW102_V3",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW102_V33#进称阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW102_V4",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW102_V4出料阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW102_V5",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW102_V5喷油阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW102_V6",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW102_V6喷吹阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
     "code": "LW201",
     "name": "Agitator Motor",
     "signals": [
-      "Running"
+      "Running",
+      "Start",
+      "（4-20mA）"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
-      "LW201搅拌电机运行"
+      "LW201搅拌电机开机",
+      "LW201搅拌电机运行",
+      "LW201液体称压力检测"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -17197,12 +16865,15 @@
     "code": "LW201_1",
     "name": "Gear pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
+      "LW201_1喷油电机开机",
       "LW201_1喷油电机运行"
     ],
     "location": "Tower 3",
@@ -17239,16 +16910,126 @@
     "locationId": "tower3"
   },
   {
+    "code": "LW201_V1",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW201_V11#进称阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW201_V2",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW201_V22#进称阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW201_V3",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW201_V33#进称阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW201_V4",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW201_V44#进称阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW201_V5",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW201_V5出料阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW201_V6",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW201_V6喷油阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW201_V7",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW201_V7喷吹阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
     "code": "LW202",
     "name": "Agitator Motor",
     "signals": [
-      "Running"
+      "Running",
+      "Start",
+      "（4-20mA）"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
-      "LW202搅拌电机运行"
+      "LW202搅拌电机开机",
+      "LW202搅拌电机运行",
+      "LW202液体称压力检测"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -17257,12 +17038,15 @@
     "code": "LW202_1",
     "name": "Gear pump",
     "signals": [
-      "Running"
+      "Running",
+      "Start"
     ],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
+      "LW202_1喷油电机开机",
       "LW202_1喷油电机运行"
     ],
     "location": "Tower 3",
@@ -17294,6 +17078,96 @@
     ],
     "cabinets": [
       "LW202_LL液体称下液位"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW202_V1",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW202_V11#进称阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW202_V2",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW202_V22#进称阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW202_V3",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW202_V33#进称阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW202_V4",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW202_V4出料阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW202_V5",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW202_V5喷油阀启动"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "LW202_V6",
+    "name": "Vavle",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "LW202_V6喷吹阀启动"
     ],
     "location": "Tower 3",
     "locationId": "tower3"
@@ -17915,7 +17789,8 @@
     "name": "Add finish",
     "signals": [],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "PLC"
@@ -17928,7 +17803,8 @@
     "name": "Add finish",
     "signals": [],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "PLC"
@@ -17941,7 +17817,8 @@
     "name": "Add finish",
     "signals": [],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "PLC"
@@ -17954,7 +17831,8 @@
     "name": "Add finish",
     "signals": [],
     "types": [
-      "DI"
+      "DI",
+      "DO"
     ],
     "cabinets": [
       "PLC"
@@ -17975,6 +17853,73 @@
     ],
     "cabinets": [
       "MCCY1_2"
+    ],
+    "location": "Premixer",
+    "locationId": "premixer"
+  },
+  {
+    "code": "P1 (5.2_1_HL)",
+    "name": "P1 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P1 (5.3_1_LL)",
+    "name": "P1 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P01 (2002_1_HL)",
+    "name": "P01 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "MCCY3"
+    ],
+    "location": "Premixer",
+    "locationId": "premixer"
+  },
+  {
+    "code": "P01 (2004_1_LL)",
+    "name": "P01 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "MCCY3"
+    ],
+    "location": "Premixer",
+    "locationId": "premixer"
+  },
+  {
+    "code": "P01 (2005_AH1)",
+    "name": "P01 Bin vibrator",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "MCCY3"
     ],
     "location": "Premixer",
     "locationId": "premixer"
@@ -18023,6 +17968,73 @@
     "locationId": "premixer"
   },
   {
+    "code": "P2 (5.2_2_HL)",
+    "name": "P2 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P2 (5.3_2_LL)",
+    "name": "P2 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P02 (2002_2_HL)",
+    "name": "P02 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "MCCY3"
+    ],
+    "location": "Premixer",
+    "locationId": "premixer"
+  },
+  {
+    "code": "P02 (2004_2_LL)",
+    "name": "P02 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "MCCY3"
+    ],
+    "location": "Premixer",
+    "locationId": "premixer"
+  },
+  {
+    "code": "P02 (2005_AH2)",
+    "name": "P02 Bin vibrator",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "MCCY3"
+    ],
+    "location": "Premixer",
+    "locationId": "premixer"
+  },
+  {
     "code": "P2Elevator1_OffsetLeftDown",
     "name": "",
     "signals": [],
@@ -18061,6 +18073,73 @@
     ],
     "cabinets": [
       "MCCY1_2"
+    ],
+    "location": "Premixer",
+    "locationId": "premixer"
+  },
+  {
+    "code": "P3 (5.2_3_HL)",
+    "name": "P3 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P3 (5.3_3_LL)",
+    "name": "P3 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P03 (2002_3_HL)",
+    "name": "P03 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "MCCY3"
+    ],
+    "location": "Premixer",
+    "locationId": "premixer"
+  },
+  {
+    "code": "P03 (2004_3_LL)",
+    "name": "P03 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "MCCY3"
+    ],
+    "location": "Premixer",
+    "locationId": "premixer"
+  },
+  {
+    "code": "P03 (2005_AH3)",
+    "name": "P03 Bin vibrator",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "MCCY3"
     ],
     "location": "Premixer",
     "locationId": "premixer"
@@ -18109,6 +18188,73 @@
     "locationId": "premixer"
   },
   {
+    "code": "P4 (5.2_4_HL)",
+    "name": "P4 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P4 (5.3_4_LL)",
+    "name": "P4 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P04 (2002_4_HL)",
+    "name": "P04 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "MCCY3"
+    ],
+    "location": "Premixer",
+    "locationId": "premixer"
+  },
+  {
+    "code": "P04 (2004_4_LL)",
+    "name": "P04 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "MCCY3"
+    ],
+    "location": "Premixer",
+    "locationId": "premixer"
+  },
+  {
+    "code": "P04 (2005_AH4)",
+    "name": "P04 Bin vibrator",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "MCCY3"
+    ],
+    "location": "Premixer",
+    "locationId": "premixer"
+  },
+  {
     "code": "P4Elevator1_OffsetLeftDown",
     "name": "",
     "signals": [],
@@ -18130,6 +18276,1358 @@
     ],
     "cabinets": [
       "LCB_1"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P5 (5.2_5_HL)",
+    "name": "P5 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P5 (5.3_5_LL)",
+    "name": "P5 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P6 (5.2_6_HL)",
+    "name": "P6 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P6 (5.3_6_LL)",
+    "name": "P6 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P7 (5.2_7_HL)",
+    "name": "P7 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P7 (5.3_7_LL)",
+    "name": "P7 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P8 (5.2_8_HL)",
+    "name": "P8 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P8 (5.3_8_LL)",
+    "name": "P8 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P9 (5.2_9_HL)",
+    "name": "P9 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P9 (5.3_9_LL)",
+    "name": "P9 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P10 (5.2_10_HL)",
+    "name": "P10 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P10 (5.3_10_LL)",
+    "name": "P10 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P11 (5.2_11_HL)",
+    "name": "P11 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P11 (5.3_11_LL)",
+    "name": "P11 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P12 (5.2_12_HL)",
+    "name": "P12 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P12 (5.3_12_LL)",
+    "name": "P12 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P13 (5.2_13_HL)",
+    "name": "P13 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P13 (5.3_13_LL)",
+    "name": "P13 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P14 (5.2_14_HL)",
+    "name": "P14 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P14 (5.3_14_LL)",
+    "name": "P14 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P15 (5.2_15_HL)",
+    "name": "P15 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P15 (5.3_15_LL)",
+    "name": "P15 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P16 (5.2_16_HL)",
+    "name": "P16 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_8"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P16 (5.3_16_LL)",
+    "name": "P16 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6A"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P17 (6.2_1_HL)",
+    "name": "P17 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P17 (6.3_1_LL)",
+    "name": "P17 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P18 (6.2_2_HL)",
+    "name": "P18 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P18 (6.3_2_LL)",
+    "name": "P18 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P19 (6.2_3_HL)",
+    "name": "P19 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P19 (6.3_3_LL)",
+    "name": "P19 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P20 (6.2_4_HL)",
+    "name": "P20 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P20 (6.3_4_LL)",
+    "name": "P20 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P21 (6.2_5_HL)",
+    "name": "P21 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P21 (6.3_5_LL)",
+    "name": "P21 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P22 (6.2_6_HL)",
+    "name": "P22 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P22 (6.3_6_LL)",
+    "name": "P22 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P23 (6.2_7_HL)",
+    "name": "P23 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P23 (6.3_7_LL)",
+    "name": "P23 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P24 (6.2_8_HL)",
+    "name": "P24 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P24 (6.3_8_LL)",
+    "name": "P24 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P25 (6.2_9_HL)",
+    "name": "P25 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P25 (6.3_9_LL)",
+    "name": "P25 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P26 (6.2_10_HL)",
+    "name": "P26 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P26 (6.3_10_LL)",
+    "name": "P26 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P27 (6.2_11_HL)",
+    "name": "P27 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P27 (6.3_11_LL)",
+    "name": "P27 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P28 (6.2_12_HL)",
+    "name": "P28 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P28 (6.3_12_LL)",
+    "name": "P28 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P29 (6.2_13_HL)",
+    "name": "P29 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P29 (6.3_13_LL)",
+    "name": "P29 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P30 (6.2_14_HL)",
+    "name": "P30 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P30 (6.3_14_LL)",
+    "name": "P30 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P31 (6.2_15_HL)",
+    "name": "P31 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P31 (6.3_15_LL)",
+    "name": "P31 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P32 (6.2_16_HL)",
+    "name": "P32 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P32 (6.3_16_LL)",
+    "name": "P32 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P33 (6.2_17_HL)",
+    "name": "P33 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P33 (6.3_17_LL)",
+    "name": "P33 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P34 (6.2_18_HL)",
+    "name": "P34 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P34 (6.3_18_LL)",
+    "name": "P34 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P35 (6.2_19_HL)",
+    "name": "P35 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P35 (6.3_19_LL)",
+    "name": "P35 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P36 (6.2_20_HL)",
+    "name": "P36 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P36 (6.3_20_LL)",
+    "name": "P36 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P37 (6.2_21_HL)",
+    "name": "P37 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P37 (6.3_21_LL)",
+    "name": "P37 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P38 (6.2_22_HL)",
+    "name": "P38 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P38 (6.3_22_LL)",
+    "name": "P38 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P39 (6.2_23_HL)",
+    "name": "P39 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P39 (6.3_23_LL)",
+    "name": "P39 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P40 (6.2_24_HL)",
+    "name": "P40 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P40 (6.3_24_LL)",
+    "name": "P40 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P41 (6.2_25_HL)",
+    "name": "P41 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P41 (6.3_25_LL)",
+    "name": "P41 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P42 (6.2_26_HL)",
+    "name": "P42 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P42 (6.3_26_LL)",
+    "name": "P42 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P43 (6.2_27_HL)",
+    "name": "P43 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P43 (6.3_27_LL)",
+    "name": "P43 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P44 (6.2_28_HL)",
+    "name": "P44 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P44 (6.3_28_LL)",
+    "name": "P44 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P45 (6.2_29_HL)",
+    "name": "P45 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P45 (6.3_29_LL)",
+    "name": "P45 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P46 (6.2_30_HL)",
+    "name": "P46 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P46 (6.3_30_LL)",
+    "name": "P46 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P47 (6.2_31_HL)",
+    "name": "P47 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P47 (6.3_31_LL)",
+    "name": "P47 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P48 (6.2_32_HL)",
+    "name": "P48 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P48 (6.3_32_LL)",
+    "name": "P48 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P49 (6.2_33_HL)",
+    "name": "P49 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P49 (6.3_33_LL)",
+    "name": "P49 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P50 (6.2_34_HL)",
+    "name": "P50 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P50 (6.3_34_LL)",
+    "name": "P50 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P51 (6.2_35_HL)",
+    "name": "P51 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P51 (6.3_35_LL)",
+    "name": "P51 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P52 (6.2_36_HL)",
+    "name": "P52 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P52 (6.3_36_LL)",
+    "name": "P52 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P53 (6.2_37_HL)",
+    "name": "P53 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P53 (6.3_37_LL)",
+    "name": "P53 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P54 (6.2_38_HL)",
+    "name": "P54 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P54 (6.3_38_LL)",
+    "name": "P54 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P55 (6.2_39_HL)",
+    "name": "P55 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P55 (6.3_39_LL)",
+    "name": "P55 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P56 (6.2_40_HL)",
+    "name": "P56 Silo High Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_9"
+    ],
+    "location": "Tower 3",
+    "locationId": "tower3"
+  },
+  {
+    "code": "P56 (6.3_40_LL)",
+    "name": "P56 Silo Low Level",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "LCB_6B"
     ],
     "location": "Tower 3",
     "locationId": "tower3"

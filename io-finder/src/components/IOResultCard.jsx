@@ -158,7 +158,7 @@ export default function IOResultCard({ result, index }) {
 const styles = {
   card: {
     background: 'var(--bg-card)',
-    backdropFilter: 'blur(12px)',
+    boxShadow: 'var(--shadow-card)',
     border: '1px solid var(--border-color)',
     borderRadius: 'var(--radius-lg)',
     overflow: 'hidden',
@@ -168,7 +168,8 @@ const styles = {
   },
   header: {
     padding: '16px 18px 12px',
-    borderBottom: '1px solid rgba(56, 189, 248, 0.08)',
+    borderBottom: '1px solid var(--border-color)',
+    background: '#fafafa',
   },
   headerTop: {
     display: 'flex',
@@ -181,7 +182,7 @@ const styles = {
     alignItems: 'center',
     padding: '3px 10px',
     borderRadius: 'var(--radius-sm)',
-    background: 'linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(14, 165, 233, 0.1))',
+    background: 'rgba(204, 17, 17, 0.08)',
     color: 'var(--accent-blue)',
     fontSize: 13,
     fontWeight: 700,
@@ -204,20 +205,21 @@ const styles = {
     color: 'var(--text-secondary)',
   },
   metaDivider: {
-    color: 'rgba(148, 163, 184, 0.3)',
+    color: 'rgba(148, 163, 184, 0.4)',
     fontSize: 10,
   },
   sections: {
-    padding: '8px 12px',
+    padding: '12px 14px',
     display: 'flex',
     flexDirection: 'column',
-    gap: 6,
+    gap: 8,
   },
   footer: {
-    padding: '10px 18px 14px',
-    borderTop: '1px solid rgba(56, 189, 248, 0.06)',
+    padding: '10px 18px 12px',
+    borderTop: '1px solid var(--border-color)',
     display: 'flex',
     justifyContent: 'flex-end',
+    background: '#fafafa',
   },
   drawingBtn: {
     display: 'inline-flex',
@@ -225,7 +227,7 @@ const styles = {
     gap: 6,
     padding: '6px 14px',
     borderRadius: 'var(--radius-sm)',
-    border: '1px solid rgba(148, 163, 184, 0.15)',
+    border: '1px solid rgba(148, 163, 184, 0.2)',
     background: 'rgba(148, 163, 184, 0.05)',
     color: 'var(--text-secondary)',
     fontSize: 12,
@@ -239,7 +241,7 @@ const styles = {
     letterSpacing: '0.06em',
     padding: '1px 5px',
     borderRadius: 3,
-    background: 'rgba(245, 158, 11, 0.15)',
+    background: 'rgba(133, 77, 14, 0.12)',
     color: 'var(--accent-yellow)',
     fontWeight: 600,
   },
@@ -248,7 +250,8 @@ const styles = {
 const sectionStyles = {
   container: {
     borderRadius: 'var(--radius-sm)',
-    background: 'rgba(15, 23, 42, 0.4)',
+    background: 'rgba(241, 245, 249, 0.6)',
+    border: '1px solid rgba(226, 232, 240, 0.8)',
     overflow: 'hidden',
     transition: 'all 0.2s ease',
   },
@@ -272,8 +275,8 @@ const sectionStyles = {
     fontSize: 12,
   },
   label: {
-    fontSize: 12,
-    fontWeight: 600,
+    fontSize: 11,
+    fontWeight: 700,
     textTransform: 'uppercase',
     letterSpacing: '0.04em',
   },
@@ -305,7 +308,7 @@ const sectionStyles = {
     fontSize: 11,
     textTransform: 'uppercase',
     letterSpacing: '0.05em',
-    borderBottom: '1px solid rgba(148, 163, 184, 0.1)',
+    borderBottom: '1px solid rgba(148, 163, 184, 0.15)',
   },
   tr: {
     transition: 'background 0.1s ease',
@@ -313,7 +316,7 @@ const sectionStyles = {
   td: {
     padding: '5px 8px',
     color: 'var(--text-primary)',
-    borderBottom: '1px solid rgba(148, 163, 184, 0.05)',
+    borderBottom: '1px solid rgba(148, 163, 184, 0.08)',
     fontSize: 12,
   },
   address: {

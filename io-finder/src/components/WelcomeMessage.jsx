@@ -72,7 +72,7 @@ const styles = {
     width: 80,
     height: 80,
     borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, transparent 70%)',
+    background: 'radial-gradient(circle, rgba(204, 17, 17, 0.15) 0%, transparent 70%)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -81,7 +81,7 @@ const styles = {
   },
   logo: {
     fontSize: 48,
-    filter: 'drop-shadow(0 0 12px rgba(14, 165, 233, 0.5))',
+    filter: 'drop-shadow(0 0 12px rgba(204, 17, 17, 0.4))',
   },
   title: {
     fontSize: 28,
@@ -127,13 +127,12 @@ const styles = {
     fontWeight: 500,
     cursor: 'pointer',
     transition: 'all 0.2s ease',
-    backdropFilter: 'blur(8px)',
   },
   chipHover: {
     borderColor: 'var(--accent-blue)',
     color: 'var(--accent-blue)',
-    background: 'rgba(14, 165, 233, 0.08)',
-    boxShadow: '0 0 16px rgba(14, 165, 233, 0.15)',
+    background: 'rgba(204, 17, 17, 0.08)',
+    boxShadow: '0 0 16px rgba(204, 17, 17, 0.15)',
     transform: 'translateY(-1px)',
   },
   chipIcon: {

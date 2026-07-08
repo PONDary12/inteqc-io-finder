@@ -162,8 +162,7 @@ const styles = {
     gap: 12,
     padding: '12px 16px',
     borderBottom: '1px solid var(--border-color)',
-    background: 'rgba(17, 24, 39, 0.9)',
-    backdropFilter: 'blur(12px)',
+    background: '#ffffff',
     position: 'sticky',
     top: 0,
     zIndex: 50,
@@ -191,7 +190,7 @@ const styles = {
   mobileTitleText: {
     fontSize: 16,
     fontWeight: 700,
-    background: 'linear-gradient(135deg, var(--accent-blue), #38bdf8)',
+    background: 'linear-gradient(135deg, var(--accent-blue), #ef4444)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
   },
@@ -200,8 +199,8 @@ const styles = {
     color: 'var(--text-secondary)',
     padding: '3px 8px',
     borderRadius: 'var(--radius-sm)',
-    background: 'rgba(14, 165, 233, 0.08)',
-    border: '1px solid rgba(14, 165, 233, 0.15)',
+    background: 'rgba(204, 17, 17, 0.08)',
+    border: '1px solid rgba(204, 17, 17, 0.15)',
     whiteSpace: 'nowrap',
   },
   noDataBanner: {
@@ -229,7 +228,7 @@ const styles = {
   code: {
     padding: '1px 6px',
     borderRadius: 4,
-    background: 'rgba(14, 165, 233, 0.1)',
+    background: 'rgba(204, 17, 17, 0.08)',
     color: 'var(--accent-blue)',
     fontSize: 11,
     fontFamily: "'Inter', monospace",

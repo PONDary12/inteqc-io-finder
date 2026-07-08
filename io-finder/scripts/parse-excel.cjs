@@ -193,7 +193,7 @@ function parseSection(rows, startIdx, sectionType, sheetName) {
   return points;
 }
 
-/** Parse a single sheet into an array of I/O points. */
+/** Parse a single sheet into an array of I/O points row-by-row. */
 function parseSheet(wb, sheetName) {
   const ws = wb.Sheets[sheetName];
   if (!ws) {
@@ -203,26 +203,133 @@ function parseSheet(wb, sheetName) {
 
   const rows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
   const allPoints = [];
+  let cols = null;
 
   for (let i = 0; i < rows.length; i++) {
-    const cellA = cell(rows[i], 0);
+    const row = rows[i];
+    const cellA = cell(row, 0);
+    const cellB = cell(row, 1);
 
-    if (cellA === '输入' || isMarker(cellA, '输入') && !cellA.includes('模块')) {
-      // Digital Input section — header is next row
-      if (cellA === '输入') {
-        const points = parseSection(rows, i + 1, 'DI', sheetName);
-        allPoints.push(...points);
+    // If we find a header row, update our column mapping
+    if (cellA === '序号' && cellB === '地址') {
+      const format = (cell(row, 4) === '设备名称' && cell(row, 5) === '设备名称') ? 'wide' : 'narrow';
+      
+      // Find cabinet column by name
+      let cabIdx = -1;
+      for (let c = 0; c < row.length; c++) {
+        if (cell(row, c) === '柜号') {
+          cabIdx = c;
+          break;
+        }
       }
-    } else if (isMarker(cellA, '4AI')) {
-      // Analog Input section
-      const points = parseSection(rows, i + 1, 'AI', sheetName);
-      allPoints.push(...points);
-    } else if (cellA === '输出' || isMarker(cellA, '输出') && !cellA.includes('模块')) {
-      if (cellA === '输出') {
-        // Digital Output section
-        const points = parseSection(rows, i + 1, 'DO', sheetName);
-        allPoints.push(...points);
+
+      cols = {
+        format,
+        address: 1,
+        symbol: 2,
+        code: 3,
+        equipCN: 4,
+        signalCN: format === 'wide' ? 6 : 5,
+        equipEN: format === 'wide' ? 7 : 6,
+        signalEN: format === 'wide' ? 8 : 7,
+        cabinet: cabIdx >= 0 ? cabIdx : (format === 'wide' ? 9 : 8),
+      };
+      continue;
+    }
+
+    // Process data rows
+    if (cols && isDataRow(row)) {
+      const address = cell(row, cols.address);
+      if (!address) continue;
+
+      // Determine I/O type from address format
+      let type = 'DI';
+      if (address.startsWith('I')) {
+        type = 'DI';
+      } else if (address.startsWith('Q')) {
+        type = 'DO';
+      } else if (address.startsWith('PIW')) {
+        type = 'AI';
+      } else if (address.startsWith('PQW')) {
+        type = 'AO';
+      } else {
+        // Fallback
+        continue;
       }
+
+      // Read Chinese values
+      const nameCN = cell(row, cols.equipCN);
+      const signalCN = cell(row, cols.signalCN);
+
+      // Read English values (AI and AO usually have tag/remarks in col 6/7, so we fall back to CN)
+      let nameEN = '';
+      let signalEN = '';
+      if (type !== 'AI' && type !== 'AO') {
+        nameEN = cell(row, cols.equipEN);
+        signalEN = cell(row, cols.signalEN);
+      }
+
+      let equipmentName = nameEN || nameCN;
+      let signalName = signalEN || signalCN;
+      let equipmentCode = cell(row, cols.code);
+
+      // Extract Bin/Silo codes like E02, B62, P15 from Chinese name if not in code/name
+      // Examples: E02仓下料位, P15仓下料位, B62仓...
+      const binMatch = nameCN.match(/^([PBE]\d+)(?:仓|号仓|主仓|副仓)?(.*)$/i);
+      if (binMatch) {
+        const binCode = binMatch[1].toUpperCase(); // E.g., "E02", "P15"
+        
+        // 1. Update equipmentCode to include both the Bin code and original PLC code
+        if (equipmentCode) {
+          if (!equipmentCode.toUpperCase().includes(binCode)) {
+            equipmentCode = `${binCode} (${equipmentCode})`;
+          }
+        } else {
+          equipmentCode = binCode;
+        }
+
+        // 2. Normalize and beautify English name
+        // Translate suffix terms from Chinese to English
+        let suffix = binMatch[2] ? binMatch[2].trim() : '';
+        let enSuffix = '';
+        if (suffix.includes('下料位')) {
+          enSuffix = 'Low Level';
+        } else if (suffix.includes('上料位')) {
+          enSuffix = 'High Level';
+        } else if (suffix.includes('中料位')) {
+          enSuffix = 'Middle Level';
+        } else if (suffix.includes('料位')) {
+          enSuffix = 'Level';
+        } else if (suffix.includes('温度')) {
+          enSuffix = 'Temperature';
+        }
+
+        const baseEN = (nameEN && nameEN.toLowerCase() !== 'low level' && nameEN.toLowerCase() !== 'high level') 
+          ? nameEN 
+          : 'Silo';
+
+        if (enSuffix) {
+          equipmentName = `${binCode} ${baseEN} ${enSuffix}`;
+        } else if (nameEN) {
+          equipmentName = nameEN.toLowerCase().includes(binCode.toLowerCase()) 
+            ? nameEN 
+            : `${binCode} ${nameEN}`;
+        } else {
+          equipmentName = `${binCode} Silo`;
+        }
+      }
+
+      const cabinet = cell(row, cols.cabinet) || sheetName;
+
+      allPoints.push({
+        type,
+        seq: Number(row[0]),
+        address,
+        equipmentCode,
+        equipmentName,
+        signalName,
+        cabinet,
+      });
     }
   }
 
