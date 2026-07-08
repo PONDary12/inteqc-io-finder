@@ -178,14 +178,20 @@ function scoreMatch(entry, query) {
  * @param {string} query - Partial search query
  * @param {Array} searchIndex - The search-index.json array
  * @param {number} maxResults - Maximum suggestions to return
+ * @param {string|null} locationFilter - Location ID to filter by, or null for all
  * @returns {Array} Array of suggestion objects
  */
-export function getSuggestions(query, searchIndex, maxResults = 8) {
+export function getSuggestions(query, searchIndex, maxResults = 8, locationFilter = null) {
   if (!query || !searchIndex || query.trim().length < 1) return [];
 
   const normalizedQuery = query.trim().toLowerCase();
 
   const scored = searchIndex
+    .filter(item => {
+      // Filter by location if specified
+      if (locationFilter && item.locationId !== locationFilter) return false;
+      return true;
+    })
     .map(item => {
       const code = (item.code || '').toLowerCase();
       const name = (item.name || '').toLowerCase();

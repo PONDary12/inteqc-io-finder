@@ -24,10 +24,10 @@ export default function ChatInterface({
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Update suggestions as user types
+  // Update suggestions as user types — filtered by selected location
   useEffect(() => {
     if (inputValue.trim().length >= 1 && searchIndex) {
-      const results = getSuggestions(inputValue, searchIndex);
+      const results = getSuggestions(inputValue, searchIndex, 8, selectedLocation);
       setSuggestions(results);
       setShowSuggestions(results.length > 0);
       setActiveIndex(-1);
@@ -35,7 +35,7 @@ export default function ChatInterface({
       setSuggestions([]);
       setShowSuggestions(false);
     }
-  }, [inputValue, searchIndex]);
+  }, [inputValue, searchIndex, selectedLocation]);
 
   const handleSearch = useCallback(
     (query) => {
@@ -124,8 +124,9 @@ export default function ChatInterface({
   };
 
   const handleSuggestionSelect = (item) => {
-    // Search by equipment name for better results
-    handleSearch(item.name);
+    // Search by equipment code for exact results; fallback to name if no code
+    const searchTerm = item.code || item.name;
+    handleSearch(searchTerm);
   };
 
   const handleQuickSearch = (query) => {
