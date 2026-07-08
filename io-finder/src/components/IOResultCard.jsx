@@ -145,12 +145,53 @@ export default function IOResultCard({ result, index }) {
       </div>
 
       {/* Footer */}
-      <div style={styles.footer}>
-        <button style={styles.drawingBtn} disabled title="Drawing viewer coming soon">
-          📄 View Drawing
-          <span style={styles.comingSoon}>Coming Soon</span>
-        </button>
-      </div>
+      {(() => {
+        const allEntries = [
+          ...(result.diList || []),
+          ...(result.aiList || []),
+          ...(result.doList || []),
+          ...(result.aoList || []),
+        ];
+        const drawingEntry = allEntries.find((e) => e.drawingPage);
+        const drawingPage = drawingEntry ? drawingEntry.drawingPage : null;
+        const internalPage = drawingEntry ? drawingEntry.internalPage : null;
+
+        const handleViewDrawing = () => {
+          if (drawingPage) {
+            window.open(`/drawings/inteqc_cabinet_drawing.pdf#page=${drawingPage}`, '_blank');
+          }
+        };
+
+        return (
+          <div style={styles.footer}>
+            {drawingPage ? (
+              <button
+                style={{
+                  ...styles.drawingBtn,
+                  cursor: 'pointer',
+                  opacity: 1,
+                  background: 'rgba(204, 17, 17, 0.05)',
+                  color: 'var(--accent-blue)',
+                  borderColor: 'rgba(204, 17, 17, 0.25)',
+                  boxShadow: '0 2px 8px rgba(204, 17, 17, 0.04)',
+                }}
+                onClick={handleViewDrawing}
+                title={`Open PDF drawing on page ${internalPage}`}
+              >
+                📄 View Drawing (Page {internalPage})
+              </button>
+            ) : (
+              <button
+                style={styles.drawingBtn}
+                disabled
+                title="Drawing page link not available for this equipment"
+              >
+                📄 Drawing N/A
+              </button>
+            )}
+          </div>
+        );
+      })()}
     </div>
   );
 }

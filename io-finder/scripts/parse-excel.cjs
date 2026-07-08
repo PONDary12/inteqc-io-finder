@@ -12,6 +12,38 @@ const XLSX = require('xlsx');
 const path = require('path');
 const fs = require('fs');
 
+// Load PDF page map if it exists
+let pdfPageMap = {};
+const MAP_PATH = path.resolve(__dirname, '../public/data/pdf-page-map.json');
+try {
+  if (fs.existsSync(MAP_PATH)) {
+    pdfPageMap = require(MAP_PATH);
+    console.log('📖 Loaded PDF Page Map successfully.');
+  }
+} catch (e) {
+  console.warn('⚠ Could not load pdf-page-map.json — drawing mapping will be disabled.');
+}
+
+const CABINET_BASE_PAGES = {
+  'MCC2': 200,
+  'MCC3': 300,
+  'MCC7': 600,
+  'MCC8_9': 700,
+  'MCC11': 900,
+  'MCC12_13': 1100,
+  'MCC18': 1400,
+  'PLC': 1900,
+  'LCB_1': 2000,
+  'LCB_2': 2100,
+  'LCB_4': 2200,
+  'LCB_5': 2300,
+  'LCB_6A': 2400,
+  'LCB_6B': 2500,
+  'LCB_8': 2600,
+  'LCB_9': 2700,
+  'LCB_10': 2800,
+};
+
 // ──────────────────────── Configuration ────────────────────────
 
 const DATA_DIR = path.resolve(__dirname, '../../data');
@@ -321,6 +353,27 @@ function parseSheet(wb, sheetName) {
 
       const cabinet = cell(row, cols.cabinet) || sheetName;
 
+      // Extract drawing page offset dynamically from columns index 8 onwards
+      let drawingPageOffset = null;
+      for (let c = 8; c < row.length; c++) {
+        const val = cell(row, c);
+        const m = val.match(/^-?(\d+)[A-Z]\d+$/);
+        if (m) {
+          drawingPageOffset = parseInt(m[1], 10);
+          break;
+        }
+      }
+
+      let drawingPage = null;
+      let internalPage = null;
+      const basePage = CABINET_BASE_PAGES[cabinet];
+      if (basePage !== undefined && drawingPageOffset !== null) {
+        internalPage = String(basePage + drawingPageOffset);
+        if (pdfPageMap[cabinet] && pdfPageMap[cabinet][internalPage]) {
+          drawingPage = pdfPageMap[cabinet][internalPage];
+        }
+      }
+
       allPoints.push({
         type,
         seq: Number(row[0]),
@@ -329,6 +382,8 @@ function parseSheet(wb, sheetName) {
         equipmentName,
         signalName,
         cabinet,
+        drawingPage,
+        internalPage,
       });
     }
   }
@@ -354,6 +409,7 @@ function buildSearchIndex(locations) {
             signals: new Set(),
             types: new Set(),
             cabinets: new Set(),
+            drawings: new Set(),
             location: loc.name,
             locationId: loc.id,
           });
@@ -367,6 +423,13 @@ function buildSearchIndex(locations) {
         if (io.signalName) entry.signals.add(io.signalName);
         entry.types.add(io.type);
         entry.cabinets.add(io.cabinet);
+        if (io.drawingPage) {
+          entry.drawings.add(JSON.stringify({
+            cabinet: io.cabinet,
+            page: io.drawingPage,
+            internalPage: io.internalPage
+          }));
+        }
       }
     }
   }
@@ -380,6 +443,7 @@ function buildSearchIndex(locations) {
       signals: [...entry.signals].sort(),
       types: [...entry.types].sort(),
       cabinets: [...entry.cabinets].sort(),
+      drawings: [...entry.drawings].map(JSON.parse),
       location: entry.location,
       locationId: entry.locationId,
     });
