@@ -12,7 +12,7 @@ const XLSX = require('xlsx');
 const path = require('path');
 const fs = require('fs');
 
-// Load PDF page map if it exists
+// Load PDF page map if it exists (now keyed by locationId)
 let pdfPageMap = {};
 const MAP_PATH = path.resolve(__dirname, '../public/data/pdf-page-map.json');
 try {
@@ -51,12 +51,14 @@ const OUT_DIR = path.resolve(__dirname, '../public/data');
 
 const FILES = [
   {
+    folder: 'Premixer',
     file: 'inteqc_PREMIXER_IO.xlsx',
     locationId: 'premixer',
     locationName: 'Premixer',
     sheets: ['MCCY1_2', 'MCCY3', 'PLC'],
   },
   {
+    folder: 'Tower 3',
     file: 'inteqc Tower3_IO.xlsx',
     locationId: 'tower3',
     locationName: 'Tower 3',
@@ -226,7 +228,7 @@ function parseSection(rows, startIdx, sectionType, sheetName) {
 }
 
 /** Parse a single sheet into an array of I/O points row-by-row. */
-function parseSheet(wb, sheetName) {
+function parseSheet(wb, sheetName, locationId) {
   const ws = wb.Sheets[sheetName];
   if (!ws) {
     console.warn(`  ⚠ Sheet "${sheetName}" not found, skipping.`);
@@ -366,20 +368,26 @@ function parseSheet(wb, sheetName) {
 
       let drawingPage = null;
       let internalPage = null;
+      let drawingPdfUrl = null;
+
+      // Get the location-specific PDF map
+      const locMap = pdfPageMap[locationId] || {};
 
       // 1. Direct address lookup (most accurate wiring page)
       const uppercaseAddr = address.toUpperCase();
-      if (pdfPageMap.addresses && pdfPageMap.addresses[uppercaseAddr]) {
-        drawingPage = pdfPageMap.addresses[uppercaseAddr].page;
-        internalPage = pdfPageMap.addresses[uppercaseAddr].internalPage;
+      if (locMap.addresses && locMap.addresses[uppercaseAddr]) {
+        drawingPage = locMap.addresses[uppercaseAddr].page;
+        internalPage = locMap.addresses[uppercaseAddr].internalPage;
+        drawingPdfUrl = locMap.drawingUrl || null;
       }
 
       // 2. Base page calculation fallback
       const basePage = CABINET_BASE_PAGES[cabinet];
       if (!drawingPage && basePage !== undefined && drawingPageOffset !== null) {
         internalPage = String(basePage + drawingPageOffset);
-        if (pdfPageMap.cabinets && pdfPageMap.cabinets[cabinet] && pdfPageMap.cabinets[cabinet][internalPage]) {
-          drawingPage = pdfPageMap.cabinets[cabinet][internalPage];
+        if (locMap.cabinets && locMap.cabinets[cabinet] && locMap.cabinets[cabinet][internalPage]) {
+          drawingPage = locMap.cabinets[cabinet][internalPage];
+          drawingPdfUrl = locMap.drawingUrl || null;
         }
       }
 
@@ -393,6 +401,7 @@ function parseSheet(wb, sheetName) {
         cabinet,
         drawingPage,
         internalPage,
+        drawingPdfUrl,
       });
     }
   }
@@ -436,7 +445,8 @@ function buildSearchIndex(locations) {
           entry.drawings.add(JSON.stringify({
             cabinet: io.cabinet,
             page: io.drawingPage,
-            internalPage: io.internalPage
+            internalPage: io.internalPage,
+            drawingPdfUrl: io.drawingPdfUrl
           }));
         }
       }
@@ -481,15 +491,15 @@ function main() {
   const locations = [];
 
   for (const config of FILES) {
-    const filePath = path.join(DATA_DIR, config.file);
-    console.log(`📂 Reading: ${config.file}`);
+    const filePath = path.join(DATA_DIR, config.folder, config.file);
+    console.log(`📂 Reading: ${config.folder}/${config.file}`);
 
     const wb = XLSX.readFile(filePath);
     const cabinets = [];
 
     for (const sheetName of config.sheets) {
       process.stdout.write(`  📋 Parsing sheet: ${sheetName} ... `);
-      const ioPoints = parseSheet(wb, sheetName);
+      const ioPoints = parseSheet(wb, sheetName, config.locationId);
       console.log(`${ioPoints.length} I/O points`);
 
       if (ioPoints.length > 0) {

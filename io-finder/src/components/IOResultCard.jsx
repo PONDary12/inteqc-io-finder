@@ -155,16 +155,17 @@ export default function IOResultCard({ result, index }) {
         const drawingEntry = allEntries.find((e) => e.drawingPage);
         const drawingPage = drawingEntry ? drawingEntry.drawingPage : null;
         const internalPage = drawingEntry ? drawingEntry.internalPage : null;
+        const drawingPdfUrl = drawingEntry ? drawingEntry.drawingPdfUrl : null;
 
         const handleViewDrawing = () => {
-          if (drawingPage) {
-            window.open(`/drawings/inteqc_cabinet_drawing.pdf#page=${drawingPage}`, '_blank');
+          if (drawingPage && drawingPdfUrl) {
+            window.open(`${drawingPdfUrl}#page=${drawingPage}`, '_blank');
           }
         };
 
         return (
           <div style={styles.footer}>
-            {drawingPage ? (
+            {drawingPage && drawingPdfUrl ? (
               <button
                 style={{
                   ...styles.drawingBtn,

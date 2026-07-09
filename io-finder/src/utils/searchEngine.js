@@ -81,6 +81,7 @@ export function searchEquipment(query, ioData, locationFilter) {
       type: entry.type,
       drawingPage: entry.drawingPage,
       internalPage: entry.internalPage,
+      drawingPdfUrl: entry.drawingPdfUrl,
     };
 
     switch (entry.type) {
