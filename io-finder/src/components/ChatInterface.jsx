@@ -274,13 +274,13 @@ const styles = {
   container: {
     display: 'flex',
     flexDirection: 'column',
-    height: '100vh',
-    position: 'relative',
+    height: '100%',
+    flex: 1,
   },
   messagesArea: {
     flex: 1,
     overflowY: 'auto',
-    padding: '20px 24px 100px',
+    padding: '20px 24px 24px',
     display: 'flex',
     flexDirection: 'column',
     gap: 16,
@@ -331,12 +331,9 @@ const styles = {
     gap: 10,
   },
   inputBar: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    padding: '16px 24px 20px',
-    background: 'linear-gradient(to top, var(--bg-primary) 60%, transparent)',
+    padding: '14px 24px 18px',
+    background: 'var(--bg-primary)',
+    borderTop: '1px solid var(--border-color)',
   },
   inputWrapper: {
     position: 'relative',

@@ -146,7 +146,9 @@ export default function App() {
 const styles = {
   app: {
     display: 'flex',
-    minHeight: '100vh',
+    height: '100vh',
+    height: '100dvh',
+    overflow: 'hidden',
     background: 'var(--bg-primary)',
   },
   main: {
@@ -154,7 +156,8 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     position: 'relative',
-    minHeight: '100vh',
+    height: '100%',
+    overflow: 'hidden',
   },
   mobileHeader: {
     display: 'flex',
