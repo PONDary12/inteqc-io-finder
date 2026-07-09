@@ -162,6 +162,58 @@ export default function ChatInterface({
 
   return (
     <div style={styles.container}>
+      {/* Input Bar at the Top */}
+      <div style={styles.inputBar}>
+        <div style={styles.inputWrapper}>
+          <SearchSuggestions
+            suggestions={suggestions}
+            activeIndex={activeIndex}
+            onSelect={handleSuggestionSelect}
+            visible={showSuggestions}
+          />
+          <div style={styles.inputRow}>
+            <input
+              ref={inputRef}
+              style={styles.input}
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyDown={handleKeyDown}
+              onFocus={() => {
+                if (suggestions.length > 0) setShowSuggestions(true);
+              }}
+              onBlur={() => {
+                // Delay to allow suggestion click
+                setTimeout(() => setShowSuggestions(false), 150);
+              }}
+              placeholder="Search equipment name, code, or I/O address..."
+              disabled={isLoading || !ioData}
+            />
+            <button
+              style={{
+                ...styles.sendBtn,
+                ...(inputValue.trim() ? styles.sendBtnActive : {}),
+              }}
+              onClick={() => handleSearch(inputValue)}
+              disabled={!inputValue.trim() || isLoading}
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* Messages Area */}
       <div style={styles.messagesArea}>
         {messages.length === 0 && !isLoading ? (
@@ -213,58 +265,6 @@ export default function ChatInterface({
         ))}
 
         <div ref={messagesEndRef} />
-      </div>
-
-      {/* Input Bar */}
-      <div style={styles.inputBar}>
-        <div style={styles.inputWrapper}>
-          <SearchSuggestions
-            suggestions={suggestions}
-            activeIndex={activeIndex}
-            onSelect={handleSuggestionSelect}
-            visible={showSuggestions}
-          />
-          <div style={styles.inputRow}>
-            <input
-              ref={inputRef}
-              style={styles.input}
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={handleKeyDown}
-              onFocus={() => {
-                if (suggestions.length > 0) setShowSuggestions(true);
-              }}
-              onBlur={() => {
-                // Delay to allow suggestion click
-                setTimeout(() => setShowSuggestions(false), 150);
-              }}
-              placeholder="Search equipment name, code, or I/O address..."
-              disabled={isLoading || !ioData}
-            />
-            <button
-              style={{
-                ...styles.sendBtn,
-                ...(inputValue.trim() ? styles.sendBtnActive : {}),
-              }}
-              onClick={() => handleSearch(inputValue)}
-              disabled={!inputValue.trim() || isLoading}
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="22" y1="2" x2="11" y2="13" />
-                <polygon points="22 2 15 22 11 13 2 9 22 2" />
-              </svg>
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );
