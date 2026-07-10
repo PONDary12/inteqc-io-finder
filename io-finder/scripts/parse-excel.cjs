@@ -391,6 +391,19 @@ function parseSheet(wb, sheetName, locationId) {
         }
       }
 
+      // 3. Convert to cabinet-specific PNG image link if mapped
+      if (drawingPage && locMap.cabinets && locMap.cabinets[cabinet]) {
+        const pages = Object.values(locMap.cabinets[cabinet]).map(Number);
+        if (pages.length > 0) {
+          const cabinetMinPage = Math.min(...pages);
+          if (drawingPage >= cabinetMinPage) {
+            const pageOffset = drawingPage - cabinetMinPage + 1;
+            drawingPdfUrl = `/drawings/${locationId}/cabinets/images/${cabinet}_page_${pageOffset}.png`;
+            drawingPage = pageOffset;
+          }
+        }
+      }
+
       allPoints.push({
         type,
         seq: Number(row[0]),

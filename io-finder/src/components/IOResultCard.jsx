@@ -177,17 +177,17 @@ export default function IOResultCard({ result, index }) {
                   boxShadow: '0 2px 8px rgba(204, 17, 17, 0.04)',
                 }}
                 onClick={handleViewDrawing}
-                title={`Open PDF drawing on page ${internalPage}`}
+                title={`Open drawing sheet ${internalPage} as image`}
               >
-                📄 View Drawing (Page {internalPage})
+                🖼️ View Drawing (Page {internalPage})
               </button>
             ) : (
               <button
                 style={styles.drawingBtn}
                 disabled
-                title="Drawing page link not available for this equipment"
+                title="Drawing sheet image not available for this equipment"
               >
-                📄 Drawing N/A
+                🖼️ Drawing N/A
               </button>
             )}
           </div>
