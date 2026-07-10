@@ -587,7 +587,7 @@ const styles = {
     flexDirection: "column",
     background: "#ffffff",
     borderRight: "1px solid var(--border-color)",
-    overflowY: "auto",
+    overflow: "hidden",
     padding: "20px",
   },
   machineCard: {
