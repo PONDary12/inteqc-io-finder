@@ -149,3 +149,82 @@ html, body {
   border-color: var(--border-hover);
   background-color: var(--bg-main);
 }
+
+/* Responsive Layout */
+.mobile-toggle {
+  display: none; /* Hidden by default on desktop */
+}
+
+@media (max-width: 768px) {
+  /* Hide breadcrumb hierarchy on mobile, only show simplified title */
+  .breadcrumb-desktop {
+    display: none !important;
+  }
+  
+  /* Show mobile view selector tabs */
+  .mobile-toggle {
+    display: flex !important;
+    width: 100%;
+    background: #1e293b;
+    border-bottom: 1px solid #334155;
+    flex-shrink: 0;
+  }
+  
+  .mobile-toggle button {
+    flex: 1;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    text-align: center;
+    transition: all var(--transition-fast);
+  }
+  
+  .mobile-toggle button.active {
+    color: #ffffff;
+    background: #0f172a;
+    border-bottom: 3px solid var(--primary);
+  }
+
+  /* Make main layout stack and conditional display */
+  .main-layout-responsive {
+    flex-direction: column !important;
+  }
+
+  /* Conditionally show panels based on active tab */
+  .panel-left-responsive {
+    display: flex !important;
+    width: 100% !important;
+    flex: 1 !important;
+  }
+  .panel-left-hidden {
+    display: none !important;
+  }
+
+  .panel-right-responsive {
+    display: flex !important;
+    width: 100% !important;
+    flex: 1 !important;
+  }
+  .panel-right-hidden {
+    display: none !important;
+  }
+
+  /* Navigation adjustments for mobile */
+  .navbar-responsive {
+    padding: 0 10px !important;
+    gap: 8px !important;
+  }
+
+  .export-btn-responsive {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+  }
+  
+  .print-btn-responsive {
+    display: none !important; /* Hide print button on mobile phone viewports */
+  }
+}

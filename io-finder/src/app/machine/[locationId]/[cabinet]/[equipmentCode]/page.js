@@ -20,6 +20,7 @@ export default function MachineDetail({ params }) {
   // Search & Filters
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTab, setActiveTab] = useState("all"); // all, DI, DO, Analog
+  const [mobileView, setMobileView] = useState("table"); // table, drawing
   
   // Drawing states
   const [currentDrawing, setCurrentDrawing] = useState(null); // { cabinet, page, internalPage, drawingPdfUrl }
@@ -239,12 +240,12 @@ export default function MachineDetail({ params }) {
   return (
     <div style={styles.wrapper}>
       {/* Top Header / Breadcrumb Bar */}
-      <header style={styles.navbar} className="no-print">
+      <header style={styles.navbar} className="navbar-responsive no-print">
         <div style={styles.navLeft}>
           <Link href="/" style={styles.backBtn}>
             🡸 Search
           </Link>
-          <div style={styles.breadcrumb}>
+          <div style={styles.breadcrumb} className="breadcrumb-desktop">
             <span>🏭 {equipment.location}</span>
             <span style={styles.divider}>/</span>
             <span>🗄️ {cabinet}</span>
@@ -253,20 +254,36 @@ export default function MachineDetail({ params }) {
           </div>
         </div>
         <div style={styles.navRight}>
-          <button style={styles.exportBtn} onClick={handleExportExcel}>
+          <button style={styles.exportBtn} className="export-btn-responsive" onClick={handleExportExcel}>
             📥 Export Excel
           </button>
-          <button style={styles.printBtn} onClick={() => window.print()}>
+          <button style={styles.printBtn} className="print-btn-responsive" onClick={() => window.print()}>
             🖨️ Print list
           </button>
         </div>
       </header>
 
+      {/* Mobile view switcher tabs */}
+      <div className="mobile-toggle no-print">
+        <button
+          className={mobileView === "table" ? "active" : ""}
+          onClick={() => setMobileView("table")}
+        >
+          📊 Table View ({filteredIO.length})
+        </button>
+        <button
+          className={mobileView === "drawing" ? "active" : ""}
+          onClick={() => setMobileView("drawing")}
+        >
+          🖼️ Drawing View
+        </button>
+      </div>
+
       {/* Main Split Screen Area */}
-      <div style={styles.mainLayout}>
+      <div style={styles.mainLayout} className="main-layout-responsive">
         
         {/* Left Side: I/O List & Table */}
-        <section style={styles.leftPanel}>
+        <section style={styles.leftPanel} className={mobileView === "table" ? "panel-left-responsive" : "panel-left-hidden"}>
           <div style={styles.machineCard}>
             <span style={styles.machineBadge}>MACHINE</span>
             <h2 style={styles.machineTitle}>{equipment.code}</h2>
@@ -379,7 +396,7 @@ export default function MachineDetail({ params }) {
         </section>
 
         {/* Right Side: Zoom/Pan Drawing Sheets */}
-        <section style={styles.rightPanel} className="no-print">
+        <section style={styles.rightPanel} className={mobileView === "drawing" ? "panel-right-responsive no-print" : "panel-right-hidden no-print"}>
           {currentDrawing ? (
             <div style={styles.viewerContainer}>
               {/* Toolbar */}
