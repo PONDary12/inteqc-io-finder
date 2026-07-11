@@ -243,7 +243,7 @@ export default function MachineDetail({ params }) {
       <header style={styles.navbar} className="navbar-responsive no-print">
         <div style={styles.navLeft}>
           <Link href="/" style={styles.backBtn}>
-            🡸 Search
+            ← Search
           </Link>
           <div style={styles.breadcrumb} className="breadcrumb-desktop">
             <span>🏭 {equipment.location}</span>
@@ -400,11 +400,12 @@ export default function MachineDetail({ params }) {
           {currentDrawing ? (
             <div style={styles.viewerContainer}>
               {/* Toolbar */}
-              <div style={styles.viewerToolbar}>
+              <div style={styles.viewerToolbar} className="viewer-toolbar-responsive">
                 <div style={styles.sheetSelectorWrapper}>
-                  <span style={styles.selectorLabel}>📄 Select Sheet:</span>
+                  <span style={styles.selectorLabel} className="label-desktop">Select Sheet:</span>
                   <select
                     style={styles.sheetSelect}
+                    className="sheet-select-responsive"
                     value={`${currentDrawing.cabinet}-${currentDrawing.page}`}
                     onChange={(e) => {
                       const [cab, pg] = e.target.value.split("-");
@@ -422,10 +423,10 @@ export default function MachineDetail({ params }) {
                 
                 {/* Scale controls */}
                 <div style={styles.scaleControls}>
-                  <button style={styles.controlBtn} onClick={handleZoomOut}>➖</button>
-                  <span style={styles.scalePercent}>{Math.round(scale * 100)}%</span>
-                  <button style={styles.controlBtn} onClick={handleZoomIn}>➕</button>
-                  <button style={styles.controlBtn} onClick={handleResetZoom}>↺ Reset</button>
+                  <button style={styles.controlBtn} className="control-btn-responsive" onClick={handleZoomOut}>-</button>
+                  <span style={styles.scalePercent} className="scale-percent-responsive">{Math.round(scale * 100)}%</span>
+                  <button style={styles.controlBtn} className="control-btn-responsive" onClick={handleZoomIn}>+</button>
+                  <button style={styles.controlBtn} className="control-btn-responsive reset-btn-responsive" onClick={handleResetZoom}>Reset</button>
                 </div>
               </div>
 

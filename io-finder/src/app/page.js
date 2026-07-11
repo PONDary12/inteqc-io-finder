@@ -207,27 +207,7 @@ export default function SearchHome() {
               </div>
             )}
           </div>
-        </div>
-
-        {/* Quick Reference Grid */}
-        <div style={styles.quickGrid}>
-          <div style={styles.quickCard}>
-            <div style={styles.cardIcon}>⚡</div>
-            <h3>Sub-second Response</h3>
-            <p>Schematics load instantly by querying pre-rendered vector assets.</p>
-          </div>
-          <div style={styles.quickCard}>
-            <div style={styles.cardIcon}>📱</div>
-            <h3>Tablet Optimized</h3>
-            <p>Designed for engineers in the field. Large targets, easy gestures, and zoom/pan.</p>
-          </div>
-          <div style={styles.quickCard}>
-            <div style={styles.cardIcon}>📥</div>
-            <h3>Export Sheets</h3>
-            <p>Export I/O lists directly to Excel/PDF to take offline or print drawings.</p>
-          </div>
-        </div>
-      </div>
+        </div>      </div>
     </div>
   );
 }

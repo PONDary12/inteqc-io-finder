@@ -227,4 +227,40 @@ html, body {
   .print-btn-responsive {
     display: none !important; /* Hide print button on mobile phone viewports */
   }
+
+  /* Hide select sheet text label on mobile */
+  .label-desktop {
+    display: none !important;
+  }
+  
+  /* Make the selector drop-down take more space or align nicely */
+  .sheet-select-responsive {
+    max-width: 140px !important; /* Cap it on small mobile viewports */
+  }
+
+  /* Make viewer toolbar have comfortable padding and flex layout */
+  .viewer-toolbar-responsive {
+    padding: 0 8px !important;
+    gap: 4px !important;
+    justify-content: space-between !important;
+  }
+  
+  /* Make control buttons slightly larger and finger-friendly */
+  .control-btn-responsive {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+  }
+  
+  .scale-percent-responsive {
+    font-size: 11px !important;
+    width: 36px !important;
+  }
+  
+  .reset-btn-responsive {
+    width: auto !important;
+    padding: 0 8px !important;
+    font-size: 11px !important;
+  }
 }
