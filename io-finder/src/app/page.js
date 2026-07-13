@@ -3,6 +3,14 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 
+function normalizeCode(code) {
+  if (!code) return '';
+  return String(code)
+    .trim()
+    .toLowerCase()
+    .replace(/[_\-]/g, '.');
+}
+
 export default function SearchHome() {
   const router = useRouter();
   const [searchIndex, setSearchIndex] = useState([]);
@@ -51,6 +59,7 @@ export default function SearchHome() {
     }
 
     const trimmedQuery = query.toLowerCase().trim();
+    const normalizedQuery = normalizeCode(query);
     const filtered = searchIndex.filter(item => {
       // Location filter
       if (selectedLocation !== "all" && item.locationId !== selectedLocation) {
@@ -58,7 +67,7 @@ export default function SearchHome() {
       }
       
       // Search matches code or name
-      const codeMatch = item.code && item.code.toLowerCase().includes(trimmedQuery);
+      const codeMatch = item.normalizedCode && item.normalizedCode.includes(normalizedQuery);
       const nameMatch = item.name && item.name.toLowerCase().includes(trimmedQuery);
       const cabMatch = item.cabinets && item.cabinets.some(c => c.toLowerCase().includes(trimmedQuery));
       

@@ -5,6 +5,23 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import * as XLSX from "xlsx";
 
+function normalizeCode(code) {
+  if (!code) return '';
+  return String(code)
+    .trim()
+    .toLowerCase()
+    .replace(/[_\-]/g, '.');
+}
+
+function normalizeAddress(addr) {
+  if (!addr) return '';
+  return String(addr)
+    .trim()
+    .toLowerCase()
+    .replace(/[_\-]/g, '.')
+    .replace(/o/g, '0');
+}
+
 export default function MachineDetail({ params }) {
   const router = useRouter();
   
@@ -130,8 +147,12 @@ export default function MachineDetail({ params }) {
     // Filter by Search Query
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase().trim();
+      const normalizedQueryCode = normalizeCode(searchQuery);
+      const normalizedQueryAddress = normalizeAddress(searchQuery);
+      
       points = points.filter(p => 
-        p.address.toLowerCase().includes(q) ||
+        p.normalizedAddress.includes(normalizedQueryAddress) ||
+        p.normalizedCode.includes(normalizedQueryCode) ||
         (p.signalName && p.signalName.toLowerCase().includes(q))
       );
     }

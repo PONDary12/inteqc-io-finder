@@ -44,6 +44,25 @@ const CABINET_BASE_PAGES = {
   'LCB_10': 2800,
 };
 
+// ──────────────────────── Normalization Helpers ────────────────────────
+
+function normalizeCode(code) {
+  if (!code) return '';
+  return String(code)
+    .trim()
+    .toLowerCase()
+    .replace(/[_\-]/g, '.');
+}
+
+function normalizeAddress(addr) {
+  if (!addr) return '';
+  return String(addr)
+    .trim()
+    .toLowerCase()
+    .replace(/[_\-]/g, '.')
+    .replace(/o/g, '0');
+}
+
 // ──────────────────────── Configuration ────────────────────────
 
 const DATA_DIR = path.resolve(__dirname, '../../data');
@@ -415,6 +434,8 @@ function parseSheet(wb, sheetName, locationId) {
         drawingPage,
         internalPage,
         drawingPdfUrl,
+        normalizedCode: normalizeCode(equipmentCode),
+        normalizedAddress: normalizeAddress(address),
       });
     }
   }
@@ -472,6 +493,7 @@ function buildSearchIndex(locations) {
     index.push({
       code: entry.code,
       name: entry.name,
+      normalizedCode: normalizeCode(entry.code),
       signals: [...entry.signals].sort(),
       types: [...entry.types].sort(),
       cabinets: [...entry.cabinets].sort(),
