@@ -38,6 +38,13 @@ export default function MachineDetail({ params }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTab, setActiveTab] = useState("all"); // all, DI, DO, Analog
   const [mobileView, setMobileView] = useState("table"); // table, drawing
+
+  // Set page title dynamically
+  useEffect(() => {
+    if (equipmentCode) {
+      document.title = `${equipmentCode} | INTEQC I/O Finder`;
+    }
+  }, [equipmentCode]);
   
   // Drawing states
   const [currentDrawing, setCurrentDrawing] = useState(null); // { cabinet, page, internalPage, drawingPdfUrl }
