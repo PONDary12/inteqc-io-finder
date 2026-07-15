@@ -377,6 +377,7 @@ export default function MachineDetail({ params }) {
                   <th style={styles.th}>Address</th>
                   <th style={styles.th}>Type</th>
                   <th style={styles.th}>Signal Name</th>
+                  <th style={styles.th}>Cabinet</th>
                   <th style={styles.th} className="no-print">Drawing Sheet</th>
                 </tr>
               </thead>
@@ -408,6 +409,9 @@ export default function MachineDetail({ params }) {
                         </span>
                       </td>
                       <td style={styles.td}>{row.signalName || "—"}</td>
+                      <td style={styles.td}>
+                        <span style={styles.badgeCabinet}>{row.cabinet || "—"}</span>
+                      </td>
                       <td style={styles.td} className="no-print">
                         {row.drawingPage && row.drawingPdfUrl ? (
                           <button
@@ -755,6 +759,17 @@ const styles = {
   badgeAnalog: {
     color: "var(--accent-blue)",
     background: "rgba(2, 132, 199, 0.1)",
+  },
+  badgeCabinet: {
+    display: "inline-block",
+    fontSize: "10px",
+    fontWeight: "600",
+    padding: "2px 6px",
+    borderRadius: "4px",
+    color: "var(--text-secondary)",
+    background: "rgba(148, 163, 184, 0.15)",
+    border: "1px solid rgba(148, 163, 184, 0.2)",
+    whiteSpace: "nowrap",
   },
   sheetLinkBtn: {
     background: "var(--primary-light)",
