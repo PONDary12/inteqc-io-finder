@@ -183,12 +183,60 @@ async function scanPdf(loc) {
     let cabinet = null;
     if (loc.cabinetList) {
       const title = extractTitle(text);
+      
+      // 1. Try exact title block match (highest reliability)
       for (const cab of loc.cabinetList) {
         const cleanCab = cab.replace(/[_\-]/g, '').toLowerCase();
         const cleanTitle = title.replace(/[_\-]/g, '').toLowerCase();
-        if (cleanTitle.includes(cleanCab) || text.toLowerCase().includes(cab.toLowerCase())) {
+        if (cleanTitle.includes(cleanCab)) {
           cabinet = cab;
           break;
+        }
+      }
+      
+      // 2. Try scoring matches in full text if title match failed
+      if (!cabinet) {
+        let bestCab = null;
+        let maxScore = 0;
+        for (const cab of loc.cabinetList) {
+          let score = 0;
+          const cleanCab = cab.replace(/[_\-]/g, '').toLowerCase();
+          
+          // Cabinet header patterns (e.g. "=++MCC+MCCB3" or "+MCCB4 -XDI24")
+          const headerRegexes = [
+            new RegExp(`\\+\\+mcc\\+${cleanCab}\\b`, 'i'),
+            new RegExp(`\\+\\+mcc\\s+${cleanCab}\\b`, 'i'),
+            new RegExp(`\\+mcc\\+${cleanCab}\\b`, 'i'),
+            new RegExp(`\\+\\s*${cleanCab}\\b`, 'i'),
+            new RegExp(`\\b${cleanCab}\\s*=\\s*\\+\\+mcc`, 'i')
+          ];
+          for (const regex of headerRegexes) {
+            if (regex.test(text)) score += 100;
+          }
+          
+          // Exact word boundary matches
+          const wordRegex = new RegExp(`\\b${cleanCab}\\b`, 'gi');
+          const matches = text.replace(/[_\-]/g, '').match(wordRegex);
+          if (matches) score += matches.length * 10;
+          
+          if (score > maxScore) {
+            maxScore = score;
+            bestCab = cab;
+          }
+        }
+        
+        if (bestCab && maxScore >= 50) {
+          cabinet = bestCab;
+        }
+      }
+      
+      // 3. Fallback: simple substring include
+      if (!cabinet) {
+        for (const cab of loc.cabinetList) {
+          if (text.toLowerCase().includes(cab.toLowerCase())) {
+            cabinet = cab;
+            break;
+          }
         }
       }
     } else {
@@ -200,18 +248,67 @@ async function scanPdf(loc) {
       cabinetMap[cabinet][internalPageStr] = pageNum;
     }
 
-    // B. Address mapping — prefer wiring diagram pages (lowest internal page number)
+    // B. Address mapping — prefer wiring diagram pages over terminal connection tables
     const matches = text.match(addrRegex);
     if (matches) {
       const internalPageNum = parseInt(internalPageStr, 10);
+      const title = loc.cabinetList ? extractTitle(text) : '';
+      
+      // Determine priority of this page: 2 for Schematic, 1 for Terminal List / Overview Table
+      const tLower = title.toLowerCase();
+      const textLower = text.toLowerCase();
+      
+      const isTerminalOrOverview =
+        tLower.includes('信号总览') ||
+        tLower.includes('信号分配') ||
+        tLower.includes('端子') ||
+        tLower.includes('接线') ||
+        tLower.includes('terminal') ||
+        tLower.includes('overview') ||
+        tLower.includes('i/o list') ||
+        tLower.includes('iolist') ||
+        tLower.includes('loop diagram') ||
+        /-x[a-z]\d+/i.test(tLower) ||
+        tLower.includes('照明') ||
+        tLower.includes('插座') ||
+        tLower.includes('布置') ||
+        tLower.includes('layout') ||
+        tLower.includes('目录') ||
+        tLower.includes('index') ||
+        tLower.includes('title') ||
+        tLower.includes('cover') ||
+        tLower.includes('说明') ||
+        tLower.includes('revision') ||
+        textLower.includes('down target') ||
+        textLower.includes('up target') ||
+        textLower.includes('端子图') ||
+        textLower.includes('端子排');
+        
+      const priority = isTerminalOrOverview ? 1 : 2;
+
       matches.forEach(addr => {
         const key = addr.toUpperCase();
-        if (!tempAddressRecords[key] ||
-            (!isNaN(internalPageNum) && internalPageNum < tempAddressRecords[key].internalPage)) {
+        
+        let shouldReplace = false;
+        if (!tempAddressRecords[key]) {
+          shouldReplace = true;
+        } else {
+          const oldPriority = tempAddressRecords[key].priority || 2;
+          if (priority > oldPriority) {
+            shouldReplace = true;
+          } else if (priority === oldPriority) {
+            if (!isNaN(internalPageNum) && internalPageNum < tempAddressRecords[key].internalPage) {
+              shouldReplace = true;
+            }
+          }
+        }
+
+        if (shouldReplace) {
           tempAddressRecords[key] = {
             pdfPage: pageNum,
             internalPage: isNaN(internalPageNum) ? Infinity : internalPageNum,
-            internalPageStr
+            internalPageStr,
+            priority
           };
         }
       });
