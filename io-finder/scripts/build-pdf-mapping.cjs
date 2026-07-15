@@ -25,7 +25,7 @@ const CABINETS_P1 = [
 ];
 
 const CABINETS_P2 = [
-  'MCCB1', 'MCCB2', 'MCCB3', 'MCCB4', 'MCC5', 'MCC6', 'MCC7', 'MCCB8', 'MCCB9',
+  'MCCB1', 'MCCB2', 'MCCB3', 'MCCB4', 'MCCB5', 'MCCB6', 'MCCB7', 'MCCB8', 'MCCB9',
   'MCCB10', 'MCCB13', 'MCCB18', 'MCCB19', 'PLC2', 'RCB5', 'RCB6', 'RCB7', 'RCB8',
   'RCB9', 'RCB10', '2#膨化', '2#烘干', '3#膨化', '3#烘干', '4#膨化', '4#烘干'
 ];
@@ -202,13 +202,37 @@ async function scanPdf(loc) {
           let score = 0;
           const cleanCab = cab.replace(/[_\-]/g, '').toLowerCase();
           
-          // Cabinet header patterns (e.g. "=++MCC+MCCB3" or "+MCCB4 -XDI24")
+          // 2a. Title Block Line check (High priority)
+          const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
+          for (const line of lines) {
+            const isTitleLine = 
+              line.includes('日期') || 
+              line.includes('设计') || 
+              line.includes('审核') || 
+              line.includes('++MCC') || 
+              line.includes('页号') || 
+              line.includes('Page') ||
+              line.includes('WZB') ||
+              line.includes('魏正彪');
+              
+            if (isTitleLine) {
+              const cleanLine = line.replace(/[_\-]/g, '').toLowerCase();
+              const titleRegex = new RegExp(`\\b${cleanCab}\\b|\\b${cleanCab}\\d*[a-zA-Z]`, 'i');
+              if (titleRegex.test(cleanLine)) {
+                score += 500;
+              }
+            }
+          }
+
+          // 2b. Cabinet header patterns (e.g. "=++MCC+MCCB3" or "+MCCB4 -XDI24")
           const headerRegexes = [
             new RegExp(`\\+\\+mcc\\+${cleanCab}\\b`, 'i'),
             new RegExp(`\\+\\+mcc\\s+${cleanCab}\\b`, 'i'),
             new RegExp(`\\+mcc\\+${cleanCab}\\b`, 'i'),
             new RegExp(`\\+\\s*${cleanCab}\\b`, 'i'),
-            new RegExp(`\\b${cleanCab}\\s*=\\s*\\+\\+mcc`, 'i')
+            new RegExp(`\\b${cleanCab}\\s*=\\s*\\+\\+mcc`, 'i'),
+            new RegExp(`\\b${cleanCab}\\d*[a-zA-Z]`, 'i'),
+            new RegExp(`\\b${cleanCab}\\s*(?:魏正彪|WZB|日期)`, 'i')
           ];
           for (const regex of headerRegexes) {
             if (regex.test(text)) score += 100;
