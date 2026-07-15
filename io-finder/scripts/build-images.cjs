@@ -64,6 +64,19 @@ async function generateImagesForLocation(loc, locMap) {
     const minPage = Math.min(...pdfPageNumbers); // 1-based index
     const maxPage = Math.max(...pdfPageNumbers); // 1-based index
 
+    // Also include pages referenced by address lookup that weren't added to the cabinet map
+    // This handles cases where an address is found on a page but the cabinet title text failed
+    if (locMap.addresses) {
+      const pageSet = new Set(pdfPageNumbers);
+      for (const addrInfo of Object.values(locMap.addresses)) {
+        const addrPage = Number(addrInfo.page);
+        if (addrPage >= minPage && addrPage <= maxPage && !pageSet.has(addrPage)) {
+          pdfPageNumbers.push(addrPage);
+          pageSet.add(addrPage);
+        }
+      }
+    }
+
     // Filter out pages that are already generated
     const pagesToProcess = [];
     pdfPageNumbers.forEach(pageNum => {

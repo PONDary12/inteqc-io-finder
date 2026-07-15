@@ -93,11 +93,18 @@ function getCabinetForPage(pageNum, ranges) {
 
 function extractInternalPage(text) {
   // 1. Try matching the designer label pattern (highly reliable for Tower 2)
+  //    e.g. "4631 WZB 审核" or "4631 魏正彪 审核"
+  //    But exclude single-digit values (1-9) which are typically revision numbers
   let m = text.match(/([0-9a-zA-Z\.\-_]+)\s+(?:魏正彪|WZB)\s+审核/i);
   if (m) {
     const val = m[1].trim();
     if (val !== 'EFA' && val !== 'EEC' && val !== 'MCC' && val !== 'PLC' && val !== 'RCB' && val.toLowerCase() !== 'state') {
-      return val;
+      // Skip single-digit values — these are revision numbers, not page numbers
+      if (/^\d$/.test(val)) {
+        // Do not return; fall through to try other patterns
+      } else {
+        return val;
+      }
     }
   }
 
@@ -116,6 +123,13 @@ function extractInternalPage(text) {
   // 5. Try matching date modification block pattern
   m = text.match(/([0-9a-zA-Z\.\-_]+)\s+日期\s+修改\s+姓名/i);
   if (m) return m[1].trim();
+
+  // 6. For Tower 2 Phase 2 style: look for a standalone 4-digit page number (4000-9999 range)
+  //    appearing near audit keywords on the same page
+  if ((text.includes('WZB') || text.includes('魏正彪') || text.includes('审核')) && !text.includes('总页数')) {
+    m = text.match(/\b([4-9]\d{3})\b/);
+    if (m) return m[1];
+  }
 
   return null;
 }
