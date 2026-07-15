@@ -4,3 +4,10 @@ dist/
 *.log
 .DS_Store
 Thumbs.db
+
+# Project Data & Assets
+data/
+*.pptx
+*.xlsx
+*.pdf
+~$*
