@@ -18,6 +18,18 @@ const p = require('pdf-parse');
 const DATA_DIR = path.resolve(__dirname, '../../data');
 const OUT_PATH = path.resolve(__dirname, '../public/data/pdf-page-map.json');
 
+// ─── Cabinets for Tower 2 Phase 1 & 2 ───
+const CABINETS_P1 = [
+  'MCC1-2', 'MCC1_2', 'MCC3-4', 'MCC3_4', 'MCC5-6', 'MCC5_6', 'MCC7-8', 'MCC7_8',
+  'MCC11', 'PLC1', 'RCB1', 'RCB2', 'RCB3', 'RCB4', '新增RCB4', 'MCC9_10', 'MCC9-10', '膨化烘干9-10'
+];
+
+const CABINETS_P2 = [
+  'MCCB1', 'MCCB2', 'MCCB3', 'MCCB4', 'MCC5', 'MCC6', 'MCC7', 'MCCB8', 'MCCB9',
+  'MCCB10', 'MCCB13', 'MCCB18', 'MCCB19', 'PLC2', 'RCB5', 'RCB6', 'RCB7', 'RCB8',
+  'RCB9', 'RCB10', '2#膨化', '2#烘干', '3#膨化', '3#烘干', '4#膨化', '4#烘干'
+];
+
 // ─── Location config: each location has a data subfolder and optional PDF ───
 const LOCATIONS = [
   {
@@ -25,7 +37,23 @@ const LOCATIONS = [
     folder: 'Premixer',
     pdfFile: null,                             // No drawing PDF yet
     drawingUrl: null,
-    cabinetRanges: [],                         // Will be defined when PDF is added
+    cabinetRanges: [],
+  },
+  {
+    locationId: 'tower2_p1',
+    folder: 'Tower 2',
+    pdfFile: 'Electrical schematic diagram_Feed mill Tower2 revamp phase1.pdf',
+    drawingUrl: '/drawings/tower2_p1/electrical_schematic.pdf',
+    cabinetList: CABINETS_P1,
+    cabinetRanges: [],
+  },
+  {
+    locationId: 'tower2_p2',
+    folder: 'Tower 2',
+    pdfFile: 'Electrical schematic diagram_Feed mill Tower2 revamp phase2.pdf',
+    drawingUrl: '/drawings/tower2_p2/electrical_schematic.pdf',
+    cabinetList: CABINETS_P2,
+    cabinetRanges: [],
   },
   {
     locationId: 'tower3',
@@ -63,6 +91,54 @@ function getCabinetForPage(pageNum, ranges) {
   return null;
 }
 
+function extractInternalPage(text) {
+  // 1. Try matching the designer label pattern (highly reliable for Tower 2)
+  let m = text.match(/([0-9a-zA-Z\.\-_]+)\s+(?:魏正彪|WZB)\s+审核/i);
+  if (m) {
+    const val = m[1].trim();
+    if (val !== 'EFA' && val !== 'EEC' && val !== 'MCC' && val !== 'PLC' && val !== 'RCB' && val.toLowerCase() !== 'state') {
+      return val;
+    }
+  }
+
+  // 2. Try matching "页数" pattern, excluding "总页数"
+  m = text.match(/(?<!总)页数\s+([0-9a-zA-Z\.\-_]+)/i);
+  if (m) return m[1].trim();
+
+  // 3. Try matching "页号" pattern, excluding "总页号"
+  m = text.match(/(?<!总)页号\s+([0-9a-zA-Z\.\-_]+)/i);
+  if (m) return m[1].trim();
+
+  // 4. Try matching "格式 A4" pattern (seen in Pet Food)
+  m = text.match(/格式\s+A4\s+([0-9a-zA-Z\.\-_]+)/i);
+  if (m) return m[1].trim();
+
+  // 5. Try matching date modification block pattern
+  m = text.match(/([0-9a-zA-Z\.\-_]+)\s+日期\s+修改\s+姓名/i);
+  if (m) return m[1].trim();
+
+  return null;
+}
+
+function extractTitle(text) {
+  const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    if (line.includes('日期') && i > 0) {
+      const prev = lines[i-1];
+      if (prev && !prev.includes('修订') && !prev.includes('审核') && prev.length > 3) {
+        return prev;
+      }
+    }
+  }
+  for (const line of lines) {
+    if (/^(?:MCC|PLC|RCB)/i.test(line) && line.length > 5) {
+      return line;
+    }
+  }
+  return '';
+}
+
 async function scanPdf(loc) {
   const pdfPath = path.join(DATA_DIR, loc.folder, loc.pdfFile);
 
@@ -79,7 +155,6 @@ async function scanPdf(loc) {
   console.log(`  📊 Pages: ${res.pages.length}`);
 
   const cabinetMap = {};
-  const addressMap = {};
   const tempAddressRecords = {};
   const addrRegex = /\b(?:I|Q)\d+\.\d+\b|\b(?:PIW|PQW)\d+\b/g;
 
@@ -87,12 +162,25 @@ async function scanPdf(loc) {
     const text = page.text;
     const pageNum = page.num;
 
-    const pageMatch = text.match(/页数\s+([0-9a-zA-Z\.\-_]+)/i);
-    const internalPageStr = pageMatch ? pageMatch[1].trim() : null;
+    const internalPageStr = extractInternalPage(text);
     if (!internalPageStr) return;
 
     // A. Cabinet mapping
-    const cabinet = getCabinetForPage(internalPageStr, loc.cabinetRanges);
+    let cabinet = null;
+    if (loc.cabinetList) {
+      const title = extractTitle(text);
+      for (const cab of loc.cabinetList) {
+        const cleanCab = cab.replace(/[_\-]/g, '').toLowerCase();
+        const cleanTitle = title.replace(/[_\-]/g, '').toLowerCase();
+        if (cleanTitle.includes(cleanCab) || text.toLowerCase().includes(cab.toLowerCase())) {
+          cabinet = cab;
+          break;
+        }
+      }
+    } else {
+      cabinet = getCabinetForPage(internalPageStr, loc.cabinetRanges);
+    }
+
     if (cabinet) {
       if (!cabinetMap[cabinet]) cabinetMap[cabinet] = {};
       cabinetMap[cabinet][internalPageStr] = pageNum;

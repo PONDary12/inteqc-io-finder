@@ -27,12 +27,13 @@ export default function MachineDetail({ params }) {
   
   // Resolve params using React 19 use()
   const resolvedParams = use(params);
-  const { locationId, cabinet, equipmentCode } = resolvedParams;
+  const locationId = resolvedParams.locationId;
+  const cabinet = resolvedParams.cabinet ? decodeURIComponent(resolvedParams.cabinet) : "";
+  const equipmentCode = resolvedParams.equipmentCode ? decodeURIComponent(resolvedParams.equipmentCode) : "";
 
   const [ioData, setIoData] = useState(null);
   const [equipment, setEquipment] = useState(null);
   const [allLocationEquipments, setAllLocationEquipments] = useState([]);
-  const [filteredIO, setFilteredIO] = useState([]);
   
   // Search & Filters
   const [searchQuery, setSearchQuery] = useState("");
@@ -62,6 +63,15 @@ export default function MachineDetail({ params }) {
 
   // Load I/O data on mount
   useEffect(() => {
+    const matchEquip = (pCode, paramCode) => {
+      if (!pCode || !paramCode) return false;
+      const normP = pCode.trim().toLowerCase();
+      const normParam = paramCode.trim().toLowerCase();
+      if (normP === normParam) return true;
+      if (normP.startsWith(normParam + ':')) return true;
+      return false;
+    };
+
     async function loadData() {
       try {
         const res = await fetch("/data/io-data.json");
@@ -93,7 +103,7 @@ export default function MachineDetail({ params }) {
 
         location.cabinets.forEach(cab => {
           cab.io.forEach(point => {
-            if (point.equipmentCode === equipmentCode) {
+            if (matchEquip(point.equipmentCode, equipmentCode)) {
               points.push(point);
               
               // Map drawings
@@ -136,11 +146,10 @@ export default function MachineDetail({ params }) {
     loadData();
   }, [locationId, cabinet, equipmentCode]);
 
-  // Filter I/O points based on activeTab and searchQuery
-  useEffect(() => {
-    if (!equipment || !equipment.points) return;
-
-    let points = equipment.points;
+  // Compute filtered IO points dynamically during render
+  let filteredIO = [];
+  if (equipment && equipment.points) {
+    let points = [...equipment.points];
 
     // Filter by Tab
     if (activeTab === "DI") {
@@ -164,8 +173,8 @@ export default function MachineDetail({ params }) {
       );
     }
 
-    setFilteredIO(points.sort((a, b) => a.seq - b.seq));
-  }, [equipment, activeTab, searchQuery]);
+    filteredIO = points.sort((a, b) => a.seq - b.seq);
+  }
 
   // Zoom/Pan Handler functions
   const handleZoomIn = () => setScale(prev => Math.min(prev + 0.25, 4));
@@ -265,6 +274,8 @@ export default function MachineDetail({ params }) {
     );
   }
 
+  const uniqueCabinets = Array.from(new Set(equipment.points.map(p => p.cabinet)));
+
   return (
     <div style={styles.wrapper}>
       {/* Top Header / Breadcrumb Bar */}
@@ -276,7 +287,7 @@ export default function MachineDetail({ params }) {
           <div style={styles.breadcrumb} className="breadcrumb-desktop">
             <span>🏭 {equipment.location}</span>
             <span style={styles.divider}>/</span>
-            <span>🗄️ {cabinet}</span>
+            <span>🗄️ {uniqueCabinets.join(", ") || cabinet}</span>
             <span style={styles.divider}>/</span>
             <span style={styles.activeBreadcrumb}>{equipment.code}</span>
           </div>
@@ -370,7 +381,7 @@ export default function MachineDetail({ params }) {
                 </tr>
               </thead>
               <tbody>
-                {filteredIO.map((row) => {
+                {filteredIO.map((row, index) => {
                   const isHighlighted = row.signalName && (
                     row.signalName.toLowerCase().includes("emergency") ||
                     row.signalName.toLowerCase().includes("fault") ||
@@ -379,7 +390,7 @@ export default function MachineDetail({ params }) {
                   
                   return (
                     <tr
-                      key={row.seq}
+                      key={`${row.seq}-${row.address || ""}-${index}`}
                       style={{
                         ...styles.tr,
                         ...(isHighlighted ? styles.trHighlighted : {})
@@ -402,7 +413,7 @@ export default function MachineDetail({ params }) {
                           <button
                             style={styles.sheetLinkBtn}
                             onClick={() => {
-                              const drawing = allDrawings.find(d => d.page === row.drawingPage);
+                              const drawing = allDrawings.find(d => d.cabinet === row.cabinet && d.page === row.drawingPage);
                               if (drawing) setCurrentDrawing(drawing);
                             }}
                           >
@@ -434,15 +445,15 @@ export default function MachineDetail({ params }) {
                   <select
                     style={styles.sheetSelect}
                     className="sheet-select-responsive"
-                    value={`${currentDrawing.cabinet}-${currentDrawing.page}`}
+                    value={`${currentDrawing.cabinet}|${currentDrawing.page}`}
                     onChange={(e) => {
-                      const [cab, pg] = e.target.value.split("-");
+                      const [cab, pg] = e.target.value.split("|");
                       const drawing = allDrawings.find(d => d.cabinet === cab && String(d.page) === pg);
                       if (drawing) setCurrentDrawing(drawing);
                     }}
                   >
                     {allDrawings.map((draw, idx) => (
-                      <option key={`${draw.cabinet}-${draw.page}`} value={`${draw.cabinet}-${draw.page}`}>
+                      <option key={`${draw.cabinet}|${draw.page}`} value={`${draw.cabinet}|${draw.page}`}>
                         Sheet {draw.internalPage} ({draw.cabinet})
                       </option>
                     ))}
@@ -688,7 +699,9 @@ const styles = {
     color: "var(--text-muted)",
     background: "transparent",
     border: "none",
-    borderBottom: "2px solid transparent",
+    borderBottomWidth: "2px",
+    borderBottomStyle: "solid",
+    borderBottomColor: "transparent",
     cursor: "pointer",
   },
   tabActive: {

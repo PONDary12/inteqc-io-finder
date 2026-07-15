@@ -19,6 +19,16 @@ const DRAWINGS_OUT_DIR = path.resolve(__dirname, '../public/drawings');
 // Configurations matching our locations
 const LOCATIONS = [
   {
+    locationId: 'tower2_p1',
+    folder: 'Tower 2',
+    pdfFile: 'Electrical schematic diagram_Feed mill Tower2 revamp phase1.pdf',
+  },
+  {
+    locationId: 'tower2_p2',
+    folder: 'Tower 2',
+    pdfFile: 'Electrical schematic diagram_Feed mill Tower2 revamp phase2.pdf',
+  },
+  {
     locationId: 'tower3',
     folder: 'Tower 3',
     pdfFile: '泰国inteqc Cabinet drawing.pdf',
@@ -54,16 +64,37 @@ async function generateImagesForLocation(loc, locMap) {
     const minPage = Math.min(...pdfPageNumbers); // 1-based index
     const maxPage = Math.max(...pdfPageNumbers); // 1-based index
 
-    console.log(`\n  🗄️ Converting cabinet "${cabinet}": pages ${minPage} to ${maxPage} (${pdfPageNumbers.length} pages total)`);
+    // Filter out pages that are already generated
+    const pagesToProcess = [];
+    pdfPageNumbers.forEach(pageNum => {
+      const pageOffset = pageNum - minPage + 1;
+      const destPath = path.join(destFolder, `${cabinet}_page_${pageOffset}.png`);
+      if (!fs.existsSync(destPath) || fs.statSync(destPath).size === 0) {
+        pagesToProcess.push(pageNum);
+      }
+    });
 
-    // Slices and renders only the specific pages of this cabinet
+    if (pagesToProcess.length === 0) {
+      console.log(`  ⏩ All ${pdfPageNumbers.length} pages already generated for cabinet "${cabinet}" — skipping.`);
+      continue;
+    }
+
+    console.log(`\n  🗄️ Converting cabinet "${cabinet}": processing ${pagesToProcess.length}/${pdfPageNumbers.length} missing pages`);
+
+    // Slices and renders only the specific pages of this cabinet in chunks to prevent OOM
     try {
-      const pngPages = await pdfToPng(pdfPath, {
-        viewportScale: 1.5,
-        pagesToProcess: pdfPageNumbers,
-        processPagesInParallel: true,
-        concurrencyLimit: 4
-      });
+      const chunkSize = 30;
+      let pngPages = [];
+      for (let j = 0; j < pagesToProcess.length; j += chunkSize) {
+        const chunk = pagesToProcess.slice(j, j + chunkSize);
+        const chunkPages = await pdfToPng(pdfPath, {
+          viewportScale: 1.5,
+          pagesToProcess: chunk,
+          processPagesInParallel: true,
+          concurrencyLimit: 4
+        });
+        pngPages = pngPages.concat(chunkPages);
+      }
 
       console.log(`  🎨 Generated ${pngPages.length} sheets for cabinet "${cabinet}"`);
 

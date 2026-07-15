@@ -17,7 +17,6 @@ export default function SearchHome() {
   const [locations, setLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState("all");
   const [query, setQuery] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -51,33 +50,24 @@ export default function SearchHome() {
     loadData();
   }, []);
 
-  // Update suggestions when query or location filter changes
-  useEffect(() => {
-    if (!query.trim()) {
-      setSuggestions([]);
-      return;
+  // Compute suggestions dynamically during render
+  const trimmedQuery = query.toLowerCase().trim();
+  const normalizedQuery = normalizeCode(query);
+  const filtered = query.trim() ? searchIndex.filter(item => {
+    // Location filter
+    if (selectedLocation !== "all" && item.locationId !== selectedLocation) {
+      return false;
     }
+    
+    // Search matches code or name
+    const codeMatch = item.normalizedCode && item.normalizedCode.includes(normalizedQuery);
+    const nameMatch = item.name && item.name.toLowerCase().includes(trimmedQuery);
+    const cabMatch = item.cabinets && item.cabinets.some(c => c.toLowerCase().includes(trimmedQuery));
+    
+    return codeMatch || nameMatch || cabMatch;
+  }) : [];
 
-    const trimmedQuery = query.toLowerCase().trim();
-    const normalizedQuery = normalizeCode(query);
-    const filtered = searchIndex.filter(item => {
-      // Location filter
-      if (selectedLocation !== "all" && item.locationId !== selectedLocation) {
-        return false;
-      }
-      
-      // Search matches code or name
-      const codeMatch = item.normalizedCode && item.normalizedCode.includes(normalizedQuery);
-      const nameMatch = item.name && item.name.toLowerCase().includes(trimmedQuery);
-      const cabMatch = item.cabinets && item.cabinets.some(c => c.toLowerCase().includes(trimmedQuery));
-      
-      return codeMatch || nameMatch || cabMatch;
-    });
-
-    // Limit to 8 suggestions for performance and UI sanity
-    setSuggestions(filtered.slice(0, 8));
-    setActiveSuggestionIndex(-1);
-  }, [query, selectedLocation, searchIndex]);
+  const suggestions = filtered.slice(0, 8);
 
   // Handle keyboard navigation for suggestions
   const handleKeyDown = (e) => {
@@ -90,15 +80,39 @@ export default function SearchHome() {
       e.preventDefault();
       setActiveSuggestionIndex(prev => (prev > 0 ? prev - 1 : -1));
     } else if (e.key === "Enter") {
-      e.preventDefault();
       if (activeSuggestionIndex >= 0 && activeSuggestionIndex < suggestions.length) {
         handleSelectSuggestion(suggestions[activeSuggestionIndex]);
-      } else if (suggestions.length > 0) {
-        handleSelectSuggestion(suggestions[0]);
+      } else {
+        handleSearch();
       }
     } else if (e.key === "Escape") {
       setShowSuggestions(false);
     }
+  };
+
+  const handleSearch = () => {
+    if (!query.trim()) return;
+    
+    // Find exact match in code
+    const exactCodeMatch = searchIndex.find(
+      item => item.normalizedCode === normalizeCode(query)
+    );
+    if (exactCodeMatch) {
+      router.push(`/machine/${exactCodeMatch.locationId}/${exactCodeMatch.cabinets[0]}/${exactCodeMatch.code}`);
+      return;
+    }
+
+    // Otherwise redirect to detail page of the first matched suggestion
+    if (suggestions.length > 0) {
+      const bestMatch = suggestions[0];
+      router.push(`/machine/${bestMatch.locationId}/${bestMatch.cabinets[0]}/${bestMatch.code}`);
+    }
+  };
+
+  const handleSelectSuggestion = (item) => {
+    setQuery(item.code || item.name);
+    setShowSuggestions(false);
+    router.push(`/machine/${item.locationId}/${item.cabinets[0]}/${item.code}`);
   };
 
   // Scroll active suggestion into view
@@ -110,16 +124,6 @@ export default function SearchHome() {
       }
     }
   }, [activeSuggestionIndex]);
-
-  const handleSelectSuggestion = (item) => {
-    setQuery(item.code || item.name);
-    setShowSuggestions(false);
-    
-    // Direct navigate to Split View page of the equipment
-    const cabinet = item.cabinets[0] || "PLC";
-    const code = item.code || "unknown";
-    router.push(`/machine/${item.locationId}/${cabinet}/${code}`);
-  };
 
   return (
     <div style={styles.container}>
@@ -145,7 +149,10 @@ export default function SearchHome() {
                 ...styles.filterBtn,
                 ...(selectedLocation === "all" ? styles.filterBtnActive : {}),
               }}
-              onClick={() => setSelectedLocation("all")}
+              onClick={() => {
+                setSelectedLocation("all");
+                setActiveSuggestionIndex(-1);
+              }}
             >
               📍 All Towers
             </button>
@@ -156,7 +163,10 @@ export default function SearchHome() {
                   ...styles.filterBtn,
                   ...(selectedLocation === loc.id ? styles.filterBtnActive : {}),
                 }}
-                onClick={() => setSelectedLocation(loc.id)}
+                onClick={() => {
+                  setSelectedLocation(loc.id);
+                  setActiveSuggestionIndex(-1);
+                }}
               >
                 🏭 {loc.name}
               </button>
@@ -175,6 +185,7 @@ export default function SearchHome() {
               onChange={(e) => {
                 setQuery(e.target.value);
                 setShowSuggestions(true);
+                setActiveSuggestionIndex(-1);
               }}
               onKeyDown={handleKeyDown}
               onFocus={() => setShowSuggestions(true)}
@@ -298,7 +309,9 @@ const styles = {
   },
   filterBtn: {
     background: "transparent",
-    border: "1px solid var(--border-color)",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "var(--border-color)",
     borderRadius: "var(--radius-md)",
     padding: "8px 16px",
     fontSize: "13px",

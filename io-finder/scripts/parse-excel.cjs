@@ -63,6 +63,29 @@ function normalizeAddress(addr) {
     .replace(/o/g, '0');
 }
 
+function getMappedCabinet(cabinetName) {
+  if (!cabinetName) return '';
+  const clean = cabinetName.trim();
+  
+  const aliases = {
+    '膨化烘干9-10': 'MCC9_10',
+    'MCC9-10': 'MCC9_10',
+    'MCC9_10': 'MCC9_10',
+    '新增RCB4': 'RCB4',
+    'MCC1-2': 'MCC1_2',
+    'MCC3-4': 'MCC3_4',
+    'MCC5-6': 'MCC5_6',
+    'MCC7-8': 'MCC7_8',
+  };
+  if (aliases[clean]) return aliases[clean];
+  
+  // MCCB1-RI11 -> MCCB1
+  let m = clean.match(/^(MCCB?\d+)/i);
+  if (m) return m[1].toUpperCase();
+
+  return clean;
+}
+
 // ──────────────────────── Configuration ────────────────────────
 
 const DATA_DIR = path.resolve(__dirname, '../../data');
@@ -75,6 +98,29 @@ const FILES = [
     locationId: 'premixer',
     locationName: 'Premixer',
     sheets: ['MCCY1_2', 'MCCY3', 'PLC'],
+  },
+  {
+    folder: 'Tower 2',
+    file: 'INTEQC-T2-IO_20240311_phase1.xlsx',
+    locationId: 'tower2_p1',
+    locationName: 'Tower 2 (Phase 1)',
+    sheets: [
+      'MCC1-2', 'MCC3-4', 'MCC5-6', 'MCC7-8', 'MCC11', 'PLC1',
+      'RCB2', 'RCB3', 'RCB1', '新增RCB4', '膨化烘干9-10'
+    ],
+  },
+  {
+    folder: 'Tower 2',
+    file: 'INTEQC-T2-IO_20240528_phase2.xlsx',
+    locationId: 'tower2_p2',
+    locationName: 'Tower 2 (Phase 2)',
+    sheets: [
+      'MCCB1-RI11', 'MCCB1-RI12', 'MCCB1-RI21', 'MCCB2-RI22',
+      'MCCB3,4-RI23', 'MCC5,6,7-RI25', 'MCCB8,9-RI28', 'MCCB10-RI30',
+      'MCCB13-RI31', 'MCCB18-RI32', 'MCCB19-RI33', 'PLC2',
+      'RCB5', 'RCB6', 'RCB7', 'RCB8', 'RCB9', 'RCB10',
+      '2#膨化', '2#烘干', '3#膨化', '3#烘干', '4#膨化', '4#烘干'
+    ],
   },
   {
     folder: 'Tower 3',
@@ -172,9 +218,9 @@ function findCabinetCol(headerRow) {
   return 8; // fallback
 }
 
-/** Check if a row is a valid data row (has numeric sequence number in col 0). */
-function isDataRow(row) {
-  const seq = row[0];
+/** Check if a row is a valid data row (has numeric sequence number in the sequence column). */
+function isDataRow(row, offset = 0) {
+  const seq = row[offset];
   if (seq === undefined || seq === null || seq === '') return false;
   return typeof seq === 'number' || /^\d+$/.test(String(seq).trim());
 }
@@ -260,12 +306,19 @@ function parseSheet(wb, sheetName, locationId) {
 
   for (let i = 0; i < rows.length; i++) {
     const row = rows[i];
-    const cellA = cell(row, 0);
-    const cellB = cell(row, 1);
+
+    // Check if this row contains '序号' and the next cell is '地址'
+    let offset = -1;
+    for (let c = 0; c < row.length - 1; c++) {
+      if (cell(row, c) === '序号' && cell(row, c + 1) === '地址') {
+        offset = c;
+        break;
+      }
+    }
 
     // If we find a header row, update our column mapping
-    if (cellA === '序号' && cellB === '地址') {
-      const format = (cell(row, 4) === '设备名称' && cell(row, 5) === '设备名称') ? 'wide' : 'narrow';
+    if (offset >= 0) {
+      const format = (cell(row, offset + 4) === '设备名称' && cell(row, offset + 5) === '设备名称') ? 'wide' : 'narrow';
       
       // Find cabinet column by name
       let cabIdx = -1;
@@ -278,20 +331,21 @@ function parseSheet(wb, sheetName, locationId) {
 
       cols = {
         format,
-        address: 1,
-        symbol: 2,
-        code: 3,
-        equipCN: 4,
-        signalCN: format === 'wide' ? 6 : 5,
-        equipEN: format === 'wide' ? 7 : 6,
-        signalEN: format === 'wide' ? 8 : 7,
-        cabinet: cabIdx >= 0 ? cabIdx : (format === 'wide' ? 9 : 8),
+        offset,
+        address: offset + 1,
+        symbol: offset + 2,
+        code: offset + 3,
+        equipCN: offset + 4,
+        signalCN: format === 'wide' ? offset + 6 : offset + 5,
+        equipEN: format === 'wide' ? offset + 7 : offset + 6,
+        signalEN: format === 'wide' ? offset + 8 : offset + 7,
+        cabinet: cabIdx >= 0 ? cabIdx : (format === 'wide' ? offset + 9 : offset + 8),
       };
       continue;
     }
 
     // Process data rows
-    if (cols && isDataRow(row)) {
+    if (cols && isDataRow(row, cols.offset)) {
       const address = cell(row, cols.address);
       if (!address) continue;
 
@@ -373,6 +427,7 @@ function parseSheet(wb, sheetName, locationId) {
       }
 
       const cabinet = cell(row, cols.cabinet) || sheetName;
+      const mappedCabinet = getMappedCabinet(cabinet);
 
       // Extract drawing page offset dynamically from columns index 8 onwards
       let drawingPageOffset = null;
@@ -401,23 +456,23 @@ function parseSheet(wb, sheetName, locationId) {
       }
 
       // 2. Base page calculation fallback
-      const basePage = CABINET_BASE_PAGES[cabinet];
+      const basePage = CABINET_BASE_PAGES[mappedCabinet];
       if (!drawingPage && basePage !== undefined && drawingPageOffset !== null) {
         internalPage = String(basePage + drawingPageOffset);
-        if (locMap.cabinets && locMap.cabinets[cabinet] && locMap.cabinets[cabinet][internalPage]) {
-          drawingPage = locMap.cabinets[cabinet][internalPage];
+        if (locMap.cabinets && locMap.cabinets[mappedCabinet] && locMap.cabinets[mappedCabinet][internalPage]) {
+          drawingPage = locMap.cabinets[mappedCabinet][internalPage];
           drawingPdfUrl = locMap.drawingUrl || null;
         }
       }
 
       // 3. Convert to cabinet-specific PNG image link if mapped
-      if (drawingPage && locMap.cabinets && locMap.cabinets[cabinet]) {
-        const pages = Object.values(locMap.cabinets[cabinet]).map(Number);
+      if (drawingPage && locMap.cabinets && locMap.cabinets[mappedCabinet]) {
+        const pages = Object.values(locMap.cabinets[mappedCabinet]).map(Number);
         if (pages.length > 0) {
           const cabinetMinPage = Math.min(...pages);
           if (drawingPage >= cabinetMinPage) {
             const pageOffset = drawingPage - cabinetMinPage + 1;
-            drawingPdfUrl = `/drawings/${locationId}/cabinets/images/${cabinet}_page_${pageOffset}.png`;
+            drawingPdfUrl = `/drawings/${locationId}/cabinets/images/${mappedCabinet}_page_${pageOffset}.png`;
             drawingPage = pageOffset;
           }
         }
@@ -425,7 +480,7 @@ function parseSheet(wb, sheetName, locationId) {
 
       allPoints.push({
         type,
-        seq: Number(row[0]),
+        seq: Number(row[cols.offset]),
         address,
         equipmentCode,
         equipmentName,
