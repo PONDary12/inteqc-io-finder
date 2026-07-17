@@ -111,12 +111,20 @@ async function generateImagesForLocation(loc, locMap) {
 
       console.log(`  🎨 Generated ${pngPages.length} sheets for cabinet "${cabinet}"`);
 
-      // Write each page image
-      pngPages.forEach(page => {
-        const pageOffset = page.pageNumber - minPage + 1;
+      // Write each page image, using the INPUT page numbers from our chunk
+      // (NOT page.pageNumber from the library, which may differ by 1 from pdf-parse numbering)
+      let savedCount = 0;
+      pngPages.forEach((page, idx) => {
+        // Find which chunk this belongs to (j=current chunk offset, i=position within chunk)
+        // Since we accumulate in order, index idx maps to pagesToProcess[idx]
+        const inputPageNum = pagesToProcess[idx];
+        if (inputPageNum === undefined) return;
+        const pageOffset = inputPageNum - minPage + 1;
         const destPath = path.join(destFolder, `${cabinet}_page_${pageOffset}.png`);
         fs.writeFileSync(destPath, page.content);
+        savedCount++;
       });
+
       
       console.log(`  ✅ Finished: ${cabinet} images saved successfully.`);
     } catch (err) {
