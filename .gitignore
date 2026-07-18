@@ -6,8 +6,4 @@ dist/
 Thumbs.db
 
 # Project Data & Assets
-data/
-*.pptx
-*.xlsx
-*.pdf
 ~$*
