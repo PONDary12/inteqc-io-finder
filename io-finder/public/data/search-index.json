@@ -68,16 +68,20 @@
     "code": "",
     "name": "备用",
     "normalizedCode": "",
-    "signals": [],
+    "signals": [
+      "新加"
+    ],
     "types": [
       "AI",
-      "AO"
+      "AO",
+      "DO"
     ],
     "cabinets": [
       "MCC1-2",
       "MCC3-4",
       "MCC5-6",
       "MCC7-8",
+      "PLC1",
       "新增RCB4",
       "膨化烘干9-10"
     ],
@@ -622,6 +626,556 @@
   },
   {
     "code": "",
+    "name": "i313.5=G1",
+    "normalizedCode": "",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "i313.6=G2",
+    "normalizedCode": "",
+    "signals": [],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称1校称阀—1",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [
+      {
+        "cabinet": "PLC1",
+        "page": 441,
+        "internalPage": "1221",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/PLC1_page_441.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称1校称阀—2",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [
+      {
+        "cabinet": "PLC1",
+        "page": 441,
+        "internalPage": "1221",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/PLC1_page_441.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称1校称阀—3",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [
+      {
+        "cabinet": "PLC1",
+        "page": 441,
+        "internalPage": "1221",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/PLC1_page_441.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称1校称阀—4",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [
+      {
+        "cabinet": "PLC1",
+        "page": 441,
+        "internalPage": "1221",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/PLC1_page_441.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称1校称阀—5",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [
+      {
+        "cabinet": "PLC1",
+        "page": 441,
+        "internalPage": "1221",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/PLC1_page_441.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称1校称阀—6",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [
+      {
+        "cabinet": "PLC1",
+        "page": 441,
+        "internalPage": "1221",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/PLC1_page_441.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称2校称阀—1",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [
+      {
+        "cabinet": "PLC1",
+        "page": 441,
+        "internalPage": "1221",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/PLC1_page_441.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称2校称阀—2",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [
+      {
+        "cabinet": "PLC1",
+        "page": 441,
+        "internalPage": "1221",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/PLC1_page_441.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称2校称阀—3",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [
+      {
+        "cabinet": "PLC1",
+        "page": 441,
+        "internalPage": "1221",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/PLC1_page_441.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称2校称阀—4",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [
+      {
+        "cabinet": "PLC1",
+        "page": 441,
+        "internalPage": "1221",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/PLC1_page_441.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称2校称阀—5",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [
+      {
+        "cabinet": "PLC1",
+        "page": 441,
+        "internalPage": "1221",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/PLC1_page_441.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称2校称阀—6",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [
+      {
+        "cabinet": "PLC1",
+        "page": 441,
+        "internalPage": "1221",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/PLC1_page_441.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称3校称阀—1",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [
+      {
+        "cabinet": "PLC1",
+        "page": 441,
+        "internalPage": "1221",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/PLC1_page_441.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称3校称阀—2",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [
+      {
+        "cabinet": "PLC1",
+        "page": 441,
+        "internalPage": "1221",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/PLC1_page_441.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称3校称阀—3",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [
+      {
+        "cabinet": "PLC1",
+        "page": 441,
+        "internalPage": "1221",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/PLC1_page_441.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称3校称阀—4",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [
+      {
+        "cabinet": "PLC1",
+        "page": 441,
+        "internalPage": "1221",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/PLC1_page_441.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称3校称阀—5",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "称3校称阀—6",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "F01气锤",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "F02气锤",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "F03气锤",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "F04气锤",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "F05气锤",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
+    "name": "F06气锤",
+    "normalizedCode": "",
+    "signals": [
+      "新加"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "PLC1"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 1)",
+    "locationId": "tower2_p1"
+  },
+  {
+    "code": "",
     "name": "Pneumatic Valve",
     "normalizedCode": "",
     "signals": [
@@ -858,8 +1412,13 @@
       "4#膨化",
       "MCCB1-RI11",
       "MCCB1-RI21",
+      "MCCB10-RI30",
+      "MCCB13-RI31",
+      "MCCB18-RI32",
+      "MCCB19-RI33",
       "MCCB2-RI22",
-      "MCCB3,4-RI23"
+      "MCCB3,4-RI23",
+      "RCB10"
     ],
     "drawings": [
       {
@@ -875,6 +1434,27 @@
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB1_page_739.png"
       }
     ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "",
+    "name": "",
+    "normalizedCode": "",
+    "signals": [],
+    "types": [
+      "AO",
+      "DI",
+      "DO"
+    ],
+    "cabinets": [
+      "2#膨化",
+      "3#烘干",
+      "3#膨化",
+      "4#烘干",
+      "RCB9"
+    ],
+    "drawings": [],
     "location": "Tower 2 (Phase 2)",
     "locationId": "tower2_p2"
   },
@@ -1132,22 +1712,6 @@
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB1_page_678.png"
       }
     ],
-    "location": "Tower 2 (Phase 2)",
-    "locationId": "tower2_p2"
-  },
-  {
-    "code": "",
-    "name": "",
-    "normalizedCode": "",
-    "signals": [],
-    "types": [
-      "AO"
-    ],
-    "cabinets": [
-      "3#烘干",
-      "4#烘干"
-    ],
-    "drawings": [],
     "location": "Tower 2 (Phase 2)",
     "locationId": "tower2_p2"
   },
@@ -6127,9 +6691,9 @@
     "locationId": "tower3"
   },
   {
-    "code": "2#",
+    "code": "2#烘干机",
     "name": "烘干机",
-    "normalizedCode": "2#",
+    "normalizedCode": "2#烘干机",
     "signals": [
       "流量",
       "测温1",
@@ -7581,7 +8145,9 @@
     "normalizedCode": "2cm0312",
     "signals": [
       "Estop",
+      "Lower Deviation",
       "Running",
+      "Speed",
       "Start",
       "Upper Deviation"
     ],
@@ -7591,6 +8157,7 @@
     ],
     "cabinets": [
       "MCCB10-RI30",
+      "PLC2",
       "RCB9"
     ],
     "drawings": [
@@ -7599,6 +8166,12 @@
         "page": 419,
         "internalPage": "3021",
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB1_page_419.png"
+      },
+      {
+        "cabinet": "PLC2",
+        "page": 908,
+        "internalPage": "4107",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/PLC2_page_908.png"
       },
       {
         "cabinet": "RCB9",
@@ -7802,7 +8375,9 @@
     "normalizedCode": "2cm0412",
     "signals": [
       "Estop",
+      "Lower Deviation",
       "Running",
+      "Speed",
       "Start",
       "Upper Deviation"
     ],
@@ -7812,6 +8387,7 @@
     ],
     "cabinets": [
       "MCCB10-RI30",
+      "PLC2",
       "RCB9"
     ],
     "drawings": [
@@ -7820,6 +8396,12 @@
         "page": 428,
         "internalPage": "3030",
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB1_page_428.png"
+      },
+      {
+        "cabinet": "PLC2",
+        "page": 908,
+        "internalPage": "4107",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/PLC2_page_908.png"
       },
       {
         "cabinet": "RCB9",
@@ -12921,15 +13503,17 @@
   },
   {
     "code": "2M0201",
-    "name": "Mixer",
+    "name": "混合机",
     "normalizedCode": "2m0201",
     "signals": [
       "Door Protect",
       "Isolate/Estop",
       "Running",
-      "Start"
+      "Start",
+      "电流"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
@@ -13425,20 +14009,25 @@
   },
   {
     "code": "2M0222",
-    "name": "Elevator",
+    "name": "提升机",
     "normalizedCode": "2m0222",
     "signals": [
       "Estop",
+      "Lower Deviation",
       "Running",
+      "Speed",
       "Start",
-      "Upper Deviation"
+      "Upper Deviation",
+      "电流"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
     "cabinets": [
       "MCCB10-RI30",
+      "PLC2",
       "RCB9"
     ],
     "drawings": [
@@ -13447,6 +14036,12 @@
         "page": 410,
         "internalPage": "3012",
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB1_page_410.png"
+      },
+      {
+        "cabinet": "PLC2",
+        "page": 907,
+        "internalPage": "4106",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/PLC2_page_907.png"
       },
       {
         "cabinet": "RCB9",
@@ -13630,6 +14225,23 @@
     "locationId": "tower2_p2"
   },
   {
+    "code": "2M0301",
+    "name": "混合机",
+    "normalizedCode": "2m0301",
+    "signals": [
+      "电流"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "MCCB10-RI30"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
     "code": "2M0304",
     "name": "Low LevelAir hammer",
     "normalizedCode": "2m0304",
@@ -13678,6 +14290,40 @@
     "locationId": "tower2_p2"
   },
   {
+    "code": "2M0312",
+    "name": "提升机",
+    "normalizedCode": "2m0312",
+    "signals": [
+      "电流"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "MCCB10-RI30"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "2M0401",
+    "name": "混合机",
+    "normalizedCode": "2m0401",
+    "signals": [
+      "电流"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "MCCB10-RI30"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
     "code": "2M0404",
     "name": "Low LevelAir hammer",
     "normalizedCode": "2m0404",
@@ -13722,6 +14368,23 @@
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/PLC2_page_880.png"
       }
     ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "2M0412",
+    "name": "提升机",
+    "normalizedCode": "2m0412",
+    "signals": [
+      "电流"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "MCCB10-RI30"
+    ],
+    "drawings": [],
     "location": "Tower 2 (Phase 2)",
     "locationId": "tower2_p2"
   },
@@ -17501,9 +18164,9 @@
     "locationId": "tower3"
   },
   {
-    "code": "3#",
+    "code": "3#烘干机",
     "name": "烘干机",
-    "normalizedCode": "3#",
+    "normalizedCode": "3#烘干机",
     "signals": [
       "流量1",
       "流量2",
@@ -19137,9 +19800,9 @@
     "locationId": "tower3"
   },
   {
-    "code": "4#",
+    "code": "4#烘干机",
     "name": "烘干机",
-    "normalizedCode": "4#",
+    "normalizedCode": "4#烘干机",
     "signals": [
       "流量1",
       "流量2",
@@ -35887,6 +36550,54 @@
     "locationId": "tower2_p2"
   },
   {
+    "code": "AV9301",
+    "name": "Solenoid valve",
+    "normalizedCode": "av9301",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1184,
+        "internalPage": "4707",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1184.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "AV9302",
+    "name": "Solenoid valve",
+    "normalizedCode": "av9302",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1184,
+        "internalPage": "4707",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1184.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
     "code": "B05",
     "name": "Low Level",
     "normalizedCode": "b05",
@@ -36155,6 +36866,142 @@
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB9_page_31.png"
       }
     ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "B13",
+    "name": "",
+    "normalizedCode": "b13",
+    "signals": [
+      "上料位"
+    ],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "RCB9"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "B14",
+    "name": "",
+    "normalizedCode": "b14",
+    "signals": [
+      "上料位"
+    ],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "RCB9"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "B15",
+    "name": "",
+    "normalizedCode": "b15",
+    "signals": [
+      "上料位"
+    ],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "RCB9"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "B16",
+    "name": "",
+    "normalizedCode": "b16",
+    "signals": [
+      "上料位"
+    ],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "RCB9"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "B17",
+    "name": "",
+    "normalizedCode": "b17",
+    "signals": [
+      "上料位"
+    ],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "RCB9"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "B18",
+    "name": "",
+    "normalizedCode": "b18",
+    "signals": [
+      "上料位"
+    ],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "RCB9"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "B19",
+    "name": "",
+    "normalizedCode": "b19",
+    "signals": [
+      "上料位"
+    ],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "RCB9"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "B20",
+    "name": "",
+    "normalizedCode": "b20",
+    "signals": [
+      "上料位"
+    ],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "RCB9"
+    ],
+    "drawings": [],
     "location": "Tower 2 (Phase 2)",
     "locationId": "tower2_p2"
   },
@@ -38811,20 +39658,25 @@
   },
   {
     "code": "CE0239",
-    "name": "Elevator",
+    "name": "提升机",
     "normalizedCode": "ce0239",
     "signals": [
       "Estop",
+      "Lower Deviation",
       "Running",
+      "Speed",
       "Start",
-      "Upper Deviation"
+      "Upper Deviation",
+      "电流"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
     "cabinets": [
       "MCCB19-RI33",
+      "PLC2",
       "RCB9"
     ],
     "drawings": [
@@ -38833,6 +39685,12 @@
         "page": 804,
         "internalPage": "3911",
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB1_page_804.png"
+      },
+      {
+        "cabinet": "PLC2",
+        "page": 910,
+        "internalPage": "4109",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/PLC2_page_910.png"
       },
       {
         "cabinet": "RCB9",
@@ -38922,20 +39780,25 @@
   },
   {
     "code": "CE0273",
-    "name": "Elevator",
+    "name": "提升机",
     "normalizedCode": "ce0273",
     "signals": [
       "Estop",
+      "Lower Deviation",
       "Running",
+      "Speed",
       "Start",
-      "Upper Deviation"
+      "Upper Deviation",
+      "电流"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
     "cabinets": [
       "MCCB19-RI33",
+      "PLC2",
       "RCB9"
     ],
     "drawings": [
@@ -38944,6 +39807,12 @@
         "page": 822,
         "internalPage": "3929",
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB1_page_822.png"
+      },
+      {
+        "cabinet": "PLC2",
+        "page": 910,
+        "internalPage": "4109",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/PLC2_page_910.png"
       },
       {
         "cabinet": "RCB9",
@@ -39946,20 +40815,25 @@
   },
   {
     "code": "CE0327",
-    "name": "Elevator",
+    "name": "提升机",
     "normalizedCode": "ce0327",
     "signals": [
       "Estop",
+      "Lower Deviation",
       "Running",
+      "Speed",
       "Start",
-      "Upper Deviation"
+      "Upper Deviation",
+      "电流"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
     "cabinets": [
       "MCCB18-RI32",
+      "PLC2",
       "RCB9"
     ],
     "drawings": [
@@ -39968,6 +40842,12 @@
         "page": 761,
         "internalPage": "3810",
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB1_page_761.png"
+      },
+      {
+        "cabinet": "PLC2",
+        "page": 909,
+        "internalPage": "4108",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/PLC2_page_909.png"
       },
       {
         "cabinet": "RCB9",
@@ -40033,20 +40913,25 @@
   },
   {
     "code": "CE0368",
-    "name": "Elevator",
+    "name": "提升机",
     "normalizedCode": "ce0368",
     "signals": [
       "Estop",
+      "Lower Deviation",
       "Running",
+      "Speed",
       "Start",
-      "Upper Deviation"
+      "Upper Deviation",
+      "电流"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
     "cabinets": [
       "MCCB18-RI32",
+      "PLC2",
       "RCB9"
     ],
     "drawings": [
@@ -40055,6 +40940,12 @@
         "page": 779,
         "internalPage": "3828",
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB1_page_779.png"
+      },
+      {
+        "cabinet": "PLC2",
+        "page": 911,
+        "internalPage": "4110",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/PLC2_page_911.png"
       },
       {
         "cabinet": "RCB9",
@@ -40191,20 +41082,25 @@
   },
   {
     "code": "CE0433",
-    "name": "Elevator",
+    "name": "提升机",
     "normalizedCode": "ce0433",
     "signals": [
       "Estop",
+      "Lower Deviation",
       "Running",
+      "Speed",
       "Start",
-      "Upper Deviation"
+      "Upper Deviation",
+      "电流"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
     "cabinets": [
       "MCCB13-RI31",
+      "PLC2",
       "RCB9"
     ],
     "drawings": [
@@ -40213,6 +41109,12 @@
         "page": 542,
         "internalPage": "3312",
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB1_page_542.png"
+      },
+      {
+        "cabinet": "PLC2",
+        "page": 909,
+        "internalPage": "4108",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/PLC2_page_909.png"
       },
       {
         "cabinet": "RCB9",
@@ -40302,20 +41204,25 @@
   },
   {
     "code": "CE0471",
-    "name": "Elevator",
+    "name": "提升机",
     "normalizedCode": "ce0471",
     "signals": [
       "Estop",
+      "Lower Deviation",
       "Running",
+      "Speed",
       "Start",
-      "Upper Deviation"
+      "Upper Deviation",
+      "电流"
     ],
     "types": [
+      "AI",
       "DI",
       "DO"
     ],
     "cabinets": [
       "MCCB13-RI31",
+      "PLC2",
       "RCB9"
     ],
     "drawings": [
@@ -40324,6 +41231,12 @@
         "page": 557,
         "internalPage": "3327",
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB1_page_557.png"
+      },
+      {
+        "cabinet": "PLC2",
+        "page": 911,
+        "internalPage": "4110",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/PLC2_page_911.png"
       },
       {
         "cabinet": "RCB9",
@@ -51019,6 +51932,7 @@
       "DI"
     ],
     "cabinets": [
+      "RCB10",
       "RCB5"
     ],
     "drawings": [
@@ -51043,6 +51957,7 @@
       "DI"
     ],
     "cabinets": [
+      "RCB10",
       "RCB5"
     ],
     "drawings": [
@@ -51067,6 +51982,7 @@
       "DO"
     ],
     "cabinets": [
+      "RCB10",
       "RCB5"
     ],
     "drawings": [
@@ -51091,6 +52007,7 @@
       "DO"
     ],
     "cabinets": [
+      "RCB10",
       "RCB5"
     ],
     "drawings": [
@@ -51118,6 +52035,7 @@
       "DO"
     ],
     "cabinets": [
+      "RCB10",
       "RCB5"
     ],
     "drawings": [
@@ -51149,6 +52067,7 @@
     ],
     "cabinets": [
       "MCCB13-RI31",
+      "RCB10",
       "RCB5"
     ],
     "drawings": [
@@ -51246,6 +52165,294 @@
         "page": 114,
         "internalPage": "3933",
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB19_page_114.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "E0433V1",
+    "name": "Solenoid valve",
+    "normalizedCode": "e0433v1",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1182,
+        "internalPage": "4705",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1182.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "E0433V2",
+    "name": "Solenoid valve",
+    "normalizedCode": "e0433v2",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1182,
+        "internalPage": "4705",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1182.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "E0433V3",
+    "name": "Solenoid valve",
+    "normalizedCode": "e0433v3",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1182,
+        "internalPage": "4705",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1182.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "E0433V4",
+    "name": "Solenoid valve",
+    "normalizedCode": "e0433v4",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1182,
+        "internalPage": "4705",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1182.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "E0433V5",
+    "name": "Solenoid valve",
+    "normalizedCode": "e0433v5",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1182,
+        "internalPage": "4705",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1182.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "E0433V6",
+    "name": "Solenoid valve",
+    "normalizedCode": "e0433v6",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1182,
+        "internalPage": "4705",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1182.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "E0433V7",
+    "name": "Solenoid valve",
+    "normalizedCode": "e0433v7",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1182,
+        "internalPage": "4705",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1182.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "E0433V8",
+    "name": "Solenoid valve",
+    "normalizedCode": "e0433v8",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1182,
+        "internalPage": "4705",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1182.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "E0433V9",
+    "name": "Solenoid valve",
+    "normalizedCode": "e0433v9",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1183,
+        "internalPage": "4706",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1183.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "E0433V10",
+    "name": "Solenoid valve",
+    "normalizedCode": "e0433v10",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1183,
+        "internalPage": "4706",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1183.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "E0433V11",
+    "name": "Solenoid valve",
+    "normalizedCode": "e0433v11",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1183,
+        "internalPage": "4706",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1183.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "E0433V12",
+    "name": "Solenoid valve",
+    "normalizedCode": "e0433v12",
+    "signals": [
+      "Start"
+    ],
+    "types": [
+      "DO"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1183,
+        "internalPage": "4706",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1183.png"
       }
     ],
     "location": "Tower 2 (Phase 2)",
@@ -52917,6 +54124,7 @@
     "name": "Conveyor",
     "normalizedCode": "f0518",
     "signals": [
+      "Anti Block",
       "Estop",
       "Running",
       "Start"
@@ -52926,7 +54134,8 @@
       "DO"
     ],
     "cabinets": [
-      "MCCB1-RI21"
+      "MCCB1-RI21",
+      "PLC2"
     ],
     "drawings": [
       {
@@ -52934,6 +54143,12 @@
         "page": 88,
         "internalPage": "2148",
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB1_page_88.png"
+      },
+      {
+        "cabinet": "PLC2",
+        "page": 906,
+        "internalPage": "4105",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/PLC2_page_906.png"
       }
     ],
     "location": "Tower 2 (Phase 2)",
@@ -53455,6 +54670,102 @@
     ],
     "location": "Tower 2 (Phase 1)",
     "locationId": "tower2_p1"
+  },
+  {
+    "code": "FCV9101",
+    "name": "调节阀",
+    "normalizedCode": "fcv9101",
+    "signals": [],
+    "types": [
+      "AO"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "FCV9201",
+    "name": "调节阀",
+    "normalizedCode": "fcv9201",
+    "signals": [],
+    "types": [
+      "AO"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "FCV9301",
+    "name": "调节阀",
+    "normalizedCode": "fcv9301",
+    "signals": [],
+    "types": [
+      "AO"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "FM9101",
+    "name": "管路",
+    "normalizedCode": "fm9101",
+    "signals": [
+      "流量"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "FM9201",
+    "name": "管路",
+    "normalizedCode": "fm9201",
+    "signals": [
+      "流量"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "FM9301",
+    "name": "管路",
+    "normalizedCode": "fm9301",
+    "signals": [
+      "流量"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
   },
   {
     "code": "G01",
@@ -57414,6 +58725,7 @@
     "name": "Conveyor",
     "normalizedCode": "hl0213",
     "signals": [
+      "Anti Block",
       "Estop",
       "Running",
       "Start"
@@ -57423,7 +58735,8 @@
       "DO"
     ],
     "cabinets": [
-      "MCCB1-RI21"
+      "MCCB1-RI21",
+      "PLC2"
     ],
     "drawings": [
       {
@@ -57431,6 +58744,12 @@
         "page": 69,
         "internalPage": "2129",
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB1_page_69.png"
+      },
+      {
+        "cabinet": "PLC2",
+        "page": 906,
+        "internalPage": "4105",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/PLC2_page_906.png"
       }
     ],
     "location": "Tower 2 (Phase 2)",
@@ -57441,6 +58760,7 @@
     "name": "Conveyor",
     "normalizedCode": "hl0214",
     "signals": [
+      "Anti Block",
       "Estop",
       "Running",
       "Start"
@@ -57450,7 +58770,8 @@
       "DO"
     ],
     "cabinets": [
-      "MCCB1-RI21"
+      "MCCB1-RI21",
+      "PLC2"
     ],
     "drawings": [
       {
@@ -57458,6 +58779,12 @@
         "page": 70,
         "internalPage": "2130",
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB1_page_70.png"
+      },
+      {
+        "cabinet": "PLC2",
+        "page": 906,
+        "internalPage": "4105",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/PLC2_page_906.png"
       }
     ],
     "location": "Tower 2 (Phase 2)",
@@ -57468,6 +58795,7 @@
     "name": "Conveyor",
     "normalizedCode": "hl0215",
     "signals": [
+      "Anti Block",
       "Estop",
       "Running",
       "Start"
@@ -57477,7 +58805,8 @@
       "DO"
     ],
     "cabinets": [
-      "MCCB1-RI21"
+      "MCCB1-RI21",
+      "PLC2"
     ],
     "drawings": [
       {
@@ -57485,6 +58814,12 @@
         "page": 71,
         "internalPage": "2131",
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB1_page_71.png"
+      },
+      {
+        "cabinet": "PLC2",
+        "page": 906,
+        "internalPage": "4105",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/PLC2_page_906.png"
       }
     ],
     "location": "Tower 2 (Phase 2)",
@@ -57496,7 +58831,9 @@
     "normalizedCode": "hl0216",
     "signals": [
       "Estop",
+      "Lower Deviation",
       "Running",
+      "Speed",
       "Start",
       "Upper Deviation",
       "电流检测"
@@ -57508,6 +58845,7 @@
     ],
     "cabinets": [
       "MCCB1-RI21",
+      "PLC2",
       "RCB9"
     ],
     "drawings": [
@@ -57516,6 +58854,12 @@
         "page": 72,
         "internalPage": "2132",
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB1_page_72.png"
+      },
+      {
+        "cabinet": "PLC2",
+        "page": 912,
+        "internalPage": "4111",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/PLC2_page_912.png"
       },
       {
         "cabinet": "RCB9",
@@ -58907,6 +60251,78 @@
     "locationId": "tower2_p2"
   },
   {
+    "code": "LSH9101",
+    "name": "High Level",
+    "normalizedCode": "lsh9101",
+    "signals": [
+      "High Level"
+    ],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1185,
+        "internalPage": "4708",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1185.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "LSH9201",
+    "name": "High Level",
+    "normalizedCode": "lsh9201",
+    "signals": [
+      "High Level"
+    ],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1185,
+        "internalPage": "4708",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1185.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "LSH9301",
+    "name": "High Level",
+    "normalizedCode": "lsh9301",
+    "signals": [
+      "High Level"
+    ],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1185,
+        "internalPage": "4708",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1185.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
     "code": "LSL-1001",
     "name": "High Level",
     "normalizedCode": "lsl.1001",
@@ -59256,6 +60672,150 @@
     ],
     "location": "Tower 2 (Phase 1)",
     "locationId": "tower2_p1"
+  },
+  {
+    "code": "LSL9101",
+    "name": "Low Level",
+    "normalizedCode": "lsl9101",
+    "signals": [
+      "Low Level"
+    ],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1186,
+        "internalPage": "4709",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1186.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "LSL9201",
+    "name": "Low Level",
+    "normalizedCode": "lsl9201",
+    "signals": [
+      "Low Level"
+    ],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1186,
+        "internalPage": "4709",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1186.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "LSL9301",
+    "name": "Low Level",
+    "normalizedCode": "lsl9301",
+    "signals": [
+      "Low Level"
+    ],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1186,
+        "internalPage": "4709",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1186.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "LSM9101",
+    "name": "High Level",
+    "normalizedCode": "lsm9101",
+    "signals": [
+      "High Level"
+    ],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1185,
+        "internalPage": "4708",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1185.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "LSM9201",
+    "name": "High Level",
+    "normalizedCode": "lsm9201",
+    "signals": [
+      "High Level"
+    ],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1185,
+        "internalPage": "4708",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1185.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "LSM9301",
+    "name": "High Level",
+    "normalizedCode": "lsm9301",
+    "signals": [
+      "High Level"
+    ],
+    "types": [
+      "DI"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [
+      {
+        "cabinet": "RCB10",
+        "page": 1185,
+        "internalPage": "4708",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/RCB10_page_1185.png"
+      }
+    ],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
   },
   {
     "code": "LW101",
@@ -61193,7 +62753,9 @@
     "normalizedCode": "m0207",
     "signals": [
       "Estop",
+      "Lower Deviation",
       "Running",
+      "Speed",
       "Start",
       "Upper Deviation",
       "电流检测"
@@ -61205,6 +62767,7 @@
     ],
     "cabinets": [
       "MCCB2-RI22",
+      "PLC2",
       "RCB9"
     ],
     "drawings": [
@@ -61213,6 +62776,12 @@
         "page": 172,
         "internalPage": "2250",
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB2_page_172.png"
+      },
+      {
+        "cabinet": "PLC2",
+        "page": 907,
+        "internalPage": "4106",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/PLC2_page_907.png"
       },
       {
         "cabinet": "RCB9",
@@ -61604,12 +63173,15 @@
   },
   {
     "code": "MIB3",
-    "name": "LED",
+    "name": "Add",
     "normalizedCode": "mib3",
     "signals": [
-      "Alarm"
+      "Alarm",
+      "OK",
+      "Start"
     ],
     "types": [
+      "DI",
       "DO"
     ],
     "cabinets": [
@@ -61657,12 +63229,15 @@
   },
   {
     "code": "MIB4",
-    "name": "LED",
+    "name": "Add",
     "normalizedCode": "mib4",
     "signals": [
-      "Alarm"
+      "Alarm",
+      "OK",
+      "Start"
     ],
     "types": [
+      "DI",
       "DO"
     ],
     "cabinets": [
@@ -61710,12 +63285,15 @@
   },
   {
     "code": "MIB5",
-    "name": "LED",
+    "name": "Add",
     "normalizedCode": "mib5",
     "signals": [
-      "Alarm"
+      "Alarm",
+      "OK",
+      "Start"
     ],
     "types": [
+      "DI",
       "DO"
     ],
     "cabinets": [
@@ -61734,12 +63312,15 @@
   },
   {
     "code": "MIB6",
-    "name": "LED",
+    "name": "Add",
     "normalizedCode": "mib6",
     "signals": [
-      "Alarm"
+      "Alarm",
+      "OK",
+      "Start"
     ],
     "types": [
+      "DI",
       "DO"
     ],
     "cabinets": [
@@ -65164,6 +66745,57 @@
     "drawings": [],
     "location": "Tower 2 (Phase 1)",
     "locationId": "tower2_p1"
+  },
+  {
+    "code": "PT9101",
+    "name": "管路",
+    "normalizedCode": "pt9101",
+    "signals": [
+      "压力"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "PT9201",
+    "name": "管路",
+    "normalizedCode": "pt9201",
+    "signals": [
+      "压力"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
+  },
+  {
+    "code": "PT9301",
+    "name": "管路",
+    "normalizedCode": "pt9301",
+    "signals": [
+      "压力"
+    ],
+    "types": [
+      "AI"
+    ],
+    "cabinets": [
+      "RCB10"
+    ],
+    "drawings": [],
+    "location": "Tower 2 (Phase 2)",
+    "locationId": "tower2_p2"
   },
   {
     "code": "PU-1001",
@@ -73473,6 +75105,7 @@
       "DO"
     ],
     "cabinets": [
+      "RCB10",
       "RCB5"
     ],
     "drawings": [
@@ -73500,6 +75133,7 @@
       "DO"
     ],
     "cabinets": [
+      "RCB10",
       "RCB5"
     ],
     "drawings": [
@@ -78282,6 +79916,12 @@
         "page": 830,
         "internalPage": "3937",
         "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB1_page_830.png"
+      },
+      {
+        "cabinet": "PLC2",
+        "page": 928,
+        "internalPage": "4128",
+        "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/PLC2_page_928.png"
       },
       {
         "cabinet": "RCB5",

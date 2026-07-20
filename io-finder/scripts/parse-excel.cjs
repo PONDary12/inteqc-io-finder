@@ -218,11 +218,28 @@ function findCabinetCol(headerRow) {
   return 8; // fallback
 }
 
-/** Check if a row is a valid data row (has numeric sequence number in the sequence column). */
+/** Check if a row is a valid data row.
+ *  Accepts:
+ *   - Numeric sequence number in the sequence column (normal case)
+ *   - Empty sequence (offset col) when the address column (offset+1) has a valid I/O address
+ *     (e.g. RCB10 AI section where 序号 is always blank)
+ *   - YES / PASS in the sequence column (verification markers) when address column is valid
+ *     (e.g. rows marked as checked/passed before the user's Excel fix)
+ */
 function isDataRow(row, offset = 0) {
   const seq = row[offset];
-  if (seq === undefined || seq === null || seq === '') return false;
-  return typeof seq === 'number' || /^\d+$/.test(String(seq).trim());
+  // Numeric value: always valid
+  if (typeof seq === 'number') return true;
+  const seqStr = seq === undefined || seq === null ? '' : String(seq).trim();
+  // Pure numeric string: valid
+  if (/^\d+$/.test(seqStr)) return true;
+  // Empty sequence or YES/PASS marker: validate by address column
+  if (seqStr === '' || seqStr.toUpperCase() === 'YES' || seqStr.toUpperCase() === 'PASS') {
+    const addr = row[offset + 1];
+    const addrStr = addr === undefined || addr === null ? '' : String(addr).trim();
+    return /^(I|Q|PIW|PQW)\d/i.test(addrStr);
+  }
+  return false;
 }
 
 /** Parse a section (DI, AI, or DO) starting after the marker row.
@@ -379,6 +396,12 @@ function parseSheet(wb, sheetName, locationId) {
       let equipmentName = nameEN || nameCN;
       let signalName = signalEN || signalCN;
       let equipmentCode = cell(row, cols.code);
+
+      // Fix truncated codes like "2#", "3#", "4#" where the Excel stores the code across
+      // two columns: 设备编号="2#"  and  设备名称="烘干机" → combine into "2#烘干机"
+      if (/^\d+#$/.test(equipmentCode) && nameCN) {
+        equipmentCode = equipmentCode + nameCN;
+      }
 
       // Extract Bin/Silo codes like E02, B62, P15 from Chinese name if not in code/name
       // Examples: E02仓下料位, P15仓下料位, B62仓...

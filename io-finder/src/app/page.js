@@ -98,21 +98,21 @@ export default function SearchHome() {
       item => item.normalizedCode === normalizeCode(query)
     );
     if (exactCodeMatch) {
-      router.push(`/machine/${exactCodeMatch.locationId}/${exactCodeMatch.cabinets[0]}/${exactCodeMatch.code}`);
+      router.push(`/machine/${exactCodeMatch.locationId}/${encodeURIComponent(exactCodeMatch.cabinets[0])}/${encodeURIComponent(exactCodeMatch.code)}`);
       return;
     }
 
     // Otherwise redirect to detail page of the first matched suggestion
     if (suggestions.length > 0) {
       const bestMatch = suggestions[0];
-      router.push(`/machine/${bestMatch.locationId}/${bestMatch.cabinets[0]}/${bestMatch.code}`);
+      router.push(`/machine/${bestMatch.locationId}/${encodeURIComponent(bestMatch.cabinets[0])}/${encodeURIComponent(bestMatch.code)}`);
     }
   };
 
   const handleSelectSuggestion = (item) => {
     setQuery(item.code || item.name);
     setShowSuggestions(false);
-    router.push(`/machine/${item.locationId}/${item.cabinets[0]}/${item.code}`);
+    router.push(`/machine/${item.locationId}/${encodeURIComponent(item.cabinets[0])}/${encodeURIComponent(item.code)}`);
   };
 
   // Scroll active suggestion into view
