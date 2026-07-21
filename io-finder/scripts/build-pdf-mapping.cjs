@@ -172,12 +172,41 @@ async function scanPdf(loc) {
   const tempAddressRecords = {};
   const addrRegex = /\b(?:I|Q)\d+\.\d+\b|\b(?:PIW|PQW)\d+\b/g;
 
-  res.pages.forEach(page => {
+  const pageInfos = res.pages.map(page => ({
+    num: page.num,
+    text: page.text,
+    internalPageStr: extractInternalPage(page.text)
+  }));
+
+  // Interpolate missing internal page numbers where PDF page gap equals internal page gap
+  for (let i = 0; i < pageInfos.length; i++) {
+    if (!pageInfos[i].internalPageStr) {
+      let prevIdx = i - 1;
+      while (prevIdx >= 0 && !pageInfos[prevIdx].internalPageStr) prevIdx--;
+      let nextIdx = i + 1;
+      while (nextIdx < pageInfos.length && !pageInfos[nextIdx].internalPageStr) nextIdx++;
+
+      if (prevIdx >= 0 && nextIdx < pageInfos.length) {
+        const prevP = parseInt(pageInfos[prevIdx].internalPageStr, 10);
+        const nextP = parseInt(pageInfos[nextIdx].internalPageStr, 10);
+        const pdfGap = pageInfos[nextIdx].num - pageInfos[prevIdx].num;
+        const intGap = nextP - prevP;
+
+        if (!isNaN(prevP) && !isNaN(nextP) && pdfGap === intGap) {
+          const offset = pageInfos[i].num - pageInfos[prevIdx].num;
+          pageInfos[i].internalPageStr = String(prevP + offset);
+        }
+      }
+    }
+  }
+
+  pageInfos.forEach(page => {
     const text = page.text;
     const pageNum = page.num;
 
-    const internalPageStr = extractInternalPage(text);
+    const internalPageStr = page.internalPageStr;
     if (!internalPageStr) return;
+
 
     // A. Cabinet mapping
     let cabinet = null;

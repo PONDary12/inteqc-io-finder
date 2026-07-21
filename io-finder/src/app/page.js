@@ -8,8 +8,9 @@ function normalizeCode(code) {
   return String(code)
     .trim()
     .toLowerCase()
-    .replace(/[_\-]/g, '.');
+    .replace(/[\s_\-\.\,\/\\]/g, '');
 }
+
 
 export default function SearchHome() {
   const router = useRouter();

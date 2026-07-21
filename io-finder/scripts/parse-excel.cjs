@@ -51,8 +51,70 @@ function normalizeCode(code) {
   return String(code)
     .trim()
     .toLowerCase()
-    .replace(/[_\-]/g, '.');
+    .replace(/[\s_\-\.\,\/\\]/g, '');
 }
+
+const RCB4_EQUIP_INTERNAL_PAGES = {
+  'WAV_1001': '1703',
+  'WAV_1002': '1704',
+  'WAV_1003': '1705',
+  'WAV_2001': '1706',
+  'WAV_2002': '1707',
+  'WAV_2003': '1708',
+  'WAV_2004': '1709',
+  'WAV_2005': '1710',
+  'WBYV1': '1711',
+  'WBYV2': '1712',
+  'WBYV3': '1713',
+  'WLSH_1001': '1716',
+  'WLSL_1001': '1716',
+  'WLSH_2001': '1716',
+  'WLSM_2001': '1716',
+  'WLSL_2001': '1716',
+};
+
+const DATA_OVERRIDES = {
+  'tower2_p2': {
+    'Q660.6': { equipmentCode: 'VE05', equipmentName: 'Butterfly Valve', signalName: 'Open' },
+    'I901.4': { signalName: 'TO 2D01' },
+    'I901.5': { signalName: 'TO 2D02' },
+    'I901.6': { signalName: 'TO 2D03' },
+    'I901.7': { signalName: 'TO 2D04' },
+    'I902.0': { signalName: 'TO 2D05' },
+    'I902.1': { signalName: 'TO 2D06' },
+    'I902.2': { signalName: 'TO 2D07' },
+    'I902.3': { signalName: 'TO 2D08' },
+    'I902.4': { signalName: 'TO 2D09' },
+    'I902.5': { signalName: 'TO 2D10' },
+
+    'I802.4': { signalName: 'TO 2D11' },
+    'I802.5': { signalName: 'TO 2D12' },
+    'I802.6': { signalName: 'TO 2D13' },
+    'I802.7': { signalName: 'TO 2D14' },
+    'I803.0': { signalName: 'TO 2D15' },
+    'I803.1': { signalName: 'TO 2D16' },
+    'I803.2': { signalName: 'TO 2D17' },
+    'I803.3': { signalName: 'TO 2D18' },
+    'I803.4': { signalName: 'TO 2D19' },
+    'I803.5': { signalName: 'TO 2D20' },
+    'I803.6': { signalName: 'TO 2D21' },
+    'I803.7': { signalName: 'TO 2D22' },
+  },
+  'tower2_p1': {
+    'I206.6': { equipmentCode: 'G0104_2', equipmentName: 'Conveyor', signalName: 'FOR. Limit' },
+    'Q205.5': { equipmentCode: 'G0104_2', equipmentName: 'Conveyor', signalName: 'REV.' },
+    'I228.3': { equipmentCode: 'G0203_2', equipmentName: 'Conveyor', signalName: 'FOR. Limit' },
+    'I246.7': { equipmentCode: 'B0108' },
+    'I247.0': { equipmentCode: 'B0108' },
+    'Q233.5': { equipmentCode: 'B0108' },
+    'I247.1': { equipmentCode: 'B0109' },
+    'I247.2': { equipmentCode: 'B0109' },
+    'Q233.6': { equipmentCode: 'B0109' },
+    'I286.0': { equipmentCode: 'AV-4003', equipmentName: 'Pneumatic Valve', signalName: 'Openning' },
+    'I286.1': { equipmentCode: 'AV-4003', equipmentName: 'Pneumatic Valve', signalName: 'Closing' },
+  }
+};
+
 
 function normalizeAddress(addr) {
   if (!addr) return '';
@@ -397,6 +459,14 @@ function parseSheet(wb, sheetName, locationId) {
       let signalName = signalEN || signalCN;
       let equipmentCode = cell(row, cols.code);
 
+      // Apply data overrides if present
+      if (DATA_OVERRIDES[locationId] && DATA_OVERRIDES[locationId][address]) {
+        const ov = DATA_OVERRIDES[locationId][address];
+        if (ov.equipmentCode) equipmentCode = ov.equipmentCode;
+        if (ov.equipmentName) equipmentName = ov.equipmentName;
+        if (ov.signalName) signalName = ov.signalName;
+      }
+
       // Fix truncated codes like "2#", "3#", "4#" where the Excel stores the code across
       // two columns: 设备编号="2#"  and  设备名称="烘干机" → combine into "2#烘干机"
       if (/^\d+#$/.test(equipmentCode) && nameCN) {
@@ -487,6 +557,16 @@ function parseSheet(wb, sheetName, locationId) {
           drawingPdfUrl = locMap.drawingUrl || null;
         }
       }
+
+      // 2b. Special fallback for 新增RCB4 equipment
+      if (!drawingPage && mappedCabinet === 'RCB4' && RCB4_EQUIP_INTERNAL_PAGES[equipmentCode]) {
+        internalPage = RCB4_EQUIP_INTERNAL_PAGES[equipmentCode];
+        if (locMap.cabinets && locMap.cabinets['RCB4'] && locMap.cabinets['RCB4'][internalPage]) {
+          drawingPage = locMap.cabinets['RCB4'][internalPage];
+          drawingPdfUrl = locMap.drawingUrl || null;
+        }
+      }
+
 
       // 3. Convert to cabinet-specific PNG image link if mapped
       if (drawingPage && locMap.cabinets) {
