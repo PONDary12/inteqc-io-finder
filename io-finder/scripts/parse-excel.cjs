@@ -55,22 +55,22 @@ function normalizeCode(code) {
 }
 
 const RCB4_EQUIP_INTERNAL_PAGES = {
-  'WAV_1001': '1703',
-  'WAV_1002': '1704',
-  'WAV_1003': '1705',
-  'WAV_2001': '1706',
-  'WAV_2002': '1707',
-  'WAV_2003': '1708',
-  'WAV_2004': '1709',
-  'WAV_2005': '1710',
-  'WBYV1': '1711',
-  'WBYV2': '1712',
-  'WBYV3': '1713',
-  'WLSH_1001': '1716',
-  'WLSL_1001': '1716',
-  'WLSH_2001': '1716',
-  'WLSM_2001': '1716',
-  'WLSL_2001': '1716',
+  'WAV_1001': '1702',
+  'WAV_1002': '1703',
+  'WAV_1003': '1704',
+  'WAV_2001': '1705',
+  'WAV_2002': '1706',
+  'WAV_2003': '1707',
+  'WAV_2004': '1708',
+  'WAV_2005': '1709',
+  'WBYV1': '1710',
+  'WBYV2': '1711',
+  'WBYV3': '1712',
+  'WLSH_1001': '1715',
+  'WLSL_1001': '1715',
+  'WLSH_2001': '1715',
+  'WLSM_2001': '1715',
+  'WLSL_2001': '1715',
 };
 
 const DATA_OVERRIDES = {
@@ -104,6 +104,7 @@ const DATA_OVERRIDES = {
     'I206.6': { equipmentCode: 'G0104_2', equipmentName: 'Conveyor', signalName: 'FOR. Limit' },
     'Q205.5': { equipmentCode: 'G0104_2', equipmentName: 'Conveyor', signalName: 'REV.' },
     'I228.3': { equipmentCode: 'G0203_2', equipmentName: 'Conveyor', signalName: 'FOR. Limit' },
+    'Q220.3': { equipmentCode: 'G0203_2', equipmentName: 'Conveyor', signalName: 'REV.' },
     'I246.7': { equipmentCode: 'B0108' },
     'I247.0': { equipmentCode: 'B0108' },
     'Q233.5': { equipmentCode: 'B0108' },
@@ -114,6 +115,7 @@ const DATA_OVERRIDES = {
     'I286.1': { equipmentCode: 'AV-4003', equipmentName: 'Pneumatic Valve', signalName: 'Closing' },
   }
 };
+
 
 
 function normalizeAddress(addr) {

@@ -56199,6 +56199,7 @@
     "signals": [
       "FOR.",
       "FOR. Limit",
+      "REV.",
       "REV.Limit"
     ],
     "types": [
@@ -56292,12 +56293,6 @@
         "page": 14,
         "internalPage": "517",
         "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/MCC7-8_page_14.png"
-      },
-      {
-        "cabinet": "MCC7-8",
-        "page": 9,
-        "internalPage": "512",
-        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/MCC7-8_page_9.png"
       },
       {
         "cabinet": "MCC7-8",
@@ -76684,9 +76679,9 @@
     "drawings": [
       {
         "cabinet": "新增RCB4",
-        "page": 3,
-        "internalPage": "1703",
-        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_3.png"
+        "page": 2,
+        "internalPage": "1702",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_2.png"
       }
     ],
     "location": "Tower 2 (Phase 1)",
@@ -76711,9 +76706,9 @@
     "drawings": [
       {
         "cabinet": "新增RCB4",
-        "page": 4,
-        "internalPage": "1704",
-        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_4.png"
+        "page": 3,
+        "internalPage": "1703",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_3.png"
       }
     ],
     "location": "Tower 2 (Phase 1)",
@@ -76738,9 +76733,9 @@
     "drawings": [
       {
         "cabinet": "新增RCB4",
-        "page": 5,
-        "internalPage": "1705",
-        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_5.png"
+        "page": 4,
+        "internalPage": "1704",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_4.png"
       }
     ],
     "location": "Tower 2 (Phase 1)",
@@ -76765,9 +76760,9 @@
     "drawings": [
       {
         "cabinet": "新增RCB4",
-        "page": 6,
-        "internalPage": "1706",
-        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_6.png"
+        "page": 5,
+        "internalPage": "1705",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_5.png"
       }
     ],
     "location": "Tower 2 (Phase 1)",
@@ -76792,9 +76787,9 @@
     "drawings": [
       {
         "cabinet": "新增RCB4",
-        "page": 7,
-        "internalPage": "1707",
-        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_7.png"
+        "page": 6,
+        "internalPage": "1706",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_6.png"
       }
     ],
     "location": "Tower 2 (Phase 1)",
@@ -76819,9 +76814,9 @@
     "drawings": [
       {
         "cabinet": "新增RCB4",
-        "page": 8,
-        "internalPage": "1708",
-        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_8.png"
+        "page": 7,
+        "internalPage": "1707",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_7.png"
       }
     ],
     "location": "Tower 2 (Phase 1)",
@@ -76846,9 +76841,9 @@
     "drawings": [
       {
         "cabinet": "新增RCB4",
-        "page": 9,
-        "internalPage": "1709",
-        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_9.png"
+        "page": 8,
+        "internalPage": "1708",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_8.png"
       }
     ],
     "location": "Tower 2 (Phase 1)",
@@ -76873,9 +76868,9 @@
     "drawings": [
       {
         "cabinet": "新增RCB4",
-        "page": 10,
-        "internalPage": "1710",
-        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_10.png"
+        "page": 9,
+        "internalPage": "1709",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_9.png"
       }
     ],
     "location": "Tower 2 (Phase 1)",
@@ -76900,9 +76895,9 @@
     "drawings": [
       {
         "cabinet": "新增RCB4",
-        "page": 11,
-        "internalPage": "1711",
-        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_11.png"
+        "page": 10,
+        "internalPage": "1710",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_10.png"
       }
     ],
     "location": "Tower 2 (Phase 1)",
@@ -76927,9 +76922,9 @@
     "drawings": [
       {
         "cabinet": "新增RCB4",
-        "page": 12,
-        "internalPage": "1712",
-        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_12.png"
+        "page": 11,
+        "internalPage": "1711",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_11.png"
       }
     ],
     "location": "Tower 2 (Phase 1)",
@@ -76954,9 +76949,9 @@
     "drawings": [
       {
         "cabinet": "新增RCB4",
-        "page": 13,
-        "internalPage": "1713",
-        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_13.png"
+        "page": 12,
+        "internalPage": "1712",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_12.png"
       }
     ],
     "location": "Tower 2 (Phase 1)",
@@ -76978,9 +76973,9 @@
     "drawings": [
       {
         "cabinet": "新增RCB4",
-        "page": 16,
-        "internalPage": "1716",
-        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_16.png"
+        "page": 15,
+        "internalPage": "1715",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_15.png"
       }
     ],
     "location": "Tower 2 (Phase 1)",
@@ -77002,9 +76997,9 @@
     "drawings": [
       {
         "cabinet": "新增RCB4",
-        "page": 16,
-        "internalPage": "1716",
-        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_16.png"
+        "page": 15,
+        "internalPage": "1715",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_15.png"
       }
     ],
     "location": "Tower 2 (Phase 1)",
@@ -77026,9 +77021,9 @@
     "drawings": [
       {
         "cabinet": "新增RCB4",
-        "page": 16,
-        "internalPage": "1716",
-        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_16.png"
+        "page": 15,
+        "internalPage": "1715",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_15.png"
       }
     ],
     "location": "Tower 2 (Phase 1)",
@@ -77050,9 +77045,9 @@
     "drawings": [
       {
         "cabinet": "新增RCB4",
-        "page": 16,
-        "internalPage": "1716",
-        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_16.png"
+        "page": 15,
+        "internalPage": "1715",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_15.png"
       }
     ],
     "location": "Tower 2 (Phase 1)",
@@ -77074,9 +77069,9 @@
     "drawings": [
       {
         "cabinet": "新增RCB4",
-        "page": 16,
-        "internalPage": "1716",
-        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_16.png"
+        "page": 15,
+        "internalPage": "1715",
+        "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/RCB4_page_15.png"
       }
     ],
     "location": "Tower 2 (Phase 1)",
