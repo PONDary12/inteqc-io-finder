@@ -51,29 +51,95 @@ export default function SearchHome() {
     loadData();
   }, []);
 
-  // Compute suggestions dynamically during render
+  // Compute suggestions dynamically during render with relevance scoring
   const trimmedQuery = query.toLowerCase().trim();
   const normalizedQuery = normalizeCode(query);
-  const filtered = query.trim() ? searchIndex.filter(item => {
-    // Location filter
-    if (selectedLocation !== "all" && item.locationId !== selectedLocation) {
-      return false;
-    }
-    
-    // Search matches code, name, cabinet, or I/O address
-    const codeMatch = item.normalizedCode && item.normalizedCode.includes(normalizedQuery);
-    const nameMatch = item.name && item.name.toLowerCase().includes(trimmedQuery);
-    const cabMatch = item.cabinets && item.cabinets.some(c => c.toLowerCase().includes(trimmedQuery));
-    const addrMatch = item.addresses && item.addresses.some(a => {
-      const cleanA = a.toLowerCase().replace(/^%/, '');
-      const cleanQ = trimmedQuery.replace(/^%/, '');
-      return cleanA.includes(cleanQ) || normalizeCode(cleanA).includes(normalizeCode(cleanQ));
-    });
-    
-    return codeMatch || nameMatch || cabMatch || addrMatch;
-  }) : [];
+  const cleanQ = trimmedQuery.replace(/^%/, '');
+  const normQ = normalizeCode(cleanQ);
 
-  const suggestions = filtered.slice(0, 8);
+  const scoredItems = [];
+
+  if (query.trim()) {
+    for (const item of searchIndex) {
+      if (selectedLocation !== "all" && item.locationId !== selectedLocation) {
+        continue;
+      }
+
+      const itemCode = (item.code || '').toLowerCase();
+      const itemNormCode = item.normalizedCode || '';
+      const itemName = (item.name || '').toLowerCase();
+
+      let score = 0;
+
+      // 1. Exact match on Equipment Code (Top Priority: 10,000)
+      if (itemCode === trimmedQuery || (itemNormCode && itemNormCode === normalizedQuery)) {
+        score += 10000;
+      }
+      // 2. Code starts with query (5,000)
+      else if (itemCode.startsWith(trimmedQuery) || (itemNormCode && itemNormCode.startsWith(normalizedQuery))) {
+        score += 5000;
+      }
+      // 3. Code contains query (2,000)
+      else if (itemNormCode && itemNormCode.includes(normalizedQuery)) {
+        score += 2000;
+      }
+
+      // 4. Exact I/O Address Match (4,000)
+      const hasExactAddr = item.addresses && item.addresses.some(a => {
+        const cleanA = a.toLowerCase().replace(/^%/, '');
+        return cleanA === cleanQ || normalizeCode(cleanA) === normQ;
+      });
+      if (hasExactAddr) {
+        score += 4000;
+      }
+
+      // 5. Equipment Name matches
+      if (itemName === trimmedQuery) {
+        score += 3000;
+      } else if (itemName.startsWith(trimmedQuery)) {
+        score += 1500;
+      } else if (itemName.includes(trimmedQuery)) {
+        score += 800;
+      }
+
+      // 6. Address Prefix or Contains
+      if (!hasExactAddr && item.addresses) {
+        const hasAddrPrefix = item.addresses.some(a => {
+          const cleanA = a.toLowerCase().replace(/^%/, '');
+          return cleanA.startsWith(cleanQ);
+        });
+        if (hasAddrPrefix) {
+          score += 1000;
+        } else {
+          const hasAddrContains = item.addresses.some(a => {
+            const cleanA = a.toLowerCase().replace(/^%/, '');
+            return cleanA.includes(cleanQ) || (normQ.length >= 3 && normalizeCode(cleanA).includes(normQ));
+          });
+          if (hasAddrContains) {
+            score += 200;
+          }
+        }
+      }
+
+      // 7. Cabinet match
+      if (item.cabinets && item.cabinets.some(c => c.toLowerCase().includes(trimmedQuery))) {
+        score += 100;
+      }
+
+      if (score > 0) {
+        scoredItems.push({ item, score });
+      }
+    }
+
+    scoredItems.sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      const codeA = a.item.code || a.item.name || '';
+      const codeB = b.item.code || b.item.name || '';
+      return codeA.localeCompare(codeB, undefined, { numeric: true });
+    });
+  }
+
+  const suggestions = scoredItems.slice(0, 8).map(s => s.item);
 
   // Handle keyboard navigation for suggestions
   const handleKeyDown = (e) => {
@@ -99,27 +165,7 @@ export default function SearchHome() {
   const handleSearch = () => {
     if (!query.trim()) return;
     
-    // Find exact match in code
-    const exactCodeMatch = searchIndex.find(
-      item => item.normalizedCode && item.normalizedCode === normalizeCode(query)
-    );
-    if (exactCodeMatch) {
-      const codeParam = exactCodeMatch.code || exactCodeMatch.name || "GENERAL";
-      router.push(`/machine/${exactCodeMatch.locationId}/${encodeURIComponent(exactCodeMatch.cabinets[0] || 'PLC')}/${encodeURIComponent(codeParam)}`);
-      return;
-    }
-
-    // Find exact match in address
-    const exactAddrMatch = searchIndex.find(
-      item => item.addresses && item.addresses.some(a => a.toLowerCase().replace(/^%/, '') === trimmedQuery.replace(/^%/, ''))
-    );
-    if (exactAddrMatch) {
-      const codeParam = exactAddrMatch.code || exactAddrMatch.name || "GENERAL";
-      router.push(`/machine/${exactAddrMatch.locationId}/${encodeURIComponent(exactAddrMatch.cabinets[0] || 'PLC')}/${encodeURIComponent(codeParam)}`);
-      return;
-    }
-
-    // Otherwise redirect to detail page of the first matched suggestion
+    // Redirect to detail page of the highest scored suggestion
     if (suggestions.length > 0) {
       const bestMatch = suggestions[0];
       const codeParam = bestMatch.code || bestMatch.name || "GENERAL";
@@ -223,26 +269,37 @@ export default function SearchHome() {
             {/* Autocomplete dropdown suggestions */}
             {showSuggestions && suggestions.length > 0 && (
               <div style={styles.suggestionsList} ref={suggestionsRef}>
-                {suggestions.map((item, index) => (
-                  <div
-                    key={`${item.code}-${item.locationId}-${index}`}
-                    style={{
-                      ...styles.suggestionItem,
-                      ...(index === activeSuggestionIndex ? styles.suggestionItemActive : {}),
-                    }}
-                    onMouseDown={(e) => e.preventDefault()} // prevent blur
-                    onClick={() => handleSelectSuggestion(item)}
-                  >
-                    <div style={styles.itemMeta}>
-                      <span style={styles.itemCode}>{item.code || "N/A"}</span>
-                      <span style={styles.itemName}>{item.name}</span>
+                {suggestions.map((item, index) => {
+                  const displayTitle = item.code || item.name || "General Signals";
+                  const displaySubtitle = item.code 
+                    ? (item.name || "Machine Circuit")
+                    : (item.signals && item.signals.length > 0
+                        ? `Signal: ${item.signals.slice(0, 2).join(', ')}`
+                        : item.addresses && item.addresses.length > 0
+                        ? `${item.types?.join('/') || 'I/O'} · ${item.addresses.slice(0, 3).join(', ')}${item.addresses.length > 3 ? ` (+${item.addresses.length - 3})` : ''}`
+                        : "Circuit Signals");
+
+                  return (
+                    <div
+                      key={`${item.code || item.name || 'gen'}-${item.locationId}-${index}`}
+                      style={{
+                        ...styles.suggestionItem,
+                        ...(index === activeSuggestionIndex ? styles.suggestionItemActive : {}),
+                      }}
+                      onMouseDown={(e) => e.preventDefault()} // prevent blur
+                      onClick={() => handleSelectSuggestion(item)}
+                    >
+                      <div style={styles.itemMeta}>
+                        <span style={styles.itemCode}>{displayTitle}</span>
+                        <span style={styles.itemName}>{displaySubtitle}</span>
+                      </div>
+                      <div style={styles.itemLocation}>
+                        <span style={styles.itemCabinet}>🗄️ {item.cabinets.join(", ")}</span>
+                        <span style={styles.itemLocationTag}>🏭 {item.location}</span>
+                      </div>
                     </div>
-                    <div style={styles.itemLocation}>
-                      <span style={styles.itemCabinet}>🗄️ {item.cabinets.join(", ")}</span>
-                      <span style={styles.itemLocationTag}>🏭 {item.location}</span>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>

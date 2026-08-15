@@ -22,6 +22,41 @@ function normalizeAddress(addr) {
     .replace(/o/g, '0');
 }
 
+function compareAddresses(addrA, addrB) {
+  if (!addrA && !addrB) return 0;
+  if (!addrA) return 1;
+  if (!addrB) return -1;
+  
+  const cleanA = String(addrA).trim().toUpperCase();
+  const cleanB = String(addrB).trim().toUpperCase();
+
+  const matchA = cleanA.match(/^([A-Z]+)?(\d+)(?:\.(\d+))?$/);
+  const matchB = cleanB.match(/^([A-Z]+)?(\d+)(?:\.(\d+))?$/);
+
+  if (matchA && matchB) {
+    const prefixA = matchA[1] || '';
+    const prefixB = matchB[1] || '';
+
+    if (prefixA !== prefixB) {
+      const order = { 'I': 1, 'Q': 2, 'IW': 3, 'PIW': 4, 'QW': 5, 'PQW': 6 };
+      const rankA = order[prefixA] || 99;
+      const rankB = order[prefixB] || 99;
+      if (rankA !== rankB) return rankA - rankB;
+      return prefixA.localeCompare(prefixB);
+    }
+
+    const byteA = parseInt(matchA[2], 10);
+    const byteB = parseInt(matchB[2], 10);
+    if (byteA !== byteB) return byteA - byteB;
+
+    const bitA = matchA[3] !== undefined ? parseInt(matchA[3], 10) : 0;
+    const bitB = matchB[3] !== undefined ? parseInt(matchB[3], 10) : 0;
+    return bitA - bitB;
+  }
+
+  return cleanA.localeCompare(cleanB, undefined, { numeric: true, sensitivity: 'base' });
+}
+
 export default function MachineDetail({ params }) {
   const router = useRouter();
   
@@ -34,6 +69,8 @@ export default function MachineDetail({ params }) {
   const [ioData, setIoData] = useState(null);
   const [equipment, setEquipment] = useState(null);
   const [allLocationEquipments, setAllLocationEquipments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
   
   // Search & Filters
   const [searchQuery, setSearchQuery] = useState("");
@@ -42,10 +79,12 @@ export default function MachineDetail({ params }) {
 
   // Set page title dynamically
   useEffect(() => {
-    if (equipmentCode) {
+    if (equipment) {
+      document.title = `${equipment.displayTitle || equipment.code || equipment.name} | INTEQC I/O Finder`;
+    } else if (equipmentCode) {
       document.title = `${equipmentCode} | INTEQC I/O Finder`;
     }
-  }, [equipmentCode]);
+  }, [equipment, equipmentCode]);
   
   // Drawing states
   const [currentDrawing, setCurrentDrawing] = useState(null); // { cabinet, page, internalPage, drawingPdfUrl }
@@ -63,16 +102,37 @@ export default function MachineDetail({ params }) {
 
   // Load I/O data on mount
   useEffect(() => {
-    const matchEquip = (pCode, paramCode) => {
-      if (!pCode || !paramCode) return false;
-      const normP = pCode.trim().toLowerCase();
+    const matchEquip = (point, paramCode) => {
+      if (!point || !paramCode) return false;
       const normParam = paramCode.trim().toLowerCase();
-      if (normP === normParam) return true;
-      if (normP.startsWith(normParam + ':')) return true;
+      const pCode = point.equipmentCode ? point.equipmentCode.trim().toLowerCase() : '';
+      const pName = point.equipmentName ? point.equipmentName.trim().toLowerCase() : '';
+
+      // 1. Direct code matches
+      if (pCode) {
+        if (pCode === normParam) return true;
+        if (pCode.startsWith(normParam + ':') || normParam.startsWith(pCode + ':')) return true;
+        if (normalizeCode(pCode) === normalizeCode(normParam)) return true;
+      }
+
+      // 2. Direct name matches (for points without code or navigated by name)
+      if (pName) {
+        if (pName === normParam) return true;
+        if (pName.startsWith(normParam + ':') || normParam.startsWith(pName + ':')) return true;
+        if (normalizeCode(pName) === normalizeCode(normParam)) return true;
+      }
+
+      // 3. Fallback for "GENERAL" / "SPARE"
+      if ((normParam === 'general' || normParam === 'spare') && !pCode) {
+        return true;
+      }
+
       return false;
     };
 
     async function loadData() {
+      setIsLoading(true);
+      setNotFound(false);
       try {
         const res = await fetch("/data/io-data.json");
         const data = await res.json();
@@ -80,17 +140,22 @@ export default function MachineDetail({ params }) {
 
         // Find location
         const location = data.locations.find(l => l.id === locationId);
-        if (!location) return;
+        if (!location) {
+          setNotFound(true);
+          return;
+        }
 
         // Collect all unique equipments in this location for sidebar navigation
         const equipMap = new Map();
         location.cabinets.forEach(cab => {
           cab.io.forEach(point => {
-            if (point.equipmentCode && !equipMap.has(point.equipmentCode)) {
-              equipMap.set(point.equipmentCode, {
-                code: point.equipmentCode,
-                name: point.equipmentName,
-                cabinet: point.cabinet
+            const key = point.equipmentCode || point.equipmentName || "General Signals";
+            if (!equipMap.has(key)) {
+              equipMap.set(key, {
+                code: point.equipmentCode || "",
+                name: point.equipmentName || (point.equipmentCode ? "" : "General Signals"),
+                cabinet: point.cabinet,
+                param: point.equipmentCode || point.equipmentName || "GENERAL"
               });
             }
           });
@@ -103,7 +168,7 @@ export default function MachineDetail({ params }) {
 
         location.cabinets.forEach(cab => {
           cab.io.forEach(point => {
-            if (matchEquip(point.equipmentCode, equipmentCode)) {
+            if (matchEquip(point, equipmentCode)) {
               points.push(point);
               
               // Map drawings
@@ -123,10 +188,14 @@ export default function MachineDetail({ params }) {
         });
 
         if (points.length > 0) {
-          const equipName = points[0].equipmentName || "Unknown Machine";
+          const firstPoint = points[0];
+          const mainCode = firstPoint.equipmentCode || "";
+          const mainName = firstPoint.equipmentName || (mainCode ? "Machine Circuit" : "General Signals");
+
           setEquipment({
-            code: equipmentCode,
-            name: equipName,
+            code: mainCode,
+            name: mainName,
+            displayTitle: mainCode || mainName || equipmentCode,
             location: location.name,
             locationId: location.id,
             points: points
@@ -138,9 +207,14 @@ export default function MachineDetail({ params }) {
           if (list.length > 0) {
             setCurrentDrawing(list[0]);
           }
+        } else {
+          setNotFound(true);
         }
       } catch (err) {
         console.error("Failed to load details:", err);
+        setNotFound(true);
+      } finally {
+        setIsLoading(false);
       }
     }
     loadData();
@@ -173,7 +247,7 @@ export default function MachineDetail({ params }) {
       );
     }
 
-    filteredIO = points.sort((a, b) => a.seq - b.seq);
+    filteredIO = points.sort((a, b) => compareAddresses(a.address, b.address));
   }
 
   // Zoom/Pan Handler functions
@@ -251,25 +325,54 @@ export default function MachineDetail({ params }) {
     if (filteredIO.length === 0) return;
 
     const dataToExport = filteredIO.map(item => ({
-      "Sequence": item.seq,
       "Address": item.address,
-      "Signal Name": item.signalName || "N/A",
       "Type": item.type,
+      "Signal Name": item.signalName || "—",
       "Cabinet": item.cabinet,
-      "Drawing Sheet": item.internalPage || "N/A"
+      "Drawing Sheet": item.internalPage ? `Sheet ${item.internalPage}` : "No Drawing"
     }));
 
     const worksheet = XLSX.utils.json_to_sheet(dataToExport);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "I_O List");
-    XLSX.writeFile(workbook, `${equipmentCode}_IO_List.xlsx`);
+    const safeTitle = (equipment?.code || equipment?.name || equipmentCode || "IO_List").replace(/[^a-zA-Z0-9_\-]/g, '_');
+    XLSX.writeFile(workbook, `${safeTitle}_IO_List.xlsx`);
   };
 
-  if (!equipment) {
+  if (isLoading) {
     return (
       <div style={styles.loadingScreen}>
         <div style={styles.spinner} />
         <p>Loading machine dashboard...</p>
+      </div>
+    );
+  }
+
+  if (notFound || !equipment) {
+    return (
+      <div style={styles.loadingScreen}>
+        <div style={{ fontSize: "48px", marginBottom: "8px" }}>🔍</div>
+        <h2 style={{ fontSize: "20px", fontWeight: "700", color: "var(--text-main)", marginBottom: "8px" }}>
+          Equipment or Circuit Not Found
+        </h2>
+        <p style={{ color: "var(--text-muted)", maxWidth: "420px", textAlign: "center", marginBottom: "20px", fontSize: "14px", lineHeight: "1.5" }}>
+          Could not find any I/O signals matching &ldquo;{equipmentCode}&rdquo; in this section.
+        </p>
+        <Link
+          href="/"
+          style={{
+            background: "var(--primary)",
+            color: "#ffffff",
+            padding: "10px 24px",
+            borderRadius: "var(--radius-md)",
+            textDecoration: "none",
+            fontWeight: "600",
+            fontSize: "14px",
+            boxShadow: "0 2px 8px rgba(204,17,17,0.25)",
+          }}
+        >
+          ← Back to Search
+        </Link>
       </div>
     );
   }
@@ -289,7 +392,9 @@ export default function MachineDetail({ params }) {
             <span style={styles.divider}>/</span>
             <span>🗄️ {uniqueCabinets.join(", ") || cabinet}</span>
             <span style={styles.divider}>/</span>
-            <span style={styles.activeBreadcrumb}>{equipment.code}</span>
+            <span style={styles.activeBreadcrumb}>
+              {equipment.code || equipment.name}
+            </span>
           </div>
         </div>
         <div style={styles.navRight}>
@@ -324,9 +429,19 @@ export default function MachineDetail({ params }) {
         {/* Left Side: I/O List & Table */}
         <section style={styles.leftPanel} className={mobileView === "table" ? "panel-left-responsive" : "panel-left-hidden"}>
           <div style={styles.machineCard}>
-            <span style={styles.machineBadge}>MACHINE</span>
-            <h2 style={styles.machineTitle}>{equipment.code}</h2>
-            <p style={styles.machineDesc}>{equipment.name}</p>
+            <span style={styles.machineBadge}>
+              {equipment.code ? "MACHINE" : "CIRCUIT / SIGNALS"}
+            </span>
+            <h2 style={styles.machineTitle}>
+              {equipment.code || equipment.name}
+            </h2>
+            {equipment.code && equipment.name ? (
+              <p style={styles.machineDesc}>{equipment.name}</p>
+            ) : (
+              <p style={styles.machineDesc}>
+                {equipment.points.length} Connected I/O Point{equipment.points.length > 1 ? "s" : ""}
+              </p>
+            )}
           </div>
 
           {/* Search inside table */}
@@ -373,7 +488,6 @@ export default function MachineDetail({ params }) {
             <table style={styles.table}>
               <thead>
                 <tr>
-                  <th style={styles.th}>Seq</th>
                   <th style={styles.th}>Address</th>
                   <th style={styles.th}>Type</th>
                   <th style={styles.th}>Signal Name</th>
@@ -391,13 +505,12 @@ export default function MachineDetail({ params }) {
                   
                   return (
                     <tr
-                      key={`${row.seq}-${row.address || ""}-${index}`}
+                      key={`${row.address || ""}-${row.signalName || ""}-${index}`}
                       style={{
                         ...styles.tr,
                         ...(isHighlighted ? styles.trHighlighted : {})
                       }}
                     >
-                      <td style={styles.td}>{row.seq}</td>
                       <td style={{ ...styles.td, fontWeight: "700" }}>{row.address}</td>
                       <td style={styles.td}>
                         <span style={{
@@ -423,14 +536,16 @@ export default function MachineDetail({ params }) {
                           >
                             🖼️ Sheet {row.internalPage}
                           </button>
-                        ) : "—"}
+                        ) : (
+                          <span style={styles.noDrawingBadge}>No Drawing</span>
+                        )}
                       </td>
                     </tr>
                   );
                 })}
                 {filteredIO.length === 0 && (
                   <tr>
-                    <td colSpan="6" style={styles.noDataCell}>No I/O records found.</td>
+                    <td colSpan="5" style={styles.noDataCell}>No I/O records found.</td>
                   </tr>
                 )}
               </tbody>
@@ -792,6 +907,16 @@ const styles = {
     display: "inline-flex",
     alignItems: "center",
     gap: "4px",
+  },
+  noDrawingBadge: {
+    display: "inline-block",
+    padding: "3px 8px",
+    borderRadius: "var(--radius-sm)",
+    fontSize: "11px",
+    fontWeight: "500",
+    color: "var(--text-light)",
+    background: "#f1f5f9",
+    border: "1px solid var(--border-color)",
   },
   noDataCell: {
     textAlign: "center",

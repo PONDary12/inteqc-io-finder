@@ -127,6 +127,155 @@ function normalizeAddress(addr) {
     .replace(/o/g, '0');
 }
 
+const CN_DICT = [
+  ['备用 Spare', 'Spare'],
+  ['备用', 'Spare'],
+  ['改备用', 'Spare (Modified)'],
+  ['改 Spare', 'Spare (Modified)'],
+  ['设备编号', ''],
+  ['超微粉碎机', 'Micro Pulverizer'],
+  ['超微粉', 'Micro Pulverizer'],
+  ['粉碎风机', 'Grinder Fan'],
+  ['粉碎机', 'Hammer Mill'],
+  ['关风器', 'Air Lock'],
+  ['脉冲电源', 'Pulse Power'],
+  ['投料口门锁到位信号', 'Inlet Door Lock In-Position'],
+  ['回料手投口气锤', 'Return Material Manual Inlet Hammer'],
+  ['给烘干膨化后段超载机连锁', 'Extruder Post-Dryer Overload Interlock'],
+  ['给烘干机连锁', 'Dryer Interlock'],
+  ['小料小料气锤', 'Micro Ingredient Hammer '],
+  ['喷涂仓三通左通', 'Coating Bin Diverter Left'],
+  ['喷涂仓三通右通', 'Coating Bin Diverter Right'],
+  ['除铁门保', 'Iron Separator Door Guard'],
+  ['风门执行器', 'Damper Actuator'],
+  ['风门门保', 'Damper Door Guard'],
+  ['1气锁关门', 'Air Lock 1 Door Close'],
+  ['2气锁关门', 'Air Lock 2 Door Close'],
+  ['气密封', 'Air Seal'],
+  ['喂料器', 'Feeder'],
+  ['喂料斗料位', 'Feed Hopper Level'],
+  ['提升机箱', 'Elevator Casing'],
+  ['提升机', 'Bucket Elevator'],
+  ['混合机', 'Mixer'],
+  ['喷涂机', 'Coater'],
+  ['水罐上料位', 'Water Tank High Level'],
+  ['水罐下料位', 'Water Tank Low Level'],
+  ['水罐', 'Water Tank'],
+  ['水路', 'Water Line'],
+  ['除尘料位', 'Dust Collector Level'],
+  ['气动三通', 'Pneumatic Diverter'],
+  ['等比例阀', 'Proportional Valve'],
+  ['水调节阀', 'Water Control Valve'],
+  ['蒸汽调节阀', 'Steam Control Valve'],
+  ['蒸汽阀', 'Steam Valve'],
+  ['伸缩阀', 'Telescopic Valve'],
+  ['旁通阀', 'Bypass Valve'],
+  ['调节阀', 'Control Valve'],
+  ['螺杆换向阀', 'Screw Reversing Valve'],
+  ['螺杆液压油缸', 'Screw Hydraulic Cylinder'],
+  ['齿轮箱', 'Gearbox'],
+  ['管路架', 'Pipe Rack'],
+  ['管路', 'Pipeline'],
+  ['摊布器上方斗', 'Spreader Upper Hopper'],
+  ['出料缓冲斗', 'Discharge Buffer Hopper'],
+  ['摊布器', 'Spreader'],
+  ['调质器', 'Conditioner'],
+  ['膨化腔蒸汽流量计', 'Extruder Steam Flowmeter'],
+  ['调质器蒸汽流量计', 'Conditioner Steam Flowmeter'],
+  ['膨化腔水流量计', 'Extruder Water Flowmeter'],
+  ['调质器水流量计', 'Conditioner Water Flowmeter'],
+  ['Extruder 腔', 'Extrusion Chamber'],
+  ['Extruder 机', 'Extruder'],
+  ['罐子蒸汽加热', 'Tank Steam Heating'],
+  ['压力开关报警', 'Pressure Switch Alarm'],
+  ['温度开关报警', 'Temp Switch Alarm'],
+  ['开度反馈', 'Opening Feedback'],
+  ['开度调节', 'Opening Regulation'],
+  ['电流检测', 'Current Detection'],
+  ['压力检测', 'Pressure Detection'],
+  ['流量检测', 'Flow Detection'],
+  ['扭矩检测', 'Torque Detection'],
+  ['变频故障', 'VFD Fault'],
+  ['测湿度', 'Moisture Sensor'],
+  ['测温', 'Temp Sensor'],
+  ['测速', 'Speed Sensor'],
+  ['门保', 'Door Guard'],
+  ['防堵', 'Anti-Choke'],
+  ['左通到位', 'Left In-Position'],
+  ['右通到位', 'Right In-Position'],
+  ['关门到位', 'Close In-Position'],
+  ['开门到位', 'Open In-Position'],
+  ['关门信号', 'Door Close Signal'],
+  ['锁开门', 'Door Unlock'],
+  ['开始添加', 'Start Dosing'],
+  ['添加完成', 'Dosing Complete'],
+  ['上料位', 'High Level'],
+  ['下料位', 'Low Level'],
+  ['中料位', 'Middle Level'],
+  ['料位', 'Level'],
+  ['温度', 'Temperature'],
+  ['急停', 'Emergency Stop'],
+  ['关门', 'Door Close'],
+  ['开门', 'Door Open'],
+  ['开阀', 'Valve Open'],
+  ['伸出', 'Extend'],
+  ['回缩', 'Retract'],
+  ['震动', 'Vibrator'],
+  ['气锤', 'Pneumatic Hammer'],
+  ['风机', 'Blower'],
+  ['烘干机', 'Dryer'],
+  ['烘干', 'Dryer'],
+  ['膨化', 'Extruder'],
+  ['称1校称阀', 'Scale 1 Calibration Valve '],
+  ['称2校称阀', 'Scale 2 Calibration Valve '],
+  ['称3校称阀', 'Scale 3 Calibration Valve '],
+  ['进D23仓', 'To D23 Bin'],
+  ['信号控制', 'Signal Control '],
+  ['左通', 'Left'],
+  ['右通', 'Right'],
+  ['启动', 'Start'],
+  ['输出', 'Output'],
+  ['电流', 'Current'],
+  ['压力', 'Pressure'],
+  ['流量', 'Flow'],
+  ['5层', 'Deck 5'],
+  ['9层', 'Deck 9'],
+  ['1#位', 'Pos 1'],
+  ['2#位', 'Pos 2'],
+  ['3#位', 'Pos 3'],
+  ['4#位', 'Pos 4'],
+  ['5#位', 'Pos 5'],
+  ['20240123改', 'Mod 2024-01-23'],
+  ['后改', 'Modified'],
+  ['后加', 'Added Later'],
+  ['新加', 'Newly Added'],
+  ['新增', 'New Addition'],
+  ['蒸汽', 'Steam'],
+  ['水', 'Water'],
+  ['腔', 'Chamber'],
+  ['计', 'Meter'],
+  ['机', 'Machine'],
+  ['仓', 'Bin'],
+  ['号', 'No.'],
+];
+
+function translateCN(str) {
+  if (!str) return '';
+  let result = String(str).trim();
+  for (const [cn, en] of CN_DICT) {
+    if (result.includes(cn)) {
+      result = result.split(cn).join(en ? ` ${en} ` : ' ');
+    }
+  }
+  // Clean multiple spaces and colon separators
+  result = result
+    .replace(/\s+/g, ' ')
+    .replace(/:\s*:/g, ':')
+    .replace(/^[:\s\-_]+|[:\s\-_]+$/g, '')
+    .trim();
+  return result;
+}
+
 function getMappedCabinet(cabinetName) {
   if (!cabinetName) return '';
   const clean = cabinetName.trim();
@@ -140,6 +289,12 @@ function getMappedCabinet(cabinetName) {
     'MCC3-4': 'MCC3_4',
     'MCC5-6': 'MCC5_6',
     'MCC7-8': 'MCC7_8',
+    '2#膨化': 'Extruder_2',
+    '2#烘干': 'Dryer_2',
+    '3#膨化': 'Extruder_3',
+    '3#烘干': 'Dryer_3',
+    '4#膨化': 'Extruder_4',
+    '4#烘干': 'Dryer_4',
   };
   if (aliases[clean]) return aliases[clean];
   
@@ -147,7 +302,7 @@ function getMappedCabinet(cabinetName) {
   let m = clean.match(/^(MCCB?\d+)/i);
   if (m) return m[1].toUpperCase();
 
-  return clean;
+  return translateCN(clean) || clean;
 }
 
 // ──────────────────────── Configuration ────────────────────────
@@ -597,18 +752,23 @@ function parseSheet(wb, sheetName, locationId) {
         drawingPdfUrl = null;
       }
 
+      const cleanCode = translateCN(equipmentCode);
+      const cleanName = translateCN(equipmentName);
+      const cleanSignal = translateCN(signalName);
+      const cleanCabinet = getMappedCabinet(cabinet);
+
       allPoints.push({
         type,
         seq: Number(row[cols.offset]),
         address,
-        equipmentCode,
-        equipmentName,
-        signalName,
-        cabinet,
+        equipmentCode: cleanCode,
+        equipmentName: cleanName,
+        signalName: cleanSignal,
+        cabinet: cleanCabinet,
         drawingPage,
         internalPage,
         drawingPdfUrl,
-        normalizedCode: normalizeCode(equipmentCode),
+        normalizedCode: normalizeCode(cleanCode),
         normalizedAddress: normalizeAddress(address),
       });
     }
@@ -811,18 +971,23 @@ function parsePLCTagsSheet(wb, sheetName, locationId) {
       drawingPdfUrl = null;
     }
 
+    const cleanCode = translateCN(machineCode);
+    const cleanName = translateCN(name);
+    const cleanSignal = translateCN(signalName);
+    const cleanCabinet = getMappedCabinet(cabinet);
+
     const point = {
       type,
       seq: i,
       address,
-      equipmentCode: machineCode,
-      equipmentName: name,
-      signalName,
-      cabinet,
+      equipmentCode: cleanCode,
+      equipmentName: cleanName,
+      signalName: cleanSignal,
+      cabinet: cleanCabinet,
       drawingPage,
       internalPage,
       drawingPdfUrl,
-      normalizedCode: normalizeCode(machineCode),
+      normalizedCode: normalizeCode(cleanCode),
       normalizedAddress: normalizeAddress(address),
     };
 
