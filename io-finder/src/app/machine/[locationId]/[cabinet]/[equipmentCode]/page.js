@@ -430,7 +430,7 @@ export default function MachineDetail({ params }) {
                 })}
                 {filteredIO.length === 0 && (
                   <tr>
-                    <td colSpan="5" style={styles.noDataCell}>No I/O records found.</td>
+                    <td colSpan="6" style={styles.noDataCell}>No I/O records found.</td>
                   </tr>
                 )}
               </tbody>
@@ -506,6 +506,15 @@ export default function MachineDetail({ params }) {
                     alt={`Drawing Sheet ${currentDrawing.internalPage}`}
                     style={styles.drawingImage}
                     draggable="false"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      if (e.target.parentElement) {
+                        const msg = document.createElement('div');
+                        msg.style.cssText = 'color:#94a3b8;text-align:center;padding:40px;font-size:14px;';
+                        msg.innerHTML = '<div style="font-size:48px;margin-bottom:12px">🖼️</div><h3>Drawing Not Available</h3><p style="margin-top:8px;opacity:0.7">Image file not found for this sheet.</p>';
+                        e.target.parentElement.appendChild(msg);
+                      }
+                    }}
                   />
                 </div>
               </div>

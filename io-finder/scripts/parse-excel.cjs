@@ -154,6 +154,7 @@ function getMappedCabinet(cabinetName) {
 
 const DATA_DIR = path.resolve(__dirname, '../../data');
 const OUT_DIR = path.resolve(__dirname, '../public/data');
+const PUBLIC_DIR = path.resolve(__dirname, '../public');
 
 const FILES = [
   {
@@ -188,15 +189,11 @@ const FILES = [
   },
   {
     folder: 'Tower 3',
-    file: 'inteqc Tower3_IO.xlsx',
+    file: 'PLCTags.xlsx',
     locationId: 'tower3',
     locationName: 'Tower 3',
-    sheets: [
-      'MCC2', 'MCC3', 'MCC7', 'MCC8_9', 'MCC11', 'MCC12_13',
-      'MCC18', 'MCC21_22', 'MCC23_24', 'MCC25_26', 'MCC27',
-      'PLC', 'LCB_1', 'LCB_2', 'LCB_4', 'LCB_5',
-      'LCB_6A', 'LCB_6B', 'LCB_8', 'LCB_9', 'LCB_10',
-    ],
+    format: 'plctags',          // PLCTags format: single sheet, English columns
+    sheets: ['PLC Tags'],
   },
 ];
 
@@ -593,6 +590,13 @@ function parseSheet(wb, sheetName, locationId) {
         }
       }
 
+      // 4. Validate that the PNG file actually exists on disk
+      if (drawingPdfUrl && !fs.existsSync(path.join(PUBLIC_DIR, drawingPdfUrl))) {
+        drawingPage = null;
+        internalPage = null;
+        drawingPdfUrl = null;
+      }
+
       allPoints.push({
         type,
         seq: Number(row[cols.offset]),
@@ -631,6 +635,7 @@ function buildSearchIndex(locations) {
             signals: new Set(),
             types: new Set(),
             cabinets: new Set(),
+            addresses: new Set(),
             drawings: new Set(),
             location: loc.name,
             locationId: loc.id,
@@ -643,6 +648,7 @@ function buildSearchIndex(locations) {
           entry.name = io.equipmentName;
         }
         if (io.signalName) entry.signals.add(io.signalName);
+        if (io.address) entry.addresses.add(io.address);
         entry.types.add(io.type);
         entry.cabinets.add(io.cabinet);
         if (io.drawingPage) {
@@ -665,6 +671,7 @@ function buildSearchIndex(locations) {
       name: entry.name,
       normalizedCode: normalizeCode(entry.code),
       signals: [...entry.signals].sort(),
+      addresses: [...entry.addresses].sort(),
       types: [...entry.types].sort(),
       cabinets: [...entry.cabinets].sort(),
       drawings: [...entry.drawings].map(JSON.parse),
@@ -681,6 +688,151 @@ function buildSearchIndex(locations) {
   });
 
   return index;
+}
+
+// ──────────────────────── PLCTags Parser (Tower 3) ────────────────────────
+
+/**
+ * Parse a PLCTags-format sheet (e.g. Tower 3 PLCTags.xlsx).
+ * Columns used:
+ *   0: Name          → equipmentName
+ *   3: Logical Address → address  (strip leading '%')
+ *   4: Machine Code   → equipmentCode
+ *   5: Cabinet        → cabinet  (for grouping)
+ *   6: Signal Name    → signalName
+ *
+ * Returns a Map<cabinetName, ioPoint[]> so the caller can build cabinet objects.
+ */
+function parsePLCTagsSheet(wb, sheetName, locationId) {
+  const ws = wb.Sheets[sheetName];
+  if (!ws) {
+    console.warn(`  ⚠ Sheet "${sheetName}" not found, skipping.`);
+    return new Map();
+  }
+
+  const rows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
+  const cabinetMap = new Map();   // cabinetName → ioPoint[]
+
+  // Get the location-specific PDF map
+  const locMap = pdfPageMap[locationId] || {};
+
+  // Skip header row (row 0)
+  for (let i = 1; i < rows.length; i++) {
+    const row = rows[i];
+
+    const name        = cell(row, 0);   // Name (full PLC tag name)
+    const logicalAddr = cell(row, 3);   // Logical Address (e.g. %I0.0)
+    const machineCode = cell(row, 4);   // Machine Code (e.g. 1_3)
+    let cabinet       = cell(row, 5);   // Cabinet (e.g. MCC2)
+    const signalName  = cell(row, 6);   // Signal Name (e.g. Running)
+
+    // Skip rows without a valid I/O address
+    if (!logicalAddr || !logicalAddr.match(/^(%?)(I|Q|IW|QW|PIW|PQW|\d+I|\d+Q)/i)) continue;
+    // Skip memory addresses (%M...)
+    if (/^%M/i.test(logicalAddr)) continue;
+
+    // Strip leading '%' from address to match existing format
+    const address = logicalAddr.replace(/^%/, '');
+    const uppercaseAddr = address.toUpperCase();
+
+    // If cabinet is missing or '-', try to determine cabinet from pdf-page-map address lookup
+    if (!cabinet || cabinet === '-' || cabinet === '—') {
+      if (locMap.addresses && locMap.addresses[uppercaseAddr]) {
+        const dPage = locMap.addresses[uppercaseAddr].page;
+        if (dPage && locMap.cabinets) {
+          for (const [cabName, pagesMap] of Object.entries(locMap.cabinets)) {
+            if (Object.values(pagesMap).map(Number).includes(dPage)) {
+              cabinet = cabName;
+              break;
+            }
+          }
+        }
+      }
+      if (!cabinet || cabinet === '-' || cabinet === '—') {
+        cabinet = 'PLC'; // Fallback cabinet
+      }
+    }
+
+    // Determine I/O type from address
+    let type = 'DI';
+    if (/^IW/i.test(address) || /^PIW/i.test(address)) {
+      type = 'AI';
+    } else if (/^QW/i.test(address) || /^PQW/i.test(address)) {
+      type = 'AO';
+    } else if (/^Q/i.test(address) || /^\d+Q/i.test(address)) {
+      type = 'DO';
+    } else if (/^I/i.test(address) || /^\d+I/i.test(address)) {
+      type = 'DI';
+    }
+
+    // Drawing page lookup via pdf-page-map
+    let drawingPage = null;
+    let internalPage = null;
+    let drawingPdfUrl = null;
+
+    if (locMap.addresses && locMap.addresses[uppercaseAddr]) {
+      drawingPage = locMap.addresses[uppercaseAddr].page;
+      internalPage = locMap.addresses[uppercaseAddr].internalPage;
+      drawingPdfUrl = locMap.drawingUrl || null;
+    }
+
+    // Cabinet-based fallback for drawing page
+    const mappedCabinet = getMappedCabinet(cabinet);
+    const basePage = CABINET_BASE_PAGES[mappedCabinet];
+    // Note: PLCTags format doesn't have page offsets, so only address lookup works
+
+    // Convert to cabinet-specific PNG image link if mapped
+    if (drawingPage && locMap.cabinets) {
+      let actualCabinet = mappedCabinet;
+      for (const [cabName, pagesMap] of Object.entries(locMap.cabinets)) {
+        if (Object.values(pagesMap).map(Number).includes(drawingPage)) {
+          actualCabinet = cabName;
+          break;
+        }
+      }
+
+      if (locMap.cabinets[actualCabinet]) {
+        const pages = Object.values(locMap.cabinets[actualCabinet]).map(Number);
+        if (pages.length > 0) {
+          const cabinetMinPage = Math.min(...pages);
+          if (drawingPage >= cabinetMinPage) {
+            const pageOffset = drawingPage - cabinetMinPage + 1;
+            drawingPdfUrl = `/drawings/${locationId}/cabinets/images/${actualCabinet}_page_${pageOffset}.png`;
+            drawingPage = pageOffset;
+          }
+        }
+      }
+    }
+
+    // Validate that the PNG file actually exists on disk
+    if (drawingPdfUrl && !fs.existsSync(path.join(PUBLIC_DIR, drawingPdfUrl))) {
+      drawingPage = null;
+      internalPage = null;
+      drawingPdfUrl = null;
+    }
+
+    const point = {
+      type,
+      seq: i,
+      address,
+      equipmentCode: machineCode,
+      equipmentName: name,
+      signalName,
+      cabinet,
+      drawingPage,
+      internalPage,
+      drawingPdfUrl,
+      normalizedCode: normalizeCode(machineCode),
+      normalizedAddress: normalizeAddress(address),
+    };
+
+    if (!cabinetMap.has(cabinet)) {
+      cabinetMap.set(cabinet, []);
+    }
+    cabinetMap.get(cabinet).push(point);
+  }
+
+  return cabinetMap;
 }
 
 // ──────────────────────── Main ────────────────────────
@@ -702,17 +854,40 @@ function main() {
     const wb = XLSX.readFile(filePath);
     const cabinets = [];
 
-    for (const sheetName of config.sheets) {
-      process.stdout.write(`  📋 Parsing sheet: ${sheetName} ... `);
-      const ioPoints = parseSheet(wb, sheetName, config.locationId);
-      console.log(`${ioPoints.length} I/O points`);
+    if (config.format === 'plctags') {
+      // ── PLCTags format (e.g. Tower 3) ──
+      for (const sheetName of config.sheets) {
+        process.stdout.write(`  📋 Parsing PLCTags sheet: ${sheetName} ... `);
+        const cabinetMap = parsePLCTagsSheet(wb, sheetName, config.locationId);
+        let sheetTotal = 0;
 
-      if (ioPoints.length > 0) {
-        cabinets.push({
-          id: sheetName,
-          name: sheetName,
-          io: ioPoints,
-        });
+        // Sort cabinets alphabetically for consistent output
+        const sortedCabinets = [...cabinetMap.keys()].sort();
+        for (const cabName of sortedCabinets) {
+          const ioPoints = cabinetMap.get(cabName);
+          sheetTotal += ioPoints.length;
+          cabinets.push({
+            id: cabName,
+            name: cabName,
+            io: ioPoints,
+          });
+        }
+        console.log(`${sheetTotal} I/O points across ${sortedCabinets.length} cabinets`);
+      }
+    } else {
+      // ── Original multi-sheet format (Premixer, Tower 2) ──
+      for (const sheetName of config.sheets) {
+        process.stdout.write(`  📋 Parsing sheet: ${sheetName} ... `);
+        const ioPoints = parseSheet(wb, sheetName, config.locationId);
+        console.log(`${ioPoints.length} I/O points`);
+
+        if (ioPoints.length > 0) {
+          cabinets.push({
+            id: sheetName,
+            name: sheetName,
+            io: ioPoints,
+          });
+        }
       }
     }
 

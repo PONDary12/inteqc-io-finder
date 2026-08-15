@@ -60,12 +60,17 @@ export default function SearchHome() {
       return false;
     }
     
-    // Search matches code or name
+    // Search matches code, name, cabinet, or I/O address
     const codeMatch = item.normalizedCode && item.normalizedCode.includes(normalizedQuery);
     const nameMatch = item.name && item.name.toLowerCase().includes(trimmedQuery);
     const cabMatch = item.cabinets && item.cabinets.some(c => c.toLowerCase().includes(trimmedQuery));
+    const addrMatch = item.addresses && item.addresses.some(a => {
+      const cleanA = a.toLowerCase().replace(/^%/, '');
+      const cleanQ = trimmedQuery.replace(/^%/, '');
+      return cleanA.includes(cleanQ) || normalizeCode(cleanA).includes(normalizeCode(cleanQ));
+    });
     
-    return codeMatch || nameMatch || cabMatch;
+    return codeMatch || nameMatch || cabMatch || addrMatch;
   }) : [];
 
   const suggestions = filtered.slice(0, 8);
@@ -96,24 +101,37 @@ export default function SearchHome() {
     
     // Find exact match in code
     const exactCodeMatch = searchIndex.find(
-      item => item.normalizedCode === normalizeCode(query)
+      item => item.normalizedCode && item.normalizedCode === normalizeCode(query)
     );
     if (exactCodeMatch) {
-      router.push(`/machine/${exactCodeMatch.locationId}/${encodeURIComponent(exactCodeMatch.cabinets[0])}/${encodeURIComponent(exactCodeMatch.code)}`);
+      const codeParam = exactCodeMatch.code || exactCodeMatch.name || "GENERAL";
+      router.push(`/machine/${exactCodeMatch.locationId}/${encodeURIComponent(exactCodeMatch.cabinets[0] || 'PLC')}/${encodeURIComponent(codeParam)}`);
+      return;
+    }
+
+    // Find exact match in address
+    const exactAddrMatch = searchIndex.find(
+      item => item.addresses && item.addresses.some(a => a.toLowerCase().replace(/^%/, '') === trimmedQuery.replace(/^%/, ''))
+    );
+    if (exactAddrMatch) {
+      const codeParam = exactAddrMatch.code || exactAddrMatch.name || "GENERAL";
+      router.push(`/machine/${exactAddrMatch.locationId}/${encodeURIComponent(exactAddrMatch.cabinets[0] || 'PLC')}/${encodeURIComponent(codeParam)}`);
       return;
     }
 
     // Otherwise redirect to detail page of the first matched suggestion
     if (suggestions.length > 0) {
       const bestMatch = suggestions[0];
-      router.push(`/machine/${bestMatch.locationId}/${encodeURIComponent(bestMatch.cabinets[0])}/${encodeURIComponent(bestMatch.code)}`);
+      const codeParam = bestMatch.code || bestMatch.name || "GENERAL";
+      router.push(`/machine/${bestMatch.locationId}/${encodeURIComponent(bestMatch.cabinets[0] || 'PLC')}/${encodeURIComponent(codeParam)}`);
     }
   };
 
   const handleSelectSuggestion = (item) => {
     setQuery(item.code || item.name);
     setShowSuggestions(false);
-    router.push(`/machine/${item.locationId}/${encodeURIComponent(item.cabinets[0])}/${encodeURIComponent(item.code)}`);
+    const codeParam = item.code || item.name || "GENERAL";
+    router.push(`/machine/${item.locationId}/${encodeURIComponent(item.cabinets[0] || 'PLC')}/${encodeURIComponent(codeParam)}`);
   };
 
   // Scroll active suggestion into view

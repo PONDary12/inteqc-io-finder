@@ -63,11 +63,17 @@ const LOCATIONS = [
     cabinetRanges: [
       { min: 200, max: 299, cabinet: 'MCC2' },
       { min: 300, max: 399, cabinet: 'MCC3' },
+      { min: 400, max: 499, cabinet: 'MCC4' },
+      { min: 500, max: 599, cabinet: 'MCC6' },
       { min: 600, max: 699, cabinet: 'MCC7' },
       { min: 700, max: 899, cabinet: 'MCC8_9' },
       { min: 900, max: 1099, cabinet: 'MCC11' },
       { min: 1100, max: 1399, cabinet: 'MCC12_13' },
       { min: 1400, max: 1599, cabinet: 'MCC18' },
+      { min: 1600, max: 1659, cabinet: 'MCC20_21' },
+      { min: 1660, max: 1699, cabinet: 'MCC21_22' },
+      { min: 1700, max: 1799, cabinet: 'MCC22_23' },
+      { min: 1800, max: 1899, cabinet: 'MCC24_25' },
       { min: 1900, max: 1999, cabinet: 'PLC' },
       { min: 2000, max: 2108, cabinet: 'LCB_1' },
       { min: 2109, max: 2199, cabinet: 'LCB_2' },
@@ -170,7 +176,7 @@ async function scanPdf(loc) {
 
   const cabinetMap = {};
   const tempAddressRecords = {};
-  const addrRegex = /\b(?:I|Q)\d+\.\d+\b|\b(?:PIW|PQW)\d+\b/g;
+  const addrRegex = /\b\d*(?:I|Q)\d+\.\d+\b|\b(?:PIW|PQW|IW|QW)\d+\b/g;
 
   const pageInfos = res.pages.map(page => ({
     num: page.num,
