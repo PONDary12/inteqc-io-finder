@@ -1,12 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="100%" height="100%">
   <defs>
     <style>
-      .inteqc-primary { fill: #9e1c23; }
+      .inteqc-red { fill: #9e1c23; }
     </style>
   </defs>
-  <!-- INTEQC Head Circle -->
-  <circle cx="74" cy="30" r="22" class="inteqc-primary" />
-  
-  <!-- INTEQC Body Curve Shape -->
-  <path class="inteqc-primary" d="M 92 45 C 103.5 45 113 54.5 113 66 C 113 77.5 103.5 87 92 87 L 68 87 C 62 87 56.5 89.5 52.5 93.5 L 43.5 102.5 C 37 109 26.5 109 20 102.5 C 13.5 96 13.5 85.5 20 79 L 34.5 64.5 C 41 58 50 45 64 45 Z" />
+
+  <!-- Head Circle -->
+  <circle cx="74" cy="27" r="19" class="inteqc-red" />
+
+  <!-- Body Shape (Moderate gap ~6px, balanced & distinct) -->
+  <path class="inteqc-red" d="
+    M 92 52
+    A 14 14 0 0 1 92 80
+    L 56 80
+    C 46 80 39 84 34 89
+    L 26 97
+    A 14 14 0 0 1 7 77
+    L 25 59
+    C 32 52 40 52 50 52
+    Z
+  " />
 </svg>
