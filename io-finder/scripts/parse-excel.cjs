@@ -250,6 +250,15 @@ const CN_DICT = [
   ['后加', 'Added Later'],
   ['新加', 'Newly Added'],
   ['新增', 'New Addition'],
+  ['下游设备连锁信', 'Downstream Interlock Signal'],
+  ['双称超载连锁', 'Dual Scale Overload Interlock'],
+  ['吸料', 'Suction'],
+  ['蝶阀', 'Butterfly Valve'],
+  ['阀门', 'Valve'],
+  ['泵', 'Pump'],
+  ['洗', 'Wash'],
+  ['进料口', 'Inlet'],
+  ['选配', 'Optional'],
   ['蒸汽', 'Steam'],
   ['水', 'Water'],
   ['腔', 'Chamber'],
@@ -297,10 +306,6 @@ function getMappedCabinet(cabinetName) {
     '4#烘干': 'Dryer_4',
   };
   if (aliases[clean]) return aliases[clean];
-  
-  // MCCB1-RI11 -> MCCB1
-  let m = clean.match(/^(MCCB?\d+)/i);
-  if (m) return m[1].toUpperCase();
 
   return translateCN(clean) || clean;
 }
@@ -991,10 +996,11 @@ function parsePLCTagsSheet(wb, sheetName, locationId) {
       normalizedAddress: normalizeAddress(address),
     };
 
-    if (!cabinetMap.has(cabinet)) {
-      cabinetMap.set(cabinet, []);
+    const mappedCabinetKey = getMappedCabinet(cabinet) || cabinet;
+    if (!cabinetMap.has(mappedCabinetKey)) {
+      cabinetMap.set(mappedCabinetKey, []);
     }
-    cabinetMap.get(cabinet).push(point);
+    cabinetMap.get(mappedCabinetKey).push(point);
   }
 
   return cabinetMap;
@@ -1047,9 +1053,10 @@ function main() {
         console.log(`${ioPoints.length} I/O points`);
 
         if (ioPoints.length > 0) {
+          const mappedSheetName = getMappedCabinet(sheetName) || sheetName;
           cabinets.push({
-            id: sheetName,
-            name: sheetName,
+            id: mappedSheetName,
+            name: mappedSheetName,
             io: ioPoints,
           });
         }

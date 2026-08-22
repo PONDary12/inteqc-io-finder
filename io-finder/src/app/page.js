@@ -11,26 +11,38 @@ function normalizeCode(code) {
     .replace(/[\s_\-\.\,\/\\]/g, '');
 }
 
-
 export default function SearchHome() {
   const router = useRouter();
   const [searchIndex, setSearchIndex] = useState([]);
+  const [ioData, setIoData] = useState(null);
   const [locations, setLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState("all");
   const [query, setQuery] = useState("");
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [activeMode, setActiveMode] = useState("search"); // "search" | "browse"
+  const [browseLocation, setBrowseLocation] = useState("");
+  const [expandedCabinet, setExpandedCabinet] = useState(null);
+  const [cabinetFilter, setCabinetFilter] = useState("");
+  const [equipmentFilter, setEquipmentFilter] = useState("");
+  
   const inputRef = useRef(null);
   const suggestionsRef = useRef(null);
+  const cabinetCardRefs = useRef({});
 
-  // Load search index data on mount
+  // Load search index and full io data on mount
   useEffect(() => {
     async function loadData() {
       try {
-        const resIndex = await fetch("/data/search-index.json");
+        const [resIndex, resIoData] = await Promise.all([
+          fetch("/data/search-index.json"),
+          fetch("/data/io-data.json"),
+        ]);
         const indexData = await resIndex.json();
+        const fullData = await resIoData.json();
         setSearchIndex(indexData);
+        setIoData(fullData);
 
         // Extract unique locations from index
         const locs = [];
@@ -42,6 +54,7 @@ export default function SearchHome() {
           }
         });
         setLocations(locs);
+        if (locs.length > 0) setBrowseLocation(locs[0].id);
       } catch (err) {
         console.error("Failed to load search index:", err);
       } finally {
@@ -190,6 +203,102 @@ export default function SearchHome() {
     }
   }, [activeSuggestionIndex]);
 
+  // Browse mode: compute cabinets for selected location with Natural Alphanumeric Sorting
+  const browseCabinets = (() => {
+    if (!ioData || !browseLocation) return [];
+    const loc = ioData.locations.find(l => l.id === browseLocation);
+    if (!loc) return [];
+    
+    let list = loc.cabinets.map(cab => {
+      const equipSet = new Set();
+      cab.io.forEach(p => {
+        const key = p.equipmentCode || p.equipmentName || "";
+        if (key) equipSet.add(key);
+      });
+      return {
+        id: cab.id,
+        name: cab.name,
+        ioCount: cab.io.length,
+        equipCount: equipSet.size,
+        diCount: cab.io.filter(p => p.type === "DI").length,
+        doCount: cab.io.filter(p => p.type === "DO").length,
+        aiCount: cab.io.filter(p => p.type === "AI").length,
+        aoCount: cab.io.filter(p => p.type === "AO").length,
+      };
+    });
+
+    // Natural alphanumeric sorting: LCB_1, LCB_2, LCB_4 ... LCB_10 ... MCC2 ... MCC27
+    list.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
+
+    if (cabinetFilter.trim()) {
+      const q = cabinetFilter.toLowerCase().trim();
+      list = list.filter(c => c.name.toLowerCase().includes(q));
+    }
+
+    return list;
+  })();
+
+  // Browse mode: compute equipment for expanded cabinet with filtering and sorting
+  const cabinetEquipment = (() => {
+    if (!ioData || !browseLocation || !expandedCabinet) return [];
+    const loc = ioData.locations.find(l => l.id === browseLocation);
+    if (!loc) return [];
+    const cab = loc.cabinets.find(c => c.id === expandedCabinet);
+    if (!cab) return [];
+
+    const equipMap = new Map();
+    cab.io.forEach(p => {
+      const key = p.equipmentCode || p.equipmentName || "GENERAL";
+      if (!equipMap.has(key)) {
+        equipMap.set(key, {
+          code: p.equipmentCode,
+          name: p.equipmentName,
+          types: new Set(),
+          signalCount: 0,
+          cabinet: cab.name,
+        });
+      }
+      const eq = equipMap.get(key);
+      eq.types.add(p.type);
+      eq.signalCount++;
+    });
+
+    let list = [...equipMap.values()]
+      .map(eq => ({ ...eq, types: [...eq.types] }))
+      .sort((a, b) => {
+        const codeA = a.code || a.name || '';
+        const codeB = b.code || b.name || '';
+        return codeA.localeCompare(codeB, undefined, { numeric: true, sensitivity: 'base' });
+      });
+
+    if (equipmentFilter.trim()) {
+      const q = equipmentFilter.toLowerCase().trim();
+      list = list.filter(eq => 
+        (eq.code && eq.code.toLowerCase().includes(q)) ||
+        (eq.name && eq.name.toLowerCase().includes(q))
+      );
+    }
+
+    return list;
+  })();
+
+  const handleToggleCabinet = (cabId) => {
+    if (expandedCabinet === cabId) {
+      setExpandedCabinet(null);
+      setEquipmentFilter("");
+    } else {
+      setExpandedCabinet(cabId);
+      setEquipmentFilter("");
+      // Scroll into view smoothly after state update
+      setTimeout(() => {
+        const el = cabinetCardRefs.current[cabId];
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    }
+  };
+
   return (
     <div style={styles.container}>
       {/* Curved glowing top background */}
@@ -205,105 +314,287 @@ export default function SearchHome() {
           </p>
         </header>
 
-        {/* Search Panel */}
+        {/* Main Panel */}
         <div style={styles.searchPanel}>
-          {/* Breadcrumb / Location Filter */}
-          <div style={styles.filterBar}>
+          {/* Mode Tabs */}
+          <div style={styles.modeTabs}>
             <button
               style={{
-                ...styles.filterBtn,
-                ...(selectedLocation === "all" ? styles.filterBtnActive : {}),
+                ...styles.modeTab,
+                ...(activeMode === "search" ? styles.modeTabActive : {}),
               }}
-              onClick={() => {
-                setSelectedLocation("all");
-                setActiveSuggestionIndex(-1);
-              }}
+              onClick={() => setActiveMode("search")}
             >
-              📍 All Towers
+              🔍 Search
             </button>
-            {locations.map(loc => (
-              <button
-                key={loc.id}
-                style={{
-                  ...styles.filterBtn,
-                  ...(selectedLocation === loc.id ? styles.filterBtnActive : {}),
-                }}
-                onClick={() => {
-                  setSelectedLocation(loc.id);
-                  setActiveSuggestionIndex(-1);
-                }}
-              >
-                🏭 {loc.name}
-              </button>
-            ))}
+            <button
+              style={{
+                ...styles.modeTab,
+                ...(activeMode === "browse" ? styles.modeTabActive : {}),
+              }}
+              onClick={() => setActiveMode("browse")}
+            >
+              📂 Browse
+            </button>
           </div>
 
-          {/* Search Input Container */}
-          <div style={styles.inputWrapper}>
-            <div style={styles.searchIcon}>🔍</div>
-            <input
-              ref={inputRef}
-              type="text"
-              style={styles.input}
-              placeholder={isLoading ? "Loading index..." : "Search machine code, name (e.g. V6.4_2, Silo)..."}
-              value={query}
-              onChange={(e) => {
-                setQuery(e.target.value);
-                setShowSuggestions(true);
-                setActiveSuggestionIndex(-1);
-              }}
-              onKeyDown={handleKeyDown}
-              onFocus={() => setShowSuggestions(true)}
-              onBlur={() => {
-                // Delay to allow clicking suggestions
-                setTimeout(() => setShowSuggestions(false), 200);
-              }}
-              disabled={isLoading}
-            />
-            {query && (
-              <button style={styles.clearBtn} onClick={() => setQuery("")}>
-                ✕
-              </button>
-            )}
-
-            {/* Autocomplete dropdown suggestions */}
-            {showSuggestions && suggestions.length > 0 && (
-              <div style={styles.suggestionsList} ref={suggestionsRef}>
-                {suggestions.map((item, index) => {
-                  const displayTitle = item.code || item.name || "General Signals";
-                  const displaySubtitle = item.code 
-                    ? (item.name || "Machine Circuit")
-                    : (item.signals && item.signals.length > 0
-                        ? `Signal: ${item.signals.slice(0, 2).join(', ')}`
-                        : item.addresses && item.addresses.length > 0
-                        ? `${item.types?.join('/') || 'I/O'} · ${item.addresses.slice(0, 3).join(', ')}${item.addresses.length > 3 ? ` (+${item.addresses.length - 3})` : ''}`
-                        : "Circuit Signals");
-
-                  return (
-                    <div
-                      key={`${item.code || item.name || 'gen'}-${item.locationId}-${index}`}
-                      style={{
-                        ...styles.suggestionItem,
-                        ...(index === activeSuggestionIndex ? styles.suggestionItemActive : {}),
-                      }}
-                      onMouseDown={(e) => e.preventDefault()} // prevent blur
-                      onClick={() => handleSelectSuggestion(item)}
-                    >
-                      <div style={styles.itemMeta}>
-                        <span style={styles.itemCode}>{displayTitle}</span>
-                        <span style={styles.itemName}>{displaySubtitle}</span>
-                      </div>
-                      <div style={styles.itemLocation}>
-                        <span style={styles.itemCabinet}>🗄️ {item.cabinets.join(", ")}</span>
-                        <span style={styles.itemLocationTag}>🏭 {item.location}</span>
-                      </div>
-                    </div>
-                  );
-                })}
+          {/* ═══════════ SEARCH MODE ═══════════ */}
+          {activeMode === "search" && (
+            <div style={styles.searchModeContent}>
+              {/* Location Dropdown */}
+              <div style={styles.dropdownRow}>
+                <span style={styles.dropdownIcon}>🏭</span>
+                <select
+                  style={styles.locationSelect}
+                  value={selectedLocation}
+                  onChange={(e) => {
+                    setSelectedLocation(e.target.value);
+                    setActiveSuggestionIndex(-1);
+                  }}
+                >
+                  <option value="all">All Towers</option>
+                  {locations.map(loc => (
+                    <option key={loc.id} value={loc.id}>{loc.name}</option>
+                  ))}
+                </select>
               </div>
-            )}
-          </div>
-        </div>      </div>
+
+              {/* Search Input Container */}
+              <div style={styles.inputWrapper}>
+                <div style={styles.searchIcon}>🔍</div>
+                <input
+                  ref={inputRef}
+                  type="text"
+                  style={styles.input}
+                  placeholder={isLoading ? "Loading index..." : "Search machine code, name (e.g. V6.4_2, Silo)..."}
+                  value={query}
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                    setShowSuggestions(true);
+                    setActiveSuggestionIndex(-1);
+                  }}
+                  onKeyDown={handleKeyDown}
+                  onFocus={() => setShowSuggestions(true)}
+                  onBlur={() => {
+                    // Delay to allow clicking suggestions
+                    setTimeout(() => setShowSuggestions(false), 200);
+                  }}
+                  disabled={isLoading}
+                />
+                {query && (
+                  <button style={styles.clearBtn} onClick={() => setQuery("")}>
+                    ✕
+                  </button>
+                )}
+
+                {/* Autocomplete dropdown suggestions */}
+                {showSuggestions && suggestions.length > 0 && (
+                  <div style={styles.suggestionsList} ref={suggestionsRef}>
+                    {suggestions.map((item, index) => {
+                      const displayTitle = item.code || item.name || "General Signals";
+                      const displaySubtitle = item.code 
+                        ? (item.name || "Machine Circuit")
+                        : (item.signals && item.signals.length > 0
+                            ? `Signal: ${item.signals.slice(0, 2).join(', ')}`
+                            : item.addresses && item.addresses.length > 0
+                            ? `${item.types?.join('/') || 'I/O'} · ${item.addresses.slice(0, 3).join(', ')}${item.addresses.length > 3 ? ` (+${item.addresses.length - 3})` : ''}`
+                            : "Circuit Signals");
+
+                      return (
+                        <div
+                          key={`${item.code || item.name || 'gen'}-${item.locationId}-${index}`}
+                          style={{
+                            ...styles.suggestionItem,
+                            ...(index === activeSuggestionIndex ? styles.suggestionItemActive : {}),
+                          }}
+                          onMouseDown={(e) => e.preventDefault()} // prevent blur
+                          onClick={() => handleSelectSuggestion(item)}
+                        >
+                          <div style={styles.itemMeta}>
+                            <span style={styles.itemCode}>{displayTitle}</span>
+                            <span style={styles.itemName}>{displaySubtitle}</span>
+                          </div>
+                          <div style={styles.itemLocation}>
+                            <span style={styles.itemCabinet}>🗄️ {item.cabinets.join(", ")}</span>
+                            <span style={styles.itemLocationTag}>🏭 {item.location}</span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* ═══════════ BROWSE MODE ═══════════ */}
+          {activeMode === "browse" && (
+            <div style={styles.browseModeContent}>
+              {/* Tower Dropdown */}
+              <div style={styles.dropdownRow}>
+                <span style={styles.dropdownIcon}>🏭</span>
+                <select
+                  style={styles.locationSelect}
+                  value={browseLocation}
+                  onChange={(e) => {
+                    setBrowseLocation(e.target.value);
+                    setExpandedCabinet(null);
+                    setCabinetFilter("");
+                  }}
+                >
+                  {locations.map(loc => (
+                    <option key={loc.id} value={loc.id}>{loc.name}</option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Cabinet Filter Bar */}
+              <div style={styles.cabinetSearchRow}>
+                <div style={styles.filterInputWrapper}>
+                  <span style={styles.filterSearchIcon}>🗄️</span>
+                  <input
+                    type="text"
+                    style={styles.cabinetFilterInput}
+                    placeholder="Filter cabinets (e.g. MCC, LCB, PLC)..."
+                    value={cabinetFilter}
+                    onChange={(e) => setCabinetFilter(e.target.value)}
+                  />
+                  {cabinetFilter && (
+                    <button style={styles.filterClearBtn} onClick={() => setCabinetFilter("")}>
+                      ✕
+                    </button>
+                  )}
+                </div>
+                <div style={styles.cabinetCountBadge}>
+                  {browseCabinets.length} Cabinet{browseCabinets.length > 1 ? "s" : ""}
+                </div>
+              </div>
+
+              {/* Cabinet Cards Grid */}
+              {isLoading ? (
+                <div style={styles.browseLoading}>Loading plant data...</div>
+              ) : (
+                <div style={styles.cabinetGrid}>
+                  {browseCabinets.map((cab, idx) => {
+                    const isExpanded = expandedCabinet === cab.id;
+                    return (
+                      <div
+                        key={`${cab.id}-${idx}`}
+                        ref={(el) => (cabinetCardRefs.current[cab.id] = el)}
+                        style={{
+                          ...styles.cabinetWrapper,
+                          gridColumn: isExpanded ? "1 / -1" : "auto",
+                        }}
+                      >
+                        <button
+                          style={{
+                            ...styles.cabinetCard,
+                            ...(isExpanded ? styles.cabinetCardExpanded : {}),
+                          }}
+                          onClick={() => handleToggleCabinet(cab.id)}
+                        >
+                          <div style={styles.cabinetCardHeader}>
+                            <span style={styles.cabinetIcon}>🗄️</span>
+                            <span style={styles.cabinetName}>{cab.name}</span>
+                            <span style={{
+                              ...styles.expandArrow,
+                              transform: isExpanded ? "rotate(90deg)" : "rotate(0deg)",
+                            }}>
+                              ▶
+                            </span>
+                          </div>
+                          <div style={styles.cabinetStats}>
+                            <span style={styles.statItem}>
+                              <span style={styles.statValue}>{cab.equipCount}</span>
+                              <span style={styles.statLabel}>Equipment</span>
+                            </span>
+                            <span style={styles.statDivider} />
+                            <span style={styles.statItem}>
+                              <span style={styles.statValue}>{cab.ioCount}</span>
+                              <span style={styles.statLabel}>I/O Points</span>
+                            </span>
+                          </div>
+                          <div style={styles.ioTypeBadges}>
+                            {cab.diCount > 0 && <span style={styles.miniDI}>DI {cab.diCount}</span>}
+                            {cab.doCount > 0 && <span style={styles.miniDO}>DO {cab.doCount}</span>}
+                            {cab.aiCount > 0 && <span style={styles.miniAI}>AI {cab.aiCount}</span>}
+                            {cab.aoCount > 0 && <span style={styles.miniAO}>AO {cab.aoCount}</span>}
+                          </div>
+                        </button>
+
+                        {/* Equipment List (Accordion) */}
+                        {isExpanded && (
+                          <div style={styles.equipmentList}>
+                            {/* In-Cabinet Equipment Search */}
+                            <div style={styles.equipSearchHeader}>
+                              <input
+                                type="text"
+                                style={styles.equipSearchInput}
+                                placeholder={`Filter equipment in ${cab.name}...`}
+                                value={equipmentFilter}
+                                onChange={(e) => setEquipmentFilter(e.target.value)}
+                              />
+                              <span style={styles.equipCountTag}>
+                                {cabinetEquipment.length} item{cabinetEquipment.length > 1 ? "s" : ""}
+                              </span>
+                            </div>
+
+                            <div style={styles.equipScrollContainer}>
+                              {cabinetEquipment.map((eq, idx) => {
+                                const displayCode = eq.code || eq.name || "General Signals";
+                                return (
+                                  <button
+                                    key={`${displayCode}-${idx}`}
+                                    style={styles.equipmentRow}
+                                    onClick={() => {
+                                      const codeParam = eq.code || eq.name || "GENERAL";
+                                      router.push(`/machine/${browseLocation}/${encodeURIComponent(cab.name)}/${encodeURIComponent(codeParam)}`);
+                                    }}
+                                  >
+                                    <div style={styles.eqMeta}>
+                                      <span style={styles.eqCode}>{displayCode}</span>
+                                      {eq.code && eq.name && (
+                                        <span style={styles.eqName}>{eq.name}</span>
+                                      )}
+                                    </div>
+                                    <div style={styles.eqRight}>
+                                      <span style={styles.eqSignals}>{eq.signalCount} signals</span>
+                                      <div style={styles.eqTypes}>
+                                        {eq.types.map(t => (
+                                          <span key={t} style={{
+                                            ...styles.eqTypeBadge,
+                                            ...(t === "DI" ? styles.eqBadgeDI :
+                                                t === "DO" ? styles.eqBadgeDO : styles.eqBadgeAnalog)
+                                          }}>{t}</span>
+                                        ))}
+                                      </div>
+                                      <span style={styles.eqArrow}>→</span>
+                                    </div>
+                                  </button>
+                                );
+                              })}
+                              {cabinetEquipment.length === 0 && (
+                                <div style={styles.noEquipment}>
+                                  {equipmentFilter ? "No matching equipment found." : "No equipment found in this cabinet."}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                  {browseCabinets.length === 0 && (
+                    <div style={styles.noCabinets}>
+                      No cabinets match &quot;{cabinetFilter}&quot;
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
@@ -314,11 +605,13 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
-    minHeight: "100%",
+    justifyContent: "flex-start",
+    minHeight: "100dvh",
+    height: "100%",
     width: "100%",
-    padding: "24px",
+    padding: "24px 20px 100px",
     overflowY: "auto",
+    WebkitOverflowScrolling: "touch",
   },
   glowBg: {
     position: "absolute",
@@ -332,19 +625,21 @@ const styles = {
   },
   content: {
     width: "100%",
-    maxWidth: "800px",
+    maxWidth: "860px",
     zIndex: 1,
     display: "flex",
     flexDirection: "column",
-    gap: "36px",
+    gap: "28px",
     animation: "fadeIn 0.4s ease",
+    paddingTop: "24px",
+    paddingBottom: "80px",
   },
   header: {
     textAlign: "center",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    gap: "12px",
+    gap: "10px",
   },
   logoBadge: {
     background: "var(--primary)",
@@ -357,50 +652,106 @@ const styles = {
     boxShadow: "0 4px 12px rgba(204,17,17,0.2)",
   },
   title: {
-    fontSize: "36px",
+    fontSize: "32px",
     fontWeight: "800",
     color: "var(--text-main)",
     letterSpacing: "-0.5px",
   },
   subtitle: {
-    fontSize: "16px",
+    fontSize: "15px",
     color: "var(--text-muted)",
-    maxWidth: "500px",
+    maxWidth: "520px",
     lineHeight: "1.5",
   },
   searchPanel: {
     background: "var(--bg-card)",
-    border: "1px solid var(--border-color)",
-    borderRadius: "var(--radius-lg)",
-    boxShadow: "var(--shadow-premium)",
-    padding: "24px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "16px",
-  },
-  filterBar: {
-    display: "flex",
-    gap: "8px",
-    flexWrap: "wrap",
-  },
-  filterBtn: {
-    background: "transparent",
     borderWidth: "1px",
     borderStyle: "solid",
     borderColor: "var(--border-color)",
-    borderRadius: "var(--radius-md)",
-    padding: "8px 16px",
-    fontSize: "13px",
+    borderRadius: "var(--radius-lg)",
+    boxShadow: "var(--shadow-premium)",
+    padding: "0",
+    display: "flex",
+    flexDirection: "column",
+    position: "relative",
+  },
+
+  // ── Mode Tabs ──
+  modeTabs: {
+    display: "flex",
+    borderBottomWidth: "1px",
+    borderBottomStyle: "solid",
+    borderBottomColor: "var(--border-color)",
+    borderTopLeftRadius: "var(--radius-lg)",
+    borderTopRightRadius: "var(--radius-lg)",
+    overflow: "hidden",
+  },
+  modeTab: {
+    flex: 1,
+    padding: "14px 20px",
+    fontSize: "14px",
     fontWeight: "600",
     color: "var(--text-muted)",
+    background: "transparent",
+    borderTopWidth: 0,
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
+    borderBottomWidth: "2px",
+    borderBottomStyle: "solid",
+    borderBottomColor: "transparent",
     cursor: "pointer",
     transition: "all var(--transition-fast)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "6px",
   },
-  filterBtnActive: {
-    background: "var(--primary-light)",
-    borderColor: "var(--primary)",
+  modeTabActive: {
     color: "var(--primary)",
+    borderBottomColor: "var(--primary)",
+    background: "var(--primary-light)",
   },
+
+  // ── Search Mode ──
+  searchModeContent: {
+    padding: "20px 24px 24px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
+    position: "relative",
+  },
+
+  // ── Dropdown Row ──
+  dropdownRow: {
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+  },
+  dropdownIcon: {
+    fontSize: "18px",
+    flexShrink: 0,
+  },
+  locationSelect: {
+    flex: 1,
+    height: "44px",
+    padding: "0 36px 0 12px",
+    fontSize: "14px",
+    fontWeight: "600",
+    color: "var(--text-main)",
+    background: "var(--bg-main)",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "var(--border-color)",
+    borderRadius: "var(--radius-sm)",
+    cursor: "pointer",
+    appearance: "none",
+    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M2 4l4 4 4-4'/%3E%3C/svg%3E")`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "right 12px center",
+    transition: "border-color var(--transition-fast)",
+  },
+
+  // ── Search Input ──
   inputWrapper: {
     position: "relative",
     display: "flex",
@@ -414,9 +765,11 @@ const styles = {
   },
   input: {
     width: "100%",
-    height: "56px",
+    height: "52px",
     background: "var(--bg-main)",
-    border: "2px solid var(--border-color)",
+    borderWidth: "2px",
+    borderStyle: "solid",
+    borderColor: "var(--border-color)",
     borderRadius: "var(--radius-md)",
     paddingLeft: "48px",
     paddingRight: "48px",
@@ -424,11 +777,6 @@ const styles = {
     fontWeight: "500",
     color: "var(--text-main)",
     transition: "all var(--transition-fast)",
-  },
-  inputFocus: {
-    borderColor: "var(--primary)",
-    background: "#ffffff",
-    boxShadow: "0 0 0 4px rgba(204,17,17,0.08)",
   },
   clearBtn: {
     position: "absolute",
@@ -439,23 +787,29 @@ const styles = {
     color: "var(--text-light)",
     cursor: "pointer",
   },
+
+  // ── Suggestions ──
   suggestionsList: {
     position: "absolute",
     top: "calc(100% + 8px)",
     left: 0,
     right: 0,
     background: "#ffffff",
-    border: "1px solid var(--border-color)",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "var(--border-color)",
     borderRadius: "var(--radius-md)",
     boxShadow: "var(--shadow-lg)",
     maxHeight: "360px",
     overflowY: "auto",
-    zIndex: 100,
+    zIndex: 1000,
     animation: "slideUp 0.15s ease",
   },
   suggestionItem: {
     padding: "16px",
-    borderBottom: "1px solid var(--border-color)",
+    borderBottomWidth: "1px",
+    borderBottomStyle: "solid",
+    borderBottomColor: "var(--border-color)",
     cursor: "pointer",
     display: "flex",
     justifyContent: "space-between",
@@ -498,22 +852,341 @@ const styles = {
     padding: "2px 8px",
     borderRadius: "var(--radius-full)",
   },
-  quickGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-    gap: "20px",
-  },
-  quickCard: {
-    background: "var(--bg-card)",
-    border: "1px solid var(--border-color)",
-    borderRadius: "var(--radius-md)",
-    padding: "20px",
+
+  // ═══════════ BROWSE MODE ═══════════
+  browseModeContent: {
+    padding: "20px 24px 32px",
     display: "flex",
     flexDirection: "column",
+    gap: "16px",
+  },
+  browseLoading: {
+    textAlign: "center",
+    padding: "40px",
+    color: "var(--text-muted)",
+    fontSize: "14px",
+  },
+  cabinetSearchRow: {
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+    justifyContent: "space-between",
+  },
+  filterInputWrapper: {
+    position: "relative",
+    flex: 1,
+    display: "flex",
+    alignItems: "center",
+  },
+  filterSearchIcon: {
+    position: "absolute",
+    left: "12px",
+    fontSize: "14px",
+    color: "var(--text-light)",
+  },
+  cabinetFilterInput: {
+    width: "100%",
+    height: "38px",
+    background: "var(--bg-main)",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "var(--border-color)",
+    borderRadius: "var(--radius-sm)",
+    paddingLeft: "36px",
+    paddingRight: "36px",
+    fontSize: "13px",
+    fontWeight: "500",
+    color: "var(--text-main)",
+  },
+  filterClearBtn: {
+    position: "absolute",
+    right: "10px",
+    background: "transparent",
+    border: "none",
+    fontSize: "12px",
+    color: "var(--text-light)",
+    cursor: "pointer",
+  },
+  cabinetCountBadge: {
+    fontSize: "12px",
+    fontWeight: "700",
+    color: "var(--text-muted)",
+    background: "var(--bg-main)",
+    padding: "6px 12px",
+    borderRadius: "var(--radius-sm)",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "var(--border-color)",
+    whiteSpace: "nowrap",
+  },
+
+  // ── Cabinet Grid (Responsive 2-Column on Desktop) ──
+  cabinetGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+    gap: "12px",
+    alignItems: "start",
+  },
+  cabinetWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    transition: "all var(--transition-fast)",
+  },
+  cabinetCard: {
+    width: "100%",
+    textAlign: "left",
+    background: "var(--bg-main)",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "var(--border-color)",
+    borderTopLeftRadius: "var(--radius-md)",
+    borderTopRightRadius: "var(--radius-md)",
+    borderBottomLeftRadius: "var(--radius-md)",
+    borderBottomRightRadius: "var(--radius-md)",
+    padding: "14px 16px",
+    cursor: "pointer",
+    transition: "all var(--transition-fast)",
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+  },
+  cabinetCardExpanded: {
+    borderColor: "var(--primary)",
+    background: "var(--primary-light)",
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    boxShadow: "var(--shadow-sm)",
+  },
+  cabinetCardHeader: {
+    display: "flex",
+    alignItems: "center",
     gap: "8px",
   },
-  cardIcon: {
-    fontSize: "24px",
+  cabinetIcon: {
+    fontSize: "16px",
+    flexShrink: 0,
+  },
+  cabinetName: {
+    fontSize: "15px",
+    fontWeight: "700",
+    color: "var(--text-main)",
+    flex: 1,
+  },
+  expandArrow: {
+    fontSize: "10px",
+    color: "var(--text-light)",
+    flexShrink: 0,
+    transition: "transform var(--transition-fast)",
+  },
+  cabinetStats: {
+    display: "flex",
+    alignItems: "center",
+    gap: "16px",
+    paddingLeft: "24px",
+  },
+  statItem: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "1px",
+  },
+  statValue: {
+    fontSize: "16px",
+    fontWeight: "800",
+    color: "var(--text-main)",
+  },
+  statLabel: {
+    fontSize: "10px",
+    fontWeight: "600",
+    color: "var(--text-muted)",
+    textTransform: "uppercase",
+    letterSpacing: "0.5px",
+  },
+  statDivider: {
+    width: "1px",
+    height: "22px",
+    background: "var(--border-color)",
+  },
+  ioTypeBadges: {
+    display: "flex",
+    gap: "6px",
+    paddingLeft: "24px",
+    flexWrap: "wrap",
+  },
+  miniDI: {
+    fontSize: "10px",
+    fontWeight: "700",
+    padding: "2px 6px",
+    borderRadius: "4px",
+    color: "var(--accent-green)",
+    background: "rgba(16, 185, 129, 0.1)",
+  },
+  miniDO: {
+    fontSize: "10px",
+    fontWeight: "700",
+    padding: "2px 6px",
+    borderRadius: "4px",
     color: "var(--primary)",
+    background: "rgba(204, 17, 17, 0.06)",
+  },
+  miniAI: {
+    fontSize: "10px",
+    fontWeight: "700",
+    padding: "2px 6px",
+    borderRadius: "4px",
+    color: "var(--accent-blue)",
+    background: "rgba(2, 132, 199, 0.1)",
+  },
+  miniAO: {
+    fontSize: "10px",
+    fontWeight: "700",
+    padding: "2px 6px",
+    borderRadius: "4px",
+    color: "var(--accent-yellow)",
+    background: "rgba(245, 158, 11, 0.1)",
+  },
+
+  // ── Equipment List (Accordion) ──
+  equipmentList: {
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "var(--primary)",
+    borderTopWidth: 0,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+    borderBottomLeftRadius: "var(--radius-md)",
+    borderBottomRightRadius: "var(--radius-md)",
+    background: "#ffffff",
+    display: "flex",
+    flexDirection: "column",
+    overflow: "hidden",
+    boxShadow: "var(--shadow-md)",
+    animation: "slideUp 0.15s ease",
+  },
+  equipSearchHeader: {
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    padding: "10px 14px",
+    background: "#f8fafc",
+    borderBottomWidth: "1px",
+    borderBottomStyle: "solid",
+    borderBottomColor: "var(--border-color)",
+  },
+  equipSearchInput: {
+    flex: 1,
+    height: "32px",
+    background: "#ffffff",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "var(--border-color)",
+    borderRadius: "var(--radius-sm)",
+    padding: "0 10px",
+    fontSize: "12px",
+    fontWeight: "500",
+    color: "var(--text-main)",
+  },
+  equipCountTag: {
+    fontSize: "11px",
+    fontWeight: "600",
+    color: "var(--text-muted)",
+    whiteSpace: "nowrap",
+  },
+  equipScrollContainer: {
+    maxHeight: "360px",
+    overflowY: "auto",
+  },
+  equipmentRow: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "12px 16px",
+    background: "transparent",
+    borderTopWidth: 0,
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
+    borderBottomWidth: "1px",
+    borderBottomStyle: "solid",
+    borderBottomColor: "var(--border-color)",
+    cursor: "pointer",
+    transition: "background var(--transition-fast)",
+    textAlign: "left",
+    gap: "8px",
+  },
+  eqMeta: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "2px",
+    flex: 1,
+    minWidth: 0,
+  },
+  eqCode: {
+    fontSize: "14px",
+    fontWeight: "700",
+    color: "var(--text-main)",
+  },
+  eqName: {
+    fontSize: "12px",
+    color: "var(--text-muted)",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  },
+  eqRight: {
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    flexShrink: 0,
+  },
+  eqSignals: {
+    fontSize: "12px",
+    fontWeight: "500",
+    color: "var(--text-light)",
+    whiteSpace: "nowrap",
+  },
+  eqTypes: {
+    display: "flex",
+    gap: "3px",
+  },
+  eqTypeBadge: {
+    fontSize: "9px",
+    fontWeight: "700",
+    padding: "2px 5px",
+    borderRadius: "3px",
+  },
+  eqBadgeDI: {
+    color: "var(--accent-green)",
+    background: "rgba(16, 185, 129, 0.1)",
+  },
+  eqBadgeDO: {
+    color: "var(--primary)",
+    background: "rgba(204, 17, 17, 0.06)",
+  },
+  eqBadgeAnalog: {
+    color: "var(--accent-blue)",
+    background: "rgba(2, 132, 199, 0.1)",
+  },
+  eqArrow: {
+    fontSize: "14px",
+    color: "var(--primary)",
+    fontWeight: "700",
+  },
+  noEquipment: {
+    padding: "24px",
+    textAlign: "center",
+    color: "var(--text-muted)",
+    fontSize: "13px",
+  },
+  noCabinets: {
+    gridColumn: "1 / -1",
+    padding: "36px",
+    textAlign: "center",
+    color: "var(--text-muted)",
+    fontSize: "14px",
+    background: "var(--bg-main)",
+    borderRadius: "var(--radius-md)",
+    borderWidth: "1px",
+    borderStyle: "dashed",
+    borderColor: "var(--border-color)",
   },
 };
