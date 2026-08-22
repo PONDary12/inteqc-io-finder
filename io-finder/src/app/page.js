@@ -455,7 +455,7 @@ export default function SearchHome() {
                   <input
                     type="text"
                     style={styles.cabinetFilterInput}
-                    placeholder="Filter cabinets (e.g. MCC, LCB, PLC)..."
+                    placeholder="Search cabinet (e.g. MCC)..."
                     value={cabinetFilter}
                     onChange={(e) => setCabinetFilter(e.target.value)}
                   />
@@ -494,25 +494,28 @@ export default function SearchHome() {
                           onClick={() => handleToggleCabinet(cab.id)}
                         >
                           <div style={styles.cabinetCardHeader}>
-                            <span style={styles.cabinetIcon}>🗄️</span>
-                            <span style={styles.cabinetName}>{cab.name}</span>
+                            <div style={styles.cabinetHeaderLeft}>
+                              <span style={styles.cabinetIcon}>🗄️</span>
+                              <span style={styles.cabinetName}>{cab.name}</span>
+                            </div>
                             <span style={{
-                              ...styles.expandArrow,
+                              ...styles.expandArrowBadge,
+                              ...(isExpanded ? styles.expandArrowBadgeActive : {}),
                               transform: isExpanded ? "rotate(90deg)" : "rotate(0deg)",
                             }}>
                               ▶
                             </span>
                           </div>
                           <div style={styles.cabinetStats}>
-                            <span style={styles.statItem}>
+                            <div style={styles.statItem}>
                               <span style={styles.statValue}>{cab.equipCount}</span>
                               <span style={styles.statLabel}>Equipment</span>
-                            </span>
-                            <span style={styles.statDivider} />
-                            <span style={styles.statItem}>
+                            </div>
+                            <div style={styles.statDivider} />
+                            <div style={styles.statItem}>
                               <span style={styles.statValue}>{cab.ioCount}</span>
                               <span style={styles.statLabel}>I/O Points</span>
-                            </span>
+                            </div>
                           </div>
                           <div style={styles.ioTypeBadges}>
                             {cab.diCount > 0 && <span style={styles.miniDI}>DI {cab.diCount}</span>}
@@ -609,9 +612,10 @@ const styles = {
     minHeight: "100dvh",
     height: "100%",
     width: "100%",
-    padding: "24px 20px 100px",
+    padding: "20px 16px 80px",
     overflowY: "auto",
     WebkitOverflowScrolling: "touch",
+    boxSizing: "border-box",
   },
   glowBg: {
     position: "absolute",
@@ -629,10 +633,11 @@ const styles = {
     zIndex: 1,
     display: "flex",
     flexDirection: "column",
-    gap: "28px",
+    gap: "24px",
     animation: "fadeIn 0.4s ease",
-    paddingTop: "24px",
+    paddingTop: "20px",
     paddingBottom: "80px",
+    boxSizing: "border-box",
   },
   header: {
     textAlign: "center",
@@ -855,10 +860,12 @@ const styles = {
 
   // ═══════════ BROWSE MODE ═══════════
   browseModeContent: {
-    padding: "20px 24px 32px",
+    padding: "20px 16px 28px",
     display: "flex",
     flexDirection: "column",
     gap: "16px",
+    width: "100%",
+    boxSizing: "border-box",
   },
   browseLoading: {
     textAlign: "center",
@@ -869,14 +876,17 @@ const styles = {
   cabinetSearchRow: {
     display: "flex",
     alignItems: "center",
-    gap: "12px",
+    gap: "10px",
     justifyContent: "space-between",
+    width: "100%",
+    boxSizing: "border-box",
   },
   filterInputWrapper: {
     position: "relative",
     flex: 1,
     display: "flex",
     alignItems: "center",
+    minWidth: 0,
   },
   filterSearchIcon: {
     position: "absolute",
@@ -897,6 +907,7 @@ const styles = {
     fontSize: "13px",
     fontWeight: "500",
     color: "var(--text-main)",
+    boxSizing: "border-box",
   },
   filterClearBtn: {
     position: "absolute",
@@ -918,22 +929,29 @@ const styles = {
     borderStyle: "solid",
     borderColor: "var(--border-color)",
     whiteSpace: "nowrap",
+    flexShrink: 0,
   },
 
-  // ── Cabinet Grid (Responsive 2-Column on Desktop) ──
+  // ── Cabinet Grid (Responsive 2-Column on Desktop, 1-Column on Mobile) ──
   cabinetGrid: {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+    gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 340px), 1fr))",
     gap: "12px",
     alignItems: "start",
+    width: "100%",
+    boxSizing: "border-box",
   },
   cabinetWrapper: {
     display: "flex",
     flexDirection: "column",
+    width: "100%",
+    minWidth: 0,
+    boxSizing: "border-box",
     transition: "all var(--transition-fast)",
   },
   cabinetCard: {
     width: "100%",
+    boxSizing: "border-box",
     textAlign: "left",
     background: "var(--bg-main)",
     borderWidth: "1px",
@@ -943,12 +961,12 @@ const styles = {
     borderTopRightRadius: "var(--radius-md)",
     borderBottomLeftRadius: "var(--radius-md)",
     borderBottomRightRadius: "var(--radius-md)",
-    padding: "14px 16px",
+    padding: "16px",
     cursor: "pointer",
     transition: "all var(--transition-fast)",
     display: "flex",
     flexDirection: "column",
-    gap: "10px",
+    gap: "12px",
   },
   cabinetCardExpanded: {
     borderColor: "var(--primary)",
@@ -960,34 +978,62 @@ const styles = {
   cabinetCardHeader: {
     display: "flex",
     alignItems: "center",
+    justifyContent: "space-between",
+    gap: "10px",
+    width: "100%",
+  },
+  cabinetHeaderLeft: {
+    display: "flex",
+    alignItems: "center",
     gap: "8px",
+    flex: 1,
+    minWidth: 0,
   },
   cabinetIcon: {
-    fontSize: "16px",
+    fontSize: "18px",
     flexShrink: 0,
   },
   cabinetName: {
     fontSize: "15px",
     fontWeight: "700",
     color: "var(--text-main)",
-    flex: 1,
+    letterSpacing: "-0.2px",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
   },
-  expandArrow: {
-    fontSize: "10px",
-    color: "var(--text-light)",
+  expandArrowBadge: {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "22px",
+    height: "22px",
+    borderRadius: "var(--radius-full)",
+    background: "rgba(148, 163, 184, 0.15)",
+    fontSize: "9px",
+    color: "var(--text-muted)",
     flexShrink: 0,
-    transition: "transform var(--transition-fast)",
+    transition: "all var(--transition-fast)",
+  },
+  expandArrowBadgeActive: {
+    background: "var(--primary)",
+    color: "#ffffff",
   },
   cabinetStats: {
     display: "flex",
     alignItems: "center",
-    gap: "16px",
-    paddingLeft: "24px",
+    gap: "20px",
+    padding: "10px 14px",
+    background: "var(--bg-card)",
+    borderRadius: "var(--radius-sm)",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "var(--border-color)",
   },
   statItem: {
     display: "flex",
-    flexDirection: "column",
-    gap: "1px",
+    alignItems: "baseline",
+    gap: "6px",
   },
   statValue: {
     fontSize: "16px",
@@ -995,7 +1041,7 @@ const styles = {
     color: "var(--text-main)",
   },
   statLabel: {
-    fontSize: "10px",
+    fontSize: "11px",
     fontWeight: "600",
     color: "var(--text-muted)",
     textTransform: "uppercase",
@@ -1003,14 +1049,14 @@ const styles = {
   },
   statDivider: {
     width: "1px",
-    height: "22px",
+    height: "16px",
     background: "var(--border-color)",
   },
   ioTypeBadges: {
     display: "flex",
     gap: "6px",
-    paddingLeft: "24px",
     flexWrap: "wrap",
+    alignItems: "center",
   },
   miniDI: {
     fontSize: "10px",
