@@ -166,20 +166,49 @@ export default function MachineDetail({ params }) {
         const points = [];
         const drawingsSet = new Map();
 
+        // 1. Gather all schematic drawings registered for this equipment code in equipmentDrawings
+        const cleanParamCode = equipmentCode ? equipmentCode.trim().toUpperCase().replace(/-/g, '_') : '';
+        if (location.equipmentDrawings) {
+          for (const [eqKey, sheets] of Object.entries(location.equipmentDrawings)) {
+            const cleanKey = eqKey.trim().toUpperCase().replace(/-/g, '_');
+            const isMatch = cleanKey === cleanParamCode ||
+                            cleanParamCode.startsWith(cleanKey) ||
+                            cleanKey.startsWith(cleanParamCode) ||
+                            normalizeCode(cleanKey) === normalizeCode(cleanParamCode);
+            if (isMatch && Array.isArray(sheets)) {
+              sheets.forEach(s => {
+                const key = s.drawingPdfUrl || (s.internalPage ? `sheet-${s.internalPage}` : `${s.cabinet || cabinet}-${s.page}`);
+                if (!drawingsSet.has(key)) {
+                  drawingsSet.set(key, {
+                    cabinet: s.cabinet || cabinet,
+                    page: s.page,
+                    internalPage: s.internalPage,
+                    drawingPdfUrl: s.drawingPdfUrl,
+                    label: s.label || 'Schematic Diagram',
+                    type: s.type || 'schematic'
+                  });
+                }
+              });
+            }
+          }
+        }
+
+        // 2. Also map drawings from matching I/O points (e.g. PLC cards / rack overview)
         location.cabinets.forEach(cab => {
           cab.io.forEach(point => {
             if (matchEquip(point, equipmentCode)) {
               points.push(point);
               
-              // Map drawings
               if (point.drawingPdfUrl && point.drawingPage) {
-                const key = `${point.cabinet}-${point.drawingPage}`;
+                const key = point.drawingPdfUrl || (point.internalPage ? `sheet-${point.internalPage}` : `${point.cabinet}-${point.drawingPage}`);
                 if (!drawingsSet.has(key)) {
                   drawingsSet.set(key, {
                     cabinet: point.cabinet,
                     page: point.drawingPage,
                     internalPage: point.internalPage,
-                    drawingPdfUrl: point.drawingPdfUrl
+                    drawingPdfUrl: point.drawingPdfUrl,
+                    label: 'PLC I/O Wiring',
+                    type: 'control'
                   });
                 }
               }
@@ -201,8 +230,13 @@ export default function MachineDetail({ params }) {
             points: points
           });
 
-          // Set drawings list sorted by sheet page number
-          const list = Array.from(drawingsSet.values()).sort((a, b) => Number(a.page) - Number(b.page));
+          // Set drawings list sorted by sheet internal page number
+          const list = Array.from(drawingsSet.values()).sort((a, b) => {
+            const numA = parseInt(a.internalPage, 10);
+            const numB = parseInt(b.internalPage, 10);
+            if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
+            return Number(a.page) - Number(b.page);
+          });
           setAllDrawings(list);
           if (list.length > 0) {
             setCurrentDrawing(list[0]);
@@ -442,6 +476,47 @@ export default function MachineDetail({ params }) {
                 {equipment.points.length} Connected I/O Point{equipment.points.length > 1 ? "s" : ""}
               </p>
             )}
+
+            {/* Quick-Access Electrical Schematic Sheet Pills */}
+            {allDrawings.length > 0 && (
+              <div style={styles.schematicBar} className="no-print">
+                <div style={styles.schematicBarLabel}>
+                  <span>⚡ Electrical Schematic Sheets ({allDrawings.length}):</span>
+                </div>
+                <div style={styles.schematicPills}>
+                  {allDrawings.map((draw) => {
+                    const isSelected = currentDrawing && currentDrawing.cabinet === draw.cabinet && String(currentDrawing.page) === String(draw.page);
+                    return (
+                      <button
+                        key={`${draw.cabinet}-${draw.page}-${draw.internalPage}`}
+                        style={{
+                          ...styles.schematicPill,
+                          ...(isSelected ? styles.schematicPillActive : {})
+                        }}
+                        onClick={() => {
+                          setCurrentDrawing(draw);
+                          setMobileView("drawing");
+                        }}
+                        title={`View Sheet ${draw.internalPage} (${draw.label || 'Schematic'})`}
+                      >
+                        <span style={styles.pillIcon}>
+                          {draw.type === 'power' ? '⚡' : draw.type === 'starter' || draw.type === 'vfd' ? '🔌' : draw.type === 'safety' ? '🛡️' : draw.type === 'valve' ? '🔧' : '🎛️'}
+                        </span>
+                        <span>Sheet {draw.internalPage}</span>
+                        {draw.label && (
+                          <span style={{
+                            ...styles.pillSubLabel,
+                            ...(isSelected ? styles.pillSubLabelActive : {})
+                          }}>
+                            • {draw.label}
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Search inside table */}
@@ -530,8 +605,12 @@ export default function MachineDetail({ params }) {
                           <button
                             style={styles.sheetLinkBtn}
                             onClick={() => {
-                              const drawing = allDrawings.find(d => d.cabinet === row.cabinet && d.page === row.drawingPage);
-                              if (drawing) setCurrentDrawing(drawing);
+                              const drawing = allDrawings.find(d => String(d.internalPage) === String(row.internalPage)) ||
+                                              allDrawings.find(d => d.cabinet === row.cabinet && d.page === row.drawingPage);
+                              if (drawing) {
+                                setCurrentDrawing(drawing);
+                                setMobileView("drawing");
+                              }
                             }}
                           >
                             🖼️ Sheet {row.internalPage}
@@ -572,8 +651,8 @@ export default function MachineDetail({ params }) {
                     }}
                   >
                     {allDrawings.map((draw, idx) => (
-                      <option key={`${draw.cabinet}|${draw.page}`} value={`${draw.cabinet}|${draw.page}`}>
-                        Sheet {draw.internalPage} ({draw.cabinet})
+                      <option key={`${draw.cabinet}|${draw.page}|${draw.internalPage}`} value={`${draw.cabinet}|${draw.page}`}>
+                        Sheet {draw.internalPage} {draw.label ? `— ${draw.label}` : ''} ({draw.cabinet})
                       </option>
                     ))}
                   </select>
@@ -801,6 +880,59 @@ const styles = {
     fontSize: "14px",
     color: "var(--text-muted)",
     marginTop: "2px",
+  },
+  schematicBar: {
+    marginTop: "14px",
+    paddingTop: "12px",
+    borderTop: "1px dashed var(--border-color)",
+  },
+  schematicBarLabel: {
+    fontSize: "12px",
+    fontWeight: "700",
+    color: "var(--text-muted)",
+    marginBottom: "8px",
+    display: "flex",
+    alignItems: "center",
+    gap: "6px",
+    textTransform: "uppercase",
+    letterSpacing: "0.5px",
+  },
+  schematicPills: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "8px",
+  },
+  schematicPill: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "6px",
+    background: "#ffffff",
+    border: "1px solid var(--border-color)",
+    borderRadius: "20px",
+    padding: "6px 12px",
+    fontSize: "12px",
+    fontWeight: "600",
+    color: "var(--text-main)",
+    cursor: "pointer",
+    transition: "all var(--transition-fast)",
+    boxShadow: "0 1px 2px rgba(0,0,0,0.03)",
+  },
+  schematicPillActive: {
+    background: "var(--primary)",
+    borderColor: "var(--primary)",
+    color: "#ffffff",
+    boxShadow: "0 2px 6px rgba(204,17,17,0.3)",
+  },
+  pillIcon: {
+    fontSize: "13px",
+  },
+  pillSubLabel: {
+    fontSize: "11px",
+    fontWeight: "500",
+    color: "var(--text-muted)",
+  },
+  pillSubLabelActive: {
+    color: "rgba(255, 255, 255, 0.9)",
   },
   tableControls: {
     marginBottom: "12px",

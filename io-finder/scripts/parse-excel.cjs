@@ -1063,10 +1063,58 @@ function main() {
       }
     }
 
+    const locMap = pdfPageMap[config.locationId] || {};
+    const equipmentDrawings = {};
+    if (locMap.equipmentDrawings) {
+      for (const [code, sheetList] of Object.entries(locMap.equipmentDrawings)) {
+        equipmentDrawings[code] = sheetList.map(s => {
+          let drawingPdfUrl = null;
+          let drawingPage = null;
+          let actualCab = s.cabinet || null;
+
+          if (locMap.cabinets) {
+            if (!actualCab) {
+              for (const [cabName, pagesMap] of Object.entries(locMap.cabinets)) {
+                if (Object.values(pagesMap).map(Number).includes(s.pdfPage)) {
+                  actualCab = cabName;
+                  break;
+                }
+              }
+            }
+            if (actualCab && locMap.cabinets[actualCab]) {
+              const pages = Object.values(locMap.cabinets[actualCab]).map(Number);
+              if (pages.length > 0) {
+                const cabinetMinPage = Math.min(...pages);
+                if (s.pdfPage >= cabinetMinPage) {
+                  const pageOffset = s.pdfPage - cabinetMinPage + 1;
+                  const relUrl = `/drawings/${config.locationId}/cabinets/images/${actualCab}_page_${pageOffset}.png`;
+                  if (fs.existsSync(path.join(PUBLIC_DIR, relUrl))) {
+                    drawingPdfUrl = relUrl;
+                    drawingPage = pageOffset;
+                  }
+                }
+              }
+            }
+          }
+
+          return {
+            internalPage: s.internalPage,
+            pdfPage: s.pdfPage,
+            page: drawingPage || s.pdfPage,
+            drawingPdfUrl: drawingPdfUrl || (locMap.drawingUrl || null),
+            label: s.label,
+            type: s.type,
+            cabinet: actualCab,
+          };
+        }).filter(d => d.drawingPdfUrl !== null);
+      }
+    }
+
     locations.push({
       id: config.locationId,
       name: config.locationName,
       cabinets,
+      equipmentDrawings,
     });
 
     console.log('');

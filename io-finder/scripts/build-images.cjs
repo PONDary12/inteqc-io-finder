@@ -77,6 +77,20 @@ async function generateImagesForLocation(loc, locMap) {
       }
     }
 
+    // Also include pages referenced by equipmentDrawings
+    if (locMap.equipmentDrawings) {
+      const pageSet = new Set(pdfPageNumbers);
+      for (const drawings of Object.values(locMap.equipmentDrawings)) {
+        for (const d of drawings) {
+          const eqPage = Number(d.pdfPage);
+          if (eqPage >= minPage && eqPage <= maxPage && !pageSet.has(eqPage)) {
+            pdfPageNumbers.push(eqPage);
+            pageSet.add(eqPage);
+          }
+        }
+      }
+    }
+
     // Filter out pages that are already generated
     const pagesToProcess = [];
     pdfPageNumbers.forEach(pageNum => {
