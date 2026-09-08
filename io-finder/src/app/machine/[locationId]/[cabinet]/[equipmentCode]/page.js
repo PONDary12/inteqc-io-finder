@@ -171,10 +171,11 @@ export default function MachineDetail({ params }) {
         if (location.equipmentDrawings) {
           for (const [eqKey, sheets] of Object.entries(location.equipmentDrawings)) {
             const cleanKey = eqKey.trim().toUpperCase().replace(/-/g, '_');
+            const suffixCheck = (str, base) => str.startsWith(base) && /^[^0-9]/.test(str.slice(base.length));
             const isMatch = cleanKey === cleanParamCode ||
-                            cleanParamCode.startsWith(cleanKey) ||
-                            cleanKey.startsWith(cleanParamCode) ||
-                            normalizeCode(cleanKey) === normalizeCode(cleanParamCode);
+                            normalizeCode(cleanKey) === normalizeCode(cleanParamCode) ||
+                            suffixCheck(cleanParamCode, cleanKey) ||
+                            suffixCheck(cleanKey, cleanParamCode);
             if (isMatch && Array.isArray(sheets)) {
               sheets.forEach(s => {
                 const key = s.drawingPdfUrl || (s.internalPage ? `sheet-${s.internalPage}` : `${s.cabinet || cabinet}-${s.page}`);
@@ -485,10 +486,13 @@ export default function MachineDetail({ params }) {
                 </div>
                 <div style={styles.schematicPills}>
                   {allDrawings.map((draw) => {
-                    const isSelected = currentDrawing && currentDrawing.cabinet === draw.cabinet && String(currentDrawing.page) === String(draw.page);
+                    const isSelected = currentDrawing && (
+                      (currentDrawing.internalPage && currentDrawing.internalPage === draw.internalPage) ||
+                      (currentDrawing.cabinet === draw.cabinet && String(currentDrawing.page) === String(draw.page))
+                    );
                     return (
                       <button
-                        key={`${draw.cabinet}-${draw.page}-${draw.internalPage}`}
+                        key={`${draw.cabinet}-${draw.internalPage || draw.page}`}
                         style={{
                           ...styles.schematicPill,
                           ...(isSelected ? styles.schematicPillActive : {})
@@ -643,15 +647,15 @@ export default function MachineDetail({ params }) {
                   <select
                     style={styles.sheetSelect}
                     className="sheet-select-responsive"
-                    value={`${currentDrawing.cabinet}|${currentDrawing.page}`}
+                    value={`${currentDrawing.cabinet}|${currentDrawing.internalPage || currentDrawing.page}`}
                     onChange={(e) => {
-                      const [cab, pg] = e.target.value.split("|");
-                      const drawing = allDrawings.find(d => d.cabinet === cab && String(d.page) === pg);
+                      const [cab, pageId] = e.target.value.split("|");
+                      const drawing = allDrawings.find(d => d.cabinet === cab && (d.internalPage === pageId || String(d.page) === pageId));
                       if (drawing) setCurrentDrawing(drawing);
                     }}
                   >
                     {allDrawings.map((draw, idx) => (
-                      <option key={`${draw.cabinet}|${draw.page}|${draw.internalPage}`} value={`${draw.cabinet}|${draw.page}`}>
+                      <option key={`${draw.cabinet}|${draw.internalPage || draw.page}`} value={`${draw.cabinet}|${draw.internalPage || draw.page}`}>
                         Sheet {draw.internalPage} {draw.label ? `— ${draw.label}` : ''} ({draw.cabinet})
                       </option>
                     ))}

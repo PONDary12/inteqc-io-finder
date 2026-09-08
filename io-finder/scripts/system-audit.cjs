@@ -113,3 +113,48 @@ console.log('\n--- 5. DRAWING IMAGES STORAGE AUDIT ---');
     console.log(`  ${locId}: No image folder found`);
   }
 });
+
+// 6. EQUIPMENT DRAWINGS AUDIT (Schematics linked to machines)
+console.log('\n--- 6. EQUIPMENT DRAWINGS AUDIT ---');
+let totalEquipSchematics = 0;
+let totalMissingSchematicFiles = 0;
+let badEquipKeys = [];
+let schematicChineseChars = [];
+
+ioData.locations.forEach(loc => {
+  const eqMap = loc.equipmentDrawings || {};
+  const keys = Object.keys(eqMap);
+  let locSchematics = 0;
+  let locMissing = 0;
+
+  keys.forEach(k => {
+    if (/^[0-9]+(\.[0-9]+)?(KW|A|V|W|HZ|RPM|MA|KVA)$/i.test(k)) {
+      badEquipKeys.push({ loc: loc.id, key: k });
+    }
+    eqMap[k].forEach(s => {
+      totalEquipSchematics++;
+      locSchematics++;
+      const absPath = path.join(PUBLIC_DIR, s.drawingPdfUrl);
+      if (!fs.existsSync(absPath)) {
+        totalMissingSchematicFiles++;
+        locMissing++;
+        if (locMissing <= 5) {
+          console.log(`[404 Schematic] Loc: ${loc.id}, Eq: ${k}, Sheet: ${s.internalPage} -> File not found: ${s.drawingPdfUrl}`);
+        }
+      }
+      if (/[\u4e00-\u9fa5]/.test(s.label || '') || /[\u4e00-\u9fa5]/.test(s.type || '')) {
+        schematicChineseChars.push({ loc: loc.id, eq: k, label: s.label, type: s.type });
+      }
+    });
+  });
+
+  console.log(`📍 ${loc.name} (${loc.id}): ${keys.length} machines with schematics, ${locSchematics} total sheet links, ${locMissing} missing files (404)`);
+});
+
+console.log(`\nTotal equipment schematic links: ${totalEquipSchematics}, Missing files: ${totalMissingSchematicFiles}`);
+console.log(`Junk / rating equipment keys found: ${badEquipKeys.length}`);
+if (badEquipKeys.length > 0) {
+  console.log('Sample bad keys:', badEquipKeys.slice(0, 10));
+}
+console.log(`Schematic labels containing Chinese characters: ${schematicChineseChars.length}`);
+

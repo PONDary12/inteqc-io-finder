@@ -25,13 +25,24 @@ try {
 }
 
 const CABINET_BASE_PAGES = {
+  'MCC1': 100,
   'MCC2': 200,
   'MCC3': 300,
+  'MCC4': 400,
+  'MCC5': 500,
+  'MCC6': 510,
   'MCC7': 600,
   'MCC8_9': 700,
+  'MCC10': 800,
   'MCC11': 900,
-  'MCC12_13': 1100,
+  'MCC12_13': 1000,
+  'MCC14': 1200,
+  'MCC15': 1300,
   'MCC18': 1400,
+  'MCC19': 1500,
+  'MCC20_21': 1600,
+  'MCC22_23': 1700,
+  'MCC24_25': 1800,
   'PLC': 1900,
   'LCB_1': 2000,
   'LCB_2': 2100,
@@ -42,6 +53,7 @@ const CABINET_BASE_PAGES = {
   'LCB_8': 2600,
   'LCB_9': 2700,
   'LCB_10': 2800,
+  'CB': 3000,
 };
 
 // ──────────────────────── Normalization Helpers ────────────────────────
@@ -1101,7 +1113,7 @@ function main() {
             internalPage: s.internalPage,
             pdfPage: s.pdfPage,
             page: drawingPage || s.pdfPage,
-            drawingPdfUrl: drawingPdfUrl || (locMap.drawingUrl || null),
+            drawingPdfUrl: drawingPdfUrl,
             label: s.label,
             type: s.type,
             cabinet: actualCab,

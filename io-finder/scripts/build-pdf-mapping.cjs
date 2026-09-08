@@ -61,22 +61,27 @@ const LOCATIONS = [
     pdfFile: '泰国inteqc Cabinet drawing.pdf',
     drawingUrl: '/drawings/tower3/inteqc_cabinet_drawing.pdf',
     cabinetRanges: [
+      { min: 100, max: 199, cabinet: 'MCC1' },
       { min: 200, max: 299, cabinet: 'MCC2' },
       { min: 300, max: 399, cabinet: 'MCC3' },
       { min: 400, max: 499, cabinet: 'MCC4' },
-      { min: 500, max: 599, cabinet: 'MCC6' },
+      { min: 500, max: 509, cabinet: 'MCC5' },
+      { min: 510, max: 599, cabinet: 'MCC6' },
       { min: 600, max: 699, cabinet: 'MCC7' },
-      { min: 700, max: 899, cabinet: 'MCC8_9' },
-      { min: 900, max: 1099, cabinet: 'MCC11' },
-      { min: 1100, max: 1399, cabinet: 'MCC12_13' },
-      { min: 1400, max: 1599, cabinet: 'MCC18' },
-      { min: 1600, max: 1659, cabinet: 'MCC20_21' },
-      { min: 1660, max: 1699, cabinet: 'MCC21_22' },
+      { min: 700, max: 799, cabinet: 'MCC8_9' },
+      { min: 800, max: 899, cabinet: 'MCC10' },
+      { min: 900, max: 999, cabinet: 'MCC11' },
+      { min: 1000, max: 1199, cabinet: 'MCC12_13' },
+      { min: 1200, max: 1299, cabinet: 'MCC14' },
+      { min: 1300, max: 1399, cabinet: 'MCC15' },
+      { min: 1400, max: 1499, cabinet: 'MCC18' },
+      { min: 1500, max: 1599, cabinet: 'MCC19' },
+      { min: 1600, max: 1699, cabinet: 'MCC20_21' },
       { min: 1700, max: 1799, cabinet: 'MCC22_23' },
       { min: 1800, max: 1899, cabinet: 'MCC24_25' },
       { min: 1900, max: 1999, cabinet: 'PLC' },
-      { min: 2000, max: 2108, cabinet: 'LCB_1' },
-      { min: 2109, max: 2199, cabinet: 'LCB_2' },
+      { min: 2000, max: 2099, cabinet: 'LCB_1' },
+      { min: 2100, max: 2199, cabinet: 'LCB_2' },
       { min: 2200, max: 2299, cabinet: 'LCB_4' },
       { min: 2300, max: 2399, cabinet: 'LCB_5' },
       { min: 2400, max: 2499, cabinet: 'LCB_6A' },
@@ -84,6 +89,7 @@ const LOCATIONS = [
       { min: 2600, max: 2699, cabinet: 'LCB_8' },
       { min: 2700, max: 2799, cabinet: 'LCB_9' },
       { min: 2800, max: 2899, cabinet: 'LCB_10' },
+      { min: 3000, max: 3099, cabinet: 'CB' },
     ],
   },
 ];
@@ -137,6 +143,13 @@ function extractInternalPage(text) {
     if (m) return m[1];
   }
 
+  // 7. English title block pattern (Muyang-WEM, e.g. Tower 3)
+  //    TOTAL ... 1000 ... 4 <internalPage> 2
+  if (text.includes('PAGE') && text.includes('TOTAL')) {
+    m = text.match(/\b1000\b[\s\S]{1,30}?\b4\b\s+(\d{3,4})\s+2/);
+    if (m) return m[1].trim();
+  }
+
   return null;
 }
 
@@ -187,11 +200,14 @@ function extractEquipFromTitleLine(line) {
 function classifySchematicPage(text, title) {
   const t = (title + '\n' + text).toLowerCase();
   
-  if (t.includes('rs485') || t.includes('pz80') || t.includes('acrel') || t.includes('meter') || t.includes('wpj') || t.includes('pj1') || t.includes('电度') || t.includes('电流检测')) {
+  if (t.includes('rs485') || t.includes('pz80') || t.includes('acrel') || t.includes('meter') || t.includes('wpj') || t.includes('pj1') || t.includes('电度') || t.includes('电流检测') || t.includes('电流变送器') || t.includes('power calculate') || t.includes('power incoming')) {
     return { label: 'Power & Metering', type: 'power' };
   }
-  if ((t.includes('pstx') || t.includes('软起') || t.includes('soft start')) && !t.includes('软起故障') && (t.includes('zkm') || t.includes('fkm') || t.includes('km1') || t.includes('qf1') || t.includes('接触器') || t.includes('355kw') || t.includes('主回路'))) {
-    return { label: 'Soft Starter Circuit', type: 'starter' };
+  if ((t.includes('pstx') || t.includes('软起') || t.includes('soft start') || t.includes('星形') || t.includes('三角形') || t.includes('ykm') || t.includes('skm')) && !t.includes('软起故障') && (t.includes('zkm') || t.includes('fkm') || t.includes('km1') || t.includes('qf1') || t.includes('接触器') || t.includes('355kw') || t.includes('250kw') || t.includes('主回路') || t.includes('ykm') || t.includes('skm'))) {
+    if (t.includes('pstx') || t.includes('软起') || t.includes('soft start')) {
+      return { label: 'Soft Starter Circuit', type: 'starter' };
+    }
+    return { label: 'Starter Circuit', type: 'starter' };
   }
   if (t.includes('变频') || t.includes('vfd') || t.includes('inverter') || t.includes('atv') || t.includes('g120')) {
     return { label: 'VFD Drive Circuit', type: 'vfd' };
@@ -199,19 +215,19 @@ function classifySchematicPage(text, title) {
   if (t.includes('启动') || t.includes('start') || t.includes('合闸') || t.includes('运行') || t.includes('running') || t.includes('breaker on')) {
     return { label: 'PLC Control Circuit', type: 'control' };
   }
-  if (t.includes('门保') || t.includes('door protect') || t.includes('防堵') || t.includes('跑偏') || t.includes('拉绳') || t.includes('接近开关') || t.includes('急停') || t.includes('estop')) {
+  if (t.includes('门保') || t.includes('door protect') || t.includes('防堵') || t.includes('跑偏') || t.includes('拉绳') || t.includes('接近开关') || t.includes('急停') || t.includes('estop') || t.includes('speed') || t.includes('belt alignment')) {
     return { label: 'Safety & Interlock', type: 'safety' };
   }
-  if (t.includes('导向阀') || t.includes('电磁阀') || t.includes('valve') || t.includes('换向') || t.includes('开门到位') || t.includes('关门到位') || t.includes('风门')) {
+  if (t.includes('导向阀') || t.includes('电磁阀') || t.includes('valve') || t.includes('换向') || t.includes('开门到位') || t.includes('关门到位') || t.includes('风门') || t.includes('slide gate') || t.includes('闸门') || t.includes('v型闸门')) {
     return { label: 'Valve & Actuator', type: 'valve' };
   }
-  if (t.includes('接触器') || t.includes('km1') || t.includes('zkm') || t.includes('fkm') || t.includes('kw_') || t.includes('电机')) {
+  if (t.includes('接触器') || t.includes('km1') || t.includes('zkm') || t.includes('fkm') || t.includes('kw_') || t.includes('电机') || t.includes('main contact') || t.includes('△ contact') || t.includes('y contact')) {
     if (t.includes('di') || t.includes('dq') || t.includes('plc') || t.includes('ri1-') || t.includes('ri2-')) {
       return { label: 'PLC Control Circuit', type: 'control' };
     }
     return { label: 'Power Circuit', type: 'power' };
   }
-  if (t.includes('plc') || t.includes('di') || t.includes('dq') || t.includes('ai') || t.includes('ao') || t.includes('et200')) {
+  if (t.includes('plc') || t.includes('di') || t.includes('dq') || t.includes('ai') || t.includes('ao') || t.includes('et200') || t.includes('wago')) {
     return { label: 'PLC Control Circuit', type: 'control' };
   }
   return { label: 'Schematic Diagram', type: 'schematic' };
@@ -374,35 +390,23 @@ async function scanPdf(loc) {
     const foundEquips = new Set();
 
     if (!internalPageStr.includes('.')) {
-      for (const line of lines) {
-        if (line.includes('日期') && !line.includes('布置') && !line.includes('端子') && !line.includes('目录') && !line.includes('总览')) {
-          const eq = extractEquipFromTitleLine(line);
-          if (eq) {
-            foundEquips.add(eq);
+      if (loc.cabinetList) {
+        // ─── Tower 2 Style (WZB / 魏正彪) ───
+        for (const line of lines) {
+          if (line.includes('日期') && !line.includes('布置') && !line.includes('端子') && !line.includes('目录') && !line.includes('总览')) {
+            const eq = extractEquipFromTitleLine(line);
+            if (eq) {
+              foundEquips.add(eq);
+            }
           }
         }
-      }
 
-      if (foundEquips.size > 0) {
-        const classification = classifySchematicPage(text, lines.find(l => l.includes('日期')) || '');
-        foundEquips.forEach(eq => {
-          if (!equipmentDrawings[eq]) equipmentDrawings[eq] = [];
-          if (!equipmentDrawings[eq].some(d => d.internalPage === internalPageStr)) {
-            equipmentDrawings[eq].push({
-              pdfPage: pageNum,
-              internalPage: internalPageStr,
-              label: classification.label,
-              type: classification.type,
-              cabinet: cabinet || null,
-            });
-          }
-
-          // If code ends with 'V' or '_1', also index the parent machine code if applicable
-          if (eq.endsWith('V') && eq.length > 3) {
-            const parentEq = eq.slice(0, -1);
-            if (!equipmentDrawings[parentEq]) equipmentDrawings[parentEq] = [];
-            if (!equipmentDrawings[parentEq].some(d => d.internalPage === internalPageStr)) {
-              equipmentDrawings[parentEq].push({
+        if (foundEquips.size > 0) {
+          const classification = classifySchematicPage(text, lines.find(l => l.includes('日期')) || '');
+          foundEquips.forEach(eq => {
+            if (!equipmentDrawings[eq]) equipmentDrawings[eq] = [];
+            if (!equipmentDrawings[eq].some(d => d.internalPage === internalPageStr)) {
+              equipmentDrawings[eq].push({
                 pdfPage: pageNum,
                 internalPage: internalPageStr,
                 label: classification.label,
@@ -410,8 +414,120 @@ async function scanPdf(loc) {
                 cabinet: cabinet || null,
               });
             }
+
+            // If code ends with 'V' or '_1', also index the parent machine code if applicable
+            if (eq.endsWith('V') && eq.length > 3) {
+              const parentEq = eq.slice(0, -1);
+              if (!equipmentDrawings[parentEq]) equipmentDrawings[parentEq] = [];
+              if (!equipmentDrawings[parentEq].some(d => d.internalPage === internalPageStr)) {
+                equipmentDrawings[parentEq].push({
+                  pdfPage: pageNum,
+                  internalPage: internalPageStr,
+                  label: classification.label,
+                  type: classification.type,
+                  cabinet: cabinet || null,
+                });
+              }
+            }
+          });
+        }
+      } else if (loc.cabinetRanges && loc.cabinetRanges.length > 0) {
+        // ─── Tower 3 Style (MUYANG-WEM / 泰国inteqc) ───
+        let pageTitle = '';
+
+        // 1. Title block: '版权声明 设计 泰国inteqc <REST>'
+        const mTitle = text.match(/版权声明\s+设计\s+泰国inteqc\s+([^\n\r]+)/);
+        if (mTitle) {
+          pageTitle = mTitle[1].trim();
+          const eqMatch = pageTitle.match(/^([Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*(?:\/[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*|~[Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*)?)\b/);
+          if (eqMatch) {
+            const raw = eqMatch[1];
+            if (raw.includes('~')) {
+              raw.split('~').forEach(r => foundEquips.add(r.trim().toUpperCase().replace(/-/g, '_')));
+            } else if (raw.includes('/')) {
+              raw.split('/').forEach(r => foundEquips.add(r.trim().toUpperCase().replace(/-/g, '_')));
+            } else {
+              foundEquips.add(raw.trim().toUpperCase().replace(/-/g, '_'));
+            }
           }
-        });
+        }
+
+        // 2. Title block: 'DRAWN <Cab> <Sub> <REST>'
+        for (let j = 0; j < lines.length; j++) {
+          if (lines[j].includes('DRAWN')) {
+            const next1 = lines[j+1] || '';
+            const next2 = lines[j+2] || '';
+            const combo = next1 + ' ' + next2;
+            pageTitle = pageTitle || combo;
+            const eqMatch = combo.match(/\b([Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*)\b/);
+            if (eqMatch) {
+              foundEquips.add(eqMatch[1].trim().toUpperCase().replace(/-/g, '_'));
+            }
+          }
+        }
+
+        // 3. Device tags: '-5_69-KM1' or '-V6.4_1-K' or '-6.83-HL'
+        const tagMatches = text.match(/-([Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*)-(KM\d*|QF\d*|K\d*|ATS|KA\d*|W|M\d*|SQ\d*|SES|QK|PU|YV|SV|HA|SP|ST|BF|BZSO|HL|LL|PT|TT|LT|FU|SA)\b/g);
+        if (tagMatches) {
+          tagMatches.forEach(tag => {
+            const tm = tag.match(/-([Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*)-(KM\d*|QF\d*|K\d*|ATS|KA\d*|W|M\d*|SQ\d*|SES|QK|PU|YV|SV|HA|SP|ST|BF|BZSO|HL|LL|PT|TT|LT|FU|SA)\b/);
+            if (tm) {
+              foundEquips.add(tm[1].trim().toUpperCase().replace(/-/g, '_'));
+              if (['HL', 'LL', 'HA', 'SQ', 'SP', 'ST'].includes(tm[2])) {
+                foundEquips.add((tm[1] + '_' + tm[2]).trim().toUpperCase().replace(/-/g, '_'));
+              }
+            }
+          });
+        }
+
+        const isUnitOrRating = (str) => /^[0-9]+(\.[0-9]+)?(KW|A|V|W|HZ|RPM|MA|KVA)$/i.test(str);
+
+        // 4. Lines matching plant equipment pattern ([0-9]+[_\.][0-9]+)
+        for (const line of lines) {
+          const trimmed = line.trim().toUpperCase().replace(/-/g, '_');
+          if (/[0-9]+[_\.][0-9]+/.test(trimmed) && trimmed.length <= 15 && !isUnitOrRating(trimmed)) {
+            if (/^[Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*$/.test(trimmed)) {
+              foundEquips.add(trimmed);
+            }
+          }
+        }
+
+        const ignoreWords = new Set(['MCC', 'PLC', 'LCB', 'PCB', 'TOTAL', 'PAGE', 'DRAWN', 'WAGO', 'DATE', 'SA', 'CA', 'ZWP', 'WEM', 'FIELD']);
+
+        if (foundEquips.size > 0) {
+          const classification = classifySchematicPage(text, pageTitle);
+          foundEquips.forEach(eq => {
+            if (ignoreWords.has(eq) || isUnitOrRating(eq) || /^\d+KW$/i.test(eq) || /^\d+A$/i.test(eq)) return;
+            if (!equipmentDrawings[eq]) equipmentDrawings[eq] = [];
+            if (!equipmentDrawings[eq].some(d => d.internalPage === internalPageStr)) {
+              equipmentDrawings[eq].push({
+                pdfPage: pageNum,
+                internalPage: internalPageStr,
+                label: classification.label,
+                type: classification.type,
+                cabinet: cabinet || null,
+              });
+            }
+
+            // If code has letter suffix or sub-unit suffix e.g. 5_69A or 4_10.V or 4_25_V, also register for parent
+            const parentMatch = eq.match(/^([Vv]?[0-9]+[_\.][0-9]+)(?:[_\.][A-Za-z]+|[A-Za-z])$/);
+            if (parentMatch) {
+              const parentCode = parentMatch[1];
+              if (!ignoreWords.has(parentCode) && !isUnitOrRating(parentCode)) {
+                if (!equipmentDrawings[parentCode]) equipmentDrawings[parentCode] = [];
+                if (!equipmentDrawings[parentCode].some(d => d.internalPage === internalPageStr)) {
+                  equipmentDrawings[parentCode].push({
+                    pdfPage: pageNum,
+                    internalPage: internalPageStr,
+                    label: classification.label,
+                    type: classification.type,
+                    cabinet: cabinet || null,
+                  });
+                }
+              }
+            }
+          });
+        }
       }
     }
 
@@ -482,6 +598,83 @@ async function scanPdf(loc) {
   const flatAddresses = {};
   for (const [addr, rec] of Object.entries(tempAddressRecords)) {
     flatAddresses[addr] = { page: rec.pdfPage, internalPage: rec.internalPageStr };
+  }
+
+  // For Tower 3: Also scan TOC pages (pages 2 to 40) to link official machine titles to internal pages
+  if (loc.locationId === 'tower3') {
+    for (let i = 1; i < 40 && i < res.pages.length; i++) {
+      const text = res.pages[i].text;
+      const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
+      for (const line of lines) {
+        const m = line.match(/(.*?)(?:2021\/\d+\/\d+.*?|\s+)(\d{3,4})$/);
+        if (m) {
+          const title = m[1].trim();
+          const intP = m[2];
+          const eqMatch = title.match(/^([Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*(?:\/[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*|~[Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*)?)\b/);
+          if (eqMatch) {
+            const raw = eqMatch[1];
+            const codes = [];
+            if (raw.includes('~')) {
+              raw.split('~').forEach(r => codes.push(r.trim().toUpperCase().replace(/-/g, '_')));
+            } else if (raw.includes('/')) {
+              raw.split('/').forEach(r => codes.push(r.trim().toUpperCase().replace(/-/g, '_')));
+            } else {
+              codes.push(raw.trim().toUpperCase().replace(/-/g, '_'));
+            }
+
+            // Find pdfPage and cabinet for intP
+            let targetPdfPage = null;
+            let targetCab = null;
+            for (const [cabName, pages] of Object.entries(cabinetMap)) {
+              if (pages[intP]) {
+                targetPdfPage = pages[intP];
+                targetCab = cabName;
+                break;
+              }
+            }
+
+            if (targetPdfPage) {
+              const pageText = res.pages[targetPdfPage - 1] ? res.pages[targetPdfPage - 1].text : '';
+              const classification = classifySchematicPage(pageText, title);
+
+              const isUnitOrRating = (str) => /^[0-9]+(\.[0-9]+)?(KW|A|V|W|HZ|RPM|MA|KVA)$/i.test(str);
+              const ignoreWords = new Set(['MCC', 'PLC', 'LCB', 'PCB', 'TOTAL', 'PAGE', 'DRAWN', 'WAGO', 'DATE', 'SA', 'CA', 'ZWP', 'WEM', 'FIELD']);
+
+              codes.forEach(code => {
+                if (ignoreWords.has(code) || isUnitOrRating(code) || /^\d+KW$/i.test(code) || /^\d+A$/i.test(code)) return;
+                if (!equipmentDrawings[code]) equipmentDrawings[code] = [];
+                if (!equipmentDrawings[code].some(d => d.internalPage === intP)) {
+                  equipmentDrawings[code].push({
+                    pdfPage: targetPdfPage,
+                    internalPage: intP,
+                    label: classification.label,
+                    type: classification.type,
+                    cabinet: targetCab,
+                  });
+                }
+
+                const pm = code.match(/^([Vv]?[0-9]+[_\.][0-9]+)(?:[_\.][A-Za-z]+|[A-Za-z])$/);
+                if (pm) {
+                  const parent = pm[1];
+                  if (!ignoreWords.has(parent) && !isUnitOrRating(parent)) {
+                    if (!equipmentDrawings[parent]) equipmentDrawings[parent] = [];
+                    if (!equipmentDrawings[parent].some(d => d.internalPage === intP)) {
+                      equipmentDrawings[parent].push({
+                        pdfPage: targetPdfPage,
+                        internalPage: intP,
+                        label: classification.label,
+                        type: classification.type,
+                        cabinet: targetCab,
+                      });
+                    }
+                  }
+                }
+              });
+            }
+          }
+        }
+      }
+    }
   }
 
   // Sort equipmentDrawings by internal page
