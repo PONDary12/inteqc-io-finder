@@ -7,3 +7,5 @@ Thumbs.db
 
 # Project Data & Assets
 ~$*
+~*.tmp
+*.tmp
