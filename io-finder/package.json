@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "parse-excel": "node scripts/parse-excel.cjs",
+    "build-mapping": "node scripts/build-pdf-mapping.cjs",
+    "build-images": "node scripts/build-images.cjs",
+    "audit": "node scripts/system-audit.cjs"
   },
   "dependencies": {
     "next": "16.2.10",

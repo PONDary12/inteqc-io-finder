@@ -104,15 +104,17 @@ inteqc-io-finder/
 2. นำไฟล์ Excel รายการ PLC Tags วางไว้ที่ `data/<ชื่อ Tower>/PLCTags.xlsx`
 
 ### ขั้นตอนที่ 2: ดึงข้อมูล I/O จาก Excel
-รันสคริปต์เพื่อประมวลผลแท็ก I/O:
+เข้าโฟลเดอร์ `io-finder` แล้วรันสคริปต์:
 ```bash
-node scripts/parse-excel.cjs
+cd io-finder
+npm run parse-excel
+# หรือ: node scripts/parse-excel.cjs
 ```
-- สคริปต์จะอ่าน Address, Tag Name, Description และสร้างรหัสเครื่องจักรลงใน `io-finder/public/data/io-data.json`
+- สคริปต์จะอ่าน Address, Tag Name, Description และสร้างรหัสเครื่องจักรลงใน `public/data/io-data.json`
 
 ### ขั้นตอนที่ 3: กำหนดขอบเขตหน้าของแต่ละตู้ในแบบแปลน
 1. เปิดหน้าสารบัญ (目录) ในไฟล์ PDF ดูว่าตู้ไหนอยู่หน้าอะไรถึงหน้าอะไร
-2. เปิดไฟล์ `scripts/build-pdf-mapping.cjs` และเพิ่มช่วงหน้าของตู้ลงใน `cabinetRanges`:
+2. เปิดไฟล์ `io-finder/scripts/build-pdf-mapping.cjs` และเพิ่มช่วงหน้าของตู้ลงใน `cabinetRanges`:
    ```javascript
    tower4: [
      { cabinet: 'MCC1', start: 1, end: 20 },
@@ -123,7 +125,8 @@ node scripts/parse-excel.cjs
 
 ### ขั้นตอนที่ 4: รันสแกนและจัดหมวดหมู่วงจรไฟฟ้า
 ```bash
-node scripts/build-pdf-mapping.cjs
+npm run build-mapping
+# หรือ: node scripts/build-pdf-mapping.cjs
 ```
 - ระบบจะอ่านข้อความใน Title Block และจัดหมวดหมู่วงจร 6 ประเภทเป็นภาษาอังกฤษอัตโนมัติ:
   - `Power & Metering` (วงจรกำลังและมิเตอร์)
@@ -135,13 +138,15 @@ node scripts/build-pdf-mapping.cjs
 
 ### ขั้นตอนที่ 5: ผ่าและเรนเดอร์ภาพแปลนเป็นไฟล์ PNG
 ```bash
-node scripts/build-images.cjs
+npm run build-images
+# หรือ: node scripts/build-images.cjs
 ```
-- ภาพจะถูกบันทึกลงใน `io-finder/public/drawings/<locationId>/cabinets/images/<Cabinet>_page_<PageNumber>.png`
+- ภาพจะถูกบันทึกลงใน `public/drawings/<locationId>/cabinets/images/<Cabinet>_page_<PageNumber>.png`
 
 ### ขั้นตอนที่ 6: ตรวจสุขภาพระบบด้วย System Audit
 ```bash
-node scripts/system-audit.cjs
+npm run audit
+# หรือ: node scripts/system-audit.cjs
 ```
 **เกณฑ์การผ่าน (Must Pass)**:
 - Missing files (404): ต้องเป็น **0**
