@@ -4,7 +4,7 @@ title INTEQC I/O Finder - Local Plant Server
 
 echo ======================================================================
 echo             INTEQC I/O FINDER - LOCAL PLANT SERVER
-echo               Feed Mill Electrical & I/O System
+echo              Feed Mill Electrical and I/O System
 echo ======================================================================
 echo.
 
@@ -28,7 +28,7 @@ if not exist "package.json" (
 
 :: 3. Check node_modules
 if not exist "node_modules" (
-    echo [1/3] Installing project dependencies (first run only)...
+    echo [1/3] Installing project dependencies...
     call npm install
     if %errorlevel% neq 0 (
         echo [ERROR] Failed to install dependencies.
@@ -69,14 +69,14 @@ echo   ONLINE! INTEQC I/O Finder is running successfully.
 echo ======================================================================
 echo.
 echo   * On this computer:
-echo     --^> http://localhost:3000
+echo     http://localhost:3000
 echo.
 if defined LOCAL_IP (
-    echo   * On Mobile / Tablet / Other PCs (Same Wi-Fi / Plant LAN):
-    echo     --^> http://!LOCAL_IP!:3000
+    echo   * On Mobile / Tablet / Other PCs [Same Wi-Fi or Plant LAN]:
+    echo     http://!LOCAL_IP!:3000
 ) else (
-    echo   * To view on mobile, find your IPv4 with "ipconfig"
-    echo     --^> http://^<YOUR-COMPUTER-IP^>:3000
+    echo   * To view on mobile, find your IPv4 with "ipconfig":
+    echo     http://YOUR-IP:3000
 )
 echo.
 echo ======================================================================
