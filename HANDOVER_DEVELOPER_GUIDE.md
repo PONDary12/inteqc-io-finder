@@ -61,7 +61,6 @@ inteqc-io-finder/
 ├── GIT_TEAM_WORKFLOW.md          # คู่มือการใช้ Git Branch ฉบับจับมือทำ
 ├── HANDOVER_DEVELOPER_GUIDE.md   # คู่มือนักพัฒนาฉบับนี้
 ├── USER_MANUAL.md                # คู่มือการใช้งานสำหรับช่างไฟฟ้าและผู้ใช้ทั่วไป
-├── COOP_INTERNSHIP_REPORT_SUMMARY.md # สรุปผลงานสำหรับเล่มรายงานสหกิจและสไลด์
 ├── start-local.bat               # สคริปต์คลิกเดียวสำหรับรัน Local Server ในโรงงาน
 └── README.md                     # เอกสารแนะนำโปรเจกต์
 ```

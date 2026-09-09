@@ -22,7 +22,6 @@
 | 📖 [**USER_MANUAL.md**](./USER_MANUAL.md) | ช่างไฟฟ้า / ช่างซ่อมบำรุง / พี่เลี้ยง | คู่มือการใช้งาน, การค้นหา, วิธีอ่านปุ่มสี Schematic Pills, และไอเดียทำสติกเกอร์ QR Code ติดหน้าตู้คอนโทรล |
 | 🛠️ [**HANDOVER_DEVELOPER_GUIDE.md**](./HANDOVER_DEVELOPER_GUIDE.md) | โปรแกรมเมอร์ / วิศวกร / เด็กฝึกงานรุ่นถัดไป | สถาปัตยกรรมระบบ, โครงสร้างโค้ด, สคริปต์ Data Pipeline, และ SOP การเพิ่ม Tower ใหม่ |
 | 🔀 [**GIT_TEAM_WORKFLOW.md**](./GIT_TEAM_WORKFLOW.md) | สมาชิกในทีมทุกคน | คู่มือการใช้ Git Branch ฉบับจับมือทำ (GitHub Flow, จำลองสถานการณ์นาย A & B, วิธีแก้โค้ดชนกัน) |
-| 🎓 [**COOP_INTERNSHIP_REPORT_SUMMARY.md**](./COOP_INTERNSHIP_REPORT_SUMMARY.md) | นักศึกษา / อาจารย์นิเทศก์ / ผู้ประเมิน | บทคัดย่อไทย-อังกฤษ, สถิติวัดผล, ที่มาและความสำคัญ พร้อมคัดลอกลงเล่มรายงานและสไลด์นำเสนอ |
 | 📋 [**INTEQC Onboarding SOP Skill**](./.agents/skills/inteqc_drawing_page_mapping/SKILL.md) | AI Agent / Automation Tools | มาตรฐานการสกัด Title Block, การจัดหมวดหมู่วงจร 6 ประเภท, และ Pre-flight Audit |
 
 ---
