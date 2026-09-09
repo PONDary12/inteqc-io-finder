@@ -563,8 +563,8 @@ export default function MachineDetail({ params }) {
           </div>
 
           {/* Table Container */}
-          <div style={styles.tableContainer}>
-            <table style={styles.table}>
+          <div style={styles.tableContainer} className="table-container-responsive">
+            <table style={styles.table} className="table-responsive">
               <thead>
                 <tr>
                   <th style={styles.th}>Address</th>

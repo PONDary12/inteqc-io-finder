@@ -197,8 +197,13 @@ html, body {
   /* Conditionally show panels based on active tab */
   .panel-left-responsive {
     display: flex !important;
+    flex-direction: column !important;
     width: 100% !important;
     flex: 1 !important;
+    height: 100% !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 16px 12px 80px !important;
   }
   .panel-left-hidden {
     display: none !important;
@@ -208,9 +213,23 @@ html, body {
     display: flex !important;
     width: 100% !important;
     flex: 1 !important;
+    height: 100% !important;
+    overflow: hidden !important;
   }
   .panel-right-hidden {
     display: none !important;
+  }
+
+  .table-container-responsive {
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    flex: none !important;
+    width: 100% !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .table-responsive {
+    min-width: 480px !important;
   }
 
   /* Navigation adjustments for mobile */
