@@ -39,17 +39,39 @@ if not exist "node_modules" (
     echo [1/3] Dependencies found.
 )
 
-:: 4. Check if production build exists
-if not exist ".next" (
-    echo [2/3] Building production bundle...
+:: 4. Check if production build exists and is up-to-date
+set "NEED_BUILD=0"
+if not exist ".next" set "NEED_BUILD=1"
+
+set "CURRENT_COMMIT=unknown"
+for /f "tokens=*" %%c in ('git rev-parse --short HEAD 2^>nul') do set "CURRENT_COMMIT=%%c"
+
+if exist ".next\BUILD_COMMIT" (
+    set /p LAST_BUILD_COMMIT=<".next\BUILD_COMMIT"
+    if not "!LAST_BUILD_COMMIT!"=="!CURRENT_COMMIT!" (
+        echo [INFO] Detected new Git update [Last build: !LAST_BUILD_COMMIT! vs Current: !CURRENT_COMMIT!].
+        set "NEED_BUILD=1"
+    )
+) else (
+    if exist ".next" (
+        echo [INFO] Build version marker missing. Rebuilding latest code...
+        set "NEED_BUILD=1"
+    )
+)
+
+if "!NEED_BUILD!"=="1" (
+    echo [2/3] Building latest production bundle...
     call npm run build
     if %errorlevel% neq 0 (
         echo [ERROR] Build failed.
         pause
         exit /b 1
     )
+    if not "!CURRENT_COMMIT!"=="unknown" (
+        echo !CURRENT_COMMIT!>".next\BUILD_COMMIT"
+    )
 ) else (
-    echo [2/3] Production build found.
+    echo [2/3] Production build is up-to-date [commit: !CURRENT_COMMIT!].
 )
 
 :: 5. Detect Local IPv4 Address
