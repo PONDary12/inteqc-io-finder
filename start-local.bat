@@ -46,16 +46,24 @@ if not exist ".next" set "NEED_BUILD=1"
 set "CURRENT_COMMIT=unknown"
 for /f "tokens=*" %%c in ('git rev-parse --short HEAD 2^>nul') do set "CURRENT_COMMIT=%%c"
 
-if exist ".next\BUILD_COMMIT" (
-    set /p LAST_BUILD_COMMIT=<".next\BUILD_COMMIT"
-    if not "!LAST_BUILD_COMMIT!"=="!CURRENT_COMMIT!" (
-        echo [INFO] Detected new Git update [Last build: !LAST_BUILD_COMMIT! vs Current: !CURRENT_COMMIT!].
-        set "NEED_BUILD=1"
-    )
+set "LOCAL_MODIFIED="
+for /f "tokens=*" %%m in ('git status --porcelain src public 2^>nul') do set "LOCAL_MODIFIED=1"
+
+if defined LOCAL_MODIFIED (
+    echo [INFO] Detected local code edits in src/public. Rebuilding...
+    set "NEED_BUILD=1"
 ) else (
-    if exist ".next" (
-        echo [INFO] Build version marker missing. Rebuilding latest code...
-        set "NEED_BUILD=1"
+    if exist ".next\BUILD_COMMIT" (
+        set /p LAST_BUILD_COMMIT=<".next\BUILD_COMMIT"
+        if not "!LAST_BUILD_COMMIT!"=="!CURRENT_COMMIT!" (
+            echo [INFO] Detected new Git update [Last build: !LAST_BUILD_COMMIT! vs Current: !CURRENT_COMMIT!].
+            set "NEED_BUILD=1"
+        )
+    ) else (
+        if exist ".next" (
+            echo [INFO] Build version marker missing. Rebuilding latest code...
+            set "NEED_BUILD=1"
+        )
     )
 )
 
