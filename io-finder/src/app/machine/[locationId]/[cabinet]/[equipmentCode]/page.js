@@ -171,11 +171,11 @@ export default function MachineDetail({ params }) {
         if (location.equipmentDrawings) {
           for (const [eqKey, sheets] of Object.entries(location.equipmentDrawings)) {
             const cleanKey = eqKey.trim().toUpperCase().replace(/-/g, '_');
-            const suffixCheck = (str, base) => str.startsWith(base) && /^[^0-9]/.test(str.slice(base.length));
+            // Only allow sub-equipment/valve suffix if cleanKey is a sub-unit of cleanParamCode (e.g. 4_10.V under 4_10)
+            const isSubUnit = cleanKey.startsWith(cleanParamCode) && /^[^0-9]/.test(cleanKey.slice(cleanParamCode.length));
             const isMatch = cleanKey === cleanParamCode ||
                             normalizeCode(cleanKey) === normalizeCode(cleanParamCode) ||
-                            suffixCheck(cleanParamCode, cleanKey) ||
-                            suffixCheck(cleanKey, cleanParamCode);
+                            isSubUnit;
             if (isMatch && Array.isArray(sheets)) {
               sheets.forEach(s => {
                 const key = s.drawingPdfUrl || (s.internalPage ? `sheet-${s.internalPage}` : `${s.cabinet || cabinet}-${s.page}`);
