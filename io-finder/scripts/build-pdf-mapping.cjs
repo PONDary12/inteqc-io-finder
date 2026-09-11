@@ -423,6 +423,31 @@ async function scanPdf(loc) {
               const mSilo = target.match(/\b(\d+[\.\-]\d+[A-Za-z0-9\.\-]*)\b/);
               if (mSilo) {
                 foundEquips.add(mSilo[1].replace(/-/g, '_').toUpperCase());
+                foundEquips.add(mSilo[1].toUpperCase()); // Also keep raw hyphen format e.g. 22.24-2
+              }
+
+              // Also scan for device tags on this sheet: -20.6-BST, -21.1-BQS, etc.
+              const tagMatches = text.match(/[-+](\d+[\.\-]\d+[A-Za-z0-9\.\-]*)-[A-Za-z0-9]+/g);
+              if (tagMatches) {
+                tagMatches.forEach(tm => {
+                  const sub = tm.match(/[-+](\d+[\.\-]\d+[A-Za-z0-9\.\-]*)-[A-Za-z0-9]+/);
+                  if (sub) {
+                    foundEquips.add(sub[1].replace(/-/g, '_').toUpperCase());
+                    foundEquips.add(sub[1].toUpperCase());
+                  }
+                });
+              }
+
+              // Also scan for Chinese label patterns: 20.6刮板, 22.1提升机, etc.
+              const labelMatches = text.match(/\b(\d+[\.\-]\d+[A-Za-z0-9\.\-]*)[\u4e00-\u9fa5]/g);
+              if (labelMatches) {
+                labelMatches.forEach(lm => {
+                  const sub = lm.match(/\b(\d+[\.\-]\d+[A-Za-z0-9\.\-]*)[\u4e00-\u9fa5]/);
+                  if (sub) {
+                    foundEquips.add(sub[1].replace(/-/g, '_').toUpperCase());
+                    foundEquips.add(sub[1].toUpperCase());
+                  }
+                });
               }
             }
           }
@@ -563,8 +588,8 @@ async function scanPdf(loc) {
     if (matches) {
       const internalPageNum = parseInt(internalPageStr, 10);
       
-      // Determine priority of this page: 2 for Schematic, 1 for Terminal List / Overview Table
-      const isTerminalOrOverview =
+      // Determine priority of this page: 3/4 for Field Equipment Circuit, 2 for WAGO Module, 1 for Terminal List, 0 for Layout/TOC
+      let isTerminalOrOverview =
         tLower.includes('信号总览') ||
         tLower.includes('信号分配') ||
         tLower.includes('端子') ||
@@ -589,8 +614,20 @@ async function scanPdf(loc) {
         textLower.includes('up target') ||
         textLower.includes('端子图') ||
         textLower.includes('端子排');
-        
-      const priority = isTerminalOrOverview ? 1 : 2;
+
+      let priority = isTerminalOrOverview ? 1 : 2;
+
+      if (loc.locationId === 'silo') {
+        if (textLower.includes('排布图') || textLower.includes('模块布局') || textLower.includes('目录') || textLower.includes('封面') || textLower.includes('说明')) {
+          priority = 0;
+        } else if (textLower.includes('端子图') || textLower.includes('端子排') || textLower.includes('端子') || textLower.includes('接线')) {
+          priority = 1;
+        } else if (textLower.includes('wago-1405') || textLower.includes('wago-1500') || textLower.includes('wago ai') || textLower.includes('wago ao')) {
+          priority = 2;
+        } else if (textLower.includes('气动闸门') || textLower.includes('控制') || textLower.includes('保护开关') || textLower.includes('回路') || textLower.includes('料位') || textLower.includes('pneumatic') || textLower.includes('valve') || textLower.includes('gate') || textLower.includes('conveyor') || textLower.includes('elevator')) {
+          priority = 4;
+        }
+      }
 
       matches.forEach(addr => {
         const key = addr.toUpperCase();

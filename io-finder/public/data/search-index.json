@@ -4907,7 +4907,14 @@
     "cabinets": [
       "PLC2-1"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC2-1",
+        "page": 155,
+        "internalPage": "500",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC2_page_155.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -5336,7 +5343,14 @@
     "cabinets": [
       "PLC2-2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC2-2",
+        "page": 156,
+        "internalPage": "500.a",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC2_page_156.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -5359,9 +5373,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "539",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_39.png"
+        "page": 116,
+        "internalPage": "692",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_116.png"
       }
     ],
     "location": "Silo",
@@ -5386,9 +5400,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "539",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_39.png"
+        "page": 116,
+        "internalPage": "692",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_116.png"
       }
     ],
     "location": "Silo",
@@ -11819,9 +11833,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 27,
-        "internalPage": "524",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_27.png"
+        "page": 60,
+        "internalPage": "560",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_60.png"
+      },
+      {
+        "cabinet": "PLC2-2",
+        "page": 61,
+        "internalPage": "561",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_61.png"
       }
     ],
     "location": "Silo",
@@ -12152,7 +12172,14 @@
       "PLC",
       "PLC1-2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC1-2",
+        "page": 1,
+        "internalPage": "100.a",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_1.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -14093,9 +14120,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 27,
-        "internalPage": "524",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_27.png"
+        "page": 60,
+        "internalPage": "560",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_60.png"
+      },
+      {
+        "cabinet": "PLC2-2",
+        "page": 61,
+        "internalPage": "561",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_61.png"
       }
     ],
     "location": "Silo",
@@ -25158,7 +25191,14 @@
     "cabinets": [
       "PLC1-2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC1-2",
+        "page": 1,
+        "internalPage": "100.a",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_1.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -44058,7 +44098,14 @@
     "cabinets": [
       "PLC1-2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC1-2",
+        "page": 1,
+        "internalPage": "150",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_1_page_1.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -44081,9 +44128,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 1,
+        "internalPage": "150",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_1_page_1.png"
       }
     ],
     "location": "Silo",
@@ -44108,9 +44155,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 1,
+        "internalPage": "150",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_1_page_1.png"
       }
     ],
     "location": "Silo",
@@ -44135,9 +44182,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 1,
+        "internalPage": "150",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_1_page_1.png"
       }
     ],
     "location": "Silo",
@@ -44162,9 +44209,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 1,
+        "internalPage": "150",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_1_page_1.png"
       }
     ],
     "location": "Silo",
@@ -44189,9 +44236,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 1,
+        "internalPage": "150",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_1_page_1.png"
       }
     ],
     "location": "Silo",
@@ -44365,10 +44412,16 @@
     ],
     "drawings": [
       {
+        "cabinet": "PLC1-1",
+        "page": 2,
+        "internalPage": "100",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC1_page_2.png"
+      },
+      {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "129",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_33.png"
+        "page": 64,
+        "internalPage": "160",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_64.png"
       }
     ],
     "location": "Silo",
@@ -44405,9 +44458,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "129",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_33.png"
+        "page": 64,
+        "internalPage": "160",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_64.png"
       }
     ],
     "location": "Silo",
@@ -44444,9 +44497,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "129",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_33.png"
+        "page": 64,
+        "internalPage": "160",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_64.png"
       }
     ],
     "location": "Silo",
@@ -44478,15 +44531,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "129",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_33.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 67,
+        "internalPage": "163",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_67.png"
       }
     ],
     "location": "Silo",
@@ -44518,15 +44565,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "129",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_33.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 68,
+        "internalPage": "164",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_68.png"
       }
     ],
     "location": "Silo",
@@ -44558,15 +44599,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "129",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_33.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 69,
+        "internalPage": "165",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_69.png"
       }
     ],
     "location": "Silo",
@@ -44598,15 +44633,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "129",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_33.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 70,
+        "internalPage": "166",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_70.png"
       }
     ],
     "location": "Silo",
@@ -44638,15 +44667,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "129",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_33.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 71,
+        "internalPage": "167",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_71.png"
       }
     ],
     "location": "Silo",
@@ -44678,15 +44701,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "129",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_33.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 72,
+        "internalPage": "168",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_72.png"
       }
     ],
     "location": "Silo",
@@ -44718,15 +44735,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "129",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_33.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 73,
+        "internalPage": "169",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_73.png"
       }
     ],
     "location": "Silo",
@@ -44758,15 +44769,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "129",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_33.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 74,
+        "internalPage": "170",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_74.png"
       }
     ],
     "location": "Silo",
@@ -44798,15 +44803,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "130",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 75,
+        "internalPage": "171",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_75.png"
       }
     ],
     "location": "Silo",
@@ -44838,15 +44837,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "130",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 76,
+        "internalPage": "172",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_76.png"
       }
     ],
     "location": "Silo",
@@ -44878,15 +44871,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "130",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 77,
+        "internalPage": "173",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_77.png"
       }
     ],
     "location": "Silo",
@@ -44918,15 +44905,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "130",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 78,
+        "internalPage": "174",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_78.png"
       }
     ],
     "location": "Silo",
@@ -44958,15 +44939,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "130",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "139",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_43.png"
+        "page": 79,
+        "internalPage": "175",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_79.png"
       }
     ],
     "location": "Silo",
@@ -44998,15 +44973,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "130",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 42,
-        "internalPage": "140",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_42.png"
+        "page": 80,
+        "internalPage": "176",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_80.png"
       }
     ],
     "location": "Silo",
@@ -45038,15 +45007,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "130",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 42,
-        "internalPage": "140",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_42.png"
+        "page": 81,
+        "internalPage": "177",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_81.png"
       }
     ],
     "location": "Silo",
@@ -45071,7 +45034,14 @@
     "cabinets": [
       "PLC1-1"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC1-1",
+        "page": 2,
+        "internalPage": "100",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC1_page_2.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -45116,7 +45086,14 @@
     "cabinets": [
       "PLC1-1"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC1-1",
+        "page": 2,
+        "internalPage": "100",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC1_page_2.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -45147,15 +45124,15 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "130",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_1.png"
+        "page": 50,
+        "internalPage": "181",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_50.png"
       },
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "133",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_1.png"
+        "page": 86,
+        "internalPage": "231",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_86.png"
       }
     ],
     "location": "Silo",
@@ -45219,15 +45196,15 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "129",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_33.png"
+        "page": 65,
+        "internalPage": "161",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_65.png"
       },
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "133",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_1.png"
+        "page": 87,
+        "internalPage": "232",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_87.png"
       }
     ],
     "location": "Silo",
@@ -45292,15 +45269,15 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "129",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_33.png"
+        "page": 65,
+        "internalPage": "161",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_65.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 27,
-        "internalPage": "524",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_27.png"
+        "page": 1,
+        "internalPage": "550",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_10_page_1.png"
       }
     ],
     "location": "Silo",
@@ -45392,15 +45369,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 28,
-        "internalPage": "525",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_28.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "535",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_38.png"
+        "page": 71,
+        "internalPage": "571",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_71.png"
       }
     ],
     "location": "Silo",
@@ -45431,9 +45402,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 28,
-        "internalPage": "525",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_28.png"
+        "page": 70,
+        "internalPage": "570",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_70.png"
       }
     ],
     "location": "Silo",
@@ -45461,9 +45432,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "535",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_38.png"
+        "page": 68,
+        "internalPage": "568",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_68.png"
+      },
+      {
+        "cabinet": "PLC2-2",
+        "page": 69,
+        "internalPage": "569",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_69.png"
       }
     ],
     "location": "Silo",
@@ -45531,7 +45508,14 @@
     "cabinets": [
       "PLC2-2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC2-2",
+        "page": 68,
+        "internalPage": "568",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_68.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -45574,7 +45558,14 @@
     "cabinets": [
       "PLC2-2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC2-2",
+        "page": 69,
+        "internalPage": "569",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_69.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -45613,9 +45604,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 27,
-        "internalPage": "524",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_27.png"
+        "page": 65,
+        "internalPage": "565",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_65.png"
       }
     ],
     "location": "Silo",
@@ -45647,15 +45638,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 28,
-        "internalPage": "525",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_28.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "535",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_38.png"
+        "page": 72,
+        "internalPage": "572",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_72.png"
       }
     ],
     "location": "Silo",
@@ -45687,10 +45672,16 @@
     ],
     "drawings": [
       {
+        "cabinet": "PLC1-1",
+        "page": 2,
+        "internalPage": "100",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC1_page_2.png"
+      },
+      {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
+        "page": 93,
+        "internalPage": "602",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_93.png"
       }
     ],
     "location": "Silo",
@@ -45722,10 +45713,16 @@
     ],
     "drawings": [
       {
+        "cabinet": "PLC1-1",
+        "page": 2,
+        "internalPage": "100",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC1_page_2.png"
+      },
+      {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
+        "page": 93,
+        "internalPage": "602",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_93.png"
       }
     ],
     "location": "Silo",
@@ -45757,15 +45754,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "536",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_38.png"
+        "page": 94,
+        "internalPage": "603",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_94.png"
       }
     ],
     "location": "Silo",
@@ -45797,15 +45788,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "536",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_38.png"
+        "page": 95,
+        "internalPage": "604",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_95.png"
       }
     ],
     "location": "Silo",
@@ -45837,15 +45822,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "536",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_38.png"
+        "page": 96,
+        "internalPage": "605",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_96.png"
       }
     ],
     "location": "Silo",
@@ -45877,15 +45856,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "536",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_38.png"
+        "page": 97,
+        "internalPage": "606",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_97.png"
       }
     ],
     "location": "Silo",
@@ -45917,15 +45890,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "536",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_38.png"
+        "page": 98,
+        "internalPage": "607",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_98.png"
       }
     ],
     "location": "Silo",
@@ -45957,15 +45924,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "528",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "536",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_38.png"
+        "page": 99,
+        "internalPage": "608",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_99.png"
       }
     ],
     "location": "Silo",
@@ -45997,15 +45958,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "528",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "536",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_38.png"
+        "page": 100,
+        "internalPage": "609",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_100.png"
       }
     ],
     "location": "Silo",
@@ -46037,15 +45992,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "528",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "536",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_38.png"
+        "page": 101,
+        "internalPage": "610",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_101.png"
       }
     ],
     "location": "Silo",
@@ -46077,15 +46026,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "528",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "536",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_38.png"
+        "page": 102,
+        "internalPage": "611",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_102.png"
       }
     ],
     "location": "Silo",
@@ -46117,15 +46060,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "528",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "536",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_38.png"
+        "page": 103,
+        "internalPage": "612",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_103.png"
       }
     ],
     "location": "Silo",
@@ -46158,9 +46095,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 27,
-        "internalPage": "524",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_27.png"
+        "page": 2,
+        "internalPage": "551",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_10_page_2.png"
+      },
+      {
+        "cabinet": "PLC2-2",
+        "page": 62,
+        "internalPage": "562",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_62.png"
       }
     ],
     "location": "Silo",
@@ -46193,9 +46136,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 27,
-        "internalPage": "524",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_27.png"
+        "page": 62,
+        "internalPage": "562",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_62.png"
       }
     ],
     "location": "Silo",
@@ -46220,7 +46163,14 @@
     "cabinets": [
       "PLC2-1"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC2-1",
+        "page": 155,
+        "internalPage": "500",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC2_page_155.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -46565,7 +46515,14 @@
     "cabinets": [
       "PLC2-1"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC2-1",
+        "page": 155,
+        "internalPage": "500",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC2_page_155.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -46588,7 +46545,14 @@
     "cabinets": [
       "PLC2-1"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC2-1",
+        "page": 155,
+        "internalPage": "500",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC2_page_155.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -46848,10 +46812,16 @@
     ],
     "drawings": [
       {
+        "cabinet": "PLC2-1",
+        "page": 155,
+        "internalPage": "500",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC2_page_155.png"
+      },
+      {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
+        "page": 3,
+        "internalPage": "592",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_12_page_3.png"
       }
     ],
     "location": "Silo",
@@ -46883,10 +46853,16 @@
     ],
     "drawings": [
       {
+        "cabinet": "PLC2-1",
+        "page": 155,
+        "internalPage": "500",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC2_page_155.png"
+      },
+      {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
+        "page": 3,
+        "internalPage": "592",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_12_page_3.png"
       }
     ],
     "location": "Silo",
@@ -46921,15 +46897,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 27,
-        "internalPage": "524",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_27.png"
+        "page": 62,
+        "internalPage": "562",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_62.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
+        "page": 3,
+        "internalPage": "592",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_12_page_3.png"
       },
       {
         "cabinet": "PLC2-2",
@@ -46967,15 +46943,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 28,
-        "internalPage": "525",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_28.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "535",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_38.png"
+        "page": 73,
+        "internalPage": "573",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_73.png"
       }
     ],
     "location": "Silo",
@@ -47007,15 +46977,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 28,
-        "internalPage": "525",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_28.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "535",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_38.png"
+        "page": 74,
+        "internalPage": "574",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_74.png"
       }
     ],
     "location": "Silo",
@@ -47056,9 +47020,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 28,
-        "internalPage": "525",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_28.png"
+        "page": 65,
+        "internalPage": "565",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_65.png"
       }
     ],
     "location": "Silo",
@@ -47090,9 +47054,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "535",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_38.png"
+        "page": 75,
+        "internalPage": "575",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_75.png"
       }
     ],
     "location": "Silo",
@@ -47125,9 +47089,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 27,
-        "internalPage": "524",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_27.png"
+        "page": 62,
+        "internalPage": "562",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_62.png"
       }
     ],
     "location": "Silo",
@@ -47160,9 +47124,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 27,
-        "internalPage": "524",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_27.png"
+        "page": 63,
+        "internalPage": "563",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_63.png"
       }
     ],
     "location": "Silo",
@@ -47211,21 +47175,21 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "129",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_33.png"
+        "page": 65,
+        "internalPage": "161",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_65.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 27,
-        "internalPage": "524",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_27.png"
+        "page": 1,
+        "internalPage": "550",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_10_page_1.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 28,
-        "internalPage": "525",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_28.png"
+        "page": 66,
+        "internalPage": "566",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_66.png"
       }
     ],
     "location": "Silo",
@@ -47325,22 +47289,22 @@
     ],
     "drawings": [
       {
-        "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "526",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_29.png"
+        "cabinet": "PLC2-1",
+        "page": 155,
+        "internalPage": "500",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC2_page_155.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
+        "page": 76,
+        "internalPage": "576",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_76.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "535",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_38.png"
+        "page": 148,
+        "internalPage": "700",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_148.png"
       }
     ],
     "location": "Silo",
@@ -47364,7 +47328,14 @@
     "cabinets": [
       "PLC2-2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC2-2",
+        "page": 116,
+        "internalPage": "692",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_116.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -47394,15 +47365,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "526",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_29.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "535",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_38.png"
+        "page": 77,
+        "internalPage": "577",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_77.png"
       }
     ],
     "location": "Silo",
@@ -47434,15 +47399,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "526",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_29.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "535",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_38.png"
+        "page": 78,
+        "internalPage": "578",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_78.png"
       }
     ],
     "location": "Silo",
@@ -47475,9 +47434,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 27,
-        "internalPage": "524",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_27.png"
+        "page": 64,
+        "internalPage": "564",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_64.png"
       }
     ],
     "location": "Silo",
@@ -47566,9 +47525,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 28,
-        "internalPage": "525",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_28.png"
+        "page": 70,
+        "internalPage": "570",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_70.png"
       }
     ],
     "location": "Silo",
@@ -47603,9 +47562,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 28,
-        "internalPage": "525",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_28.png"
+        "page": 70,
+        "internalPage": "570",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_70.png"
       }
     ],
     "location": "Silo",
@@ -47636,9 +47595,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 28,
-        "internalPage": "525",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_28.png"
+        "page": 70,
+        "internalPage": "570",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_70.png"
       }
     ],
     "location": "Silo",
@@ -47666,15 +47625,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 28,
-        "internalPage": "525",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_28.png"
+        "page": 68,
+        "internalPage": "568",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_68.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "535",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_38.png"
+        "page": 69,
+        "internalPage": "569",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_69.png"
       }
     ],
     "location": "Silo",
@@ -47745,9 +47704,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 28,
-        "internalPage": "525",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_28.png"
+        "page": 68,
+        "internalPage": "568",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_68.png"
       }
     ],
     "location": "Silo",
@@ -47795,9 +47754,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "535",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_38.png"
+        "page": 69,
+        "internalPage": "569",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_69.png"
       }
     ],
     "location": "Silo",
@@ -47829,15 +47788,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "526",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_29.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "535",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_38.png"
+        "page": 79,
+        "internalPage": "579",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_79.png"
       }
     ],
     "location": "Silo",
@@ -47869,15 +47822,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "526",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_29.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "535",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_38.png"
+        "page": 80,
+        "internalPage": "580",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_80.png"
       }
     ],
     "location": "Silo",
@@ -47909,15 +47856,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "526",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_29.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "535",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_38.png"
+        "page": 81,
+        "internalPage": "581",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_81.png"
       }
     ],
     "location": "Silo",
@@ -47950,15 +47891,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 27,
-        "internalPage": "524",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_27.png"
+        "page": 63,
+        "internalPage": "563",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_63.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "531",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_1.png"
+        "page": 105,
+        "internalPage": "681",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_105.png"
       }
     ],
     "location": "Silo",
@@ -47991,15 +47932,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
+        "page": 85,
+        "internalPage": "641",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_85.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "531",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_1.png"
+        "page": 105,
+        "internalPage": "681",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_105.png"
       }
     ],
     "location": "Silo",
@@ -48031,9 +47972,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 9,
-        "internalPage": "537",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_9.png"
+        "page": 86,
+        "internalPage": "642",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_86.png"
       }
     ],
     "location": "Silo",
@@ -48065,15 +48006,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "531",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "538",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_39.png"
+        "page": 106,
+        "internalPage": "682",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_106.png"
       }
     ],
     "location": "Silo",
@@ -48105,15 +48040,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "531",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "539",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_39.png"
+        "page": 115,
+        "internalPage": "691",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_115.png"
       }
     ],
     "location": "Silo",
@@ -48145,15 +48074,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "533",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "539",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_39.png"
+        "page": 128,
+        "internalPage": "722",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_128.png"
       }
     ],
     "location": "Silo",
@@ -48186,9 +48109,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
+        "page": 85,
+        "internalPage": "641",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_85.png"
       }
     ],
     "location": "Silo",
@@ -48221,9 +48144,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
+        "page": 85,
+        "internalPage": "641",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_85.png"
       }
     ],
     "location": "Silo",
@@ -48255,10 +48178,16 @@
     ],
     "drawings": [
       {
+        "cabinet": "PLC1-1",
+        "page": 2,
+        "internalPage": "100",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC1_page_2.png"
+      },
+      {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
+        "page": 85,
+        "internalPage": "641",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_85.png"
       }
     ],
     "location": "Silo",
@@ -48290,15 +48219,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 9,
-        "internalPage": "537",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_9.png"
+        "page": 87,
+        "internalPage": "643",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_87.png"
       }
     ],
     "location": "Silo",
@@ -48330,15 +48253,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 9,
-        "internalPage": "537",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_9.png"
+        "page": 88,
+        "internalPage": "644",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_88.png"
       }
     ],
     "location": "Silo",
@@ -48370,15 +48287,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 9,
-        "internalPage": "537",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_9.png"
+        "page": 89,
+        "internalPage": "645",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_89.png"
       }
     ],
     "location": "Silo",
@@ -48410,15 +48321,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 9,
-        "internalPage": "537",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_9.png"
+        "page": 90,
+        "internalPage": "646",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_90.png"
       }
     ],
     "location": "Silo",
@@ -48450,15 +48355,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 9,
-        "internalPage": "537",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_9.png"
+        "page": 91,
+        "internalPage": "647",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_91.png"
       }
     ],
     "location": "Silo",
@@ -48490,15 +48389,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 9,
-        "internalPage": "537",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_9.png"
+        "page": 92,
+        "internalPage": "648",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_92.png"
       }
     ],
     "location": "Silo",
@@ -48530,15 +48423,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 9,
-        "internalPage": "537",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_9.png"
+        "page": 93,
+        "internalPage": "649",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_93.png"
       }
     ],
     "location": "Silo",
@@ -48570,9 +48457,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 9,
-        "internalPage": "537",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_9.png"
+        "page": 94,
+        "internalPage": "650",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_94.png"
       }
     ],
     "location": "Silo",
@@ -48605,9 +48492,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "531",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_1.png"
+        "page": 105,
+        "internalPage": "681",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_105.png"
       }
     ],
     "location": "Silo",
@@ -48640,9 +48527,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "531",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_1.png"
+        "page": 105,
+        "internalPage": "681",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_105.png"
       }
     ],
     "location": "Silo",
@@ -48675,9 +48562,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "531",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_1.png"
+        "page": 105,
+        "internalPage": "681",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_105.png"
       }
     ],
     "location": "Silo",
@@ -48709,15 +48596,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "531",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "538",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_39.png"
+        "page": 107,
+        "internalPage": "683",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_107.png"
       }
     ],
     "location": "Silo",
@@ -48749,9 +48630,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "538",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_39.png"
+        "page": 108,
+        "internalPage": "684",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_108.png"
       }
     ],
     "location": "Silo",
@@ -48783,15 +48664,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "531",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "538",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_39.png"
+        "page": 109,
+        "internalPage": "685",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_109.png"
       }
     ],
     "location": "Silo",
@@ -48823,15 +48698,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "531",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "538",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_39.png"
+        "page": 110,
+        "internalPage": "686",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_110.png"
       }
     ],
     "location": "Silo",
@@ -48863,15 +48732,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "531",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "538",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_39.png"
+        "page": 111,
+        "internalPage": "687",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_111.png"
       }
     ],
     "location": "Silo",
@@ -48903,15 +48766,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "531",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "538",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_39.png"
+        "page": 112,
+        "internalPage": "688",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_112.png"
       }
     ],
     "location": "Silo",
@@ -48943,15 +48800,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "531",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "539",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_39.png"
+        "page": 113,
+        "internalPage": "689",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_113.png"
       }
     ],
     "location": "Silo",
@@ -48983,15 +48834,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "531",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "539",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_39.png"
+        "page": 114,
+        "internalPage": "690",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_114.png"
       }
     ],
     "location": "Silo",
@@ -49024,9 +48869,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "533",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_1.png"
+        "page": 127,
+        "internalPage": "721",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_127.png"
       }
     ],
     "location": "Silo",
@@ -49059,9 +48904,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "533",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_1.png"
+        "page": 127,
+        "internalPage": "721",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_127.png"
       }
     ],
     "location": "Silo",
@@ -49094,9 +48939,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "533",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_1.png"
+        "page": 127,
+        "internalPage": "721",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_127.png"
       }
     ],
     "location": "Silo",
@@ -49128,15 +48973,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "533",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "539",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_39.png"
+        "page": 129,
+        "internalPage": "723",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_129.png"
       }
     ],
     "location": "Silo",
@@ -49168,9 +49007,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "539",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_39.png"
+        "page": 130,
+        "internalPage": "724",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_130.png"
       }
     ],
     "location": "Silo",
@@ -49202,15 +49041,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "533",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 8,
-        "internalPage": "540",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_8.png"
+        "page": 131,
+        "internalPage": "725",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_131.png"
       }
     ],
     "location": "Silo",
@@ -49242,15 +49075,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "533",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 8,
-        "internalPage": "540",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_8.png"
+        "page": 132,
+        "internalPage": "726",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_132.png"
       }
     ],
     "location": "Silo",
@@ -49282,15 +49109,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "533",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 8,
-        "internalPage": "540",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_8.png"
+        "page": 133,
+        "internalPage": "727",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_133.png"
       }
     ],
     "location": "Silo",
@@ -49322,15 +49143,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "533",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 8,
-        "internalPage": "540",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_8.png"
+        "page": 134,
+        "internalPage": "728",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_134.png"
       }
     ],
     "location": "Silo",
@@ -49362,15 +49177,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "533",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 8,
-        "internalPage": "540",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_8.png"
+        "page": 135,
+        "internalPage": "729",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_135.png"
       }
     ],
     "location": "Silo",
@@ -49402,15 +49211,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "533",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 8,
-        "internalPage": "540",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_8.png"
+        "page": 136,
+        "internalPage": "730",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_136.png"
       }
     ],
     "location": "Silo",
@@ -49437,9 +49240,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
+        "page": 149,
+        "internalPage": "701",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_149.png"
       }
     ],
     "location": "Silo",
@@ -49463,7 +49266,14 @@
     "cabinets": [
       "PLC2-2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC2-2",
+        "page": 150,
+        "internalPage": "702",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_150.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -49488,9 +49298,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
+        "page": 151,
+        "internalPage": "703",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_151.png"
       }
     ],
     "location": "Silo",
@@ -49517,9 +49327,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
+        "page": 152,
+        "internalPage": "704",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_152.png"
       }
     ],
     "location": "Silo",
@@ -49546,9 +49356,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
+        "page": 153,
+        "internalPage": "705",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_153.png"
       }
     ],
     "location": "Silo",
@@ -49575,9 +49385,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
+        "page": 154,
+        "internalPage": "706",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_154.png"
       }
     ],
     "location": "Silo",
@@ -49610,9 +49420,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
+        "page": 148,
+        "internalPage": "700",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_148.png"
       }
     ],
     "location": "Silo",
@@ -49644,15 +49454,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "539",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_39.png"
+        "page": 155,
+        "internalPage": "707",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_155.png"
       }
     ],
     "location": "Silo",
@@ -49684,15 +49488,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "539",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_39.png"
+        "page": 156,
+        "internalPage": "708",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_156.png"
       }
     ],
     "location": "Silo",
@@ -49728,21 +49526,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
+        "page": 126,
+        "internalPage": "661",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_126.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "538",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_39.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "539",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_39.png"
+        "page": 149,
+        "internalPage": "701",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_149.png"
       }
     ],
     "location": "Silo",
@@ -49778,21 +49570,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
+        "page": 127,
+        "internalPage": "662",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_127.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "538",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_39.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "539",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_39.png"
+        "page": 150,
+        "internalPage": "702",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_150.png"
       }
     ],
     "location": "Silo",
@@ -49828,15 +49614,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "538",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_39.png"
+        "page": 128,
+        "internalPage": "663",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_128.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "539",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_39.png"
+        "page": 151,
+        "internalPage": "703",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_151.png"
       }
     ],
     "location": "Silo",
@@ -49872,21 +49658,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
+        "page": 129,
+        "internalPage": "664",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_129.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "538",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_39.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "539",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_39.png"
+        "page": 152,
+        "internalPage": "704",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_152.png"
       }
     ],
     "location": "Silo",
@@ -49922,21 +49702,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
+        "page": 130,
+        "internalPage": "665",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_130.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "538",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_39.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "539",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_39.png"
+        "page": 153,
+        "internalPage": "705",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_153.png"
       }
     ],
     "location": "Silo",
@@ -49972,21 +49746,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
+        "page": 131,
+        "internalPage": "666",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_131.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "538",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_39.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "539",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_39.png"
+        "page": 154,
+        "internalPage": "706",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_154.png"
       }
     ],
     "location": "Silo",
@@ -50019,9 +49787,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
+        "page": 125,
+        "internalPage": "660",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_125.png"
       }
     ],
     "location": "Silo",
@@ -50053,10 +49821,16 @@
     ],
     "drawings": [
       {
+        "cabinet": "PLC2-1",
+        "page": 155,
+        "internalPage": "500",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC2_page_155.png"
+      },
+      {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
+        "page": 125,
+        "internalPage": "660",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_125.png"
       }
     ],
     "location": "Silo",
@@ -50088,15 +49862,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "538",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_39.png"
+        "page": 132,
+        "internalPage": "667",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_132.png"
       }
     ],
     "location": "Silo",
@@ -50128,15 +49896,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "538",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_39.png"
+        "page": 133,
+        "internalPage": "668",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_133.png"
       }
     ],
     "location": "Silo",
@@ -50168,15 +49930,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "528",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "536",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_38.png"
+        "page": 76,
+        "internalPage": "621",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_76.png"
       }
     ],
     "location": "Silo",
@@ -50208,15 +49964,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "528",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "536",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_38.png"
+        "page": 77,
+        "internalPage": "622",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_77.png"
       }
     ],
     "location": "Silo",
@@ -50248,15 +49998,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "528",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 9,
-        "internalPage": "537",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_9.png"
+        "page": 78,
+        "internalPage": "623",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_78.png"
       }
     ],
     "location": "Silo",
@@ -50288,15 +50032,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "528",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 9,
-        "internalPage": "537",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_9.png"
+        "page": 79,
+        "internalPage": "624",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_79.png"
       }
     ],
     "location": "Silo",
@@ -50328,15 +50066,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "528",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 9,
-        "internalPage": "537",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_9.png"
+        "page": 80,
+        "internalPage": "625",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_80.png"
       }
     ],
     "location": "Silo",
@@ -50368,15 +50100,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "528",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 9,
-        "internalPage": "537",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_9.png"
+        "page": 81,
+        "internalPage": "626",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_81.png"
       }
     ],
     "location": "Silo",
@@ -50409,9 +50135,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "528",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_1.png"
+        "page": 75,
+        "internalPage": "620",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_75.png"
       }
     ],
     "location": "Silo",
@@ -50444,9 +50170,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "528",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_1.png"
+        "page": 75,
+        "internalPage": "620",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_75.png"
       }
     ],
     "location": "Silo",
@@ -50478,15 +50204,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "528",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 9,
-        "internalPage": "537",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_9.png"
+        "page": 82,
+        "internalPage": "627",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_82.png"
       }
     ],
     "location": "Silo",
@@ -50518,15 +50238,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "528",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 9,
-        "internalPage": "537",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_9.png"
+        "page": 83,
+        "internalPage": "628",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_83.png"
       }
     ],
     "location": "Silo",
@@ -50559,9 +50273,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 27,
-        "internalPage": "524",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_27.png"
+        "page": 63,
+        "internalPage": "563",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_63.png"
+      },
+      {
+        "cabinet": "PLC2-2",
+        "page": 75,
+        "internalPage": "620",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_75.png"
       }
     ],
     "location": "Silo",
@@ -50594,9 +50314,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 27,
-        "internalPage": "524",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_27.png"
+        "page": 63,
+        "internalPage": "563",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_63.png"
       }
     ],
     "location": "Silo",
@@ -50628,15 +50348,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "526",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_29.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "535",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_38.png"
+        "page": 82,
+        "internalPage": "582",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_82.png"
       }
     ],
     "location": "Silo",
@@ -50668,9 +50382,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "535",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_38.png"
+        "page": 83,
+        "internalPage": "583",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_83.png"
       }
     ],
     "location": "Silo",
@@ -50702,15 +50416,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "526",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_29.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "536",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_38.png"
+        "page": 87,
+        "internalPage": "587",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_87.png"
       }
     ],
     "location": "Silo",
@@ -50742,15 +50450,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "526",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_29.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "536",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_38.png"
+        "page": 88,
+        "internalPage": "588",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_88.png"
       }
     ],
     "location": "Silo",
@@ -50791,9 +50493,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 28,
-        "internalPage": "525",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_28.png"
+        "page": 66,
+        "internalPage": "566",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_66.png"
       }
     ],
     "location": "Silo",
@@ -50825,15 +50527,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "526",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_29.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "535",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_38.png"
+        "page": 84,
+        "internalPage": "584",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_84.png"
       }
     ],
     "location": "Silo",
@@ -50866,9 +50562,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 27,
-        "internalPage": "524",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_27.png"
+        "page": 63,
+        "internalPage": "563",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_63.png"
       }
     ],
     "location": "Silo",
@@ -50900,15 +50596,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 9,
-        "internalPage": "537",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_9.png"
+        "page": 84,
+        "internalPage": "629",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_84.png"
       }
     ],
     "location": "Silo",
@@ -50940,15 +50630,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "538",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_39.png"
+        "page": 134,
+        "internalPage": "669",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_134.png"
       }
     ],
     "location": "Silo",
@@ -50980,15 +50664,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 39,
-        "internalPage": "539",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_39.png"
+        "page": 157,
+        "internalPage": "709",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_157.png"
       }
     ],
     "location": "Silo",
@@ -51029,9 +50707,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "130",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_1.png"
+        "page": 51,
+        "internalPage": "182",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_51.png"
       }
     ],
     "location": "Silo",
@@ -51108,21 +50786,27 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "129",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_33.png"
+        "page": 65,
+        "internalPage": "161",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_65.png"
       },
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "133",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_1.png"
+        "page": 86,
+        "internalPage": "231",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_86.png"
       },
       {
         "cabinet": "PLC1-2",
-        "page": 35,
-        "internalPage": "134",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_35.png"
+        "page": 87,
+        "internalPage": "232",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_87.png"
+      },
+      {
+        "cabinet": "PLC1-2",
+        "page": 126,
+        "internalPage": "240",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_126.png"
       }
     ],
     "location": "Silo",
@@ -51184,15 +50868,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "133",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "142",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_43.png"
+        "page": 91,
+        "internalPage": "236",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_91.png"
       }
     ],
     "location": "Silo",
@@ -51224,15 +50902,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "130",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 42,
-        "internalPage": "140",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_42.png"
+        "page": 55,
+        "internalPage": "186",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_55.png"
       }
     ],
     "location": "Silo",
@@ -51264,15 +50936,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "133",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "142",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_43.png"
+        "page": 92,
+        "internalPage": "237",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_92.png"
       }
     ],
     "location": "Silo",
@@ -51303,9 +50969,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "130",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_1.png"
+        "page": 52,
+        "internalPage": "183",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_52.png"
       }
     ],
     "location": "Silo",
@@ -51353,9 +51019,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "130",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_1.png"
+        "page": 52,
+        "internalPage": "183",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_52.png"
       }
     ],
     "location": "Silo",
@@ -51380,9 +51046,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 42,
-        "internalPage": "140",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_42.png"
+        "page": 49,
+        "internalPage": "180",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_49.png"
       }
     ],
     "location": "Silo",
@@ -51404,7 +51070,14 @@
     "cabinets": [
       "PLC1-2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC1-2",
+        "page": 85,
+        "internalPage": "230",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_85.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -51427,7 +51100,14 @@
     "cabinets": [
       "PLC1-1"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC1-1",
+        "page": 2,
+        "internalPage": "100",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC1_page_2.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -51450,7 +51130,14 @@
     "cabinets": [
       "PLC1-1"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC1-1",
+        "page": 2,
+        "internalPage": "100",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC1_page_2.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -51489,15 +51176,15 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "130",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_1.png"
+        "page": 53,
+        "internalPage": "184",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_53.png"
       },
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "132",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_1.png"
+        "page": 73,
+        "internalPage": "210",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_73.png"
       }
     ],
     "location": "Silo",
@@ -51538,15 +51225,15 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "133",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_1.png"
+        "page": 88,
+        "internalPage": "233",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_88.png"
       },
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "135",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_1.png"
+        "page": 105,
+        "internalPage": "261",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_105.png"
       }
     ],
     "location": "Silo",
@@ -51578,10 +51265,16 @@
     ],
     "drawings": [
       {
+        "cabinet": "PLC1-1",
+        "page": 2,
+        "internalPage": "100",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC1_page_2.png"
+      },
+      {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "132",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_1.png"
+        "page": 74,
+        "internalPage": "211",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_74.png"
       }
     ],
     "location": "Silo",
@@ -51614,9 +51307,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "132",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_1.png"
+        "page": 74,
+        "internalPage": "211",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_74.png"
       }
     ],
     "location": "Silo",
@@ -51648,9 +51341,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 10,
-        "internalPage": "141",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_10.png"
+        "page": 75,
+        "internalPage": "212",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_75.png"
       }
     ],
     "location": "Silo",
@@ -51682,15 +51375,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "132",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 10,
-        "internalPage": "141",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_10.png"
+        "page": 76,
+        "internalPage": "213",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_76.png"
       }
     ],
     "location": "Silo",
@@ -51722,9 +51409,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "132",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_1.png"
+        "page": 77,
+        "internalPage": "214",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_77.png"
       }
     ],
     "location": "Silo",
@@ -51756,15 +51443,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "132",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 10,
-        "internalPage": "141",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_10.png"
+        "page": 78,
+        "internalPage": "215",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_78.png"
       }
     ],
     "location": "Silo",
@@ -51796,15 +51477,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "132",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 10,
-        "internalPage": "141",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_10.png"
+        "page": 79,
+        "internalPage": "216",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_79.png"
       }
     ],
     "location": "Silo",
@@ -51836,15 +51511,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "132",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 10,
-        "internalPage": "141",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_10.png"
+        "page": 80,
+        "internalPage": "217",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_80.png"
       }
     ],
     "location": "Silo",
@@ -51876,15 +51545,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "132",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 10,
-        "internalPage": "141",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_10.png"
+        "page": 81,
+        "internalPage": "218",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_81.png"
       }
     ],
     "location": "Silo",
@@ -51916,15 +51579,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "132",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 10,
-        "internalPage": "141",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_10.png"
+        "page": 82,
+        "internalPage": "219",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_82.png"
       }
     ],
     "location": "Silo",
@@ -51956,9 +51613,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 10,
-        "internalPage": "141",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_10.png"
+        "page": 83,
+        "internalPage": "220",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_83.png"
       }
     ],
     "location": "Silo",
@@ -51990,15 +51647,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "135",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 9,
-        "internalPage": "143",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_9.png"
+        "page": 106,
+        "internalPage": "262",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_106.png"
       }
     ],
     "location": "Silo",
@@ -52030,15 +51681,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "135",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 9,
-        "internalPage": "143",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_9.png"
+        "page": 107,
+        "internalPage": "263",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_107.png"
       }
     ],
     "location": "Silo",
@@ -52070,15 +51715,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "135",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 9,
-        "internalPage": "143",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_9.png"
+        "page": 108,
+        "internalPage": "264",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_108.png"
       }
     ],
     "location": "Silo",
@@ -52110,9 +51749,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 9,
-        "internalPage": "143",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_9.png"
+        "page": 109,
+        "internalPage": "265",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_109.png"
       }
     ],
     "location": "Silo",
@@ -52144,15 +51783,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "135",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 9,
-        "internalPage": "143",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_9.png"
+        "page": 110,
+        "internalPage": "266",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_110.png"
       }
     ],
     "location": "Silo",
@@ -52184,15 +51817,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "135",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 9,
-        "internalPage": "143",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_9.png"
+        "page": 111,
+        "internalPage": "267",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_111.png"
       }
     ],
     "location": "Silo",
@@ -52224,15 +51851,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "135",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 9,
-        "internalPage": "143",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_9.png"
+        "page": 112,
+        "internalPage": "268",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_112.png"
       }
     ],
     "location": "Silo",
@@ -52264,15 +51885,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "135",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 9,
-        "internalPage": "143",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_9.png"
+        "page": 113,
+        "internalPage": "269",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_113.png"
       }
     ],
     "location": "Silo",
@@ -52304,15 +51919,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "135",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 9,
-        "internalPage": "143",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_9.png"
+        "page": 114,
+        "internalPage": "270",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_114.png"
       }
     ],
     "location": "Silo",
@@ -52344,15 +51953,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "133",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 10,
-        "internalPage": "141",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_10.png"
+        "page": 84,
+        "internalPage": "221",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_84.png"
       }
     ],
     "location": "Silo",
@@ -52384,15 +51987,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "135",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 9,
-        "internalPage": "143",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_9.png"
+        "page": 115,
+        "internalPage": "271",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_115.png"
       }
     ],
     "location": "Silo",
@@ -52425,9 +52022,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 35,
-        "internalPage": "134",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_35.png"
+        "page": 104,
+        "internalPage": "260",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_104.png"
       }
     ],
     "location": "Silo",
@@ -52457,7 +52054,14 @@
       "PLC1-1",
       "PLC1-2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC1-2",
+        "page": 104,
+        "internalPage": "260",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_104.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -52487,15 +52091,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "131",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_33.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 42,
-        "internalPage": "140",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_42.png"
+        "page": 90,
+        "internalPage": "191",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_90.png"
       }
     ],
     "location": "Silo",
@@ -52527,9 +52125,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 42,
-        "internalPage": "140",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_42.png"
+        "page": 93,
+        "internalPage": "194",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_93.png"
       }
     ],
     "location": "Silo",
@@ -52561,15 +52159,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "131",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_33.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 42,
-        "internalPage": "140",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_42.png"
+        "page": 91,
+        "internalPage": "192",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_91.png"
       }
     ],
     "location": "Silo",
@@ -52601,9 +52193,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "131",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_33.png"
+        "page": 92,
+        "internalPage": "193",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_92.png"
       }
     ],
     "location": "Silo",
@@ -52635,15 +52227,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "131",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_33.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 42,
-        "internalPage": "140",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_42.png"
+        "page": 94,
+        "internalPage": "195",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_94.png"
       }
     ],
     "location": "Silo",
@@ -52675,15 +52261,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "131",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_33.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 42,
-        "internalPage": "140",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_42.png"
+        "page": 97,
+        "internalPage": "198",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_97.png"
       }
     ],
     "location": "Silo",
@@ -52715,15 +52295,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "131",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_33.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 42,
-        "internalPage": "140",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_42.png"
+        "page": 95,
+        "internalPage": "196",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_95.png"
       }
     ],
     "location": "Silo",
@@ -52755,15 +52329,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "131",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_33.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 42,
-        "internalPage": "140",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_42.png"
+        "page": 96,
+        "internalPage": "197",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_96.png"
       }
     ],
     "location": "Silo",
@@ -52795,15 +52363,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "131",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_33.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 42,
-        "internalPage": "140",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_42.png"
+        "page": 98,
+        "internalPage": "199",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_98.png"
       }
     ],
     "location": "Silo",
@@ -52835,9 +52397,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 10,
-        "internalPage": "141",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_10.png"
+        "page": 101,
+        "internalPage": "202",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_101.png"
       }
     ],
     "location": "Silo",
@@ -52869,15 +52431,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "131",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_33.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 42,
-        "internalPage": "140",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_42.png"
+        "page": 99,
+        "internalPage": "200",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_99.png"
       }
     ],
     "location": "Silo",
@@ -52909,9 +52465,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "131",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_33.png"
+        "page": 100,
+        "internalPage": "201",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_100.png"
       }
     ],
     "location": "Silo",
@@ -52943,15 +52499,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 35,
-        "internalPage": "134",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_35.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "142",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_43.png"
+        "page": 127,
+        "internalPage": "241",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_127.png"
       }
     ],
     "location": "Silo",
@@ -52983,15 +52533,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 35,
-        "internalPage": "134",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_35.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "142",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_43.png"
+        "page": 130,
+        "internalPage": "244",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_130.png"
       }
     ],
     "location": "Silo",
@@ -53023,15 +52567,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 35,
-        "internalPage": "134",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_35.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "142",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_43.png"
+        "page": 128,
+        "internalPage": "242",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_128.png"
       }
     ],
     "location": "Silo",
@@ -53063,15 +52601,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 35,
-        "internalPage": "134",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_35.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "142",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_43.png"
+        "page": 129,
+        "internalPage": "243",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_129.png"
       }
     ],
     "location": "Silo",
@@ -53103,15 +52635,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 35,
-        "internalPage": "134",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_35.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "142",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_43.png"
+        "page": 131,
+        "internalPage": "245",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_131.png"
       }
     ],
     "location": "Silo",
@@ -53143,15 +52669,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 35,
-        "internalPage": "134",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_35.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "142",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_43.png"
+        "page": 134,
+        "internalPage": "248",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_134.png"
       }
     ],
     "location": "Silo",
@@ -53183,9 +52703,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "142",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_43.png"
+        "page": 132,
+        "internalPage": "246",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_132.png"
       }
     ],
     "location": "Silo",
@@ -53217,15 +52737,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 35,
-        "internalPage": "134",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_35.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "142",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_43.png"
+        "page": 133,
+        "internalPage": "247",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_133.png"
       }
     ],
     "location": "Silo",
@@ -53257,15 +52771,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 35,
-        "internalPage": "134",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_35.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "142",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_43.png"
+        "page": 135,
+        "internalPage": "249",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_135.png"
       }
     ],
     "location": "Silo",
@@ -53297,15 +52805,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 35,
-        "internalPage": "134",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_35.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "142",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_43.png"
+        "page": 138,
+        "internalPage": "252",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_138.png"
       }
     ],
     "location": "Silo",
@@ -53337,15 +52839,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 35,
-        "internalPage": "134",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_35.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "142",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_43.png"
+        "page": 136,
+        "internalPage": "250",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_136.png"
       }
     ],
     "location": "Silo",
@@ -53377,15 +52873,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 35,
-        "internalPage": "134",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_35.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "142",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_43.png"
+        "page": 137,
+        "internalPage": "251",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_137.png"
       }
     ],
     "location": "Silo",
@@ -53417,15 +52907,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "132",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 10,
-        "internalPage": "141",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_10.png"
+        "page": 102,
+        "internalPage": "203",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_102.png"
       }
     ],
     "location": "Silo",
@@ -53457,15 +52941,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "132",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 10,
-        "internalPage": "141",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_10.png"
+        "page": 105,
+        "internalPage": "206",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_105.png"
       }
     ],
     "location": "Silo",
@@ -53497,15 +52975,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "132",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 10,
-        "internalPage": "141",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_10.png"
+        "page": 103,
+        "internalPage": "204",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_103.png"
       }
     ],
     "location": "Silo",
@@ -53537,15 +53009,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "132",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 10,
-        "internalPage": "141",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_10.png"
+        "page": 104,
+        "internalPage": "205",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_104.png"
       }
     ],
     "location": "Silo",
@@ -53578,9 +53044,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "131",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_33.png"
+        "page": 89,
+        "internalPage": "190",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_89.png"
       }
     ],
     "location": "Silo",
@@ -53613,15 +53079,15 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "130",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_1.png"
+        "page": 54,
+        "internalPage": "185",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_54.png"
       },
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "131",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_33.png"
+        "page": 89,
+        "internalPage": "190",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_89.png"
       }
     ],
     "location": "Silo",
@@ -53654,9 +53120,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "131",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_33.png"
+        "page": 89,
+        "internalPage": "190",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_89.png"
       }
     ],
     "location": "Silo",
@@ -53689,15 +53155,15 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "130",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_1.png"
+        "page": 54,
+        "internalPage": "185",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_54.png"
       },
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "131",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_33.png"
+        "page": 89,
+        "internalPage": "190",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_89.png"
       }
     ],
     "location": "Silo",
@@ -53727,7 +53193,14 @@
       "PLC1-1",
       "PLC1-2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC1-2",
+        "page": 126,
+        "internalPage": "240",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_126.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -53758,9 +53231,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 35,
-        "internalPage": "134",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_35.png"
+        "page": 126,
+        "internalPage": "240",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_126.png"
       }
     ],
     "location": "Silo",
@@ -53793,15 +53266,15 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "133",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_1.png"
+        "page": 86,
+        "internalPage": "231",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_86.png"
       },
       {
         "cabinet": "PLC1-2",
-        "page": 35,
-        "internalPage": "134",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_35.png"
+        "page": 126,
+        "internalPage": "240",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_126.png"
       }
     ],
     "location": "Silo",
@@ -53834,9 +53307,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "130",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_1.png"
+        "page": 54,
+        "internalPage": "185",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_54.png"
       }
     ],
     "location": "Silo",
@@ -53877,15 +53350,15 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "133",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_1.png"
+        "page": 87,
+        "internalPage": "232",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_87.png"
       },
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "135",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_1.png"
+        "page": 105,
+        "internalPage": "261",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_105.png"
       }
     ],
     "location": "Silo",
@@ -53918,9 +53391,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "135",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_1.png"
+        "page": 104,
+        "internalPage": "260",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_104.png"
       }
     ],
     "location": "Silo",
@@ -53953,9 +53426,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "135",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_1.png"
+        "page": 104,
+        "internalPage": "260",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_104.png"
       }
     ],
     "location": "Silo",
@@ -53987,9 +53460,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 42,
-        "internalPage": "140",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_42.png"
+        "page": 56,
+        "internalPage": "187",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_56.png"
       }
     ],
     "location": "Silo",
@@ -54021,15 +53494,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "133",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "142",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_43.png"
+        "page": 89,
+        "internalPage": "234",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_89.png"
       }
     ],
     "location": "Silo",
@@ -54061,15 +53528,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "131",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_33.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 42,
-        "internalPage": "140",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_4_page_42.png"
+        "page": 57,
+        "internalPage": "188",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_57.png"
       }
     ],
     "location": "Silo",
@@ -54101,15 +53562,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "133",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_1.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 43,
-        "internalPage": "142",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_7_page_43.png"
+        "page": 90,
+        "internalPage": "235",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_90.png"
       }
     ],
     "location": "Silo",
@@ -54142,9 +53597,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "130",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_1.png"
+        "page": 54,
+        "internalPage": "185",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_3_page_54.png"
       }
     ],
     "location": "Silo",
@@ -54185,9 +53640,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "133",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_1.png"
+        "page": 88,
+        "internalPage": "233",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_88.png"
       }
     ],
     "location": "Silo",
@@ -54220,9 +53675,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 36,
-        "internalPage": "136",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_36.png"
+        "page": 151,
+        "internalPage": "280",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_151.png"
       }
     ],
     "location": "Silo",
@@ -54255,9 +53710,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 36,
-        "internalPage": "136",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_36.png"
+        "page": 151,
+        "internalPage": "280",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_151.png"
       }
     ],
     "location": "Silo",
@@ -54290,9 +53745,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 36,
-        "internalPage": "136",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_36.png"
+        "page": 151,
+        "internalPage": "280",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_151.png"
       }
     ],
     "location": "Silo",
@@ -54324,15 +53779,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 36,
-        "internalPage": "136",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_36.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 9,
-        "internalPage": "143",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_9.png"
+        "page": 153,
+        "internalPage": "282",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_153.png"
       }
     ],
     "location": "Silo",
@@ -54364,15 +53813,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 36,
-        "internalPage": "136",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_36.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 9,
-        "internalPage": "143",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_9.png"
+        "page": 154,
+        "internalPage": "283",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_154.png"
       }
     ],
     "location": "Silo",
@@ -54405,15 +53848,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "528",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_1.png"
+        "page": 75,
+        "internalPage": "620",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_14_page_75.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
+        "page": 148,
+        "internalPage": "700",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_148.png"
       }
     ],
     "location": "Silo",
@@ -54475,16 +53918,22 @@
     ],
     "drawings": [
       {
-        "cabinet": "PLC2-2",
-        "page": 27,
-        "internalPage": "524",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_27.png"
+        "cabinet": "PLC2-1",
+        "page": 155,
+        "internalPage": "500",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC2_page_155.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
+        "page": 64,
+        "internalPage": "564",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_64.png"
+      },
+      {
+        "cabinet": "PLC2-2",
+        "page": 148,
+        "internalPage": "700",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_148.png"
       }
     ],
     "location": "Silo",
@@ -54546,6 +53995,12 @@
     ],
     "drawings": [
       {
+        "cabinet": "PLC2-1",
+        "page": 155,
+        "internalPage": "500",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC2_page_155.png"
+      },
+      {
         "cabinet": "PLC2-2",
         "page": 2,
         "internalPage": "534",
@@ -54590,9 +54045,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 28,
-        "internalPage": "525",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_28.png"
+        "page": 67,
+        "internalPage": "567",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_67.png"
       }
     ],
     "location": "Silo",
@@ -54624,15 +54079,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "526",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_29.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "536",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_38.png"
+        "page": 85,
+        "internalPage": "585",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_85.png"
       }
     ],
     "location": "Silo",
@@ -54664,15 +54113,9 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "526",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_29.png"
-      },
-      {
-        "cabinet": "PLC2-2",
-        "page": 38,
-        "internalPage": "536",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_38.png"
+        "page": 86,
+        "internalPage": "586",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_86.png"
       }
     ],
     "location": "Silo",
@@ -54705,9 +54148,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 36,
-        "internalPage": "136",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_36.png"
+        "page": 151,
+        "internalPage": "280",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_151.png"
       }
     ],
     "location": "Silo",
@@ -54740,9 +54183,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 36,
-        "internalPage": "136",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_36.png"
+        "page": 152,
+        "internalPage": "281",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_152.png"
       }
     ],
     "location": "Silo",
@@ -54775,9 +54218,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 36,
-        "internalPage": "136",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_36.png"
+        "page": 152,
+        "internalPage": "281",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_152.png"
       }
     ],
     "location": "Silo",
@@ -54809,15 +54252,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 36,
-        "internalPage": "136",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_36.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 9,
-        "internalPage": "143",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_9.png"
+        "page": 155,
+        "internalPage": "284",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_155.png"
       }
     ],
     "location": "Silo",
@@ -54849,15 +54286,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 36,
-        "internalPage": "136",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_36.png"
-      },
-      {
-        "cabinet": "PLC1-2",
-        "page": 9,
-        "internalPage": "143",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_9.png"
+        "page": 156,
+        "internalPage": "285",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_9_page_156.png"
       }
     ],
     "location": "Silo",
@@ -54921,15 +54352,15 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 33,
-        "internalPage": "129",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_33.png"
+        "page": 66,
+        "internalPage": "162",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_66.png"
       },
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "133",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_1.png"
+        "page": 88,
+        "internalPage": "233",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_88.png"
       }
     ],
     "location": "Silo",
@@ -86712,7 +86143,14 @@
     "cabinets": [
       "PLC1-2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC1-2",
+        "page": 1,
+        "internalPage": "100.a",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_1.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -86733,7 +86171,14 @@
     "cabinets": [
       "PLC1-2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC1-2",
+        "page": 1,
+        "internalPage": "100.a",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_2_page_1.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -99866,7 +99311,14 @@
     "cabinets": [
       "PLC2-1"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC2-1",
+        "page": 155,
+        "internalPage": "500",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC2_page_155.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -100053,15 +99505,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
+        "page": 84,
+        "internalPage": "640",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_84.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
+        "page": 95,
+        "internalPage": "651",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_95.png"
       }
     ],
     "location": "Silo",
@@ -100088,15 +99540,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
+        "page": 84,
+        "internalPage": "640",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_84.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
+        "page": 95,
+        "internalPage": "651",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_95.png"
       }
     ],
     "location": "Silo",
@@ -100123,15 +99575,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
+        "page": 84,
+        "internalPage": "640",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_84.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
+        "page": 95,
+        "internalPage": "651",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_95.png"
       }
     ],
     "location": "Silo",
@@ -100158,15 +99610,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
+        "page": 84,
+        "internalPage": "640",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_84.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
+        "page": 95,
+        "internalPage": "651",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_95.png"
       }
     ],
     "location": "Silo",
@@ -100193,15 +99645,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
+        "page": 84,
+        "internalPage": "640",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_84.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
+        "page": 95,
+        "internalPage": "651",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_95.png"
       }
     ],
     "location": "Silo",
@@ -100228,15 +99680,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "529",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_1.png"
+        "page": 84,
+        "internalPage": "640",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_84.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
+        "page": 95,
+        "internalPage": "651",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_15_page_95.png"
       }
     ],
     "location": "Silo",
@@ -100263,15 +99715,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
+        "page": 104,
+        "internalPage": "680",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_104.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
+        "page": 117,
+        "internalPage": "693",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_117.png"
       }
     ],
     "location": "Silo",
@@ -100298,15 +99750,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 31,
-        "internalPage": "530",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_16_page_31.png"
+        "page": 104,
+        "internalPage": "680",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_104.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
+        "page": 117,
+        "internalPage": "693",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_117.png"
       }
     ],
     "location": "Silo",
@@ -100333,9 +99785,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
+        "page": 104,
+        "internalPage": "680",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_104.png"
+      },
+      {
+        "cabinet": "PLC2-2",
+        "page": 117,
+        "internalPage": "693",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_117.png"
       }
     ],
     "location": "Silo",
@@ -100362,9 +99820,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
+        "page": 104,
+        "internalPage": "680",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_104.png"
+      },
+      {
+        "cabinet": "PLC2-2",
+        "page": 117,
+        "internalPage": "693",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_117.png"
       }
     ],
     "location": "Silo",
@@ -100391,15 +99855,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "531",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_1.png"
+        "page": 104,
+        "internalPage": "680",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_104.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
+        "page": 117,
+        "internalPage": "693",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_117.png"
       }
     ],
     "location": "Silo",
@@ -100426,15 +99890,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "531",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_1.png"
+        "page": 104,
+        "internalPage": "680",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_104.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 32,
-        "internalPage": "532",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_18_page_32.png"
+        "page": 117,
+        "internalPage": "693",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_17_page_117.png"
       }
     ],
     "location": "Silo",
@@ -100461,9 +99925,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "533",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_1.png"
+        "page": 126,
+        "internalPage": "720",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_126.png"
+      },
+      {
+        "cabinet": "PLC2-2",
+        "page": 137,
+        "internalPage": "731",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_137.png"
       }
     ],
     "location": "Silo",
@@ -100490,9 +99960,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "533",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_1.png"
+        "page": 126,
+        "internalPage": "720",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_126.png"
+      },
+      {
+        "cabinet": "PLC2-2",
+        "page": 137,
+        "internalPage": "731",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_137.png"
       }
     ],
     "location": "Silo",
@@ -100519,9 +99995,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "533",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_1.png"
+        "page": 126,
+        "internalPage": "720",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_126.png"
+      },
+      {
+        "cabinet": "PLC2-2",
+        "page": 137,
+        "internalPage": "731",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_137.png"
       }
     ],
     "location": "Silo",
@@ -100548,9 +100030,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "533",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_1.png"
+        "page": 126,
+        "internalPage": "720",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_126.png"
+      },
+      {
+        "cabinet": "PLC2-2",
+        "page": 137,
+        "internalPage": "731",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_137.png"
       }
     ],
     "location": "Silo",
@@ -100577,15 +100065,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "533",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_1.png"
+        "page": 126,
+        "internalPage": "720",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_126.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 2,
-        "internalPage": "534",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_2.png"
+        "page": 137,
+        "internalPage": "731",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_137.png"
       }
     ],
     "location": "Silo",
@@ -100612,15 +100100,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 1,
-        "internalPage": "533",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_1.png"
+        "page": 126,
+        "internalPage": "720",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_126.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 2,
-        "internalPage": "534",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_2.png"
+        "page": 137,
+        "internalPage": "731",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_19_page_137.png"
       }
     ],
     "location": "Silo",
@@ -100645,9 +100133,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "133",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_1.png"
+        "page": 85,
+        "internalPage": "222",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_85.png"
       }
     ],
     "location": "Silo",
@@ -100672,9 +100160,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "133",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_1.png"
+        "page": 85,
+        "internalPage": "222",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_85.png"
       }
     ],
     "location": "Silo",
@@ -100699,9 +100187,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "133",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_6_page_1.png"
+        "page": 85,
+        "internalPage": "222",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_5_page_85.png"
       }
     ],
     "location": "Silo",
@@ -100726,9 +100214,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "135",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_1.png"
+        "page": 116,
+        "internalPage": "272",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_116.png"
       }
     ],
     "location": "Silo",
@@ -100753,9 +100241,9 @@
     "drawings": [
       {
         "cabinet": "PLC1-2",
-        "page": 1,
-        "internalPage": "135",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_1.png"
+        "page": 116,
+        "internalPage": "272",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_116.png"
       }
     ],
     "location": "Silo",
@@ -100777,7 +100265,14 @@
     "cabinets": [
       "PLC1-2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC1-2",
+        "page": 116,
+        "internalPage": "272",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_8_page_116.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
@@ -100802,15 +100297,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "526",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_29.png"
+        "page": 1,
+        "internalPage": "590",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_12_page_1.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
+        "page": 91,
+        "internalPage": "600",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_91.png"
       }
     ],
     "location": "Silo",
@@ -100837,15 +100332,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "526",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_29.png"
+        "page": 1,
+        "internalPage": "590",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_12_page_1.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
+        "page": 91,
+        "internalPage": "600",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_91.png"
       }
     ],
     "location": "Silo",
@@ -100872,15 +100367,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "526",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_29.png"
+        "page": 1,
+        "internalPage": "590",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_12_page_1.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
+        "page": 91,
+        "internalPage": "600",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_91.png"
       }
     ],
     "location": "Silo",
@@ -100907,15 +100402,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "526",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_11_page_29.png"
+        "page": 1,
+        "internalPage": "590",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_12_page_1.png"
       },
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
+        "page": 91,
+        "internalPage": "600",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_91.png"
       }
     ],
     "location": "Silo",
@@ -100942,9 +100437,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
+        "page": 1,
+        "internalPage": "590",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_12_page_1.png"
+      },
+      {
+        "cabinet": "PLC2-2",
+        "page": 91,
+        "internalPage": "600",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_91.png"
       }
     ],
     "location": "Silo",
@@ -100971,9 +100472,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
+        "page": 1,
+        "internalPage": "590",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_12_page_1.png"
+      },
+      {
+        "cabinet": "PLC2-2",
+        "page": 91,
+        "internalPage": "600",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_91.png"
       }
     ],
     "location": "Silo",
@@ -101000,9 +100507,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
+        "page": 1,
+        "internalPage": "590",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_12_page_1.png"
+      },
+      {
+        "cabinet": "PLC2-2",
+        "page": 91,
+        "internalPage": "600",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_91.png"
       }
     ],
     "location": "Silo",
@@ -101029,9 +100542,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
+        "page": 2,
+        "internalPage": "591",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_12_page_2.png"
+      },
+      {
+        "cabinet": "PLC2-2",
+        "page": 92,
+        "internalPage": "601",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_92.png"
       }
     ],
     "location": "Silo",
@@ -101058,9 +100577,15 @@
     "drawings": [
       {
         "cabinet": "PLC2-2",
-        "page": 29,
-        "internalPage": "527",
-        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_29.png"
+        "page": 2,
+        "internalPage": "591",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_12_page_2.png"
+      },
+      {
+        "cabinet": "PLC2-2",
+        "page": 92,
+        "internalPage": "601",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/TB_13_page_92.png"
       }
     ],
     "location": "Silo",
@@ -101119,7 +100644,14 @@
     "cabinets": [
       "PLC2-1"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC2-1",
+        "page": 155,
+        "internalPage": "500",
+        "drawingPdfUrl": "/drawings/silo/cabinets/images/PLC2_page_155.png"
+      }
+    ],
     "location": "Silo",
     "locationId": "silo"
   },
