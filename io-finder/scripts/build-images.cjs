@@ -32,6 +32,11 @@ const LOCATIONS = [
     locationId: 'tower3',
     folder: 'Tower 3',
     pdfFile: '泰国inteqc Cabinet drawing.pdf',
+  },
+  {
+    locationId: 'silo',
+    folder: 'Silo',
+    pdfFile: '泰国inteqc.pdf',
   }
 ];
 

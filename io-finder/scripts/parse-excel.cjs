@@ -367,6 +367,14 @@ const FILES = [
     format: 'plctags',          // PLCTags format: single sheet, English columns
     sheets: ['PLC Tags'],
   },
+  {
+    folder: 'Silo',
+    file: 'PLCTags dev1.xlsx',
+    locationId: 'silo',
+    locationName: 'Silo',
+    format: 'plctags',
+    sheets: ['PLC Tags'],
+  },
 ];
 
 // ──────────────────────── Helpers ────────────────────────

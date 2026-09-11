@@ -92,6 +92,18 @@ const LOCATIONS = [
       { min: 3000, max: 3099, cabinet: 'CB' },
     ],
   },
+  {
+    locationId: 'silo',
+    folder: 'Silo',
+    pdfFile: '泰国inteqc.pdf',
+    drawingUrl: '/drawings/silo/electrical_schematic.pdf',
+    cabinetList: [
+      'CB_01', 'CB_02', 'PLC1', 'PLC2',
+      'TB_10', 'TB_11', 'TB_12', 'TB_13', 'TB_14', 'TB_15', 'TB_16', 'TB_17', 'TB_18', 'TB_19',
+      'TB_1', 'TB_2', 'TB_3', 'TB_4', 'TB_5', 'TB_6', 'TB_7', 'TB_8', 'TB_9'
+    ],
+    cabinetRanges: [],
+  },
 ];
 
 function getCabinetForPage(pageNum, ranges) {
@@ -148,6 +160,12 @@ function extractInternalPage(text) {
   if (text.includes('PAGE') && text.includes('TOTAL')) {
     m = text.match(/\b1000\b[\s\S]{1,30}?\b4\b\s+(\d{3,4})\s+2/);
     if (m) return m[1].trim();
+  }
+
+  // 8. Silo style date-based page number extraction (e.g. 2022/1/4 \n 102)
+  const datePageMatch = text.match(/\b\d{4}\/\d{1,2}\/\d{1,2}\s*\n\s*([0-9a-zA-Z\.\-_]+)/);
+  if (datePageMatch) {
+    return datePageMatch[1].trim();
   }
 
   return null;
@@ -391,12 +409,21 @@ async function scanPdf(loc) {
 
     if (!internalPageStr.includes('.')) {
       if (loc.cabinetList) {
-        // ─── Tower 2 Style (WZB / 魏正彪) ───
-        for (const line of lines) {
-          if (line.includes('日期') && !line.includes('布置') && !line.includes('端子') && !line.includes('目录') && !line.includes('总览')) {
+        // ─── Tower 2 & Silo Style ───
+        for (let j = 0; j < lines.length; j++) {
+          const line = lines[j];
+          if (line.includes('日期') && !line.includes('修订') && !line.includes('布置') && !line.includes('端子') && !line.includes('目录') && !line.includes('总览')) {
             const eq = extractEquipFromTitleLine(line);
             if (eq) {
               foundEquips.add(eq);
+            }
+            // Also check adjacent lines for Silo format (e.g. "20.9-1 气动闸门")
+            if (loc.locationId === 'silo') {
+              const target = [line, lines[j+1] || '', lines[j+2] || ''].join(' ');
+              const mSilo = target.match(/\b(\d+[\.\-]\d+[A-Za-z0-9\.\-]*)\b/);
+              if (mSilo) {
+                foundEquips.add(mSilo[1].replace(/-/g, '_').toUpperCase());
+              }
             }
           }
         }

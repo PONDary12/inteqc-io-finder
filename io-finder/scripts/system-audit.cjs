@@ -104,7 +104,7 @@ console.log(`Search entries with empty machine code: ${emptyCodeSearchEntries.le
 
 // 5. DRAWING IMAGES AUDIT
 console.log('\n--- 5. DRAWING IMAGES STORAGE AUDIT ---');
-['tower2_p1', 'tower2_p2', 'tower3'].forEach(locId => {
+['tower2_p1', 'tower2_p2', 'tower3', 'silo'].forEach(locId => {
   const imgDir = path.join(PUBLIC_DIR, 'drawings', locId, 'cabinets', 'images');
   if (fs.existsSync(imgDir)) {
     const files = fs.readdirSync(imgDir);
@@ -128,7 +128,8 @@ ioData.locations.forEach(loc => {
   let locMissing = 0;
 
   keys.forEach(k => {
-    if (/^[0-9]+(\.[0-9]+)?(KW|A|V|W|HZ|RPM|MA|KVA)$/i.test(k)) {
+    // Electrical ratings like 5.5KW, 11KW, 250KW, 6.9A (exclude genuine equipment codes like 23.4A or 23.10A that exist in PLCTags)
+    if (/^[0-9]+(\.[0-9]+)?(KW|W|HZ|RPM|MA|KVA)$/i.test(k) || (/^[0-9]+\.[0-9]+A$/i.test(k) && !loc.cabinets.some(c => c.io.some(p => p.equipmentCode === k)))) {
       badEquipKeys.push({ loc: loc.id, key: k });
     }
     eqMap[k].forEach(s => {
