@@ -391,6 +391,19 @@ async function scanPdf(loc) {
           }
         }
       }
+
+      // 4. Silo section fallback for unassigned WAGO IO / control pages
+      if (!cabinet && loc.locationId === 'silo') {
+        if (pageNum >= 6 && pageNum <= 167) {
+          cabinet = 'PLC1';
+        } else if (pageNum >= 168 && pageNum <= 342) {
+          cabinet = 'PLC2';
+        } else if (pageNum === 343) {
+          cabinet = 'CB_01';
+        } else if (pageNum === 344) {
+          cabinet = 'CB_02';
+        }
+      }
     } else {
       cabinet = getCabinetForPage(internalPageStr, loc.cabinetRanges);
     }
