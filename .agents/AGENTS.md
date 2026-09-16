@@ -4,6 +4,7 @@
 - Display equipment names and UI text in **English only** (do not show Chinese text in the user-facing interface).
 - Design the system to easily support adding new Towers/Locations in the future (extensible architecture).
 - Always ask for explicit user confirmation before executing `git push` to GitHub.
+- **Autonomous Continuous Learning**: Whenever a bug is solved, an edge case is diagnosed, or new domain rules are uncovered, the agent must automatically document and update the relevant skill in `.agents/skills/` without waiting for user prompts (see `auto_continuous_learning`).
 
 ## Team Handover & Onboarding Instructions
 When any engineer, developer, or teammate opens this workspace in Antigravity:
