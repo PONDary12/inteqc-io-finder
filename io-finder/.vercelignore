@@ -1,3 +1,0 @@
-# Exclude drawing images from Vercel deployment bundles
-# These are hosted externally on Cloudflare R2 (reduces deployment bundle by 1.68 GB)
-public/drawings/

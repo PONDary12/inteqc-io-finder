@@ -22,18 +22,6 @@ function normalizeAddress(addr) {
     .replace(/o/g, '0');
 }
 
-const DRAWINGS_BASE_URL = process.env.NEXT_PUBLIC_DRAWINGS_BASE_URL || '';
-
-function getDrawingUrl(rawUrl) {
-  if (!rawUrl) return '';
-  if (rawUrl.startsWith('http://') || rawUrl.startsWith('https://')) {
-    return rawUrl;
-  }
-  const cleanBase = DRAWINGS_BASE_URL.replace(/\/+$/, '');
-  const cleanPath = rawUrl.startsWith('/') ? rawUrl : `/${rawUrl}`;
-  return cleanBase ? `${cleanBase}${cleanPath}` : cleanPath;
-}
-
 function compareAddresses(addrA, addrB) {
   if (!addrA && !addrB) return 0;
   if (!addrA) return 1;
@@ -712,18 +700,11 @@ export default function MachineDetail({ params }) {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     ref={imageRef}
-                    src={getDrawingUrl(currentDrawing.drawingPdfUrl)}
+                    src={currentDrawing.drawingPdfUrl}
                     alt={`Drawing Sheet ${currentDrawing.internalPage}`}
                     style={styles.drawingImage}
                     draggable="false"
                     onError={(e) => {
-                      const currentSrc = e.target.getAttribute("src") || "";
-                      const localFallback = currentDrawing.drawingPdfUrl.startsWith("/") ? currentDrawing.drawingPdfUrl : `/${currentDrawing.drawingPdfUrl}`;
-                      if (currentSrc !== localFallback && !e.target.dataset.triedFallback) {
-                        e.target.dataset.triedFallback = "true";
-                        e.target.src = localFallback;
-                        return;
-                      }
                       e.target.style.display = 'none';
                       if (e.target.parentElement) {
                         const msg = document.createElement('div');
