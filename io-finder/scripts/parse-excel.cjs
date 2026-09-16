@@ -63,7 +63,7 @@ function normalizeCode(code) {
   return String(code)
     .trim()
     .toLowerCase()
-    .replace(/[\s_\-\.\,\/\\]/g, '');
+    .replace(/[\s_\-\/\\]+/g, '.');
 }
 
 const RCB4_EQUIP_INTERNAL_PAGES = {

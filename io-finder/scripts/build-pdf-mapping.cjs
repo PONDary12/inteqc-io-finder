@@ -187,10 +187,11 @@ function extractEquipFromTitleLine(line) {
       break;
     }
   }
-  const m = s.match(/^([A-Z0-9_]+)\s*[-–]/i);
+  // Match codes with internal hyphens first (e.g. AG-3101-), then fallback to standard code before hyphen
+  const m = s.match(/^([A-Z0-9_]+(?:-[A-Z0-9_]+)+)\s*[-–]?/i) || s.match(/^([A-Z0-9_]+)\s*[-–]/i);
   if (m) {
     const code = m[1].toUpperCase().replace(/-/g, '_');
-    if (!['MCC', 'RCB', 'PLC', 'EFS', 'WZB'].includes(code)) {
+    if (!['MCC', 'RCB', 'PLC', 'EFS', 'WZB', '1511', '1515', '1515_2PN'].includes(code)) {
       return code;
     }
   }
@@ -287,15 +288,18 @@ async function scanPdf(loc) {
 
     const internalPageStr = page.internalPageStr;
     if (!internalPageStr) return;
+    // Skip TOC / overview index pages (e.g. 1.a, 1.c) in Tower 2 drawings
+    if (loc.cabinetList && internalPageStr.includes('.')) return;
 
 
     // A. Cabinet mapping
     let cabinet = null;
+    const sortedCabinetList = loc.cabinetList ? [...loc.cabinetList].sort((a, b) => b.length - a.length) : [];
     if (loc.cabinetList) {
       const title = extractTitle(text);
       
       // 1. Try exact title block match (highest reliability)
-      for (const cab of loc.cabinetList) {
+      for (const cab of sortedCabinetList) {
         const cleanCab = cab.replace(/[_\-]/g, '').toLowerCase();
         const cleanTitle = title.replace(/[_\-]/g, '').toLowerCase();
         if (cleanTitle.includes(cleanCab)) {
@@ -308,7 +312,7 @@ async function scanPdf(loc) {
       if (!cabinet) {
         let bestCab = null;
         let maxScore = 0;
-        for (const cab of loc.cabinetList) {
+        for (const cab of sortedCabinetList) {
           let score = 0;
           const cleanCab = cab.replace(/[_\-]/g, '').toLowerCase();
           
@@ -366,7 +370,7 @@ async function scanPdf(loc) {
       
       // 3. Fallback: simple substring include
       if (!cabinet) {
-        for (const cab of loc.cabinetList) {
+        for (const cab of sortedCabinetList) {
           if (text.toLowerCase().includes(cab.toLowerCase())) {
             cabinet = cab;
             break;
@@ -393,7 +397,7 @@ async function scanPdf(loc) {
       if (loc.cabinetList) {
         // ─── Tower 2 Style (WZB / 魏正彪) ───
         for (const line of lines) {
-          if (line.includes('日期') && !line.includes('布置') && !line.includes('端子') && !line.includes('目录') && !line.includes('总览')) {
+          if (line.includes('日期') && !line.includes('修订日期') && !line.includes('布置') && !line.includes('端子') && !line.includes('目录') && !line.includes('总览') && !line.includes('布局') && !line.includes('拓扑图') && !line.includes('汇总表') && !line.includes('回路') && !line.includes('电源') && !line.includes('供电') && !line.includes('空开')) {
             const eq = extractEquipFromTitleLine(line);
             if (eq) {
               foundEquips.add(eq);
@@ -439,7 +443,7 @@ async function scanPdf(loc) {
         const mTitle = text.match(/版权声明\s+设计\s+泰国inteqc\s+([^\n\r]+)/);
         if (mTitle) {
           pageTitle = mTitle[1].trim();
-          const eqMatch = pageTitle.match(/^([Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*(?:\/[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*|~[Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*)?)\b/);
+          const eqMatch = pageTitle.match(/^([Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.\-]*(?:\/[0-9]+[_\.][0-9]+[A-Za-z0-9_\.\-]*|~[Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.\-]*)?)\b/);
           if (eqMatch) {
             const raw = eqMatch[1];
             if (raw.includes('~')) {
@@ -459,7 +463,7 @@ async function scanPdf(loc) {
             const next2 = lines[j+2] || '';
             const combo = next1 + ' ' + next2;
             pageTitle = pageTitle || combo;
-            const eqMatch = combo.match(/\b([Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*)\b/);
+            const eqMatch = combo.match(/\b([Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.\-]*)\b/);
             if (eqMatch) {
               foundEquips.add(eqMatch[1].trim().toUpperCase().replace(/-/g, '_'));
             }
@@ -474,7 +478,9 @@ async function scanPdf(loc) {
             if (tm) {
               foundEquips.add(tm[1].trim().toUpperCase().replace(/-/g, '_'));
               if (['HL', 'LL', 'HA', 'SQ', 'SP', 'ST'].includes(tm[2])) {
-                foundEquips.add((tm[1] + '_' + tm[2]).trim().toUpperCase().replace(/-/g, '_'));
+                if (!tm[1].toUpperCase().endsWith(tm[2])) {
+                  foundEquips.add((tm[1] + '_' + tm[2]).trim().toUpperCase().replace(/-/g, '_'));
+                }
               }
             }
           });
@@ -482,19 +488,45 @@ async function scanPdf(loc) {
 
         const isUnitOrRating = (str) => /^[0-9]+(\.[0-9]+)?(KW|A|V|W|HZ|RPM|MA|KVA)$/i.test(str);
 
-        // 4. Lines matching plant equipment pattern ([0-9]+[_\.][0-9]+)
-        for (const line of lines) {
-          const trimmed = line.trim().toUpperCase().replace(/-/g, '_');
-          if (/[0-9]+[_\.][0-9]+/.test(trimmed) && trimmed.length <= 15 && !isUnitOrRating(trimmed)) {
-            if (/^[Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*$/.test(trimmed)) {
-              foundEquips.add(trimmed);
+        // Check if this sheet is a shared rack card, power distribution, or system layout sheet
+        const isSharedCardOrLayout = 
+          pageTitle.includes('Wago DI') ||
+          pageTitle.includes('Wago DO') ||
+          pageTitle.includes('Wago AI') ||
+          pageTitle.includes('Wago AO') ||
+          pageTitle.includes('CPU1215') ||
+          pageTitle.includes('SM1223') ||
+          pageTitle.includes('SM1231') ||
+          pageTitle.includes('SM1234') ||
+          pageTitle.includes('远程站模块布局') ||
+          pageTitle.includes('模块分布') ||
+          pageTitle.includes('电源进线') ||
+          pageTitle.includes('电源分配') ||
+          pageTitle.includes('控制电源') ||
+          pageTitle.includes('照明') ||
+          pageTitle.includes('急停') ||
+          pageTitle.includes('目录') ||
+          pageTitle.includes('封页') ||
+          pageTitle.includes('标题页') ||
+          pageTitle.includes('端子') ||
+          pageTitle.includes('网络图') ||
+          pageTitle.includes('触摸电脑');
+
+        // 4. Lines matching plant equipment pattern ([0-9]+[_\.][0-9]+) - Only if NOT a shared sheet and no title/tag match found
+        if (!isSharedCardOrLayout && foundEquips.size === 0) {
+          for (const line of lines) {
+            const trimmed = line.trim().toUpperCase().replace(/-/g, '_');
+            if (/[0-9]+[_\.][0-9]+/.test(trimmed) && trimmed.length <= 15 && !isUnitOrRating(trimmed)) {
+              if (/^[Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*$/.test(trimmed)) {
+                foundEquips.add(trimmed);
+              }
             }
           }
         }
 
         const ignoreWords = new Set(['MCC', 'PLC', 'LCB', 'PCB', 'TOTAL', 'PAGE', 'DRAWN', 'WAGO', 'DATE', 'SA', 'CA', 'ZWP', 'WEM', 'FIELD']);
 
-        if (foundEquips.size > 0) {
+        if (!isSharedCardOrLayout && foundEquips.size > 0) {
           const classification = classifySchematicPage(text, pageTitle);
           foundEquips.forEach(eq => {
             if (ignoreWords.has(eq) || isUnitOrRating(eq) || /^\d+KW$/i.test(eq) || /^\d+A$/i.test(eq)) return;
@@ -507,24 +539,6 @@ async function scanPdf(loc) {
                 type: classification.type,
                 cabinet: cabinet || null,
               });
-            }
-
-            // If code has letter suffix or sub-unit suffix e.g. 5_69A or 4_10.V or 4_25_V, also register for parent
-            const parentMatch = eq.match(/^([Vv]?[0-9]+[_\.][0-9]+)(?:[_\.][A-Za-z]+|[A-Za-z])$/);
-            if (parentMatch) {
-              const parentCode = parentMatch[1];
-              if (!ignoreWords.has(parentCode) && !isUnitOrRating(parentCode)) {
-                if (!equipmentDrawings[parentCode]) equipmentDrawings[parentCode] = [];
-                if (!equipmentDrawings[parentCode].some(d => d.internalPage === internalPageStr)) {
-                  equipmentDrawings[parentCode].push({
-                    pdfPage: pageNum,
-                    internalPage: internalPageStr,
-                    label: classification.label,
-                    type: classification.type,
-                    cabinet: cabinet || null,
-                  });
-                }
-              }
             }
           });
         }
@@ -610,7 +624,23 @@ async function scanPdf(loc) {
         if (m) {
           const title = m[1].trim();
           const intP = m[2];
-          const eqMatch = title.match(/^([Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*(?:\/[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*|~[Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*)?)\b/);
+          const isTocShared = 
+            title.includes('Wago') ||
+            title.includes('CPU1215') ||
+            title.includes('SM1223') ||
+            title.includes('SM1231') ||
+            title.includes('SM1234') ||
+            title.includes('布局') ||
+            title.includes('电源') ||
+            title.includes('照明') ||
+            title.includes('急停') ||
+            title.includes('端子') ||
+            title.includes('网络图') ||
+            title.includes('触摸电脑');
+
+          if (isTocShared) continue;
+
+          const eqMatch = title.match(/^([Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.\-]*(?:\/[0-9]+[_\.][0-9]+[A-Za-z0-9_\.\-]*|~[Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.\-]*)?)\b/);
           if (eqMatch) {
             const raw = eqMatch[1];
             const codes = [];
@@ -651,23 +681,6 @@ async function scanPdf(loc) {
                     type: classification.type,
                     cabinet: targetCab,
                   });
-                }
-
-                const pm = code.match(/^([Vv]?[0-9]+[_\.][0-9]+)(?:[_\.][A-Za-z]+|[A-Za-z])$/);
-                if (pm) {
-                  const parent = pm[1];
-                  if (!ignoreWords.has(parent) && !isUnitOrRating(parent)) {
-                    if (!equipmentDrawings[parent]) equipmentDrawings[parent] = [];
-                    if (!equipmentDrawings[parent].some(d => d.internalPage === intP)) {
-                      equipmentDrawings[parent].push({
-                        pdfPage: targetPdfPage,
-                        internalPage: intP,
-                        label: classification.label,
-                        type: classification.type,
-                        cabinet: targetCab,
-                      });
-                    }
-                  }
                 }
               });
             }

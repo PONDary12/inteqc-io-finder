@@ -8,7 +8,7 @@ function normalizeCode(code) {
   return String(code)
     .trim()
     .toLowerCase()
-    .replace(/[\s_\-\.\,\/\\]/g, '');
+    .replace(/[\s_\-\/\\]+/g, '.');
 }
 
 export default function SearchHome() {
@@ -87,6 +87,10 @@ export default function SearchHome() {
       // 1. Exact match on Equipment Code (Top Priority: 10,000)
       if (itemCode === trimmedQuery || (itemNormCode && itemNormCode === normalizedQuery)) {
         score += 10000;
+      }
+      // 1b. Match with all delimiters stripped e.g. typing "ag3101" matches "AG-3101" (8,000)
+      else if (itemNormCode && normalizedQuery && itemNormCode.replace(/\./g, '') === normalizedQuery.replace(/\./g, '')) {
+        score += 8000;
       }
       // 2. Code starts with query (5,000)
       else if (itemCode.startsWith(trimmedQuery) || (itemNormCode && itemNormCode.startsWith(normalizedQuery))) {

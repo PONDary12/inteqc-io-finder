@@ -10,7 +10,7 @@ function normalizeCode(code) {
   return String(code)
     .trim()
     .toLowerCase()
-    .replace(/[_\-]/g, '.');
+    .replace(/[\s_\-\/\\]+/g, '.');
 }
 
 function normalizeAddress(addr) {
@@ -168,16 +168,38 @@ export default function MachineDetail({ params }) {
 
         // 1. Gather all schematic drawings registered for this equipment code in equipmentDrawings
         const cleanParamCode = equipmentCode ? equipmentCode.trim().toUpperCase().replace(/-/g, '_') : '';
+        
+        // Helper to extract MCC lineup identifier (e.g. "MCCB13-RI31" -> "MCCB13", "MCC5_6" -> "MCC56")
+        const extractMcc = (cabStr) => {
+          if (!cabStr) return null;
+          const m = cabStr.match(/^(MCC(?:B)?\d+(?:[_\-]\d+)?)/i);
+          return m ? m[1].toUpperCase().replace(/[_\-]/g, '') : null;
+        };
+        const currentMcc = extractMcc(cabinet);
+
+        // Safe sub-unit / actuator suffix matcher (requires digits in base code to prevent pure-alpha "AG" matching "AG_3101")
+        const isActuatorSuffix = (str, base) => {
+          if (!/\d/.test(base)) return false;
+          if (!str.startsWith(base + '_') && !str.startsWith(base + '.') && !str.startsWith(base + '-')) return false;
+          const suffix = str.slice(base.length + 1).toUpperCase();
+          return /^(KM\d*|QF\d*|K\d*|ATS|KA\d*|W|M\d*|SQ\d*|SES|QK|PU|YV|SV|HA|SP|ST|BF|BZSO|HL|LL|PT|TT|LT|FU|SA|[A-Z]|\d)$/i.test(suffix);
+        };
+
         if (location.equipmentDrawings) {
           for (const [eqKey, sheets] of Object.entries(location.equipmentDrawings)) {
             const cleanKey = eqKey.trim().toUpperCase().replace(/-/g, '_');
-            const suffixCheck = (str, base) => str.startsWith(base) && /^[^0-9]/.test(str.slice(base.length));
             const isMatch = cleanKey === cleanParamCode ||
                             normalizeCode(cleanKey) === normalizeCode(cleanParamCode) ||
-                            suffixCheck(cleanParamCode, cleanKey) ||
-                            suffixCheck(cleanKey, cleanParamCode);
+                            isActuatorSuffix(cleanParamCode, cleanKey) ||
+                            isActuatorSuffix(cleanKey, cleanParamCode);
             if (isMatch && Array.isArray(sheets)) {
               sheets.forEach(s => {
+                // If both the sheet and the current route specify distinct MCC lineups (e.g. MCCB13 vs MCCB19), isolate them
+                const sheetMcc = extractMcc(s.cabinet);
+                if (currentMcc && sheetMcc && currentMcc !== sheetMcc) {
+                  return;
+                }
+
                 const key = s.drawingPdfUrl || (s.internalPage ? `sheet-${s.internalPage}` : `${s.cabinet || cabinet}-${s.page}`);
                 if (!drawingsSet.has(key)) {
                   drawingsSet.set(key, {
