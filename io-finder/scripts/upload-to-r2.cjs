@@ -41,7 +41,7 @@ const R2_BUCKET_NAME = process.env.R2_BUCKET_NAME || 'inteqc-drawings';
 const PUBLIC_DEV_URL = process.env.NEXT_PUBLIC_DRAWINGS_BASE_URL || 'https://pub-8b37b69cd7a04c01b038f3473a303fe2.r2.dev';
 
 if (!R2_ACCESS_KEY_ID || !R2_SECRET_ACCESS_KEY || !R2_ENDPOINT) {
-  console.error('❌ Missing R2 credentials in .env.local');
+  console.error('[ERROR] Missing R2 credentials in .env.local');
   console.error('Please ensure R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, and R2_ENDPOINT are set.');
   process.exit(1);
 }
@@ -120,11 +120,11 @@ async function run() {
   console.log('------------------------------------------------------');
 
   if (!fs.existsSync(DRAWINGS_DIR)) {
-    console.error(`❌ Drawings directory not found at: ${DRAWINGS_DIR}`);
+    console.error(`[ERROR] Drawings directory not found at: ${DRAWINGS_DIR}`);
     process.exit(1);
   }
 
-  console.log('📂 Scanning files in public/drawings...');
+  console.log('Scanning files in public/drawings...');
   let files = getAllFiles(DRAWINGS_DIR);
   console.log(`Found ${files.length} files in total.`);
 
@@ -167,7 +167,7 @@ async function run() {
         }
       } catch (err) {
         errorCount++;
-        console.error(`\n❌ Failed to upload ${key}:`, err.message);
+        console.error(`\n[ERROR] Failed to upload ${key}:`, err.message);
       }
 
       // Progress reporting
@@ -177,7 +177,7 @@ async function run() {
         const mbProgress = (uploadedBytes / (1024 * 1024)).toFixed(1);
         const totalMb = (totalBytes / (1024 * 1024)).toFixed(1);
         const elapsedSec = ((Date.now() - startTime) / 1000).toFixed(0);
-        process.stdout.write(`\r🚀 [${processed}/${totalFiles}] ${percent}% | ${mbProgress}/${totalMb} MB | Skipped: ${skippedCount} | Uploaded: ${uploadedCount} | Errors: ${errorCount} (${elapsedSec}s)`);
+        process.stdout.write(`\r[${processed}/${totalFiles}] ${percent}% | ${mbProgress}/${totalMb} MB | Skipped: ${skippedCount} | Uploaded: ${uploadedCount} | Errors: ${errorCount} (${elapsedSec}s)`);
       }
     }
   }
@@ -191,7 +191,7 @@ async function run() {
 
   const duration = ((Date.now() - startTime) / 1000).toFixed(1);
   console.log('\n\n======================================================');
-  console.log(`✅ Upload complete in ${duration}s!`);
+  console.log(`[OK] Upload complete in ${duration}s!`);
   console.log(`   - Uploaded: ${uploadedCount}`);
   console.log(`   - Skipped (already up-to-date): ${skippedCount}`);
   console.log(`   - Errors:   ${errorCount}`);
@@ -200,7 +200,7 @@ async function run() {
   if (files.length > 0) {
     const sampleRel = path.relative(path.resolve(__dirname, '../public'), files[0]).replace(/\\/g, '/');
     const sampleUrl = `${PUBLIC_DEV_URL}/${sampleRel}`;
-    console.log(`\n🔗 Test URL: ${sampleUrl}\n`);
+    console.log(`\nTest URL: ${sampleUrl}\n`);
   }
 }
 

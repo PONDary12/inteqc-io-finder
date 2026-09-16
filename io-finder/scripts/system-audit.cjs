@@ -67,7 +67,7 @@ ioData.locations.forEach(loc => {
     });
   });
   
-  console.log(`📍 ${loc.name} (${loc.id}): ${loc.cabinets.length} cabinets, ${locPoints} I/O points, ${locWithDrawing} with drawings (${((locWithDrawing/locPoints)*100).toFixed(1)}%)`);
+  console.log(`[Location] ${loc.name} (${loc.id}): ${loc.cabinets.length} cabinets, ${locPoints} I/O points, ${locWithDrawing} with drawings (${((locWithDrawing/locPoints)*100).toFixed(1)}%)`);
 });
 
 console.log(`\nTotal points: ${totalPoints}, With drawings: ${totalWithDrawing}, Missing files (404): ${totalMissingDrawingFile}`);
@@ -148,7 +148,7 @@ ioData.locations.forEach(loc => {
     });
   });
 
-  console.log(`📍 ${loc.name} (${loc.id}): ${keys.length} machines with schematics, ${locSchematics} total sheet links, ${locMissing} missing files (404)`);
+  console.log(`[Location] ${loc.name} (${loc.id}): ${keys.length} machines with schematics, ${locSchematics} total sheet links, ${locMissing} missing files (404)`);
 });
 
 console.log(`\nTotal equipment schematic links: ${totalEquipSchematics}, Missing files: ${totalMissingSchematicFiles}`);

@@ -325,7 +325,7 @@ export default function SearchHome() {
               }}
               onClick={() => setActiveMode("search")}
             >
-              🔍 Search
+              Search
             </button>
             <button
               style={{
@@ -334,7 +334,7 @@ export default function SearchHome() {
               }}
               onClick={() => setActiveMode("browse")}
             >
-              📂 Browse
+              Browse
             </button>
           </div>
 
@@ -343,7 +343,6 @@ export default function SearchHome() {
             <div style={styles.searchModeContent}>
               {/* Location Dropdown */}
               <div style={styles.dropdownRow}>
-                <span style={styles.dropdownIcon}>🏭</span>
                 <select
                   style={styles.locationSelect}
                   value={selectedLocation}
@@ -361,7 +360,12 @@ export default function SearchHome() {
 
               {/* Search Input Container */}
               <div style={styles.inputWrapper}>
-                <div style={styles.searchIcon}>🔍</div>
+                <div style={styles.searchIcon}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.6 }}>
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                </div>
                 <input
                   ref={inputRef}
                   type="text"
@@ -374,40 +378,38 @@ export default function SearchHome() {
                     setActiveSuggestionIndex(-1);
                   }}
                   onKeyDown={handleKeyDown}
-                  onFocus={() => setShowSuggestions(true)}
-                  onBlur={() => {
-                    // Delay to allow clicking suggestions
-                    setTimeout(() => setShowSuggestions(false), 200);
+                  onFocus={() => {
+                    if (query.trim()) setShowSuggestions(true);
                   }}
-                  disabled={isLoading}
                 />
                 {query && (
-                  <button style={styles.clearBtn} onClick={() => setQuery("")}>
-                    ✕
+                  <button
+                    style={styles.clearBtn}
+                    onClick={() => {
+                      setQuery("");
+                      setShowSuggestions(false);
+                      inputRef.current?.focus();
+                    }}
+                  >
+                    ×
                   </button>
                 )}
 
-                {/* Autocomplete dropdown suggestions */}
+                {/* Autocomplete Dropdown */}
                 {showSuggestions && suggestions.length > 0 && (
-                  <div style={styles.suggestionsList} ref={suggestionsRef}>
-                    {suggestions.map((item, index) => {
-                      const displayTitle = item.code || item.name || "General Signals";
-                      const displaySubtitle = item.code 
-                        ? (item.name || "Machine Circuit")
-                        : (item.signals && item.signals.length > 0
-                            ? `Signal: ${item.signals.slice(0, 2).join(', ')}`
-                            : item.addresses && item.addresses.length > 0
-                            ? `${item.types?.join('/') || 'I/O'} · ${item.addresses.slice(0, 3).join(', ')}${item.addresses.length > 3 ? ` (+${item.addresses.length - 3})` : ''}`
-                            : "Circuit Signals");
+                  <div ref={dropdownRef} style={styles.dropdown}>
+                    {suggestions.map((item, idx) => {
+                      const displayTitle = item.code && item.code !== '-' && item.code !== '—' ? item.code : (item.name || item.address);
+                      const displaySubtitle = item.code && item.code !== '-' && item.code !== '—' && item.name ? item.name : (item.address ? `PLC Address: ${item.address}` : "");
 
                       return (
                         <div
-                          key={`${item.code || item.name || 'gen'}-${item.locationId}-${index}`}
+                          key={`${item.locationId}-${item.code}-${item.address}-${idx}`}
                           style={{
-                            ...styles.suggestionItem,
-                            ...(index === activeSuggestionIndex ? styles.suggestionItemActive : {}),
+                            ...styles.dropdownItem,
+                            ...(idx === activeSuggestionIndex ? styles.dropdownItemActive : {}),
                           }}
-                          onMouseDown={(e) => e.preventDefault()} // prevent blur
+                          onMouseEnter={() => setActiveSuggestionIndex(idx)}
                           onClick={() => handleSelectSuggestion(item)}
                         >
                           <div style={styles.itemMeta}>
@@ -415,8 +417,8 @@ export default function SearchHome() {
                             <span style={styles.itemName}>{displaySubtitle}</span>
                           </div>
                           <div style={styles.itemLocation}>
-                            <span style={styles.itemCabinet}>🗄️ {item.cabinets.join(", ")}</span>
-                            <span style={styles.itemLocationTag}>🏭 {item.location}</span>
+                            <span style={styles.itemCabinet}>{item.cabinets.join(", ")}</span>
+                            <span style={styles.itemLocationTag}>{item.location}</span>
                           </div>
                         </div>
                       );
@@ -432,7 +434,6 @@ export default function SearchHome() {
             <div style={styles.browseModeContent}>
               {/* Tower Dropdown */}
               <div style={styles.dropdownRow}>
-                <span style={styles.dropdownIcon}>🏭</span>
                 <select
                   style={styles.locationSelect}
                   value={browseLocation}
@@ -451,7 +452,6 @@ export default function SearchHome() {
               {/* Cabinet Filter Bar */}
               <div style={styles.cabinetSearchRow}>
                 <div style={styles.filterInputWrapper}>
-                  <span style={styles.filterSearchIcon}>🗄️</span>
                   <input
                     type="text"
                     style={styles.cabinetFilterInput}
@@ -461,7 +461,7 @@ export default function SearchHome() {
                   />
                   {cabinetFilter && (
                     <button style={styles.filterClearBtn} onClick={() => setCabinetFilter("")}>
-                      ✕
+                      ×
                     </button>
                   )}
                 </div>
@@ -495,7 +495,6 @@ export default function SearchHome() {
                         >
                           <div style={styles.cabinetCardHeader}>
                             <div style={styles.cabinetHeaderLeft}>
-                              <span style={styles.cabinetIcon}>🗄️</span>
                               <span style={styles.cabinetName}>{cab.name}</span>
                             </div>
                             <span style={{

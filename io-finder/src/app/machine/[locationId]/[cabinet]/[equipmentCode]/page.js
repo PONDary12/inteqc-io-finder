@@ -398,7 +398,7 @@ export default function MachineDetail({ params }) {
   if (notFound || !equipment) {
     return (
       <div style={styles.loadingScreen}>
-        <div style={{ fontSize: "48px", marginBottom: "8px" }}>🔍</div>
+        <div style={{ fontSize: "36px", marginBottom: "8px", opacity: 0.4 }}>—</div>
         <h2 style={{ fontSize: "20px", fontWeight: "700", color: "var(--text-main)", marginBottom: "8px" }}>
           Equipment or Circuit Not Found
         </h2>
@@ -435,9 +435,9 @@ export default function MachineDetail({ params }) {
             ← Search
           </Link>
           <div style={styles.breadcrumb} className="breadcrumb-desktop">
-            <span>🏭 {equipment.location}</span>
+            <span>{equipment.location}</span>
             <span style={styles.divider}>/</span>
-            <span>🗄️ {uniqueCabinets.join(", ") || cabinet}</span>
+            <span>{uniqueCabinets.join(", ") || cabinet}</span>
             <span style={styles.divider}>/</span>
             <span style={styles.activeBreadcrumb}>
               {equipment.code || equipment.name}
@@ -446,10 +446,10 @@ export default function MachineDetail({ params }) {
         </div>
         <div style={styles.navRight}>
           <button style={styles.exportBtn} className="export-btn-responsive" onClick={handleExportExcel}>
-            📥 Export Excel
+            Export Excel
           </button>
           <button style={styles.printBtn} className="print-btn-responsive" onClick={() => window.print()}>
-            🖨️ Print list
+            Print list
           </button>
         </div>
       </header>
@@ -460,13 +460,13 @@ export default function MachineDetail({ params }) {
           className={mobileView === "table" ? "active" : ""}
           onClick={() => setMobileView("table")}
         >
-          📊 Table View ({filteredIO.length})
+          Table View ({filteredIO.length})
         </button>
         <button
           className={mobileView === "drawing" ? "active" : ""}
           onClick={() => setMobileView("drawing")}
         >
-          🖼️ Drawing View
+          Drawing View
         </button>
       </div>
 
@@ -494,7 +494,7 @@ export default function MachineDetail({ params }) {
             {allDrawings.length > 0 && (
               <div style={styles.schematicBar} className="no-print">
                 <div style={styles.schematicBarLabel}>
-                  <span>⚡ Electrical Schematic Sheets ({allDrawings.length}):</span>
+                  <span>Electrical Schematic Sheets ({allDrawings.length}):</span>
                 </div>
                 <div style={styles.schematicPills}>
                   {allDrawings.map((draw) => {
@@ -515,9 +515,7 @@ export default function MachineDetail({ params }) {
                         }}
                         title={`View Sheet ${draw.internalPage} (${draw.label || 'Schematic'})`}
                       >
-                        <span style={styles.pillIcon}>
-                          {draw.type === 'power' ? '⚡' : draw.type === 'starter' || draw.type === 'vfd' ? '🔌' : draw.type === 'safety' ? '🛡️' : draw.type === 'valve' ? '🔧' : '🎛️'}
-                        </span>
+                        <span style={styles.pillIcon}>•</span>
                         <span>Sheet {draw.internalPage}</span>
                         {draw.label && (
                           <span style={{
@@ -629,7 +627,7 @@ export default function MachineDetail({ params }) {
                               }
                             }}
                           >
-                            🖼️ Sheet {row.internalPage}
+                            Sheet {row.internalPage}
                           </button>
                         ) : (
                           <span style={styles.noDrawingBadge}>No Drawing</span>
@@ -728,7 +726,7 @@ export default function MachineDetail({ params }) {
                       if (e.target.parentElement) {
                         const msg = document.createElement('div');
                         msg.style.cssText = 'color:#94a3b8;text-align:center;padding:40px;font-size:14px;';
-                        msg.innerHTML = '<div style="font-size:48px;margin-bottom:12px">🖼️</div><h3>Drawing Not Available</h3><p style="margin-top:8px;opacity:0.7">Image file not found for this sheet.</p>';
+                        msg.innerHTML = '<div style="font-size:36px;margin-bottom:12px;opacity:0.4">—</div><h3>Drawing Not Available</h3><p style="margin-top:8px;opacity:0.7">Image file not found for this sheet.</p>';
                         e.target.parentElement.appendChild(msg);
                       }
                     }}
@@ -738,7 +736,7 @@ export default function MachineDetail({ params }) {
             </div>
           ) : (
             <div style={styles.noDrawingBlock}>
-              <div style={styles.noDrawingIcon}>🖼️</div>
+              <div style={styles.noDrawingIcon}>—</div>
               <h3>No Schematic Available</h3>
               <p>No circuit drawings are mapped to this machine.</p>
             </div>
