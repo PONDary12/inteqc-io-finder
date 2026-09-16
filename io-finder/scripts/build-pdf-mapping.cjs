@@ -237,16 +237,16 @@ async function scanPdf(loc) {
   const pdfPath = path.join(DATA_DIR, loc.folder, loc.pdfFile);
 
   if (!fs.existsSync(pdfPath)) {
-    console.log(`  [WARN] PDF not found: ${pdfPath} — skipping.`);
+    console.log(`  ⚠ PDF not found: ${pdfPath} — skipping.`);
     return null;
   }
 
-  console.log(`  Reading: ${loc.pdfFile}`);
+  console.log(`  📂 Reading: ${loc.pdfFile}`);
   const dataBuffer = fs.readFileSync(pdfPath);
   const pdfParser = new p.PDFParse({ data: dataBuffer });
   await pdfParser.load();
   const res = await pdfParser.getText();
-  console.log(`  Pages: ${res.pages.length}`);
+  console.log(`  📊 Pages: ${res.pages.length}`);
 
   const cabinetMap = {};
   const equipmentDrawings = {};
@@ -689,9 +689,9 @@ async function scanPdf(loc) {
 
   await pdfParser.destroy();
 
-  console.log(`  Addresses mapped: ${Object.keys(flatAddresses).length}`);
-  console.log(`  Cabinets mapped: ${Object.keys(cabinetMap).length}`);
-  console.log(`  Machines with schematics: ${Object.keys(equipmentDrawings).length}`);
+  console.log(`  🔗 Addresses mapped: ${Object.keys(flatAddresses).length}`);
+  console.log(`  📦 Cabinets mapped: ${Object.keys(cabinetMap).length}`);
+  console.log(`  ⚡ Machines with schematics: ${Object.keys(equipmentDrawings).length}`);
 
   return {
     drawingUrl: loc.drawingUrl,
@@ -702,17 +702,17 @@ async function scanPdf(loc) {
 }
 
 async function main() {
-  console.log('--------------------------------------------------');
-  console.log('    PDF Drawing Page Mapping Builder (V3)         ');
-  console.log('    Multi-Location Support                        ');
-  console.log('--------------------------------------------------\n');
+  console.log('╔════════════════════════════════════════════════╗');
+  console.log('║  PDF Drawing Page Mapping Builder (V3)         ║');
+  console.log('║  Multi-Location Support                        ║');
+  console.log('╚════════════════════════════════════════════════╝\n');
 
   const output = {};
 
   for (const loc of LOCATIONS) {
-    console.log(`\n${loc.locationId.toUpperCase()}:`);
+    console.log(`\n📍 ${loc.locationId.toUpperCase()}:`);
     if (!loc.pdfFile) {
-      console.log('  No PDF configured — skipping.');
+      console.log('  ℹ No PDF configured — skipping.');
       continue;
     }
     const result = await scanPdf(loc);
@@ -723,10 +723,10 @@ async function main() {
 
   fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true });
   fs.writeFileSync(OUT_PATH, JSON.stringify(output, null, 2), 'utf8');
-  console.log(`\nOutput: ${OUT_PATH}`);
+  console.log(`\n✅ Output: ${OUT_PATH}`);
 }
 
 main().catch(err => {
-  console.error('[ERROR] Error:', err);
+  console.error('❌ Error:', err);
   process.exit(1);
 });

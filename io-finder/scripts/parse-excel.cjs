@@ -18,10 +18,10 @@ const MAP_PATH = path.resolve(__dirname, '../public/data/pdf-page-map.json');
 try {
   if (fs.existsSync(MAP_PATH)) {
     pdfPageMap = require(MAP_PATH);
-    console.log('Loaded PDF Page Map successfully.');
+    console.log('📖 Loaded PDF Page Map successfully.');
   }
 } catch (e) {
-  console.warn('[WARN] Could not load pdf-page-map.json — drawing mapping will be disabled.');
+  console.warn('⚠ Could not load pdf-page-map.json — drawing mapping will be disabled.');
 }
 
 const CABINET_BASE_PAGES = {
@@ -546,7 +546,7 @@ function parseSection(rows, startIdx, sectionType, sheetName) {
 function parseSheet(wb, sheetName, locationId) {
   const ws = wb.Sheets[sheetName];
   if (!ws) {
-    console.warn(`  [WARN] Sheet "${sheetName}" not found, skipping.`);
+    console.warn(`  ⚠ Sheet "${sheetName}" not found, skipping.`);
     return [];
   }
 
@@ -883,7 +883,7 @@ function buildSearchIndex(locations) {
 function parsePLCTagsSheet(wb, sheetName, locationId) {
   const ws = wb.Sheets[sheetName];
   if (!ws) {
-    console.warn(`  [WARN] Sheet "${sheetName}" not found, skipping.`);
+    console.warn(`  ⚠ Sheet "${sheetName}" not found, skipping.`);
     return new Map();
   }
 
@@ -1032,7 +1032,7 @@ function main() {
 
   for (const config of FILES) {
     const filePath = path.join(DATA_DIR, config.folder, config.file);
-    console.log(`Reading: ${config.folder}/${config.file}`);
+    console.log(`📂 Reading: ${config.folder}/${config.file}`);
 
     const wb = XLSX.readFile(filePath);
     const cabinets = [];
@@ -1040,7 +1040,7 @@ function main() {
     if (config.format === 'plctags') {
       // ── PLCTags format (e.g. Tower 3) ──
       for (const sheetName of config.sheets) {
-        process.stdout.write(`  Parsing PLCTags sheet: ${sheetName} ... `);
+        process.stdout.write(`  📋 Parsing PLCTags sheet: ${sheetName} ... `);
         const cabinetMap = parsePLCTagsSheet(wb, sheetName, config.locationId);
         let sheetTotal = 0;
 
@@ -1060,7 +1060,7 @@ function main() {
     } else {
       // ── Original multi-sheet format (Premixer, Tower 2) ──
       for (const sheetName of config.sheets) {
-        process.stdout.write(`  Parsing sheet: ${sheetName} ... `);
+        process.stdout.write(`  📋 Parsing sheet: ${sheetName} ... `);
         const ioPoints = parseSheet(wb, sheetName, config.locationId);
         console.log(`${ioPoints.length} I/O points`);
 
@@ -1153,7 +1153,7 @@ function main() {
   for (const loc of locations) {
     const locPoints = loc.cabinets.reduce((sum, c) => sum + c.io.length, 0);
     totalPoints += locPoints;
-    console.log(`  ${loc.name}: ${loc.cabinets.length} cabinets, ${locPoints} I/O points`);
+    console.log(`  📍 ${loc.name}: ${loc.cabinets.length} cabinets, ${locPoints} I/O points`);
     for (const cab of loc.cabinets) {
       const di = cab.io.filter(p => p.type === 'DI').length;
       const ai = cab.io.filter(p => p.type === 'AI').length;
@@ -1169,7 +1169,7 @@ function main() {
     console.log(`    ${JSON.stringify(entry)}`);
   }
 
-  console.log(`\nOutput files:`);
+  console.log(`\n✅ Output files:`);
   console.log(`   ${ioDataPath}`);
   console.log(`   ${searchIndexPath}`);
 }

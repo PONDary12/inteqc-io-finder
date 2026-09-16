@@ -38,18 +38,18 @@ const LOCATIONS = [
 async function generateImagesForLocation(loc, locMap) {
   const pdfPath = path.join(DATA_DIR, loc.folder, loc.pdfFile);
   if (!fs.existsSync(pdfPath)) {
-    console.log(`  [WARN] Main PDF not found: ${pdfPath} — skipping image generation.`);
+    console.log(`  ⚠ Main PDF not found: ${pdfPath} — skipping image generation.`);
     return;
   }
 
   if (!locMap || !locMap.cabinets) {
-    console.log(`  [WARN] No cabinet mapping found for location: ${loc.locationId} — skipping.`);
+    console.log(`  ⚠ No cabinet mapping found for location: ${loc.locationId} — skipping.`);
     return;
   }
 
-  console.log(`  Loading main PDF: ${loc.pdfFile}...`);
+  console.log(`  📂 Loading main PDF: ${loc.pdfFile}...`);
   const totalPages = locMap.addresses ? Math.max(...Object.values(locMap.addresses).map(a => a.page)) : 1000;
-  console.log(`  Main PDF has approx ${totalPages} pages.`);
+  console.log(`  📊 Main PDF has approx ${totalPages} pages.`);
 
   const destFolder = path.join(DRAWINGS_OUT_DIR, loc.locationId, 'cabinets', 'images');
   fs.mkdirSync(destFolder, { recursive: true });
@@ -102,11 +102,11 @@ async function generateImagesForLocation(loc, locMap) {
     });
 
     if (pagesToProcess.length === 0) {
-      console.log(`  All ${pdfPageNumbers.length} pages already generated for cabinet "${cabinet}" — skipping.`);
+      console.log(`  ⏩ All ${pdfPageNumbers.length} pages already generated for cabinet "${cabinet}" — skipping.`);
       continue;
     }
 
-    console.log(`\n  Converting cabinet "${cabinet}": processing ${pagesToProcess.length}/${pdfPageNumbers.length} missing pages`);
+    console.log(`\n  🗄️ Converting cabinet "${cabinet}": processing ${pagesToProcess.length}/${pdfPageNumbers.length} missing pages`);
 
     // Slices and renders only the specific pages of this cabinet in chunks to prevent OOM
     try {
@@ -123,7 +123,7 @@ async function generateImagesForLocation(loc, locMap) {
         pngPages = pngPages.concat(chunkPages);
       }
 
-      console.log(`  Generated ${pngPages.length} sheets for cabinet "${cabinet}"`);
+      console.log(`  🎨 Generated ${pngPages.length} sheets for cabinet "${cabinet}"`);
 
       // Write each page image, using the INPUT page numbers from our chunk
       // (NOT page.pageNumber from the library, which may differ by 1 from pdf-parse numbering)
@@ -140,34 +140,34 @@ async function generateImagesForLocation(loc, locMap) {
       });
 
       
-      console.log(`  Finished: ${cabinet} images saved successfully.`);
+      console.log(`  ✅ Finished: ${cabinet} images saved successfully.`);
     } catch (err) {
-      console.error(`  [ERROR] Failed to convert cabinet "${cabinet}":`, err.message);
+      console.error(`  ❌ Failed to convert cabinet "${cabinet}":`, err.message);
     }
   }
 }
 
 async function main() {
-  console.log('--------------------------------------------------');
-  console.log('    PDF to PNG Drawing Sheet Renderer (V1)        ');
-  console.log('--------------------------------------------------\n');
+  console.log('╔════════════════════════════════════════════════╗');
+  console.log('║  PDF to PNG Drawing Sheet Renderer (V1)        ║');
+  console.log('╚════════════════════════════════════════════════╝\n');
 
   if (!fs.existsSync(MAP_PATH)) {
-    console.error(`[ERROR] Mapping file not found at: ${MAP_PATH}. Please run build-pdf-mapping.cjs first.`);
+    console.error(`❌ Mapping file not found at: ${MAP_PATH}. Please run build-pdf-mapping.cjs first.`);
     process.exit(1);
   }
 
   const pdfPageMap = require(MAP_PATH);
 
   for (const loc of LOCATIONS) {
-    console.log(`\nRendering sheets for location: ${loc.locationId.toUpperCase()}`);
+    console.log(`\n📍 Rendering sheets for location: ${loc.locationId.toUpperCase()}`);
     await generateImagesForLocation(loc, pdfPageMap[loc.locationId]);
   }
 
-  console.log('\nDrawing sheet image rendering completed successfully.');
+  console.log('\n🎉 Drawing sheet image rendering completed successfully!');
 }
 
 main().catch(err => {
-  console.error('[ERROR] Error rendering sheets:', err);
+  console.error('❌ Error rendering sheets:', err);
   process.exit(1);
 });
