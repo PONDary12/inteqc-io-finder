@@ -1,0 +1,6 @@
+# Exclude drawings, data, and presentation files from Vercel deployment
+io-finder/public/drawings/
+data/
+*.pptx
+*.docx
+*.pdf

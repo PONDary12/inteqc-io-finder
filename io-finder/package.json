@@ -10,6 +10,7 @@
     "parse-excel": "node scripts/parse-excel.cjs",
     "build-mapping": "node scripts/build-pdf-mapping.cjs",
     "build-images": "node scripts/build-images.cjs",
+    "upload-drawings": "node scripts/upload-to-r2.cjs",
     "audit": "node scripts/system-audit.cjs"
   },
   "dependencies": {
@@ -23,6 +24,7 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.1133.0",
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
