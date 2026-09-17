@@ -35,7 +35,7 @@ const LOCATIONS = [
   }
 ];
 
-async function generateImagesForLocation(loc, locMap) {
+async function generateImagesForLocation(loc, locMap, options = {}) {
   const pdfPath = path.join(DATA_DIR, loc.folder, loc.pdfFile);
   if (!fs.existsSync(pdfPath)) {
     console.log(`  ⚠ Main PDF not found: ${pdfPath} — skipping image generation.`);
@@ -56,6 +56,8 @@ async function generateImagesForLocation(loc, locMap) {
 
   const cabinets = Object.keys(locMap.cabinets);
   for (const cabinet of cabinets) {
+    if (options.targetCab && cabinet !== options.targetCab) continue;
+
     const pagesMap = locMap.cabinets[cabinet];
     const pdfPageNumbers = Object.values(pagesMap).map(Number).filter(n => !isNaN(n) && n > 0);
 
@@ -65,7 +67,6 @@ async function generateImagesForLocation(loc, locMap) {
     const maxPage = Math.max(...pdfPageNumbers); // 1-based index
 
     // Also include pages referenced by address lookup that weren't added to the cabinet map
-    // This handles cases where an address is found on a page but the cabinet title text failed
     if (locMap.addresses) {
       const pageSet = new Set(pdfPageNumbers);
       for (const addrInfo of Object.values(locMap.addresses)) {
@@ -91,22 +92,42 @@ async function generateImagesForLocation(loc, locMap) {
       }
     }
 
-    // Filter out pages that are already generated
-    const pagesToProcess = [];
-    pdfPageNumbers.forEach(pageNum => {
-      const pageOffset = pageNum - minPage + 1;
-      const destPath = path.join(destFolder, `${cabinet}_page_${pageOffset}.png`);
-      if (!fs.existsSync(destPath) || fs.statSync(destPath).size === 0) {
-        pagesToProcess.push(pageNum);
-      }
-    });
+    const validOffsets = new Set(pdfPageNumbers.map(p => p - minPage + 1));
+    const existingFiles = fs.readdirSync(destFolder).filter(f => f.startsWith(cabinet + '_page_'));
+
+    let pagesToProcess = [];
+
+    if (options.isForce) {
+      // Purge all existing files for this cabinet to ensure fresh 1:1 alignment
+      existingFiles.forEach(f => {
+        try { fs.unlinkSync(path.join(destFolder, f)); } catch (_) {}
+      });
+      pagesToProcess = [...new Set(pdfPageNumbers)].sort((a, b) => a - b);
+    } else {
+      // Purge orphaned/stale files whose offsets exceed current range
+      existingFiles.forEach(f => {
+        const m = f.match(/_page_(\d+)\.png$/);
+        if (m && !validOffsets.has(Number(m[1]))) {
+          try { fs.unlinkSync(path.join(destFolder, f)); } catch (_) {}
+        }
+      });
+
+      // Filter out pages that are already generated
+      pdfPageNumbers.forEach(pageNum => {
+        const pageOffset = pageNum - minPage + 1;
+        const destPath = path.join(destFolder, `${cabinet}_page_${pageOffset}.png`);
+        if (!fs.existsSync(destPath) || fs.statSync(destPath).size === 0) {
+          pagesToProcess.push(pageNum);
+        }
+      });
+    }
 
     if (pagesToProcess.length === 0) {
       console.log(`  ⏩ All ${pdfPageNumbers.length} pages already generated for cabinet "${cabinet}" — skipping.`);
       continue;
     }
 
-    console.log(`\n  🗄️ Converting cabinet "${cabinet}": processing ${pagesToProcess.length}/${pdfPageNumbers.length} missing pages`);
+    console.log(`\n  🗄️ Converting cabinet "${cabinet}": processing ${pagesToProcess.length}/${pdfPageNumbers.length} pages (minPage: ${minPage})`);
 
     // Slices and renders only the specific pages of this cabinet in chunks to prevent OOM
     try {
@@ -126,11 +147,8 @@ async function generateImagesForLocation(loc, locMap) {
       console.log(`  🎨 Generated ${pngPages.length} sheets for cabinet "${cabinet}"`);
 
       // Write each page image, using the INPUT page numbers from our chunk
-      // (NOT page.pageNumber from the library, which may differ by 1 from pdf-parse numbering)
       let savedCount = 0;
       pngPages.forEach((page, idx) => {
-        // Find which chunk this belongs to (j=current chunk offset, i=position within chunk)
-        // Since we accumulate in order, index idx maps to pagesToProcess[idx]
         const inputPageNum = pagesToProcess[idx];
         if (inputPageNum === undefined) return;
         const pageOffset = inputPageNum - minPage + 1;
@@ -139,8 +157,7 @@ async function generateImagesForLocation(loc, locMap) {
         savedCount++;
       });
 
-      
-      console.log(`  ✅ Finished: ${cabinet} images saved successfully.`);
+      console.log(`  ✅ Finished: ${cabinet} (${savedCount} images saved successfully).`);
     } catch (err) {
       console.error(`  ❌ Failed to convert cabinet "${cabinet}":`, err.message);
     }
@@ -149,8 +166,16 @@ async function generateImagesForLocation(loc, locMap) {
 
 async function main() {
   console.log('╔════════════════════════════════════════════════╗');
-  console.log('║  PDF to PNG Drawing Sheet Renderer (V1)        ║');
+  console.log('║  PDF to PNG Drawing Sheet Renderer (V2)        ║');
   console.log('╚════════════════════════════════════════════════╝\n');
+
+  const isForce = process.argv.includes('--force');
+  const targetLoc = process.argv.find(a => a.startsWith('--location='))?.split('=')[1];
+  const targetCab = process.argv.find(a => a.startsWith('--cabinet='))?.split('=')[1];
+
+  if (isForce) console.log('⚡ Force re-render mode enabled: stale files will be cleaned.');
+  if (targetLoc) console.log(`🎯 Filtering location: ${targetLoc}`);
+  if (targetCab) console.log(`🎯 Filtering cabinet: ${targetCab}`);
 
   if (!fs.existsSync(MAP_PATH)) {
     console.error(`❌ Mapping file not found at: ${MAP_PATH}. Please run build-pdf-mapping.cjs first.`);
@@ -159,9 +184,11 @@ async function main() {
 
   const pdfPageMap = require(MAP_PATH);
 
-  for (const loc of LOCATIONS) {
+  const locsToProcess = targetLoc ? LOCATIONS.filter(l => l.locationId === targetLoc) : LOCATIONS;
+
+  for (const loc of locsToProcess) {
     console.log(`\n📍 Rendering sheets for location: ${loc.locationId.toUpperCase()}`);
-    await generateImagesForLocation(loc, pdfPageMap[loc.locationId]);
+    await generateImagesForLocation(loc, pdfPageMap[loc.locationId], { isForce, targetCab });
   }
 
   console.log('\n🎉 Drawing sheet image rendering completed successfully!');

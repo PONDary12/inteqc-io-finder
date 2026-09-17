@@ -30,6 +30,49 @@ const CABINETS_P2 = [
   'RCB9', 'RCB10', '2#膨化', '2#烘干', '3#膨化', '3#烘干', '4#膨化', '4#烘干'
 ];
 
+const CAB_RANGES_P1 = [
+  { min: 100, max: 299, minPdf: 8, maxPdf: 100, cabinet: 'MCC1-2' },
+  { min: 300, max: 399, minPdf: 101, maxPdf: 156, cabinet: 'MCC3-4' },
+  { min: 400, max: 499, minPdf: 157, maxPdf: 219, cabinet: 'MCC5-6' },
+  { min: 500, max: 599, minPdf: 220, maxPdf: 282, cabinet: 'MCC7-8' },
+  { min: 600, max: 799, minPdf: 283, maxPdf: 374, cabinet: 'MCC9_10' },
+  { min: 800, max: 1199, minPdf: 375, maxPdf: 523, cabinet: 'MCC11' },
+  { min: 1200, max: 1229, minPdf: 524, maxPdf: 550, cabinet: 'PLC1' },
+  { min: 1230, max: 1399, minPdf: 551, maxPdf: 613, cabinet: 'RCB2' },
+  { min: 1400, max: 1499, minPdf: 614, maxPdf: 667, cabinet: 'RCB3' },
+  { min: 1500, max: 1699, minPdf: 668, maxPdf: 743, cabinet: 'RCB1' },
+  { min: 1700, max: 1799, minPdf: 744, maxPdf: 770, cabinet: 'RCB4' },
+];
+
+const CAB_RANGES_P2 = [
+  { min: 2000, max: 2199, minPdf: 24, maxPdf: 124, cabinet: 'MCCB1' },
+  { min: 2200, max: 2299, minPdf: 125, maxPdf: 189, cabinet: 'MCCB2' },
+  { min: 2300, max: 2399, minPdf: 190, maxPdf: 224, cabinet: 'MCCB3' },
+  { min: 2400, max: 2499, minPdf: 225, maxPdf: 256, cabinet: 'MCCB4' },
+  { min: 2500, max: 2599, minPdf: 257, maxPdf: 288, cabinet: 'MCCB5' },
+  { min: 2600, max: 2699, minPdf: 289, maxPdf: 319, cabinet: 'MCCB6' },
+  { min: 2700, max: 2799, minPdf: 320, maxPdf: 347, cabinet: 'MCCB7' },
+  { min: 2800, max: 2899, minPdf: 348, maxPdf: 378, cabinet: 'MCCB8' },
+  { min: 2900, max: 2999, minPdf: 379, maxPdf: 408, cabinet: 'MCCB9' },
+  { min: 3000, max: 3099, minPdf: 409, maxPdf: 450, cabinet: 'MCCB10' },
+  { min: 3100, max: 3199, minPdf: 451, maxPdf: 496, cabinet: 'MCCB11' },
+  { min: 3200, max: 3299, minPdf: 497, maxPdf: 540, cabinet: 'MCCB12' },
+  { min: 3300, max: 3399, minPdf: 541, maxPdf: 581, cabinet: 'MCCB13' },
+  { min: 3400, max: 3499, minPdf: 582, maxPdf: 621, cabinet: 'MCCB14' },
+  { min: 3500, max: 3599, minPdf: 622, maxPdf: 671, cabinet: 'MCCB15' },
+  { min: 3600, max: 3699, minPdf: 672, maxPdf: 718, cabinet: 'MCCB16' },
+  { min: 3700, max: 3799, minPdf: 719, maxPdf: 761, cabinet: 'MCCB17' },
+  { min: 3800, max: 3899, minPdf: 762, maxPdf: 803, cabinet: 'MCCB18' },
+  { min: 3900, max: 3999, minPdf: 804, maxPdf: 846, cabinet: 'MCCB19' },
+  { min: 4000, max: 4199, minPdf: 847, maxPdf: 986, cabinet: 'PLC2' },
+  { min: 4200, max: 4299, minPdf: 987, maxPdf: 1029, cabinet: 'RCB5' },
+  { min: 4300, max: 4399, minPdf: 1030, maxPdf: 1073, cabinet: 'RCB6' },
+  { min: 4400, max: 4499, minPdf: 1074, maxPdf: 1107, cabinet: 'RCB7' },
+  { min: 4500, max: 4599, minPdf: 1108, maxPdf: 1147, cabinet: 'RCB8' },
+  { min: 4600, max: 4699, minPdf: 1148, maxPdf: 1183, cabinet: 'RCB9' },
+  { min: 4700, max: 4799, minPdf: 1184, maxPdf: 1206, cabinet: 'RCB10' },
+];
+
 // ─── Location config: each location has a data subfolder and optional PDF ───
 const LOCATIONS = [
   {
@@ -45,7 +88,7 @@ const LOCATIONS = [
     pdfFile: 'Electrical schematic diagram_Feed mill Tower2 revamp phase1.pdf',
     drawingUrl: '/drawings/tower2_p1/electrical_schematic.pdf',
     cabinetList: CABINETS_P1,
-    cabinetRanges: [],
+    cabinetRanges: CAB_RANGES_P1,
   },
   {
     locationId: 'tower2_p2',
@@ -53,7 +96,7 @@ const LOCATIONS = [
     pdfFile: 'Electrical schematic diagram_Feed mill Tower2 revamp phase2.pdf',
     drawingUrl: '/drawings/tower2_p2/electrical_schematic.pdf',
     cabinetList: CABINETS_P2,
-    cabinetRanges: [],
+    cabinetRanges: CAB_RANGES_P2,
   },
   {
     locationId: 'tower3',
@@ -94,11 +137,17 @@ const LOCATIONS = [
   },
 ];
 
-function getCabinetForPage(pageNum, ranges) {
+function getCabinetForPage(pageNum, ranges, pdfPageNum = null) {
   const n = parseInt(pageNum, 10);
   if (isNaN(n)) return null;
   for (const r of ranges) {
-    if (n >= r.min && n <= r.max) return r.cabinet;
+    if (n >= r.min && n <= r.max) {
+      if (r.minPdf && r.maxPdf && pdfPageNum) {
+        if (pdfPageNum >= r.minPdf && pdfPageNum <= r.maxPdf) return r.cabinet;
+        continue;
+      }
+      return r.cabinet;
+    }
   }
   return null;
 }
@@ -292,8 +341,10 @@ async function scanPdf(loc) {
 
     // A. Cabinet mapping
     let cabinet = null;
-    const sortedCabinetList = loc.cabinetList ? [...loc.cabinetList].sort((a, b) => b.length - a.length) : [];
-    if (loc.cabinetList) {
+    if (loc.cabinetRanges && loc.cabinetRanges.length > 0) {
+      cabinet = getCabinetForPage(internalPageStr, loc.cabinetRanges, pageNum);
+    } else if (loc.cabinetList) {
+      const sortedCabinetList = [...loc.cabinetList].sort((a, b) => b.length - a.length);
       const title = extractTitle(text);
       
       // 1. Try exact title block match (highest reliability)
@@ -375,8 +426,6 @@ async function scanPdf(loc) {
           }
         }
       }
-    } else {
-      cabinet = getCabinetForPage(internalPageStr, loc.cabinetRanges);
     }
 
     if (cabinet) {
