@@ -79,8 +79,16 @@ Most drawings begin with 目录 (Index) pages containing 6 structured columns:
 
 ### 3.3 Title Block Parsing Patterns
 
-#### A. Chinese Title Blocks (e.g., Tower 2)
+#### A. Chinese Title Blocks (e.g., Tower 2 Phase 1 & Phase 2)
 Located in the bottom-right corner of each sheet:
+- **True Page Number Extraction (Date-Follower Pattern)**:
+  > [!CRITICAL]
+  > In EPLAN CAD drawings for Tower 2, the bottom-left margin displays the **previous sheet's cross-reference number** (e.g. `172`, `2110`).
+  > In the raw PDF text stream, this margin number appears directly before `魏正彪 审核`. Matching before `魏正彪 审核` creates a systematic **off-by-one (-1) error across all sheets**!
+  > Instead, the **true sheet number** is positioned in the `页号 Page` cell immediately following the creation date (`YYYY/M/D` pattern).
+  > **Mandatory pattern**: Scan lines for `/^\d{4}\/\d{1,2}\/\d{1,2}$/` and extract the token directly on the next line (e.g. `173`, `174`, `2111`).
+  > For cover/overview sheets without a date, use the `格式 A4\s+([0-9a-zA-Z\.\-_]+)` pattern.
+
 - Equipment code is typically followed by the circuit description, for example:
   - `G0104_3 软启动回路图` $\rightarrow$ Equipment: `G0104_3`, Type: Soft Starter Circuit
   - `G0203_3 变频器回路图` $\rightarrow$ Equipment: `G0203_3`, Type: VFD Drive Circuit
@@ -90,6 +98,7 @@ Located in the bottom-right corner of each sheet:
 #### B. English Title Blocks (e.g., Tower 3 Muyang-WEM Format)
 Text runs in the bottom border or title line:
 - Format pattern: `PAGE TOTAL <TotalPages> ... <DrawingCode> ... 4 <InternalPage> 2`
+- Or explicit Chinese page token: `页数 <InternalPage>` (excluding `总页数`)
 - Equipment markers: `TOWARDS THE SILO FEEDING G0104_3`, `4_10.V`, `MCC14-01-M1`
 - Noise to filter out: Electrical ratings (`5.5KW`, `6.9A`, `380V`, `24VDC`, wire gauges).
 

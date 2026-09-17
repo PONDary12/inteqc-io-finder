@@ -104,46 +104,44 @@ function getCabinetForPage(pageNum, ranges) {
 }
 
 function extractInternalPage(text) {
-  // 1. Try matching the designer label pattern (highly reliable for Tower 2)
-  //    e.g. "4631 WZB 审核" or "4631 魏正彪 审核"
-  //    But exclude single-digit values (1-9) which are typically revision numbers
-  let m = text.match(/([0-9a-zA-Z\.\-_]+)\s+(?:魏正彪|WZB)\s+审核/i);
+  // 1. Try matching "格式 A4" pattern (e.g. Tower 2 Phase 2 cover/overview sheets: 2101, 2102, 2201...)
+  let m = text.match(/格式\s+A4\s+([0-9a-zA-Z\.\-_]+)/i);
   if (m) {
     const val = m[1].trim();
-    if (val !== 'EFA' && val !== 'EEC' && val !== 'MCC' && val !== 'PLC' && val !== 'RCB' && val.toLowerCase() !== 'state') {
-      // Skip single-digit values — these are revision numbers, not page numbers
-      if (/^\d$/.test(val)) {
-        // Do not return; fall through to try other patterns
-      } else {
-        return val;
+    if (!['state', 'check', 'design', 'date', 'mcc', 'plc', 'rcb'].includes(val.toLowerCase())) {
+      return val;
+    }
+  }
+
+  // 2. Tower 2 Title Block: Date follower pattern (100% accurate for Tower 2 Phase 1 & 2 schematic pages)
+  //    In the title block column, the date (YYYY/M/D) is immediately followed by the current page number in the "页号 Page" cell.
+  //    (NOTE: Do NOT match before WZB/魏正彪 which captures the previous-sheet cross-reference margin number).
+  const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
+  for (let i = 0; i < lines.length; i++) {
+    if (/^\d{4}\/\d{1,2}\/\d{1,2}$/.test(lines[i])) {
+      const nextToken = lines[i + 1];
+      if (nextToken && /^[0-9a-zA-Z\.\-_]+$/.test(nextToken)) {
+        const lower = nextToken.toLowerCase();
+        if (!['state', 'check', 'design', 'date', 'mcc', 'plc', 'rcb', 'efs', 'total', 'g1', 'r1', 'conveyor', 'grinder'].includes(lower)) {
+          return nextToken;
+        }
       }
     }
   }
 
-  // 2. Try matching "页数" pattern, excluding "总页数"
+  // 3. Try matching "页数" pattern, excluding "总页数" (Muyang-WEM, e.g. Tower 3)
   m = text.match(/(?<!总)页数\s+([0-9a-zA-Z\.\-_]+)/i);
   if (m) return m[1].trim();
 
-  // 3. Try matching "页号" pattern, excluding "总页号"
+  // 4. Try matching "页号" pattern, excluding "总页号"
   m = text.match(/(?<!总)页号\s+([0-9a-zA-Z\.\-_]+)/i);
-  if (m) return m[1].trim();
-
-  // 4. Try matching "格式 A4" pattern (seen in Pet Food)
-  m = text.match(/格式\s+A4\s+([0-9a-zA-Z\.\-_]+)/i);
   if (m) return m[1].trim();
 
   // 5. Try matching date modification block pattern
   m = text.match(/([0-9a-zA-Z\.\-_]+)\s+日期\s+修改\s+姓名/i);
   if (m) return m[1].trim();
 
-  // 6. For Tower 2 Phase 2 style: look for a standalone 4-digit page number (4000-9999 range)
-  //    appearing near audit keywords on the same page
-  if ((text.includes('WZB') || text.includes('魏正彪') || text.includes('审核')) && !text.includes('总页数')) {
-    m = text.match(/\b([4-9]\d{3})\b/);
-    if (m) return m[1];
-  }
-
-  // 7. English title block pattern (Muyang-WEM, e.g. Tower 3)
+  // 6. English title block pattern (Muyang-WEM, e.g. Tower 3)
   //    TOTAL ... 1000 ... 4 <internalPage> 2
   if (text.includes('PAGE') && text.includes('TOTAL')) {
     m = text.match(/\b1000\b[\s\S]{1,30}?\b4\b\s+(\d{3,4})\s+2/);
