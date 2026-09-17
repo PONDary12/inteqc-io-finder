@@ -5,12 +5,13 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import * as XLSX from "xlsx";
 
-function normalizeCode(code) {
+function normalizeCode(code, locId) {
   if (!code) return '';
-  return String(code)
-    .trim()
-    .toLowerCase()
-    .replace(/[\s_\-\/\\]+/g, '.');
+  const s = String(code).trim().toLowerCase();
+  if (locId === 'tower3') {
+    return s.replace(/[\s\/\\]+/g, '');
+  }
+  return s.replace(/[\s_\-\/\\]+/g, '.');
 }
 
 function normalizeAddress(addr) {
@@ -112,14 +113,14 @@ export default function MachineDetail({ params }) {
       if (pCode) {
         if (pCode === normParam) return true;
         if (pCode.startsWith(normParam + ':') || normParam.startsWith(pCode + ':')) return true;
-        if (normalizeCode(pCode) === normalizeCode(normParam)) return true;
+        if (normalizeCode(pCode, locationId) === normalizeCode(normParam, locationId)) return true;
       }
 
       // 2. Direct name matches (for points without code or navigated by name)
       if (pName) {
         if (pName === normParam) return true;
         if (pName.startsWith(normParam + ':') || normParam.startsWith(pName + ':')) return true;
-        if (normalizeCode(pName) === normalizeCode(normParam)) return true;
+        if (normalizeCode(pName, locationId) === normalizeCode(normParam, locationId)) return true;
       }
 
       // 3. Fallback for "GENERAL" / "SPARE"
@@ -177,27 +178,73 @@ export default function MachineDetail({ params }) {
         };
         const currentMcc = extractMcc(cabinet);
 
+        const getMachineRoot = (name) => {
+          if (!name) return '';
+          const clean = name.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+          return clean.split(/\s+/)[0] || '';
+        };
+
+        const areNamesCompatible = (nameA, nameB) => {
+          if (!nameA || !nameB) return true;
+          const rootA = getMachineRoot(nameA);
+          const rootB = getMachineRoot(nameB);
+          if (!rootA || !rootB) return true;
+          if (rootA === rootB) return true;
+          if (rootA.length >= 4 && rootB.startsWith(rootA)) return true;
+          if (rootB.length >= 4 && rootA.startsWith(rootB)) return true;
+          return false;
+        };
+
+        // In Tower 3, determine the machine root identity from the active cabinet route
+        let routeRoot = '';
+        if (locationId === 'tower3') {
+          const routeCab = location.cabinets.find(c => c.name === cabinet);
+          if (routeCab) {
+            const matchPoint = routeCab.io.find(p => {
+              const pCode = (p.equipmentCode || '').trim().toLowerCase();
+              return pCode === equipmentCode.trim().toLowerCase() ||
+                     normalizeCode(pCode, locationId) === normalizeCode(equipmentCode, locationId);
+            });
+            if (matchPoint && matchPoint.equipmentName) {
+              routeRoot = getMachineRoot(matchPoint.equipmentName);
+            }
+          }
+        }
+
         // Safe sub-unit / actuator suffix matcher (requires digits in base code to prevent pure-alpha "AG" matching "AG_3101")
         const isActuatorSuffix = (str, base) => {
           if (!/\d/.test(base)) return false;
           if (!str.startsWith(base + '_') && !str.startsWith(base + '.') && !str.startsWith(base + '-')) return false;
           const suffix = str.slice(base.length + 1).toUpperCase();
-          return /^(KM\d*|QF\d*|K\d*|ATS|KA\d*|W|M\d*|SQ\d*|SES|QK|PU|YV|SV|HA|SP|ST|BF|BZSO|HL|LL|PT|TT|LT|FU|SA|[A-Z]|\d)$/i.test(suffix);
+          return /^(KM\d*|QF\d*|K\d*|ATS|KA\d*|W|M\d*|SQ\d*|SES|QK|PU|YV|SV|HA|SP|ST|BF|BZSO|HL|LL|PT|TT|LT|FU|SA)$/i.test(suffix);
         };
 
         if (location.equipmentDrawings) {
           for (const [eqKey, sheets] of Object.entries(location.equipmentDrawings)) {
             const cleanKey = eqKey.trim().toUpperCase().replace(/-/g, '_');
             const isMatch = cleanKey === cleanParamCode ||
-                            normalizeCode(cleanKey) === normalizeCode(cleanParamCode) ||
+                            normalizeCode(cleanKey, locationId) === normalizeCode(cleanParamCode, locationId) ||
                             isActuatorSuffix(cleanParamCode, cleanKey) ||
                             isActuatorSuffix(cleanKey, cleanParamCode);
             if (isMatch && Array.isArray(sheets)) {
               sheets.forEach(s => {
-                // If both the sheet and the current route specify distinct MCC lineups (e.g. MCCB13 vs MCCB19), isolate them
-                const sheetMcc = extractMcc(s.cabinet);
-                if (currentMcc && sheetMcc && currentMcc !== sheetMcc) {
-                  return;
+                if (locationId === 'tower3') {
+                  const sheetMcc = extractMcc(s.cabinet);
+                  if (currentMcc && sheetMcc && currentMcc !== sheetMcc) {
+                    const sheetCab = location.cabinets.find(c => c.name === s.cabinet);
+                    let sheetRoot = '';
+                    if (sheetCab) {
+                      const sp = sheetCab.io.find(p => {
+                        const pCode = (p.equipmentCode || '').trim().toLowerCase();
+                        return pCode === equipmentCode.trim().toLowerCase() ||
+                               normalizeCode(pCode, locationId) === normalizeCode(equipmentCode, locationId);
+                      });
+                      if (sp && sp.equipmentName) sheetRoot = getMachineRoot(sp.equipmentName);
+                    }
+                    if (routeRoot && sheetRoot && !areNamesCompatible(routeRoot, sheetRoot)) {
+                      return;
+                    }
+                  }
                 }
 
                 const key = s.drawingPdfUrl || (s.internalPage ? `sheet-${s.internalPage}` : `${s.cabinet || cabinet}-${s.page}`);
@@ -220,6 +267,16 @@ export default function MachineDetail({ params }) {
         location.cabinets.forEach(cab => {
           cab.io.forEach(point => {
             if (matchEquip(point, equipmentCode)) {
+              if (locationId === 'tower3') {
+                const pointMcc = extractMcc(point.cabinet || cab.name);
+                if (currentMcc && pointMcc && currentMcc !== pointMcc) {
+                  const pRoot = getMachineRoot(point.equipmentName);
+                  if (routeRoot && pRoot && !areNamesCompatible(routeRoot, pRoot)) {
+                    return;
+                  }
+                }
+              }
+
               points.push(point);
               
               if (point.drawingPdfUrl && point.drawingPage) {
@@ -239,9 +296,13 @@ export default function MachineDetail({ params }) {
           });
         });
 
-        if (points.length > 0) {
-          const firstPoint = points[0];
-          const mainCode = firstPoint.equipmentCode || "";
+        if (points.length > 0 || drawingsSet.size > 0) {
+          const firstPoint = points[0] || {
+            equipmentCode: equipmentCode,
+            equipmentName: drawingsSet.size > 0 ? (Array.from(drawingsSet.values())[0].label || 'Electrical Schematic') : 'Machine Circuit',
+            cabinet: cabinet
+          };
+          const mainCode = firstPoint.equipmentCode || equipmentCode || "";
           const mainName = firstPoint.equipmentName || (mainCode ? "Machine Circuit" : "General Signals");
 
           setEquipment({
@@ -294,7 +355,7 @@ export default function MachineDetail({ params }) {
     // Filter by Search Query
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase().trim();
-      const normalizedQueryCode = normalizeCode(searchQuery);
+      const normalizedQueryCode = normalizeCode(searchQuery, locationId);
       const normalizedQueryAddress = normalizeAddress(searchQuery);
       
       points = points.filter(p => 

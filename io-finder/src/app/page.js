@@ -3,12 +3,13 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 
-function normalizeCode(code) {
+function normalizeCode(code, locId) {
   if (!code) return '';
-  return String(code)
-    .trim()
-    .toLowerCase()
-    .replace(/[\s_\-\/\\]+/g, '.');
+  const s = String(code).trim().toLowerCase();
+  if (locId === 'tower3') {
+    return s.replace(/[\s\/\\]+/g, '');
+  }
+  return s.replace(/[\s_\-\/\\]+/g, '.');
 }
 
 export default function SearchHome() {
@@ -66,9 +67,7 @@ export default function SearchHome() {
 
   // Compute suggestions dynamically during render with relevance scoring
   const trimmedQuery = query.toLowerCase().trim();
-  const normalizedQuery = normalizeCode(query);
   const cleanQ = trimmedQuery.replace(/^%/, '');
-  const normQ = normalizeCode(cleanQ);
 
   const scoredItems = [];
 
@@ -81,30 +80,32 @@ export default function SearchHome() {
       const itemCode = (item.code || '').toLowerCase();
       const itemNormCode = item.normalizedCode || '';
       const itemName = (item.name || '').toLowerCase();
+      const itemNormQuery = normalizeCode(query, item.locationId);
+      const itemNormCleanQ = normalizeCode(cleanQ, item.locationId);
 
       let score = 0;
 
       // 1. Exact match on Equipment Code (Top Priority: 10,000)
-      if (itemCode === trimmedQuery || (itemNormCode && itemNormCode === normalizedQuery)) {
+      if (itemCode === trimmedQuery || (itemNormCode && itemNormCode === itemNormQuery)) {
         score += 10000;
       }
       // 1b. Match with all delimiters stripped e.g. typing "ag3101" matches "AG-3101" (8,000)
-      else if (itemNormCode && normalizedQuery && itemNormCode.replace(/\./g, '') === normalizedQuery.replace(/\./g, '')) {
+      else if (item.locationId !== 'tower3' && itemNormCode && itemNormQuery && itemNormCode.replace(/\./g, '') === itemNormQuery.replace(/\./g, '')) {
         score += 8000;
       }
       // 2. Code starts with query (5,000)
-      else if (itemCode.startsWith(trimmedQuery) || (itemNormCode && itemNormCode.startsWith(normalizedQuery))) {
+      else if (itemCode.startsWith(trimmedQuery) || (itemNormCode && itemNormCode.startsWith(itemNormQuery))) {
         score += 5000;
       }
       // 3. Code contains query (2,000)
-      else if (itemNormCode && itemNormCode.includes(normalizedQuery)) {
+      else if (itemNormCode && itemNormCode.includes(itemNormQuery)) {
         score += 2000;
       }
 
       // 4. Exact I/O Address Match (4,000)
       const hasExactAddr = item.addresses && item.addresses.some(a => {
         const cleanA = a.toLowerCase().replace(/^%/, '');
-        return cleanA === cleanQ || normalizeCode(cleanA) === normQ;
+        return cleanA === cleanQ || normalizeCode(cleanA, item.locationId) === itemNormCleanQ;
       });
       if (hasExactAddr) {
         score += 4000;
@@ -130,7 +131,7 @@ export default function SearchHome() {
         } else {
           const hasAddrContains = item.addresses.some(a => {
             const cleanA = a.toLowerCase().replace(/^%/, '');
-            return cleanA.includes(cleanQ) || (normQ.length >= 3 && normalizeCode(cleanA).includes(normQ));
+            return cleanA.includes(cleanQ) || (itemNormCleanQ.length >= 3 && normalizeCode(cleanA, item.locationId).includes(itemNormCleanQ));
           });
           if (hasAddrContains) {
             score += 200;

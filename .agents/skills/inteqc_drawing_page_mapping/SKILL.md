@@ -316,4 +316,26 @@ node system-audit.cjs
   ```
   In `scanPdf()`, strictly verify `pdfPage >= range.minPdf && pdfPage <= range.maxPdf` before assigning the page to that cabinet.
 
+### Pitfall 13: Tower 3 Delimiter Collision between Motor Starters (_) and Rotary Distributors / Valves (.)
+- **Symptom**: In Tower 3, viewing motor starter `5_41` (Pellet Mill in MCC11) renders schematic pills for rotary valve `5.41` (Sheet 924 Valve & Actuator), and vice-versa. 26 pairs of distinct machines collide.
+- **Root Cause**: `normalizeCode()` globally replaced all `_` and `-` with `.`, collapsing `5_41` into `5.41`. In Tower 3, `_` designates MCC motor starters while `.` designates LCB rotary distributors and solenoid valves.
+- **Fix**: Update `normalizeCode(code, locationId)` across backend and frontend to preserve `.` and `_` distinctions when `locationId === 'tower3'`, preventing motors and valves from colliding.
+
+### Pitfall 14: Over-permissive Suffix Catch-all in isActuatorSuffix
+- **Symptom**: In Tower 2, base dosing screws (`Dxx`) leak drawings with anti-bridging motors (`Dxx_P`), and base machines without trailing numbers (`G0106`, `E0124`) bidirectionally ingest all numbered sub-unit drawings (`G0106_1..3`, `E0124_1..2`).
+- **Root Cause**: `isActuatorSuffix` ended with `|[A-Z]|\d`, allowing any single letter (matching `_P`) or any single digit (matching `_1`, `_2`) to be treated as an actuator sub-unit.
+- **Fix**: Remove `|[A-Z]|\d` from `isActuatorSuffix`, keeping only legitimate electrical actuator/device prefixes (`KM\d*|QF\d*|K\d*|ATS|KA\d*|W|M\d*|SQ\d*|SES|QK|PU|YV|SV|HA|SP|ST|BF|BZSO|HL|LL|PT|TT|LT|FU|SA`).
+
+### Pitfall 15: Cross-Cabinet Machine Code Shadowing & Point-Bypass Drawing Leakage
+- **Symptom**: In Tower 3, distinct machines sharing the same equipment code in different cabinets (e.g. `2_41` Feeder in `MCC14` vs Segment Gate in `MCC18`; `10_8` Segment Gate in `MCC18` vs Feeder in `MCC19`) shadow each other in search results, and points/drawings from other cabinets leak into detail pages. Conversely, naive cabinet filtering broke legitimate multi-cabinet machines (e.g. `2D01`..`2D22` in Tower 2 Phase 2, `2_42` in Tower 3) and hid drawing-only circuits (e.g. `5.41`).
+- **Root Cause**:
+  1. `buildSearchIndex` keyed strictly by `code + '|' + locationId`, merging physically distinct machines from different MCC cabinets into a single entry, while omitting drawing-only circuits from `equipmentDrawings`.
+  2. A naive MCC string comparison (`currentMcc !== pointMcc` / `currentMcc !== sheetMcc`) stripped drawings and points for legitimate multi-cabinet machines (`2D01`..`2D22` where I/O is in `MCCB1-RI12` and schematics in `MCCB2`; `2_42` where motor is in `MCC14` and analog inputs in `MCC12_13`).
+  3. Detail page set `notFound: true` if `points.length === 0`, preventing viewing drawing-only circuits.
+- **Fix**:
+  1. In `buildSearchIndex`, scope MCC collision separation to Tower 3 only, differentiating machines across distinct MCC switchgear lineups when their machine names are incompatible (`!areNamesCompatible(cand.name, io.name)`). Index `equipmentDrawings` so drawing-only circuits appear in search, and prioritize drawing-holding cabinets as the primary route cabinet (`cabinets[0]`).
+  2. In `page.js`, scope I/O point and drawing collection across distinct MCC lineups using machine name root compatibility (`areNamesCompatible(routeRoot, candidateRoot)`), preserving all legitimate multi-cabinet machines.
+  3. In `page.js`, allow rendering when `points.length > 0 || drawingsSet.size > 0`, enabling drawing-only circuits to display their schematics with an empty I/O table.
+
+
 
