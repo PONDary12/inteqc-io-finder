@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import WifiStatusWidget from "./components/WifiStatusWidget";
+import WifiAccessModal from "./components/WifiAccessModal";
 
 function normalizeCode(code, locId) {
   if (!code) return '';
@@ -23,6 +25,8 @@ export default function SearchHome() {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [activeMode, setActiveMode] = useState("search"); // "search" | "browse"
+  const [isWifiModalOpen, setIsWifiModalOpen] = useState(false);
+  const [networkInfo, setNetworkInfo] = useState(null);
   const [browseLocation, setBrowseLocation] = useState("");
   const [expandedCabinet, setExpandedCabinet] = useState(null);
   const [cabinetFilter, setCabinetFilter] = useState("");
@@ -63,6 +67,20 @@ export default function SearchHome() {
       }
     }
     loadData();
+
+    // Fetch server network IP and Wi-Fi configuration
+    async function loadNetworkInfo() {
+      try {
+        const res = await fetch("/api/network-info");
+        if (res.ok) {
+          const data = await res.json();
+          setNetworkInfo(data);
+        }
+      } catch (err) {
+        console.warn("Could not load network info:", err);
+      }
+    }
+    loadNetworkInfo();
   }, []);
 
   // Compute suggestions dynamically during render with relevance scoring
@@ -317,6 +335,14 @@ export default function SearchHome() {
           <p style={styles.subtitle}>
             Enter machine code, name, or I/O address to view circuit drawings instantly.
           </p>
+
+          {/* Factory Wi-Fi Access Widget */}
+          <div style={styles.wifiWidgetContainer}>
+            <WifiStatusWidget
+              networkInfo={networkInfo}
+              onOpenModal={() => setIsWifiModalOpen(true)}
+            />
+          </div>
         </header>
 
         {/* Main Panel */}
@@ -603,11 +629,24 @@ export default function SearchHome() {
           )}
         </div>
       </div>
+
+      {/* Factory Wi-Fi QR Access Modal */}
+      <WifiAccessModal
+        isOpen={isWifiModalOpen}
+        onClose={() => setIsWifiModalOpen(false)}
+        networkInfo={networkInfo}
+      />
     </div>
   );
 }
 
 const styles = {
+  wifiWidgetContainer: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "6px",
+    width: "100%",
+  },
   container: {
     position: "relative",
     display: "flex",

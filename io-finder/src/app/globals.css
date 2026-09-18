@@ -283,3 +283,30 @@ html, body {
     font-size: 11px !important;
   }
 }
+
+/* Factory Wi-Fi Status Widget Responsive Rules */
+.wifi-widget-ip {
+  display: block;
+}
+.wifi-widget-title-short {
+  display: none;
+}
+.wifi-widget-title-full {
+  display: inline;
+}
+
+@media (max-width: 600px) {
+  .wifi-widget-ip {
+    display: none !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .wifi-widget-title-full {
+    display: none !important;
+  }
+  .wifi-widget-title-short {
+    display: inline !important;
+  }
+}
+

@@ -32,3 +32,23 @@ To ensure system stability and optimize token usage, Claude MUST follow this exa
 ## 🚫 Critical Constraints
 - Never execute widespread refactoring without a confirmed backup or git checkpoint.
 - If a build/test fails at Step 5, loop back to Step 4 immediately to fix it.
+
+---
+
+## 🎨 UI/UX & Responsive Modal Standards (Continuous Learning)
+1. **Brand Palette Compliance**:
+   - Primary brand red: `#cc1111`, dark red hover: `#b00f0f`, soft red tint: `#fef2f2`, border: `#e2e8f0`, dark slate typography: `#0f172a`.
+   - Never introduce dark teal or unharmonized theme colors into the core white & red INTEQC experience.
+
+2. **Bulletproof Modal Flexbox Scrolling**:
+   - **Problem**: In CSS Flexbox, children default to `min-height: auto`. When expandable elements (accordions) expand inside a flex modal with `overflow-y: auto`, the container often traps scrolling, pushes footers off-screen, or clips the bottom content. Furthermore, pinned headers/footers create dead zones that swallow mouse wheel events, and iOS Safari can freeze touch scrolling if `overscroll-behavior: contain` is combined with locked body scroll.
+   - **Mandatory Pattern**:
+     - **Outer Overlay**: `position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; overflow-y: auto; -webkit-overflow-scrolling: touch;`
+     - **Modal Container**: `margin: auto; max-height: min(90dvh, 800px); display: flex; flex-direction: column; overflow: hidden;` (use `dvh` for mobile viewport chrome tolerance).
+     - **Header**: `flex-shrink: 0;` (always pinned at top).
+     - **Scrollable Body**: `flex: 1 1 auto; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; touch-action: pan-y;` (avoid `overscroll-behavior: contain` on iOS Safari).
+     - **Footer**: `flex-shrink: 0;` (always pinned at bottom).
+     - **Wheel Event Forwarding**: Attach an `onWheel` handler on the modal container to forward scroll delta (`modalBodyRef.current.scrollTop += e.deltaY`) whenever mouse wheel rolls over pinned headers or footers, eliminating scroll dead zones.
+     - **Auto-scroll on Accordion Expand**: When user clicks to expand accordion items at the bottom of the body, automatically trigger `scrollIntoView({ behavior: 'smooth', block: 'end' })` so revealed items are immediately visible.
+     - **Mobile Responsive Wrapping**: Widgets embedded into headers/dashboards must use `flexWrap: 'wrap'` and centered alignment to prevent horizontal overflow on narrow mobile screens (320px–480px).
+
