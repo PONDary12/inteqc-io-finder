@@ -79,8 +79,16 @@ Most drawings begin with 目录 (Index) pages containing 6 structured columns:
 
 ### 3.3 Title Block Parsing Patterns
 
-#### A. Chinese Title Blocks (e.g., Tower 2)
+#### A. Chinese Title Blocks (e.g., Tower 2 Phase 1 & Phase 2)
 Located in the bottom-right corner of each sheet:
+- **True Page Number Extraction (Date-Follower Pattern)**:
+  > [!CRITICAL]
+  > In EPLAN CAD drawings for Tower 2, the bottom-left margin displays the **previous sheet's cross-reference number** (e.g. `172`, `2110`).
+  > In the raw PDF text stream, this margin number appears directly before `魏正彪 审核`. Matching before `魏正彪 审核` creates a systematic **off-by-one (-1) error across all sheets**!
+  > Instead, the **true sheet number** is positioned in the `页号 Page` cell immediately following the creation date (`YYYY/M/D` pattern).
+  > **Mandatory pattern**: Scan lines for `/^\d{4}\/\d{1,2}\/\d{1,2}$/` and extract the token directly on the next line (e.g. `173`, `174`, `2111`).
+  > For cover/overview sheets without a date, use the `格式 A4\s+([0-9a-zA-Z\.\-_]+)` pattern.
+
 - Equipment code is typically followed by the circuit description, for example:
   - `G0104_3 软启动回路图` $\rightarrow$ Equipment: `G0104_3`, Type: Soft Starter Circuit
   - `G0203_3 变频器回路图` $\rightarrow$ Equipment: `G0203_3`, Type: VFD Drive Circuit
@@ -90,6 +98,7 @@ Located in the bottom-right corner of each sheet:
 #### B. English Title Blocks (e.g., Tower 3 Muyang-WEM Format)
 Text runs in the bottom border or title line:
 - Format pattern: `PAGE TOTAL <TotalPages> ... <DrawingCode> ... 4 <InternalPage> 2`
+- Or explicit Chinese page token: `页数 <InternalPage>` (excluding `总页数`)
 - Equipment markers: `TOWARDS THE SILO FEEDING G0104_3`, `4_10.V`, `MCC14-01-M1`
 - Noise to filter out: Electrical ratings (`5.5KW`, `6.9A`, `380V`, `24VDC`, wire gauges).
 
@@ -238,3 +247,95 @@ node system-audit.cjs
   ```javascript
   if (/^\d+(\.\d+)?(KW|A|V|HZ|HP)$/i.test(token)) return null;
   ```
+
+### Pitfall 5: Hyphen Truncation & Over-Mapping (Collapsed Machine Keys)
+- **Symptom**: Equipment codes like `AG-3101` display false pills from unrelated machines (`AG-4001`, `AG-9001`, `AG-1101`), or `PU-1001` shows 27 pills, or `AV-1001` shows 63 pills.
+- **Root Cause**: Title block regex `/^([A-Z0-9_]+)\s*[-–]/i` stops at the internal hyphen in `AG-3101-`, collapsing hundreds of distinct machines into bare alpha keys (`AG`, `PU`, `AV`).
+- **Fix**:
+  1. Match internal hyphens first in `extractEquipFromTitleLine`:
+     ```javascript
+     const m = s.match(/^([A-Z0-9_]+(?:-[A-Z0-9_]+)+)\s*[-–]?/i) || s.match(/^([A-Z0-9_]+)\s*[-–]/i);
+     ```
+  2. Guard `suffixCheck` in `page.js` to require digits in the base code (`/\d/.test(base)`), strictly forbidding pure-letter matching like `"AG"` $\rightarrow$ `"AG_3101"`.
+
+### Pitfall 6: Cabinet Array Prefix Shadowing (MCCB1 vs MCCB10..19)
+- **Symptom**: Pages belonging to `MCCB10`, `MCCB13`, `MCCB18`, `MCCB19` get assigned to `MCCB1`. Equipment with duplicate numbers across cabinets (e.g. `E0265` Sizing Screen in `MCCB13` vs `E0265` Cooler in `MCCB19`) leak schematics between different physical machines.
+- **Fix**:
+  1. Always sort `cabinetList` by length descending (`b.length - a.length`) before substring matching so `MCCB13` is tested before `MCCB1`.
+  2. In `page.js`, isolate distinct MCC lineups by checking `extractMcc(s.cabinet) === extractMcc(cabinet)`.
+
+### Pitfall 7: Shared WAGO Rack Cards & Body Cross-Reference Bleed
+- **Symptom**: Technicians see 10+ pills for 16-channel WAGO DI/DO/AI rack cards or power distribution pages on individual machine views.
+- **Root Cause**: Scanning all body lines (`Rule 4`) on shared rack pages and terminal tables pulls in every connected device label.
+- **Fix**:
+  1. Define `isSharedCardOrLayout` to skip `equipmentDrawings` for shared cards (`Wago DI/DO/AI`, `CPU1215`, `SM1223`, `远程站模块布局`, `电源分配`, `端子`).
+  2. Only execute Rule 4 if `!isSharedCardOrLayout && foundEquips.size === 0` (preventing interlock cross-references like `5_117A` mentioned on fan `5_126` from attaching to the wrong machine).
+
+### Pitfall 8: Synthetic Parent Sibling Cross-Contamination
+- **Symptom**: Sub-units like `3.5A_1` show 10 pills including drawings belonging to siblings `3.5B`, `3.5C`, `3.5D`.
+- **Root Cause**: Aggregating sub-units into a synthetic parent code `3.5` causes `suffixCheck` to bridge all sibling schematics together.
+- **Fix**: Never synthesize parent codes during PDF and TOC parsing. Keep sub-units strictly keyed to their individual equipment codes (`3.5A_1`, `3.5B`).
+
+### Pitfall 9: Delimiter Stripping Collisions (2.42 vs 24.2 / 7.3 vs 73)
+- **Symptom**: Machine `7.3` matches `73`, or `2.42` matches `24.2`.
+- **Root Cause**: Normalization removing all punctuation (`replace(/[\s_\-\.\,\/\\]/g, '')`) collapses decimal boundaries into the same string.
+- **Fix**: Standardize `normalizeCode` across backend and frontend to convert delimiters to dot (`replace(/[\s_\-\/\\]+/g, '.')`), preserving decimal positions.
+
+### Pitfall 10: TOC Index Pages Polluting Cabinet Range Detection
+- **Symptom**: Image offsets break because `cabinetMinPage` is pulled down to pages 9–20.
+- **Root Cause**: In Tower 2, TOC index pages have internal numbers like `1.a`, `1.c`, `1.e`.
+- **Fix**: In `scanPdf()`, skip index pages:
+  ```javascript
+  if (loc.cabinetList && internalPageStr.includes('.')) return;
+  ```
+
+### Pitfall 11: Image Cache Invalidation on minPage Shift
+- **Symptom**: Equipment like `AG-3101` in `MCC5-6` displays the schematic for `AG-4101` (off-by-one image mismatch), even though `pdf-page-map.json` and `io-data.json` have the correct sheet number.
+- **Root Cause**:
+  1. When PDF parsing heuristics are improved (e.g. adding the Date-Follower pattern), newly discovered boundary sheets (e.g. Sheet 401 on PDF Page 157) cause the cabinet's `minPage` to shift from 158 to 157.
+  2. Because image filenames are generated as `<Cabinet>_page_<pdfPage - minPage + 1>.png`, Sheet 454 (PDF Page 201) changes from `page_44.png` to `page_45.png`.
+  3. However, `build-images.cjs` previously skipped files already existing on disk (`if (fs.existsSync(destPath)) continue`). The file `MCC5-6_page_45.png` on disk had been generated months earlier when `page_45` corresponded to PDF Page 202 (`AG-4101`).
+- **Fix**:
+  1. Add CLI flags `--force`, `--location <id>`, and `--cabinet <name>` to `build-images.cjs`.
+  2. When running `--force`, purge stale image files that exceed the current cabinet range.
+  3. Whenever `build-pdf-mapping.cjs` alters `minPage` for any cabinet, ALWAYS run:
+     ```bash
+     node scripts/build-images.cjs --force --location <locationId>
+     ```
+  4. Followed by rebuilding the search index and data:
+     ```bash
+     node scripts/parse-excel.cjs
+     ```
+
+### Pitfall 12: Deterministic Cabinet Physical PDF Bounds (minPdf / maxPdf)
+- **Symptom**: Accessories, junction boxes, or dimension specifications (e.g. `300*250*140` on PDF Page 778) falsely match sheet number patterns (matching `250` as sheet 250), causing trailing pages to be assigned to an earlier cabinet (e.g. `MCC1-2`).
+- **Root Cause**: Relying solely on sheet number ranges (`start: 101, end: 299`) allows rogue numbers from late-stage physical pages to collide with early cabinets.
+- **Fix**: Declare both internal sheet ranges AND physical PDF page bounds (`minPdf` / `maxPdf`) in `CAB_RANGES_P1` and `CAB_RANGES_P2`:
+  ```javascript
+  { cabinet: 'MCC1-2', start: 101, end: 299, minPdf: 8, maxPdf: 100 }
+  ```
+  In `scanPdf()`, strictly verify `pdfPage >= range.minPdf && pdfPage <= range.maxPdf` before assigning the page to that cabinet.
+
+### Pitfall 13: Tower 3 Delimiter Collision between Motor Starters (_) and Rotary Distributors / Valves (.)
+- **Symptom**: In Tower 3, viewing motor starter `5_41` (Pellet Mill in MCC11) renders schematic pills for rotary valve `5.41` (Sheet 924 Valve & Actuator), and vice-versa. 26 pairs of distinct machines collide.
+- **Root Cause**: `normalizeCode()` globally replaced all `_` and `-` with `.`, collapsing `5_41` into `5.41`. In Tower 3, `_` designates MCC motor starters while `.` designates LCB rotary distributors and solenoid valves.
+- **Fix**: Update `normalizeCode(code, locationId)` across backend and frontend to preserve `.` and `_` distinctions when `locationId === 'tower3'`, preventing motors and valves from colliding.
+
+### Pitfall 14: Over-permissive Suffix Catch-all in isActuatorSuffix
+- **Symptom**: In Tower 2, base dosing screws (`Dxx`) leak drawings with anti-bridging motors (`Dxx_P`), and base machines without trailing numbers (`G0106`, `E0124`) bidirectionally ingest all numbered sub-unit drawings (`G0106_1..3`, `E0124_1..2`).
+- **Root Cause**: `isActuatorSuffix` ended with `|[A-Z]|\d`, allowing any single letter (matching `_P`) or any single digit (matching `_1`, `_2`) to be treated as an actuator sub-unit.
+- **Fix**: Remove `|[A-Z]|\d` from `isActuatorSuffix`, keeping only legitimate electrical actuator/device prefixes (`KM\d*|QF\d*|K\d*|ATS|KA\d*|W|M\d*|SQ\d*|SES|QK|PU|YV|SV|HA|SP|ST|BF|BZSO|HL|LL|PT|TT|LT|FU|SA`).
+
+### Pitfall 15: Cross-Cabinet Machine Code Shadowing & Point-Bypass Drawing Leakage
+- **Symptom**: In Tower 3, distinct machines sharing the same equipment code in different cabinets (e.g. `2_41` Feeder in `MCC14` vs Segment Gate in `MCC18`; `10_8` Segment Gate in `MCC18` vs Feeder in `MCC19`) shadow each other in search results, and points/drawings from other cabinets leak into detail pages. Conversely, naive cabinet filtering broke legitimate multi-cabinet machines (e.g. `2D01`..`2D22` in Tower 2 Phase 2, `2_42` in Tower 3) and hid drawing-only circuits (e.g. `5.41`).
+- **Root Cause**:
+  1. `buildSearchIndex` keyed strictly by `code + '|' + locationId`, merging physically distinct machines from different MCC cabinets into a single entry, while omitting drawing-only circuits from `equipmentDrawings`.
+  2. A naive MCC string comparison (`currentMcc !== pointMcc` / `currentMcc !== sheetMcc`) stripped drawings and points for legitimate multi-cabinet machines (`2D01`..`2D22` where I/O is in `MCCB1-RI12` and schematics in `MCCB2`; `2_42` where motor is in `MCC14` and analog inputs in `MCC12_13`).
+  3. Detail page set `notFound: true` if `points.length === 0`, preventing viewing drawing-only circuits.
+- **Fix**:
+  1. In `buildSearchIndex`, scope MCC collision separation to Tower 3 only, differentiating machines across distinct MCC switchgear lineups when their machine names are incompatible (`!areNamesCompatible(cand.name, io.name)`). Index `equipmentDrawings` so drawing-only circuits appear in search, and prioritize drawing-holding cabinets as the primary route cabinet (`cabinets[0]`).
+  2. In `page.js`, scope I/O point and drawing collection across distinct MCC lineups using machine name root compatibility (`areNamesCompatible(routeRoot, candidateRoot)`), preserving all legitimate multi-cabinet machines.
+  3. In `page.js`, allow rendering when `points.length > 0 || drawingsSet.size > 0`, enabling drawing-only circuits to display their schematics with an empty I/O table.
+
+
+

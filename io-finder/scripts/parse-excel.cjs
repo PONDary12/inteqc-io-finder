@@ -58,12 +58,13 @@ const CABINET_BASE_PAGES = {
 
 // ──────────────────────── Normalization Helpers ────────────────────────
 
-function normalizeCode(code) {
+function normalizeCode(code, locationId) {
   if (!code) return '';
-  return String(code)
-    .trim()
-    .toLowerCase()
-    .replace(/[\s_\-\.\,\/\\]/g, '');
+  const s = String(code).trim().toLowerCase();
+  if (locationId === 'tower3') {
+    return s.replace(/[\s\/\\]+/g, '');
+  }
+  return s.replace(/[\s_\-\/\\]+/g, '.');
 }
 
 const RCB4_EQUIP_INTERNAL_PAGES = {
@@ -793,7 +794,7 @@ function parseSheet(wb, sheetName, locationId) {
         drawingPage,
         internalPage,
         drawingPdfUrl,
-        normalizedCode: normalizeCode(cleanCode),
+        normalizedCode: normalizeCode(cleanCode, locationId),
         normalizedAddress: normalizeAddress(address),
       });
     }
@@ -804,17 +805,77 @@ function parseSheet(wb, sheetName, locationId) {
 
 // ──────────────────────── Search Index Builder ────────────────────────
 
+// Helper to extract MCC lineup identifier (e.g. "MCCB13-RI31" -> "MCCB13", "MCC5_6" -> "MCC56")
+function extractMcc(cabStr) {
+  if (!cabStr) return null;
+  const m = String(cabStr).match(/^(MCC(?:B)?\d+(?:[_\-]\d+)?)/i);
+  return m ? m[1].toUpperCase().replace(/[_\-]/g, '') : null;
+}
+
+function getMachineRoot(name) {
+  if (!name) return '';
+  const clean = name.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  return clean.split(/\s+/)[0] || '';
+}
+
+function areNamesCompatible(nameA, nameB) {
+  if (!nameA || !nameB) return true;
+  const rootA = getMachineRoot(nameA);
+  const rootB = getMachineRoot(nameB);
+  if (!rootA || !rootB) return true;
+  if (rootA === rootB) return true;
+  if (rootA.length >= 4 && rootB.startsWith(rootA)) return true;
+  if (rootB.length >= 4 && rootA.startsWith(rootB)) return true;
+  return false;
+}
+
 function buildSearchIndex(locations) {
-  // Key = equipmentCode + '|' + locationId
-  const equipMap = new Map();
+  // Key = (equipmentCode || equipmentName) + '|' + locationId -> array of distinct machine entries
+  const entriesByCodeLoc = new Map();
+  const allEntries = [];
 
   for (const loc of locations) {
     for (const cab of loc.cabinets) {
       for (const io of cab.io) {
-        const key = (io.equipmentCode || io.equipmentName) + '|' + loc.id;
+        const rawCode = io.equipmentCode || io.equipmentName;
+        if (!rawCode) continue;
 
-        if (!equipMap.has(key)) {
-          equipMap.set(key, {
+        const baseKey = rawCode + '|' + loc.id;
+        if (!entriesByCodeLoc.has(baseKey)) {
+          entriesByCodeLoc.set(baseKey, []);
+        }
+        const candidates = entriesByCodeLoc.get(baseKey);
+        let matched = null;
+
+        for (const candidate of candidates) {
+          // Only Tower 3 re-uses machine codes across distinct MCC switchgear lineups
+          if (loc.id !== 'tower3') {
+            matched = candidate;
+            break;
+          }
+
+          // 1. If candidate already includes this cabinet, it's the exact same cabinet
+          if (candidate.cabinets.has(io.cabinet)) {
+            matched = candidate;
+            break;
+          }
+
+          // 2. Check if cabinets belong to distinct MCC switchgear lineups
+          const candidateMcc = [...candidate.cabinets].map(extractMcc).find(Boolean);
+          const ioMcc = extractMcc(io.cabinet);
+          if (candidateMcc && ioMcc && candidateMcc !== ioMcc) {
+            // Different MCC lineups: if names are incompatible, treat as separate physical machines
+            if (!areNamesCompatible(candidate.name, io.equipmentName)) {
+              continue;
+            }
+          }
+
+          matched = candidate;
+          break;
+        }
+
+        if (!matched) {
+          matched = {
             code: io.equipmentCode,
             name: io.equipmentName,
             signals: new Set(),
@@ -824,20 +885,21 @@ function buildSearchIndex(locations) {
             drawings: new Set(),
             location: loc.name,
             locationId: loc.id,
-          });
+          };
+          candidates.push(matched);
+          allEntries.push(matched);
         }
 
-        const entry = equipMap.get(key);
         // Update name if current entry has empty name but this row has one
-        if (!entry.name && io.equipmentName) {
-          entry.name = io.equipmentName;
+        if (!matched.name && io.equipmentName) {
+          matched.name = io.equipmentName;
         }
-        if (io.signalName) entry.signals.add(io.signalName);
-        if (io.address) entry.addresses.add(io.address);
-        entry.types.add(io.type);
-        entry.cabinets.add(io.cabinet);
+        if (io.signalName) matched.signals.add(io.signalName);
+        if (io.address) matched.addresses.add(io.address);
+        matched.types.add(io.type);
+        matched.cabinets.add(io.cabinet);
         if (io.drawingPage) {
-          entry.drawings.add(JSON.stringify({
+          matched.drawings.add(JSON.stringify({
             cabinet: io.cabinet,
             page: io.drawingPage,
             internalPage: io.internalPage,
@@ -846,30 +908,94 @@ function buildSearchIndex(locations) {
         }
       }
     }
+
+    // Also include drawings from loc.equipmentDrawings into the search index
+    if (loc.equipmentDrawings) {
+      for (const [eqCode, sheetList] of Object.entries(loc.equipmentDrawings)) {
+        if (!Array.isArray(sheetList) || sheetList.length === 0) continue;
+        const baseKey = eqCode + '|' + loc.id;
+        const candidates = entriesByCodeLoc.get(baseKey);
+        if (candidates && candidates.length > 0) {
+          for (const s of sheetList) {
+            const dwgObj = {
+              cabinet: s.cabinet,
+              page: s.page,
+              internalPage: s.internalPage,
+              drawingPdfUrl: s.drawingPdfUrl
+            };
+            const dwgJson = JSON.stringify(dwgObj);
+            let target = candidates[0];
+            if (candidates.length > 1 && s.cabinet) {
+              const sMcc = extractMcc(s.cabinet);
+              const found = candidates.find(c => {
+                if (c.cabinets.has(s.cabinet)) return true;
+                const cMcc = [...c.cabinets].map(extractMcc).find(Boolean);
+                return sMcc && cMcc && sMcc === cMcc;
+              });
+              if (found) target = found;
+            }
+            target.drawings.add(dwgJson);
+            if (s.cabinet) target.cabinets.add(s.cabinet);
+          }
+        } else {
+          // Drawing-only equipment (e.g. 5.41 in Tower 3)
+          const newEntry = {
+            code: eqCode,
+            name: sheetList[0].label || 'Schematic Diagram',
+            signals: new Set(),
+            types: new Set([sheetList[0].type || 'schematic']),
+            cabinets: new Set(sheetList.map(s => s.cabinet).filter(Boolean)),
+            addresses: new Set(),
+            drawings: new Set(sheetList.map(s => JSON.stringify({
+              cabinet: s.cabinet,
+              page: s.page,
+              internalPage: s.internalPage,
+              drawingPdfUrl: s.drawingPdfUrl
+            }))),
+            location: loc.name,
+            locationId: loc.id,
+          };
+          entriesByCodeLoc.set(baseKey, [newEntry]);
+          allEntries.push(newEntry);
+        }
+      }
+    }
   }
 
   // Convert Sets to sorted Arrays
   const index = [];
-  for (const entry of equipMap.values()) {
+  for (const entry of allEntries) {
+    const drawingCabs = new Set([...entry.drawings].map(d => JSON.parse(d).cabinet).filter(Boolean));
+    const sortedCabinets = [...entry.cabinets].sort((a, b) => {
+      const hasA = drawingCabs.has(a) ? 1 : 0;
+      const hasB = drawingCabs.has(b) ? 1 : 0;
+      if (hasA !== hasB) return hasB - hasA;
+      return a.localeCompare(b, undefined, { numeric: true });
+    });
+
     index.push({
       code: entry.code,
       name: entry.name,
-      normalizedCode: normalizeCode(entry.code),
+      normalizedCode: normalizeCode(entry.code, entry.locationId),
       signals: [...entry.signals].sort(),
       addresses: [...entry.addresses].sort(),
       types: [...entry.types].sort(),
-      cabinets: [...entry.cabinets].sort(),
+      cabinets: sortedCabinets,
       drawings: [...entry.drawings].map(JSON.parse),
       location: entry.location,
       locationId: entry.locationId,
     });
   }
 
-  // Sort by code, then location
+  // Sort by code, location, then cabinet
   index.sort((a, b) => {
     const codeCompare = (a.code || '').localeCompare(b.code || '', undefined, { numeric: true });
     if (codeCompare !== 0) return codeCompare;
-    return a.locationId.localeCompare(b.locationId);
+    const locCompare = a.locationId.localeCompare(b.locationId);
+    if (locCompare !== 0) return locCompare;
+    const cabA = a.cabinets[0] || '';
+    const cabB = b.cabinets[0] || '';
+    return cabA.localeCompare(cabB, undefined, { numeric: true });
   });
 
   return index;
@@ -1012,7 +1138,7 @@ function parsePLCTagsSheet(wb, sheetName, locationId) {
       drawingPage,
       internalPage,
       drawingPdfUrl,
-      normalizedCode: normalizeCode(cleanCode),
+      normalizedCode: normalizeCode(cleanCode, locationId),
       normalizedAddress: normalizeAddress(address),
     };
 
