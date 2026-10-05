@@ -14,6 +14,17 @@ function normalizeCode(code, locId) {
   return s.replace(/[\s_\-\/\\]+/g, '.');
 }
 
+const SUBDEVICE_SUFFIX_REGEX = /[\._](KM\d*|QF\d*|K\d*|ATS|KA\d*|KT\d*|BS\d*|BST\d*|BQS\d*|SKM\d*|YKM\d*|TA\d*|VF\d*|FR\d*|FU\d*|SA\d*|HL\d*|LL\d*|HA\d*|SQ\d*|SP\d*|ST\d*|BF\d*|BZSO\d*|PT\d*|TT\d*|LT\d*|QK\d*|SES\d*|PU\d*|YV\d*|SV\d*|AH\d*|F|[UVW]|[AB])$/i;
+
+function stripSubdeviceSuffix(str) {
+  if (!str) return '';
+  let s = str;
+  while (SUBDEVICE_SUFFIX_REGEX.test(s)) {
+    s = s.replace(SUBDEVICE_SUFFIX_REGEX, '');
+  }
+  return s;
+}
+
 function normalizeAddress(addr) {
   if (!addr) return '';
   return String(addr)
@@ -114,6 +125,13 @@ export default function MachineDetail({ params }) {
         if (pCode === normParam) return true;
         if (pCode.startsWith(normParam + ':') || normParam.startsWith(pCode + ':')) return true;
         if (normalizeCode(pCode, locationId) === normalizeCode(normParam, locationId)) return true;
+
+        // Subdevice suffix matches (e.g. paramCode '5_9.f' matches point '5_9', or point '1_6_bqs' matches '1_6')
+        const strippedParam = stripSubdeviceSuffix(normParam);
+        const strippedPoint = stripSubdeviceSuffix(pCode);
+        if (strippedParam && (pCode === strippedParam || normalizeCode(pCode, locationId) === normalizeCode(strippedParam, locationId))) return true;
+        if (strippedPoint && (strippedPoint === normParam || normalizeCode(strippedPoint, locationId) === normalizeCode(normParam, locationId))) return true;
+        if (strippedParam && strippedPoint && normalizeCode(strippedPoint, locationId) === normalizeCode(strippedParam, locationId)) return true;
       }
 
       // 2. Direct name matches (for points without code or navigated by name)
@@ -202,8 +220,11 @@ export default function MachineDetail({ params }) {
           if (routeCab) {
             const matchPoint = routeCab.io.find(p => {
               const pCode = (p.equipmentCode || '').trim().toLowerCase();
-              return pCode === equipmentCode.trim().toLowerCase() ||
-                     normalizeCode(pCode, locationId) === normalizeCode(equipmentCode, locationId);
+              const normEq = equipmentCode.trim().toLowerCase();
+              const strippedEq = stripSubdeviceSuffix(normEq);
+              return pCode === normEq ||
+                     normalizeCode(pCode, locationId) === normalizeCode(normEq, locationId) ||
+                     (strippedEq && (pCode === strippedEq || normalizeCode(pCode, locationId) === normalizeCode(strippedEq, locationId)));
             });
             if (matchPoint && matchPoint.equipmentName) {
               routeRoot = getMachineRoot(matchPoint.equipmentName);
@@ -215,15 +236,24 @@ export default function MachineDetail({ params }) {
         const isActuatorSuffix = (str, base) => {
           if (!/\d/.test(base)) return false;
           if (!str.startsWith(base + '_') && !str.startsWith(base + '.') && !str.startsWith(base + '-')) return false;
-          const suffix = str.slice(base.length + 1).toUpperCase();
-          return /^(KM\d*|QF\d*|K\d*|ATS|KA\d*|W|M\d*|SQ\d*|SES|QK|PU|YV|SV|HA|SP|ST|BF|BZSO|HL|LL|PT|TT|LT|FU|SA)$/i.test(suffix);
+          const suffix = str.slice(base.length);
+          return SUBDEVICE_SUFFIX_REGEX.test(suffix);
         };
 
         if (location.equipmentDrawings) {
+          const strippedParamCode = stripSubdeviceSuffix(cleanParamCode);
+          const parentParamCode = (cleanParamCode.endsWith('0') && cleanParamCode.length > 2) ? cleanParamCode.slice(0, -1) : null;
           for (const [eqKey, sheets] of Object.entries(location.equipmentDrawings)) {
             const cleanKey = eqKey.trim().toUpperCase().replace(/-/g, '_');
+            const strippedKey = stripSubdeviceSuffix(cleanKey);
             const isMatch = cleanKey === cleanParamCode ||
+                            (strippedParamCode && cleanKey === strippedParamCode) ||
+                            (strippedKey && strippedKey === cleanParamCode) ||
+                            (strippedParamCode && strippedKey && strippedKey === strippedParamCode) ||
+                            (parentParamCode && (cleanKey === parentParamCode || strippedKey === parentParamCode)) ||
                             normalizeCode(cleanKey, locationId) === normalizeCode(cleanParamCode, locationId) ||
+                            (strippedParamCode && normalizeCode(cleanKey, locationId) === normalizeCode(strippedParamCode, locationId)) ||
+                            (parentParamCode && normalizeCode(cleanKey, locationId) === normalizeCode(parentParamCode, locationId)) ||
                             isActuatorSuffix(cleanParamCode, cleanKey) ||
                             isActuatorSuffix(cleanKey, cleanParamCode);
             if (isMatch && Array.isArray(sheets)) {
@@ -236,8 +266,11 @@ export default function MachineDetail({ params }) {
                     if (sheetCab) {
                       const sp = sheetCab.io.find(p => {
                         const pCode = (p.equipmentCode || '').trim().toLowerCase();
-                        return pCode === equipmentCode.trim().toLowerCase() ||
-                               normalizeCode(pCode, locationId) === normalizeCode(equipmentCode, locationId);
+                        const normEq = equipmentCode.trim().toLowerCase();
+                        const strippedEq = stripSubdeviceSuffix(normEq);
+                        return pCode === normEq ||
+                               normalizeCode(pCode, locationId) === normalizeCode(normEq, locationId) ||
+                               (strippedEq && (pCode === strippedEq || normalizeCode(pCode, locationId) === normalizeCode(strippedEq, locationId)));
                       });
                       if (sp && sp.equipmentName) sheetRoot = getMachineRoot(sp.equipmentName);
                     }
@@ -245,6 +278,11 @@ export default function MachineDetail({ params }) {
                       return;
                     }
                   }
+                }
+
+                // Exclude layout sheets and terminal schedule tables (.a, .b sheets or type === 'terminal')
+                if (s.type === 'layout' || s.type === 'terminal' || /\.[a-z]$/i.test(s.internalPage || '')) {
+                  return;
                 }
 
                 const key = s.drawingPdfUrl || (s.internalPage ? `sheet-${s.internalPage}` : `${s.cabinet || cabinet}-${s.page}`);
@@ -280,6 +318,26 @@ export default function MachineDetail({ params }) {
               points.push(point);
               
               if (point.drawingPdfUrl && point.drawingPage) {
+                // Exclude terminal schedule tables (.a, .b sheets)
+                const isTerminalSchedule = /\.[a-z]$/i.test(point.internalPage || '') || (point.internalPage || '').toLowerCase().includes('.a') || (point.internalPage || '').toLowerCase().includes('.b');
+                if (isTerminalSchedule) return;
+
+                // Lookup genuine classification label and type from location.equipmentDrawings if available
+                let pointLabel = 'PLC I/O Wiring';
+                let pointType = 'control';
+                if (location.equipmentDrawings) {
+                  for (const sheetList of Object.values(location.equipmentDrawings)) {
+                    if (Array.isArray(sheetList)) {
+                      const matchSheet = sheetList.find(s => s.internalPage === point.internalPage);
+                      if (matchSheet && matchSheet.label) {
+                        pointLabel = matchSheet.label;
+                        pointType = matchSheet.type;
+                        break;
+                      }
+                    }
+                  }
+                }
+
                 const key = point.drawingPdfUrl || (point.internalPage ? `sheet-${point.internalPage}` : `${point.cabinet}-${point.drawingPage}`);
                 if (!drawingsSet.has(key)) {
                   drawingsSet.set(key, {
@@ -287,8 +345,8 @@ export default function MachineDetail({ params }) {
                     page: point.drawingPage,
                     internalPage: point.internalPage,
                     drawingPdfUrl: point.drawingPdfUrl,
-                    label: 'PLC I/O Wiring',
-                    type: 'control'
+                    label: pointLabel,
+                    type: pointType
                   });
                 }
               }
@@ -297,13 +355,17 @@ export default function MachineDetail({ params }) {
         });
 
         if (points.length > 0 || drawingsSet.size > 0) {
-          const firstPoint = points[0] || {
-            equipmentCode: equipmentCode,
+          const isAux = (n) => /_(?:Speed|Ols|Cls|LossSpeed|Offset[A-Za-z]+|Belt[A-Za-z]+|Alignment)\b/i.test(n || '');
+          const primaryPoint = points.find(p => p.cabinet === cabinet && !isAux(p.equipmentName)) ||
+                               points.find(p => p.cabinet === cabinet) ||
+                               points.find(p => !isAux(p.equipmentName)) ||
+                               points[0] || {
+            equipmentCode: stripSubdeviceSuffix(equipmentCode) || equipmentCode,
             equipmentName: drawingsSet.size > 0 ? (Array.from(drawingsSet.values())[0].label || 'Electrical Schematic') : 'Machine Circuit',
             cabinet: cabinet
           };
-          const mainCode = firstPoint.equipmentCode || equipmentCode || "";
-          const mainName = firstPoint.equipmentName || (mainCode ? "Machine Circuit" : "General Signals");
+          const mainCode = primaryPoint.equipmentCode || stripSubdeviceSuffix(equipmentCode) || equipmentCode || "";
+          const mainName = primaryPoint.equipmentName || (mainCode ? "Machine Circuit" : "General Signals");
 
           setEquipment({
             code: mainCode,
@@ -323,7 +385,13 @@ export default function MachineDetail({ params }) {
           });
           setAllDrawings(list);
           if (list.length > 0) {
-            setCurrentDrawing(list[0]);
+            let defaultDrawing = list[0];
+            const pointWithDrawing = points.find(p => p.drawingPdfUrl && list.some(d => d.internalPage === p.internalPage || d.drawingPdfUrl === p.drawingPdfUrl));
+            if (pointWithDrawing) {
+              const matchedDwg = list.find(d => d.internalPage === pointWithDrawing.internalPage || d.drawingPdfUrl === pointWithDrawing.drawingPdfUrl);
+              if (matchedDwg) defaultDrawing = matchedDwg;
+            }
+            setCurrentDrawing(defaultDrawing);
           }
         } else {
           setNotFound(true);
@@ -587,7 +655,14 @@ export default function MachineDetail({ params }) {
                         title={`View Sheet ${draw.internalPage} (${draw.label || 'Schematic'})`}
                       >
                         <span style={styles.pillIcon}>
-                          {draw.type === 'power' ? '⚡' : draw.type === 'starter' || draw.type === 'vfd' ? '🔌' : draw.type === 'safety' ? '🛡️' : draw.type === 'valve' ? '🔧' : '🎛️'}
+                          {draw.type === 'power' || draw.type === 'starter' ? '⚡' : 
+                           draw.type === 'vfd' ? '🔌' : 
+                           draw.type === 'speed' || draw.type === 'level' ? '📡' : 
+                           draw.type === 'safety' ? '🛡️' : 
+                           draw.type === 'monitoring' ? '🌡️' : 
+                           draw.type === 'meter' ? '📊' : 
+                           draw.type === 'auxiliary' ? '⚙️' : 
+                           draw.type === 'valve' ? '🔧' : '🎛️'}
                         </span>
                         <span>Sheet {draw.internalPage}</span>
                         {draw.label && (
@@ -693,11 +768,17 @@ export default function MachineDetail({ params }) {
                             style={styles.sheetLinkBtn}
                             onClick={() => {
                               const drawing = allDrawings.find(d => String(d.internalPage) === String(row.internalPage)) ||
-                                              allDrawings.find(d => d.cabinet === row.cabinet && d.page === row.drawingPage);
-                              if (drawing) {
-                                setCurrentDrawing(drawing);
-                                setMobileView("drawing");
-                              }
+                                              allDrawings.find(d => d.cabinet === row.cabinet && d.page === row.drawingPage) ||
+                                              {
+                                                cabinet: row.cabinet,
+                                                page: row.drawingPage,
+                                                internalPage: row.internalPage,
+                                                drawingPdfUrl: row.drawingPdfUrl,
+                                                label: 'PLC Rack Wiring',
+                                                type: 'control'
+                                              };
+                              setCurrentDrawing(drawing);
+                              setMobileView("drawing");
                             }}
                           >
                             🖼️ Sheet {row.internalPage}

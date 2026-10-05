@@ -46,7 +46,7 @@ data/
 │       ├── 泰国inteqc Cabinet drawing.pdf
 │       └── PLCTags.xlsx
 └── Tower 3/
-    ├── 泰国inteqc Cabinet drawing.pdf
+    ├── INTELQCTower3.pdf
     └── PLCTags.xlsx
 ```
 
@@ -97,7 +97,7 @@ Located in the bottom-right corner of each sheet:
 
 #### B. English Title Blocks (e.g., Tower 3 Muyang-WEM Format)
 Text runs in the bottom border or title line:
-- Format pattern: `PAGE TOTAL <TotalPages> ... <DrawingCode> ... 4 <InternalPage> 2`
+- Format pattern: `PAGE TOTAL <TotalPages> ... <DrawingCode> ... 4 <InternalPage> 2` (where `<TotalPages>` is `1000` or `1400`, regex `\b(?:1000|1400)\b[\s\S]{1,30}?\b4\b\s+(\d{3,4})\s+2`)
 - Or explicit Chinese page token: `页数 <InternalPage>` (excluding `总页数`)
 - Equipment markers: `TOWARDS THE SILO FEEDING G0104_3`, `4_10.V`, `MCC14-01-M1`
 - Noise to filter out: Electrical ratings (`5.5KW`, `6.9A`, `380V`, `24VDC`, wire gauges).
@@ -133,17 +133,18 @@ flowchart TD
 ```
 
 ### Step 1: Ingestion & Cabinet Registration
-1. Save the new PDF to `data/<Tower Name>/泰国inteqc Cabinet drawing.pdf`.
+1. Save the drawing PDF to `data/<Tower Name>/INTELQCTower3.pdf` (or `泰国inteqc Cabinet drawing.pdf` for earlier drawings).
 2. Save the PLC Tag spreadsheet to `data/<Tower Name>/PLCTags.xlsx`.
-3. Open the PDF TOC (or scan first 30 pages) to determine cabinet internal page ranges.
-4. Add cabinet definitions to `cabinetRanges` in `build-pdf-mapping.cjs`:
+3. Open the PDF TOC (or scan first 54 pages) to determine cabinet internal page ranges and physical page boundaries.
+4. Add cabinet definitions to `cabinetRanges` in `build-pdf-mapping.cjs` using internal sheet bounds and physical PDF guards:
    ```javascript
-   tower3: [
-     { cabinet: 'CB', start: 3000, end: 3099 },
-     { cabinet: 'MCC1', start: 1, end: 3 },
-     { cabinet: 'MCC14', start: 1, end: 25 },
-     // ...
-   ]
+   { min: 100, max: 199, minPdf: 61, maxPdf: 64, cabinet: 'MCC1' },
+   { min: 200, max: 299, minPdf: 65, maxPdf: 108, cabinet: 'MCC2' },
+   { min: 1400, max: 1499, minPdf: 516, maxPdf: 566, cabinet: 'MCC16_17' },
+   { min: 4000, max: 4099, minPdf: 826, maxPdf: 891, cabinet: 'MCC27' },
+   { min: 2100, max: 2199, minPdf: 892, maxPdf: 927, cabinet: 'PLC' },
+   { min: 2100, max: 2510, minPdf: 1016, maxPdf: 1089, cabinet: 'LCB_4' },
+   // ...
    ```
 5. Register the tower in `data/towers.json` and in `src/app/page.js` if updating the landing page selector.
 
@@ -337,5 +338,153 @@ node system-audit.cjs
   2. In `page.js`, scope I/O point and drawing collection across distinct MCC lineups using machine name root compatibility (`areNamesCompatible(routeRoot, candidateRoot)`), preserving all legitimate multi-cabinet machines.
   3. In `page.js`, allow rendering when `points.length > 0 || drawingsSet.size > 0`, enabling drawing-only circuits to display their schematics with an empty I/O table.
 
+### Pitfall 16: Tower 3 Expansion to 1,400 Pages & Multi-Cabinet Boundary Guards
+- **Symptom**: When migrating Tower 3 from the 1,000-page drawing package to the updated 1,400-page package (`INTELQCTower3.pdf`), multiple issues arise:
+  1. Internal page numbers like sheet `2100` appear in multiple cabinets (`PLC` physical pages 892–927, `LCB_4` physical pages 1016–1089, and `LCB_6B` physical pages 1161–1230), causing cross-cabinet collisions if only sheet number ranges are checked.
+  2. Switchgear lineups were renamed/split (`MCC20_21` became `MCC21_22`, `MCC22_23` became `MCC23_24`, and `MCC24_25` became `MCC25_26`), but `PLCTags.xlsx` continues to use the canonical cabinet names (`MCC20_21`, etc.).
+  3. New switchgear lineups were added (`MCC16_17` for Extruding lines 1# & 2# at sheets 1400–1450, and `MCC27` for Liquid addition at sheets 4000–4063), shifting sheet numbers for later cabinets (+100 for MCC18–MCC19, +200 for remote LCB cabinets).
+  4. The Table of Contents expanded across 53 physical pages (pages 1–53 in the PDF), but the scanner loop previously stopped at page 40 (`i < 40`).
+- **Root Cause & Fix**:
+  1. **Enforce 32 Deterministic Physical PDF Bounds (`minPdf` / `maxPdf`)**:
+     Every cabinet entry in `cabinetRanges` for `tower3` must specify physical page boundaries (e.g. `MCC16_17`: minPdf 516, maxPdf 566; `PLC`: minPdf 892, maxPdf 927; `LCB_4`: minPdf 1016, maxPdf 1089; `LCB_6B`: minPdf 1161, maxPdf 1230; `LCB_10`: minPdf 1344, maxPdf 1377; `Field`: minPdf 1378, maxPdf 1400). `getCabinetForPage()` checks `pdfPageNum >= r.minPdf && pdfPageNum <= r.maxPdf` whenever bounds are defined.
+  2. **Canonical Aliasing in `parse-excel.cjs`**:
+     Map aliases in `getMappedCabinet()`:
+     ```javascript
+     'MCC20_21': 'MCC21_22',
+     'MCC22_23': 'MCC23_24',
+     'MCC24_25': 'MCC25_26',
+     ```
+     while preserving `PLCTags.xlsx` as canonical source of truth.
+  3. **Shifted Base Pages**: Update `CABINET_BASE_PAGES` to reflect shifted offsets (`MCC16_17`: 1400, `MCC21_22`: 1800, `MCC23_24`: 1900, `MCC25_26`: 2000, `MCC27`: 4000, `PLC`: 2100, `LCB_1`: 2200, etc.).
+  4. **Title Block Regex & TOC Loop Expansion**:
+     Update title regex to `\b(?:1000|1400)\b[\s\S]{1,30}?\b4\b\s+(\d{3,4})\s+2` and expand TOC scan to `for (let i = 0; i < 54 && i < res.pages.length; i++)`.
 
+### Pitfall 17: Cabinet Layout Sheet Filtering & Sub-Device / Component Suffix Normalization (`.F`, `_BQS`, `[UVW]`, `[AB]`, `_AH`)
+- **Symptom**:
+  1. Quick-access schematic pills (e.g. `Sheet 1806 • Starter Circuit`) opened mechanical structural cabinet layout diagrams (`柜体布置图` / `排布图` / Front & Back Mounting Plate) instead of genuine motor starter wiring schematics (`Sheet 1844`).
+  2. Search dropdown was cluttered with pseudo-component machine codes:
+     - Component designations: `3_35_KM`, `3_35_KA1`, `3_35_QF`, `3_35_BS2`, `3_35_SKM`.
+     - Sub-device tokens: `5_9.F` (forced cooling fan motor), `1_6_BQS` / `5_72_BQS` (choke / plug-up level switch), `7.3.W` / `4_10.V` (phase power lines), `2_9.A` / `2_9.B` (dual drive motors), `14.5_AH` (air hammer valve).
+     - Clicking these pseudo-machines navigated to `/machine/.../<code_with_suffix>` showing **"No I/O records found"**, while the actual electrical schematic was drawn for the parent machine (e.g. Sheet 513 drawn for `5_9 3KW 喂料器 Screw feeder`).
+- **Root Cause**:
+  1. `classifySchematicPage()` scanned component labels and ratings (`KM`, `QF`, `SKM`, `YKM`) printed on mechanical mounting plates and misclassified layout diagrams as "Starter Circuit". Additionally, `isSharedCardOrLayout` missed layout keywords (`布置`, `排布`, `安装板`, `mounting plate`).
+  2. Device tags and line scanner rules captured sub-device tags (`-5_9.F-W`, `1_6_BQS`, etc.) and created independent equipment drawing keys instead of normalizing to the parent machine code.
+  3. `parse-excel.cjs` indexed drawing keys without matching PLC I/O points as drawing-only pseudo-machines in `search-index.json`.
+- **Fix**:
+  1. **Top-Level Layout Detection**:
+     In `classifySchematicPage()`, immediately check for layout terms before circuit keywords:
+     ```javascript
+     if (t.includes('布置') || t.includes('排布') || t.includes('mounting plate') || t.includes('安装板') || t.includes('柜体布置') || t.includes('排布图') || t.includes('cabinet layout')) {
+       return { label: 'Cabinet Layout', type: 'layout' };
+     }
+     ```
+  2. **Strict Layout Exclusion**:
+     Never attach pages classified as `type === 'layout'` to `equipmentDrawings` across all towers (Tower 1, Tower 2 Phase 1 & 2, Tower 3).
+  3. **Comprehensive Sub-Device Suffix Normalization**:
+     Define `SUBDEVICE_SUFFIX_REGEX`:
+     ```javascript
+     const SUBDEVICE_SUFFIX_REGEX = /[\._](KM\d*|QF\d*|K\d*|ATS|KA\d*|KT\d*|BS\d*|BST\d*|BQS\d*|SKM\d*|YKM\d*|TA\d*|VF\d*|FR\d*|FU\d*|SA\d*|HL\d*|LL\d*|HA\d*|SQ\d*|SP\d*|ST\d*|BF\d*|BZSO\d*|PT\d*|TT\d*|LT\d*|QK\d*|SES\d*|PU\d*|YV\d*|SV\d*|AH\d*|F|[UVW]|[AB])$/i;
+
+     function stripSubdeviceSuffix(str) {
+       if (!str) return '';
+       let s = str;
+       while (SUBDEVICE_SUFFIX_REGEX.test(s)) {
+         s = s.replace(SUBDEVICE_SUFFIX_REGEX, '');
+       }
+       return s;
+     }
+     ```
+     - Strip suffixes during title, device tag (`-5_9.F-W`), line, and TOC scanning using `stripSubdeviceSuffix()`.
+     - Map drawings directly to the parent machine (e.g. Sheet 513 maps to parent machine `5_9`).
+     - Strictly purge all keys matching `SUBDEVICE_SUFFIX_REGEX` from `equipmentDrawings`.
+     - In `parse-excel.cjs`, guard `buildSearchIndex` to never index standalone keys matching `SUBDEVICE_SUFFIX_REGEX` as drawing-only machines in `search-index.json`.
+### Pitfall 18: Earthing Note Layout Collision, Wire Marker Search Bleed & Terminal Table Pill Pollution
+- **Symptom**:
+  1. Primary motor soft starters (e.g. Sheet 714 ABB PSTX570 250kW starter for `2_9`, and 20 other motors across Tower 3) completely vanished from the system.
+  2. Search dropdown was polluted with CAD cross-reference numbers (`719.21`, `719.42`), CT secondary branch ferrules (`2_9.1A`, `2_9.1B`), and sensor tags (`2_9TM1`).
+  3. Green terminal connection tables (`端子接线图` / `Sheet 708.a`) appeared as the default schematic pill labeled `PLC I/O Wiring`.
+  4. Machine pills lacked industry-standard electrical distinction, displaying generic labels (`PLC Control Circuit`, `Schematic Diagram`).
+- **Root Cause**:
+  1. ABB soft starter schematics contain standard earthing notes: `功能性接地 接到安装板上` ("Functional ground: connect to mounting plate"). Full-text inspection of `安装板` falsely classified genuine soft starter circuits as "Cabinet Layout" and dropped them.
+  2. Component prefixes (`PM`, `FU\d*`, `L\d*`, `U\d*`) were absent from device tag regex on Sheet 719, causing fallback line scanning to capture wire cross-references and ferrule lines as pseudo-machines in `search-index.json`.
+  3. Terminal tables were given Priority 2 in address mapping and captured PLC addresses before circuit schematics. In `page.js`, terminal tables sorted to index 0.
+- **Fix**:
+  1. **Strict Title Scoping for Layout & Shared Checks**: Scope `安装板` checks strictly to `pageTitle` or title blocks, NEVER general page text.
+  2. **Device Tag Expansion & Wire Marker Elimination**:
+     - Expand tag regex to match `-PM\d*`, `-L\d*`, `-U\d*`, `-FU\d*`.
+     - Filter CAD wire coordinates (`/^\d{3,4}\.\d{2,}$/`), secondary branch ferrules (`/[\._]\d+[A-Za-z]$/i`), and sensor wire tags (`/[\._]?TM\d+$/i`) in Rule 4, `equipmentDrawings`, and `buildSearchIndex()`.
+  3. **Terminal Table Priority Inversion & Pill Bar Exclusion**:
+     - Assign Priority 0 to terminal schedules (`.a`, `.b` sheets, `端子接线图`, `端子号`, `下端目标`, `上端目标`). Wiring schematics (Priority 2) always supersede terminal tables.
+     - In `page.js`, strictly reject sheets matching `/\.[a-z]$/i` from `drawingsSet`.
+  4. **9-Category Electrical Engineering Classification**:
+     - `⚡ Soft Starter Circuit` (`starter`)
+     - `⚡ Main Power Circuit` (`power`)
+     - `🔌 VFD Drive Circuit` (`vfd`)
+     - `🎛️ Motor Control Circuit` (`control`)
+     - `🛡️ Safety & Interlock` (`safety`)
+     - `🌡️ Temperature Monitoring` (`monitoring`)
+     - `📊 Power Metering` (`meter`)
+     - `⚙️ Auxiliary Controller` (`auxiliary`)
+     - `🔧 Valve & Actuator` (`valve`)
+  5. **Shared PLC Rack Card Table Isolation**:
+     - Keep shared PLC rack cards (`DO ZWP`, `AI ZWP` e.g. Sheets 753, 755) accessible via table row buttons without cluttering the top-level machine schematic pills bar.
+
+### Pitfall 19: Integer-Page Terminal Tables, Enclosure Box Layout Leaks, Sub-Code 0 Hierarchy & IEC Combined DOL Classification
+- **Symptom**:
+  1. Machine `11_7` still displayed green terminal connection tables (`Sheet 1549 • Schematic Diagram`) and mechanical field box outlines (`Sheet 3112 • PLC Control Circuit (Field)`), obscuring the genuine electrical schematic (`Sheet 1507`).
+  2. Machine `2_90` (`G1Hammermill_DoorSafety`) only showed 1 pill (`Sheet 716 • PLC I/O Wiring`), dropping Sheet 717 and parent Hammer Mill schematics, and defaulted to an unrelated sheet.
+  3. Combined DOL motor starter sheets (breaker `-QF` + contactor `-KM` + motor `3~M` along with control coils `A1/A2` + relays `-KA` + 24VDC/PLC signals) lacked specific IEC classification.
+- **Root Cause**:
+  1. Terminal schedule table Sheet 1549 had an integer page number (`1549`, not `.a`/`.b`), so suffix checks (`/\.[a-z]$/i`) missed it. Its content featured destination schedule headers (`下端目标`, `上端目标`, `端子号`, `端子接线`) and title block `=MCC18+-XMM1`. Similarly, Sheet 3112 was a mechanical enclosure layout for field control box `ECB2 膨化机现场箱 Extruder control Box` containing physical dimensions (700x150mm).
+  2. In `page.js`, `if (drawingsSet.size === 0)` inside the point iteration loop throttled point drawings to only 1 drawing, silently dropping Sheet 717. Additionally, `equipmentDrawings` indexed the drawings under base machine `2_9`, while `PLCTags` cataloged safety door interlock signals under sub-code `2_90`.
+- **Fix**:
+  1. **Content-Aware Terminal Schedule & Layout Detection**:
+     - In `classifySchematicPage()`, flag tabular destination schedules containing `下端目标`, `上端目标`, `端子号`, `端子接线`, `端子图`, `端子排`, or title block pattern `/=-?[a-z0-9_]+\+-x[a-z0-9_]+/i` as `type: 'terminal'`.
+     - Flag mechanical layouts containing `现场箱`, `control box`, `外形`, `尺寸` as `type: 'layout'`.
+     - Strictly filter out `type === 'terminal'` and `type === 'layout'` from `equipmentDrawings`, `search-index.json`, and `page.js`.
+  2. **IEC Combined DOL Motor Starter & Control Classification**:
+     - Detect combined DOL branches: `isPowerCircuit && isControlCircuit` -> label `⚡ Motor Starter & Control`, type `starter`.
+  3. **Sub-Code (`base + '0'`) Drawing Inheritance & Multi-Point Drawing Collection**:
+     - Remove `if (drawingsSet.size === 0)` in `page.js` so all distinct non-terminal points (Sheet 716 and Sheet 717) add their schematics.
+     - Look up genuine classification labels and types from `equipmentDrawings` for point drawings.
+     - For sub-codes ending with `'0'` (e.g. `2_90` -> `2_9`, `5_90` -> `5_9`, `12_10` -> `12_1`), inherit parent machine drawings.
+     - Set initial active drawing to prefer the sheet where the machine's I/O points are wired (Sheet 716 for `2_90`).
+
+### Pitfall 20: Power Metering Transducer Over-Classification, Speed & Level Sensor Generalization, and MCC Switchgear Prioritization
+- **Symptom**:
+  1. Motor starter circuits equipped with auxiliary 4–20mA current transducers (`电流变送器`, e.g. Sheet 1432 for `10_36` 5.5kW Elevator, and 36 other motor starter sheets) were misclassified as `📊 Power Metering` rather than `⚡ Motor Starter & Control`.
+  2. Motor starter circuits with emergency stop pushbuttons (`-SES`, `E-STOP`) or access door interlocks (`门保`) were accidentally captured by `Safety & Interlock` before motor starter evaluation.
+  3. Shaft speed detection circuits (`提升机测速`, `刮板机测速`, `绞龙测速`, `测速开关`, `-BST`) across Tower 2 and Tower 3 and silo level sensor circuits (`上料位`, `下料位`, `高料位`, `低料位`, `-HL`, `-LL`) were lumped into generic `Schematic Diagram`.
+  4. Multi-motor screw feeder sheets (`配料绞龙`) with contactors and overloads lacked circuit breakers on the drawing, failing power circuit detection.
+  5. Sheet 3214 in Tower 2 failed motor kW regex due to trailing underscore (`2.2KW_摊布器`).
+  6. Alphabetical cabinet sorting caused remote I/O junction boxes (`LCB_1`, `LCB_10`) to precede main power switchgear cabinets (`MCC16_17`). Clicking machine `10_36` routed to `LCB_1` and displayed secondary sensor tag `E1Elevator_Speed` instead of the main MCC drive cabinet and machine name (`E1Elevator_Running`).
+- **Root Cause**:
+  1. `textLower.includes('电流变送器')` in Step 3 captured motor starters equipped with auxiliary current transducers. Genuine power metering requires multifunction digital power meters (`PZ80`, `Acrel`, `WPJ`, etc.).
+  2. Safety & Interlock step preceded Combined Motor Starter & Control, so any motor sheet with `E-STOP` or `门保` matched safety first.
+  3. Lack of dedicated `speed` and `level` classification categories.
+  4. Multi-motor screw conveyor sheets had `-KM` and `-FR` without `-QF` on the same page.
+  5. `\b\d+(\.\d+)?kw\b` regex failed when followed by an underscore `_` (word character).
+  6. PLCTags and candidate sorting sorted cabinets alphabetically.
+- **Fix**:
+  1. **Strict Power Metering Scope**:
+     - Remove `电流变送器` from Step 3. Reserve `📊 Power Metering` (`meter`) strictly for multifunction meters (`pz80`, `acrel`, `安科瑞`, `测量电量`, `电量计量`, `wpj`, `pj1`, `电度`).
+  2. **Dedicated Speed & Level Categories**:
+     - `📡 Speed Monitoring` (`speed`): Detect `titleLower.includes('测速') || titleLower.includes('speed') || textLower.includes('测速开关') || textLower.includes('提升机测速') || textLower.includes('刮板机测速') || textLower.includes('绞龙测速') || textLower.includes('速度开关') || /-[a-z0-9_\.]*-bst\b/i.test(text)`.
+     - `📡 Level Sensor Circuit` (`level`): Detect `titleLower.includes('料位') || titleLower.includes('level') || textLower.includes('上料位') || textLower.includes('下料位') || textLower.includes('高料位') || textLower.includes('低料位') || textLower.includes('阻旋料位') || textLower.includes('音叉料位') || /-[a-z0-9_\.]*-(hl|ll)\b/i.test(text)`.
+     - Add `speed` and `level` icon support (`📡`) to schematic pill rendering in `page.js`.
+  3. **Motor Starter Precedence over Safety**:
+     - Evaluate combined motor sheets and mixer control circuits (`hasPowerContactor || hasMotor || hasControlCoils || isScrewFeederPower`) before `Safety & Interlock` so incidental `门保` or `E-STOP` tokens do not swallow motor starter schematics.
+  4. **Multi-Motor Feeder & Power Feeder Recognition**:
+     - Recognize `配料绞龙` with contactors/overloads as `⚡ Main Power Circuit` (`power`).
+     - Recognize field scale and coater power distribution (`打包秤电源`, `打包称供电`, `喷涂机供电`) as `⚡ Power Distribution Circuit` (`power`).
+  5. **Underscore-Safe Motor Rating Regex**:
+     - Update motor kW regex to `/(?:\b|_)\d+(?:\.\d+)?kw(?:\b|_)/i` to support Sheet 3214 (`2.2KW_摊布器`).
+  6. **MCC Cabinet Priority over LCB Remote Junction Boxes**:
+     - Define `getCabinetPriority(cab)`: MCC (100) > PLC (80) > RCB (60) > LCB (40) > Field/Box (20).
+     - Prioritize MCC cabinets in candidate matching, PLCTags ordering, and search-index cabinet sorting.
+     - When setting `entry.name`, if current name is from an auxiliary sensor (ends in `_Speed`, `_Ols`, `_Cls`, `_Offset...`) and an MCC point is available, prefer the MCC equipment name.
+     - In `page.js`, resolve `primaryPoint` preferring non-auxiliary points matching the current route cabinet.
+  7. **Tower 3 Letter-Prefixed Equipment Codes (`LA`, `LW`, `Y`)**:
+     - Equipment codes in `MCC27` (Liquid addition line) use letter prefixes (`LA101_1`, `LW101`, `LA901_1`, etc.).
+     - Title and device tag regexes in `build-pdf-mapping.cjs` must support `(?:LA|LW|Y)[0-9]+(?:[_\.][0-9]+)?` to ensure liquid addition motor starters and level sensors are properly mapped into `equipmentDrawings`.
 

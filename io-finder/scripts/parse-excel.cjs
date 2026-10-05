@@ -30,7 +30,7 @@ const CABINET_BASE_PAGES = {
   'MCC3': 300,
   'MCC4': 400,
   'MCC5': 500,
-  'MCC6': 510,
+  'MCC6': 520,
   'MCC7': 600,
   'MCC8_9': 700,
   'MCC10': 800,
@@ -38,25 +38,52 @@ const CABINET_BASE_PAGES = {
   'MCC12_13': 1000,
   'MCC14': 1200,
   'MCC15': 1300,
-  'MCC18': 1400,
-  'MCC19': 1500,
-  'MCC20_21': 1600,
-  'MCC22_23': 1700,
-  'MCC24_25': 1800,
-  'PLC': 1900,
-  'LCB_1': 2000,
-  'LCB_2': 2100,
-  'LCB_4': 2200,
-  'LCB_5': 2300,
-  'LCB_6A': 2400,
-  'LCB_6B': 2500,
-  'LCB_8': 2600,
-  'LCB_9': 2700,
-  'LCB_10': 2800,
-  'CB': 3000,
+  'MCC16_17': 1400,
+  'MCC18': 1500,
+  'MCC19': 1600,
+  'MCC20': 1700,
+  'MCC21_22': 1800,
+  'MCC23_24': 1900,
+  'MCC25_26': 2000,
+  'MCC27': 4000,
+  'PLC': 2100,
+  'LCB_1': 2200,
+  'LCB_2': 2300,
+  'LCB_4': 2400,
+  'LCB_5': 2511,
+  'LCB_6A': 2600,
+  'LCB_6B': 2700,
+  'LCB_8': 2800,
+  'LCB_9': 2900,
+  'LCB_10': 3000,
+  'Field': 3100,
 };
 
 // ──────────────────────── Normalization Helpers ────────────────────────
+
+const SUBDEVICE_SUFFIX_REGEX = /[\._](KM\d*|QF\d*|K\d*|ATS|KA\d*|KT\d*|BS\d*|BST\d*|BQS\d*|SKM\d*|YKM\d*|TA\d*|VF\d*|FR\d*|FU\d*|SA\d*|HL\d*|LL\d*|HA\d*|SQ\d*|SP\d*|ST\d*|BF\d*|BZSO\d*|PT\d*|TT\d*|LT\d*|QK\d*|SES\d*|PU\d*|YV\d*|SV\d*|AH\d*|F|[UVW]|[AB])$/i;
+
+function stripSubdeviceSuffix(str) {
+  if (!str) return '';
+  let s = str;
+  while (SUBDEVICE_SUFFIX_REGEX.test(s)) {
+    s = s.replace(SUBDEVICE_SUFFIX_REGEX, '');
+  }
+  return s;
+}
+
+const IEC_SUFFIX_REGEX = SUBDEVICE_SUFFIX_REGEX;
+
+function isWireMarkerOrCoordinate(str) {
+  if (!str) return false;
+  // CAD wire coordinates like 719.21, 719.42, 714.22
+  if (/^\d{3,4}\.\d{2,}$/.test(str)) return true;
+  // Branch ferrules like 2_9.1A, 2_9.1B, 2_9.1a
+  if (/[\._]\d+[A-Za-z]$/i.test(str)) return true;
+  // Sensor tags like 2_9TM1, 2_9TM2
+  if (/[\._]?TM\d+$/i.test(str)) return true;
+  return false;
+}
 
 function normalizeCode(code, locationId) {
   if (!code) return '';
@@ -317,6 +344,9 @@ function getMappedCabinet(cabinetName) {
     '3#烘干': 'Dryer_3',
     '4#膨化': 'Extruder_4',
     '4#烘干': 'Dryer_4',
+    'MCC20_21': 'MCC21_22',
+    'MCC22_23': 'MCC23_24',
+    'MCC24_25': 'MCC25_26',
   };
   if (aliases[clean]) return aliases[clean];
 
@@ -804,6 +834,23 @@ function extractMcc(cabStr) {
   return m ? m[1].toUpperCase().replace(/[_\-]/g, '') : null;
 }
 
+function getCabinetPriority(cab) {
+  if (!cab) return 0;
+  const c = String(cab).toUpperCase();
+  if (c.startsWith('MCC')) return 100;
+  if (c.startsWith('PLC')) return 80;
+  if (c.startsWith('RCB')) return 60;
+  if (c.startsWith('LCB')) return 40;
+  if (c.startsWith('FIELD') || c.startsWith('BOX')) return 20;
+  return 50;
+}
+
+function isAuxSensorName(name) {
+  if (!name) return false;
+  return /_(Speed|Ols|Cls|LossSpeed|Offset[A-Za-z]+|Belt[A-Za-z]+|Alignment)\b/i.test(name) ||
+         name.endsWith('_Speed') || name.endsWith('_Ols') || name.endsWith('_Cls');
+}
+
 function getMachineRoot(name) {
   if (!name) return '';
   const clean = name.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
@@ -882,33 +929,47 @@ function buildSearchIndex(locations) {
           allEntries.push(matched);
         }
 
-        // Update name if current entry has empty name but this row has one
-        if (!matched.name && io.equipmentName) {
+        // Update name if current entry has empty name, or if current name was from an LCB auxiliary sensor
+        // (e.g. ends in _Speed, _Ols, _Cls) and this row is in an MCC cabinet or has a cleaner equipment name
+        if (!matched.name) {
           matched.name = io.equipmentName;
+        } else if (isAuxSensorName(matched.name)) {
+          if (io.cabinet && io.cabinet.toUpperCase().startsWith('MCC')) {
+            matched.name = io.equipmentName;
+          } else if (io.equipmentName && !isAuxSensorName(io.equipmentName)) {
+            matched.name = io.equipmentName;
+          }
         }
         if (io.signalName) matched.signals.add(io.signalName);
         if (io.address) matched.addresses.add(io.address);
         matched.types.add(io.type);
         matched.cabinets.add(io.cabinet);
         if (io.drawingPage) {
-          matched.drawings.add(JSON.stringify({
-            cabinet: io.cabinet,
-            page: io.drawingPage,
-            internalPage: io.internalPage,
-            drawingPdfUrl: io.drawingPdfUrl
-          }));
+          if (!/\.[a-z]$/i.test(io.internalPage || '')) {
+            matched.drawings.add(JSON.stringify({
+              cabinet: io.cabinet,
+              page: io.drawingPage,
+              internalPage: io.internalPage,
+              drawingPdfUrl: io.drawingPdfUrl
+            }));
+          }
         }
       }
     }
 
     // Also include drawings from loc.equipmentDrawings into the search index
     if (loc.equipmentDrawings) {
-      for (const [eqCode, sheetList] of Object.entries(loc.equipmentDrawings)) {
+      for (const [rawEqCode, sheetList] of Object.entries(loc.equipmentDrawings)) {
         if (!Array.isArray(sheetList) || sheetList.length === 0) continue;
+        if (SUBDEVICE_SUFFIX_REGEX.test(rawEqCode) || isWireMarkerOrCoordinate(rawEqCode)) continue;
+        const eqCode = stripSubdeviceSuffix(rawEqCode);
+        if (!eqCode || SUBDEVICE_SUFFIX_REGEX.test(eqCode) || isWireMarkerOrCoordinate(eqCode)) continue;
+
         const baseKey = eqCode + '|' + loc.id;
         const candidates = entriesByCodeLoc.get(baseKey);
         if (candidates && candidates.length > 0) {
           for (const s of sheetList) {
+            if (s.type === 'layout' || s.type === 'terminal' || /\.[a-z]$/i.test(s.internalPage || '')) continue;
             const dwgObj = {
               cabinet: s.cabinet,
               page: s.page,
@@ -917,28 +978,55 @@ function buildSearchIndex(locations) {
             };
             const dwgJson = JSON.stringify(dwgObj);
             let target = candidates[0];
-            if (candidates.length > 1 && s.cabinet) {
-              const sMcc = extractMcc(s.cabinet);
-              const found = candidates.find(c => {
-                if (c.cabinets.has(s.cabinet)) return true;
-                const cMcc = [...c.cabinets].map(extractMcc).find(Boolean);
-                return sMcc && cMcc && sMcc === cMcc;
-              });
-              if (found) target = found;
+            if (candidates.length > 1) {
+              if (s.cabinet) {
+                const sMcc = extractMcc(s.cabinet);
+                const found = candidates.find(c => {
+                  if (c.cabinets.has(s.cabinet)) return true;
+                  const cMcc = [...c.cabinets].map(extractMcc).find(Boolean);
+                  return sMcc && cMcc && sMcc === cMcc;
+                });
+                if (found) target = found;
+              }
+              // Prioritize candidate with MCC cabinet
+              if (!target || target === candidates[0]) {
+                const mccCandidate = candidates.find(c => [...c.cabinets].some(cab => cab && cab.toUpperCase().startsWith('MCC')));
+                if (mccCandidate) target = mccCandidate;
+              }
             }
             target.drawings.add(dwgJson);
             if (s.cabinet) target.cabinets.add(s.cabinet);
           }
+
+          // If there is a sub-code candidate (e.g. 2_90 for parent 2_9), also attach parent schematics
+          const subCandidate = entriesByCodeLoc.get(eqCode + '0|' + loc.id);
+          if (subCandidate && subCandidate.length > 0) {
+            for (const s of sheetList) {
+              if (s.type === 'layout' || s.type === 'terminal' || /\.[a-z]$/i.test(s.internalPage || '')) continue;
+              const dwgObj = {
+                cabinet: s.cabinet,
+                page: s.page,
+                internalPage: s.internalPage,
+                drawingPdfUrl: s.drawingPdfUrl
+              };
+              subCandidate[0].drawings.add(JSON.stringify(dwgObj));
+            }
+          }
         } else {
-          // Drawing-only equipment (e.g. 5.41 in Tower 3)
+          // Drawing-only equipment (e.g. 11_7 or 5.41 in Tower 3)
+          if (SUBDEVICE_SUFFIX_REGEX.test(rawEqCode) || SUBDEVICE_SUFFIX_REGEX.test(eqCode) || isWireMarkerOrCoordinate(eqCode) || isWireMarkerOrCoordinate(rawEqCode)) continue;
+
+          const validSheets = sheetList.filter(s => s.type !== 'layout' && s.type !== 'terminal' && !/\.[a-z]$/i.test(s.internalPage || ''));
+          if (validSheets.length === 0) continue;
+
           const newEntry = {
             code: eqCode,
-            name: sheetList[0].label || 'Schematic Diagram',
+            name: validSheets[0].label || 'Schematic Diagram',
             signals: new Set(),
-            types: new Set([sheetList[0].type || 'schematic']),
-            cabinets: new Set(sheetList.map(s => s.cabinet).filter(Boolean)),
+            types: new Set([validSheets[0].type || 'schematic']),
+            cabinets: new Set(validSheets.map(s => s.cabinet).filter(Boolean)),
             addresses: new Set(),
-            drawings: new Set(sheetList.map(s => JSON.stringify({
+            drawings: new Set(validSheets.map(s => JSON.stringify({
               cabinet: s.cabinet,
               page: s.page,
               internalPage: s.internalPage,
@@ -957,11 +1045,34 @@ function buildSearchIndex(locations) {
   // Convert Sets to sorted Arrays
   const index = [];
   for (const entry of allEntries) {
-    const drawingCabs = new Set([...entry.drawings].map(d => JSON.parse(d).cabinet).filter(Boolean));
+    const rawDrawings = [...entry.drawings].map(JSON.parse);
+    const dedupedMap = new Map();
+    for (const d of rawDrawings) {
+      const key = d.drawingPdfUrl || d.internalPage || `${d.cabinet}_${d.page}`;
+      if (!dedupedMap.has(key)) {
+        dedupedMap.set(key, d);
+      } else {
+        // If existing has mismatched cabinet and d has matching cabinet from image path, prefer d
+        if (d.drawingPdfUrl && d.cabinet && d.drawingPdfUrl.includes(`/${d.cabinet}_`)) {
+          dedupedMap.set(key, d);
+        }
+      }
+    }
+    const cleanDrawings = Array.from(dedupedMap.values());
+    const drawingCabs = new Set(cleanDrawings.map(d => d.cabinet).filter(Boolean));
     const sortedCabinets = [...entry.cabinets].sort((a, b) => {
+      const isMccA = a.toUpperCase().startsWith('MCC');
+      const isMccB = b.toUpperCase().startsWith('MCC');
+      if (isMccA !== isMccB) return isMccA ? -1 : 1;
+
       const hasA = drawingCabs.has(a) ? 1 : 0;
       const hasB = drawingCabs.has(b) ? 1 : 0;
       if (hasA !== hasB) return hasB - hasA;
+
+      const prioA = getCabinetPriority(a);
+      const prioB = getCabinetPriority(b);
+      if (prioA !== prioB) return prioB - prioA;
+
       return a.localeCompare(b, undefined, { numeric: true });
     });
 
@@ -973,7 +1084,7 @@ function buildSearchIndex(locations) {
       addresses: [...entry.addresses].sort(),
       types: [...entry.types].sort(),
       cabinets: sortedCabinets,
-      drawings: [...entry.drawings].map(JSON.parse),
+      drawings: cleanDrawings,
       location: entry.location,
       locationId: entry.locationId,
     });
@@ -1170,8 +1281,18 @@ function main() {
         const cabinetMap = parsePLCTagsSheet(wb, sheetName, config.locationId);
         let sheetTotal = 0;
 
-        // Sort cabinets alphabetically for consistent output
-        const sortedCabinets = [...cabinetMap.keys()].sort();
+        // Sort cabinets by priority: MCC cabinets first, then PLC, RCB, LCB, Field
+        const sortedCabinets = [...cabinetMap.keys()].sort((a, b) => {
+          const isMccA = a.toUpperCase().startsWith('MCC');
+          const isMccB = b.toUpperCase().startsWith('MCC');
+          if (isMccA !== isMccB) return isMccA ? -1 : 1;
+
+          const prioA = getCabinetPriority(a);
+          const prioB = getCabinetPriority(b);
+          if (prioA !== prioB) return prioB - prioA;
+
+          return a.localeCompare(b, undefined, { numeric: true });
+        });
         for (const cabName of sortedCabinets) {
           const ioPoints = cabinetMap.get(cabName);
           sheetTotal += ioPoints.length;
@@ -1204,7 +1325,10 @@ function main() {
     const locMap = pdfPageMap[config.locationId] || {};
     const equipmentDrawings = {};
     if (locMap.equipmentDrawings) {
-      for (const [code, sheetList] of Object.entries(locMap.equipmentDrawings)) {
+      for (const [rawCode, sheetList] of Object.entries(locMap.equipmentDrawings)) {
+        if (SUBDEVICE_SUFFIX_REGEX.test(rawCode) || isWireMarkerOrCoordinate(rawCode)) continue;
+        const code = stripSubdeviceSuffix(rawCode);
+        if (!code || SUBDEVICE_SUFFIX_REGEX.test(code) || isWireMarkerOrCoordinate(code)) continue;
         equipmentDrawings[code] = sheetList.map(s => {
           let drawingPdfUrl = null;
           let drawingPage = null;

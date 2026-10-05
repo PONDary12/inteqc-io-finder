@@ -14,6 +14,17 @@ function normalizeCode(code, locId) {
   return s.replace(/[\s_\-\/\\]+/g, '.');
 }
 
+const SUBDEVICE_SUFFIX_REGEX = /[\._](KM\d*|QF\d*|K\d*|ATS|KA\d*|KT\d*|BS\d*|BST\d*|BQS\d*|SKM\d*|YKM\d*|TA\d*|VF\d*|FR\d*|FU\d*|SA\d*|HL\d*|LL\d*|HA\d*|SQ\d*|SP\d*|ST\d*|BF\d*|BZSO\d*|PT\d*|TT\d*|LT\d*|QK\d*|SES\d*|PU\d*|YV\d*|SV\d*|AH\d*|F|[UVW]|[AB])$/i;
+
+function stripSubdeviceSuffix(str) {
+  if (!str) return '';
+  let s = str;
+  while (SUBDEVICE_SUFFIX_REGEX.test(s)) {
+    s = s.replace(SUBDEVICE_SUFFIX_REGEX, '');
+  }
+  return s;
+}
+
 export default function SearchHome() {
   const router = useRouter();
   const [searchIndex, setSearchIndex] = useState([]);
@@ -107,7 +118,17 @@ export default function SearchHome() {
       if (itemCode === trimmedQuery || (itemNormCode && itemNormCode === itemNormQuery)) {
         score += 10000;
       }
-      // 1b. Match with all delimiters stripped e.g. typing "ag3101" matches "AG-3101" (8,000)
+      // 1b. Subdevice suffix match: typing "5_9.F" matches parent "5_9", "1_6_BQS" matches "1_6" (9,000)
+      else if (stripSubdeviceSuffix(trimmedQuery) && stripSubdeviceSuffix(trimmedQuery) !== trimmedQuery) {
+        const strippedQuery = stripSubdeviceSuffix(trimmedQuery);
+        const strippedNormQuery = normalizeCode(strippedQuery, item.locationId);
+        if (itemCode === strippedQuery || (itemNormCode && itemNormCode === strippedNormQuery)) {
+          score += 9000;
+        } else if (itemCode.startsWith(strippedQuery) || (itemNormCode && itemNormCode.startsWith(strippedNormQuery))) {
+          score += 4500;
+        }
+      }
+      // 1c. Match with all delimiters stripped e.g. typing "ag3101" matches "AG-3101" (8,000)
       else if (item.locationId !== 'tower3' && itemNormCode && itemNormQuery && itemNormCode.replace(/\./g, '') === itemNormQuery.replace(/\./g, '')) {
         score += 8000;
       }
@@ -206,6 +227,19 @@ export default function SearchHome() {
       const bestMatch = suggestions[0];
       const codeParam = bestMatch.code || bestMatch.name || "GENERAL";
       router.push(`/machine/${bestMatch.locationId}/${encodeURIComponent(bestMatch.cabinets[0] || 'PLC')}/${encodeURIComponent(codeParam)}`);
+    } else {
+      // Fallback: If user entered subdevice suffix not directly matched (e.g. 5_9.F)
+      const stripped = stripSubdeviceSuffix(trimmedQuery);
+      if (stripped && stripped !== trimmedQuery) {
+        const fallback = searchIndex.find(item => {
+          const itemCode = (item.code || '').toLowerCase();
+          return itemCode === stripped || (item.normalizedCode && item.normalizedCode === normalizeCode(stripped, item.locationId));
+        });
+        if (fallback) {
+          const codeParam = fallback.code || fallback.name || "GENERAL";
+          router.push(`/machine/${fallback.locationId}/${encodeURIComponent(fallback.cabinets[0] || 'PLC')}/${encodeURIComponent(codeParam)}`);
+        }
+      }
     }
   };
 

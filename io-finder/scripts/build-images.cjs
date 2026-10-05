@@ -31,7 +31,7 @@ const LOCATIONS = [
   {
     locationId: 'tower3',
     folder: 'Tower 3',
-    pdfFile: '泰国inteqc Cabinet drawing.pdf',
+    pdfFile: 'INTELQCTower3.pdf',
   }
 ];
 
@@ -170,8 +170,17 @@ async function main() {
   console.log('╚════════════════════════════════════════════════╝\n');
 
   const isForce = process.argv.includes('--force');
-  const targetLoc = process.argv.find(a => a.startsWith('--location='))?.split('=')[1];
-  const targetCab = process.argv.find(a => a.startsWith('--cabinet='))?.split('=')[1];
+  const getArg = (name) => {
+    const eqArg = process.argv.find(a => a.startsWith(`--${name}=`));
+    if (eqArg) return eqArg.split('=')[1];
+    const idx = process.argv.indexOf(`--${name}`);
+    if (idx !== -1 && idx + 1 < process.argv.length && !process.argv[idx + 1].startsWith('--')) {
+      return process.argv[idx + 1];
+    }
+    return undefined;
+  };
+  const targetLoc = getArg('location');
+  const targetCab = getArg('cabinet');
 
   if (isForce) console.log('⚡ Force re-render mode enabled: stale files will be cleaned.');
   if (targetLoc) console.log(`🎯 Filtering location: ${targetLoc}`);
