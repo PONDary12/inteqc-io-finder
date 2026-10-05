@@ -25,6 +25,66 @@ function stripSubdeviceSuffix(str) {
   return s;
 }
 
+function findScadaAlternative(rawQuery, index) {
+  if (!rawQuery || rawQuery.trim().length < 2) return null;
+  const q = rawQuery.trim().toUpperCase();
+
+  // If rawQuery already directly matches an equipment code in Tower 3, it is an authentic code (e.g. 11.24)
+  const hasExactMatch = index.some(item => 
+    item.locationId === 'tower3' && 
+    item.code && 
+    item.code.toUpperCase() === q
+  );
+  if (hasExactMatch) return null;
+
+  const candidates = [];
+
+  // 1. Dot to underscore (e.g. 5.89 -> 5_89, 10.36 -> 10_36, 2.90 -> 2_90)
+  if (q.includes('.')) {
+    candidates.push(q.replace(/\./g, '_'));
+  }
+
+  // 2. Underscore to dot (e.g. 1_3 -> 1.3, 1_21 -> 1.21)
+  if (q.includes('_')) {
+    candidates.push(q.replace(/_/g, '.'));
+  }
+
+  // 3. V6_4_46 -> V6.4_46 (replace first underscore between numbers with dot)
+  if (/^[A-Z]*\d+_\d+_\d+/i.test(q)) {
+    candidates.push(q.replace(/_/, '.'));
+  }
+
+  // 4. V6.4.46 -> V6.4_46 (replace second dot with underscore)
+  if (/^[A-Z]*\d+\.\d+\.\d+/i.test(q)) {
+    const parts = q.split('.');
+    candidates.push(parts[0] + '.' + parts[1] + '_' + parts.slice(2).join('_'));
+  }
+
+  // 5. 3_8_VH1 -> 3.8_VH1
+  if (/^\d+_\d+_[A-Z0-9]+/i.test(q)) {
+    candidates.push(q.replace(/_/, '.'));
+  }
+
+  const uniqueCandidates = Array.from(new Set(candidates)).filter(c => c !== q);
+
+  for (const cand of uniqueCandidates) {
+    const match = index.find(item => 
+      item.locationId === 'tower3' && 
+      item.code && 
+      item.code.toUpperCase() === cand
+    );
+    if (match) {
+      return {
+        original: rawQuery.trim(),
+        suggested: match.code,
+        name: match.name || ''
+      };
+    }
+  }
+
+  return null;
+}
+
 export default function SearchHome() {
   const router = useRouter();
   const [searchIndex, setSearchIndex] = useState([]);
@@ -197,6 +257,10 @@ export default function SearchHome() {
   }
 
   const suggestions = scoredItems.slice(0, 8).map(s => s.item);
+
+  const scadaAlternative = (selectedLocation === "tower3" || selectedLocation === "all") 
+    ? findScadaAlternative(query, searchIndex) 
+    : null;
 
   // Handle keyboard navigation for suggestions
   const handleKeyDown = (e) => {
@@ -489,6 +553,43 @@ export default function SearchHome() {
                   </div>
                 )}
               </div>
+
+              {/* Modern SaaS "Did you mean?" when 0 results found but a SCADA alternative exists */}
+              {query && suggestions.length === 0 && scadaAlternative && (selectedLocation === "tower3" || selectedLocation === "all") && (
+                <div style={styles.didYouMeanContainer}>
+                  <div style={styles.didYouMeanLeft}>
+                    <span style={styles.didYouMeanLabel}>Did you mean:</span>
+                    <button
+                      type="button"
+                      style={styles.didYouMeanCodeTag}
+                      onMouseDown={(e) => e.preventDefault()}
+                      onClick={() => {
+                        setQuery(scadaAlternative.suggested);
+                        setShowSuggestions(true);
+                        if (inputRef.current) inputRef.current.focus();
+                      }}
+                      title={`Click to switch to ${scadaAlternative.suggested}`}
+                    >
+                      {scadaAlternative.suggested}
+                    </button>
+                    {scadaAlternative.name && (
+                      <span style={styles.didYouMeanSubName}>({scadaAlternative.name})</span>
+                    )}
+                  </div>
+                  <button
+                    type="button"
+                    style={styles.didYouMeanSwitchBtn}
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={() => {
+                      setQuery(scadaAlternative.suggested);
+                      setShowSuggestions(true);
+                      if (inputRef.current) inputRef.current.focus();
+                    }}
+                  >
+                    <span>Switch to {scadaAlternative.suggested}</span>
+                  </button>
+                </div>
+              )}
             </div>
           )}
 
@@ -934,6 +1035,75 @@ const styles = {
     background: "var(--primary-light)",
     padding: "2px 8px",
     borderRadius: "var(--radius-full)",
+  },
+
+  // ── Modern SaaS "Did you mean?" (Linear / Vercel Red & White Theme) ──
+  didYouMeanContainer: {
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: "12px",
+    padding: "9px 16px",
+    marginTop: "10px",
+    background: "linear-gradient(135deg, #ffffff 0%, #fffbfb 100%)",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "#fee2e2",
+    borderRadius: "12px",
+    boxShadow: "0 4px 16px -2px rgba(204, 17, 17, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04)",
+    animation: "fadeIn 0.2s ease",
+  },
+  didYouMeanLeft: {
+    display: "flex",
+    alignItems: "center",
+    gap: "9px",
+    flexWrap: "wrap",
+  },
+  didYouMeanLabel: {
+    fontSize: "13px",
+    fontWeight: "500",
+    color: "#64748b",
+  },
+  didYouMeanCodeTag: {
+    display: "inline-flex",
+    alignItems: "center",
+    padding: "2px 9px",
+    background: "#fef2f2",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "#fca5a5",
+    borderRadius: "6px",
+    fontFamily: "var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace",
+    fontSize: "13.5px",
+    fontWeight: "700",
+    color: "#cc1111",
+    cursor: "pointer",
+    boxShadow: "0 1px 2px rgba(204, 17, 17, 0.06)",
+    transition: "all var(--transition-fast)",
+  },
+  didYouMeanSubName: {
+    fontSize: "12.5px",
+    fontWeight: "400",
+    color: "#94a3b8",
+  },
+  didYouMeanSwitchBtn: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "5px",
+    padding: "6px 14px",
+    fontSize: "12.5px",
+    fontWeight: "700",
+    color: "#ffffff",
+    background: "linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "rgba(185, 28, 28, 0.8)",
+    borderRadius: "8px",
+    cursor: "pointer",
+    boxShadow: "0 2px 8px rgba(220, 38, 38, 0.28)",
+    transition: "all var(--transition-fast)",
+    whiteSpace: "nowrap",
   },
 
   // ═══════════ BROWSE MODE ═══════════

@@ -488,3 +488,22 @@ node system-audit.cjs
      - Equipment codes in `MCC27` (Liquid addition line) use letter prefixes (`LA101_1`, `LW101`, `LA901_1`, etc.).
      - Title and device tag regexes in `build-pdf-mapping.cjs` must support `(?:LA|LW|Y)[0-9]+(?:[_\.][0-9]+)?` to ensure liquid addition motor starters and level sensors are properly mapped into `equipmentDrawings`.
 
+### Pitfall 21: WinCC SCADA vs PLC / Electrical Drawing Tag Separator Mismatch in Tower 3
+- **Symptom**:
+  1. Operators look up equipment directly from WinCC SCADA screens where machine tags use dots (e.g. `5.89`) and valve tags use pure underscores (e.g. `V6_4_46`).
+  2. Searching `5.89` or `V6_4_46` fails to find the target equipment directly because in electrical CAD schematics and PLC symbol tables, the tags are named `5_89` (underscores for machines) and `V6.4_46` (dot-separated unit hierarchy).
+  3. Hardcoding global dot-underscore replacement in the ranking model would cause cross-machine collisions (e.g. `1.3` vs `1_3`).
+- **Root Cause**:
+  - Muyang-WEM SCADA screens use differing naming standards between WinCC graphic object names and PLC tag symbols.
+- **Fix**:
+  1. **Preserve Deterministic Ranking Model**: Keep the exact 10-item search ranking model intact with zero alterations to standard scoring.
+  2. **Zero-Match Guard on SCADA Alternative (`findScadaAlternative`)**:
+     - If the user's raw query `q` already matches an existing equipment code in Tower 3 (e.g. `11.24` sensor in `LCB_8`, `1.3` in `LCB_8`, `1_3` in `MCC1`), `findScadaAlternative` returns `null` immediately to prevent false alerts on valid dual-code equipment.
+     - SCADA alternative is strictly evaluated when the search query yields **0 results** (`suggestions.length === 0`).
+     - Tests separator permutations (`5.89` $\rightarrow$ `5_89`, `V6_4_46` $\rightarrow$ `V6.4_46`, `10.36` $\rightarrow$ `10_36`).
+  3. **Modern SaaS "Did you mean?" UI (Linear / Vercel Red & White Theme)**:
+     - Replaced bulky cards and standing badges with a sleek, modern inline prompt:
+       `✨ Did you mean: [ 5_89 ] (Machine Name)  [ ⚡ Switch to 5_89 ]`
+     - Features 12px rounded corners, soft glow shadow, interactive monospace code pill in signature INTEQC Red (`#cc1111`), and a vibrant red gradient switch button.
+     - Clicking the code pill or switch button instantaneously populates the verified PLC tag without polluting the autocomplete ranking model.
+     - Removed standing guide badge when search is empty to maintain a clutter-free, fast interface.
