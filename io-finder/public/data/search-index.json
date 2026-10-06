@@ -75263,12 +75263,12 @@
   },
   {
     "code": "E0124_1",
-    "name": "PLC Control Circuit",
+    "name": "Main Power Circuit",
     "normalizedCode": "e0124.1",
     "signals": [],
     "addresses": [],
     "types": [
-      "control"
+      "power"
     ],
     "cabinets": [
       "MCC9_10"

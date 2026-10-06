@@ -507,3 +507,29 @@ node system-audit.cjs
      - Features 12px rounded corners, soft glow shadow, interactive monospace code pill in signature INTEQC Red (`#cc1111`), and a vibrant red gradient switch button.
      - Clicking the code pill or switch button instantaneously populates the verified PLC tag without polluting the autocomplete ranking model.
      - Removed standing guide badge when search is empty to maintain a clutter-free, fast interface.
+
+
+### Pitfall 22: Grinder Multi-Sheet Architecture, Incidental Valve Collisions, Alarm Contact Softstarter Misclassification & Multi-Sensor Monitoring
+- **Symptom**:
+  1. Grinder / Hammer Mill machine `G0104_3` (355kW grinder in Tower 2 Phase 1) displayed:
+     - Sheet 176 as `🔧 Valve & Actuator` (instead of `🎛️ Motor Control Circuit`).
+     - Sheet 178 as `⚡ Soft Starter Circuit` (instead of `📡 Sensors & Monitoring`).
+  2. Reversing conveyors `G0104_1` and `G0104_2` displayed Sheet 172 and Sheet 173 as `🔧 Valve & Actuator` (instead of `⚡ Motor Starter & Control`).
+- **Root Cause**:
+  1. High-power machines (e.g. 355kW Hammer Mill grinders) span 4-5 schematic sheets:
+     - Metering sheet (CTs + Acrel PZ80 power meter).
+     - Power & softstarter unit sheet (breaker, ABB PSTX720, bypass/main contactors).
+     - Motor control sheet (Start/Stop coils, run feedback, estop, current transducer).
+     - Sensor monitoring sheets (bearing temperature transmitters, chamber temperature, vibration sensor, door limit switches).
+  2. Motor control sheet (Sheet 176) contains an auxiliary flap/diverter solenoid valve (`换向电磁阀` / `YV1`). Because valve keyword matching (`电磁阀`) preceded motor control evaluation, Sheet 176 was misclassified as `Valve & Actuator`. The same occurred on reversing conveyors (`G0104_1`, `G0104_2`).
+  3. Sheet 178 contained vibration transmitter `VS1`, three temperature transmitters (`U2`, `U3`, `U4` for bearing & chamber temp), and door limit switches. However, it also contained an auxiliary dry alarm contact from the soft starter relay `KA12` (`软起故障` / `Softer Alarm`), triggering `Soft Starter Circuit` even though the actual softstarter unit was on Sheet 175.
+- **Fix**:
+  1. **Guarded Soft Starter Classification**:
+     - Do not classify as `Soft Starter Circuit` if the softstarter keyword is merely an auxiliary alarm contact (`软起故障` / `softer alarm`) without a soft starter power unit or power motor present.
+  2. **Multi-Sensor & Vibration Monitoring Recognition**:
+     - Expand sensor monitoring detection to cover vibration transmitters (`VS\d*`, `振动`, `vibration`) alongside RTD/temperature transmitters (`SBWR`, `PT100`, `测温`).
+     - When vibration and temperature sensors or multiple sensor transmitters are present, classify as `📡 Sensors & Monitoring` (`type: 'monitoring'`).
+  3. **Guarded Valve Classification**:
+     - If a drawing has 3-phase motor power (`3~M`, contactors `-KM`) or main motor control circuits (`START`, `RUNNING`, `BREAKER ON`, `ESTOP`), do not classify as `Valve & Actuator` due to incidental auxiliary solenoid valves.
+  4. **Dynamic Sensor Pill Rendering**:
+     - In `page.js`, render `📡` for `draw.type === 'monitoring'` with "Sensor" or "Monitoring" in the label, `🌡️` for temperature-only sheets, and `🎛️` for control circuits.

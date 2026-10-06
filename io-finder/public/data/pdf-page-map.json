@@ -8320,8 +8320,8 @@
         {
           "pdfPage": 64,
           "internalPage": "172",
-          "label": "Valve & Actuator",
-          "type": "valve",
+          "label": "Motor Starter & Control",
+          "type": "starter",
           "cabinet": "MCC1-2"
         }
       ],
@@ -8329,8 +8329,8 @@
         {
           "pdfPage": 65,
           "internalPage": "173",
-          "label": "Valve & Actuator",
-          "type": "valve",
+          "label": "Motor Starter & Control",
+          "type": "starter",
           "cabinet": "MCC1-2"
         }
       ],
@@ -8352,8 +8352,8 @@
         {
           "pdfPage": 68,
           "internalPage": "176",
-          "label": "Valve & Actuator",
-          "type": "valve",
+          "label": "Motor Control Circuit",
+          "type": "control",
           "cabinet": "MCC1-2"
         },
         {
@@ -8366,8 +8366,8 @@
         {
           "pdfPage": 70,
           "internalPage": "178",
-          "label": "Soft Starter Circuit",
-          "type": "starter",
+          "label": "Sensors & Monitoring",
+          "type": "monitoring",
           "cabinet": "MCC1-2"
         }
       ],
@@ -8402,8 +8402,8 @@
         {
           "pdfPage": 74,
           "internalPage": "182",
-          "label": "Valve & Actuator",
-          "type": "valve",
+          "label": "Motor Starter & Control",
+          "type": "starter",
           "cabinet": "MCC1-2"
         },
         {
@@ -9180,8 +9180,8 @@
         {
           "pdfPage": 228,
           "internalPage": "512",
-          "label": "Valve & Actuator",
-          "type": "valve",
+          "label": "Motor Starter & Control",
+          "type": "starter",
           "cabinet": "MCC7-8"
         }
       ],
@@ -9189,8 +9189,8 @@
         {
           "pdfPage": 229,
           "internalPage": "513",
-          "label": "Valve & Actuator",
-          "type": "valve",
+          "label": "Motor Starter & Control",
+          "type": "starter",
           "cabinet": "MCC7-8"
         }
       ],
@@ -9212,8 +9212,8 @@
         {
           "pdfPage": 232,
           "internalPage": "516",
-          "label": "Valve & Actuator",
-          "type": "valve",
+          "label": "Motor Control Circuit",
+          "type": "control",
           "cabinet": "MCC7-8"
         },
         {
@@ -9226,8 +9226,8 @@
         {
           "pdfPage": 234,
           "internalPage": "518",
-          "label": "Soft Starter Circuit",
-          "type": "starter",
+          "label": "Sensors & Monitoring",
+          "type": "monitoring",
           "cabinet": "MCC7-8"
         }
       ],
@@ -9262,8 +9262,8 @@
         {
           "pdfPage": 238,
           "internalPage": "522",
-          "label": "Valve & Actuator",
-          "type": "valve",
+          "label": "Motor Starter & Control",
+          "type": "starter",
           "cabinet": "MCC7-8"
         },
         {
@@ -9678,8 +9678,8 @@
         {
           "pdfPage": 326,
           "internalPage": "663",
-          "label": "PLC Control Circuit",
-          "type": "control",
+          "label": "Main Power Circuit",
+          "type": "power",
           "cabinet": "MCC9_10"
         }
       ],
@@ -23416,8 +23416,8 @@
         {
           "pdfPage": 199,
           "internalPage": "2311",
-          "label": "Valve & Actuator",
-          "type": "valve",
+          "label": "Motor Starter & Control",
+          "type": "starter",
           "cabinet": "MCCB3"
         }
       ],
@@ -23425,8 +23425,8 @@
         {
           "pdfPage": 200,
           "internalPage": "2312",
-          "label": "Valve & Actuator",
-          "type": "valve",
+          "label": "Motor Starter & Control",
+          "type": "starter",
           "cabinet": "MCCB3"
         }
       ],
@@ -23448,22 +23448,22 @@
         {
           "pdfPage": 203,
           "internalPage": "2315",
-          "label": "Valve & Actuator",
-          "type": "valve",
+          "label": "Motor Control Circuit",
+          "type": "control",
           "cabinet": "MCCB3"
         },
         {
           "pdfPage": 204,
           "internalPage": "2316",
-          "label": "Valve & Actuator",
-          "type": "valve",
+          "label": "Temperature Monitoring",
+          "type": "monitoring",
           "cabinet": "MCCB3"
         },
         {
           "pdfPage": 205,
           "internalPage": "2317",
-          "label": "Soft Starter Circuit",
-          "type": "starter",
+          "label": "Temperature Monitoring",
+          "type": "monitoring",
           "cabinet": "MCCB3"
         }
       ],
@@ -23577,8 +23577,8 @@
         {
           "pdfPage": 234,
           "internalPage": "2411",
-          "label": "Valve & Actuator",
-          "type": "valve",
+          "label": "Motor Starter & Control",
+          "type": "starter",
           "cabinet": "MCCB4"
         }
       ],
@@ -23586,8 +23586,8 @@
         {
           "pdfPage": 235,
           "internalPage": "2412",
-          "label": "Valve & Actuator",
-          "type": "valve",
+          "label": "Motor Starter & Control",
+          "type": "starter",
           "cabinet": "MCCB4"
         }
       ],
@@ -23609,8 +23609,8 @@
         {
           "pdfPage": 238,
           "internalPage": "2415",
-          "label": "Valve & Actuator",
-          "type": "valve",
+          "label": "Motor Control Circuit",
+          "type": "control",
           "cabinet": "MCCB4"
         },
         {
@@ -23623,8 +23623,8 @@
         {
           "pdfPage": 240,
           "internalPage": "2417",
-          "label": "Soft Starter Circuit",
-          "type": "starter",
+          "label": "Temperature Monitoring",
+          "type": "monitoring",
           "cabinet": "MCCB4"
         }
       ],
@@ -46372,8 +46372,8 @@
         {
           "pdfPage": 337,
           "internalPage": "716",
-          "label": "Motor Starter & Control",
-          "type": "starter",
+          "label": "Motor Control Circuit",
+          "type": "control",
           "cabinet": "MCC8_9"
         },
         {
@@ -46526,8 +46526,8 @@
         {
           "pdfPage": 354,
           "internalPage": "736",
-          "label": "Motor Starter & Control",
-          "type": "starter",
+          "label": "Motor Control Circuit",
+          "type": "control",
           "cabinet": "MCC8_9"
         },
         {
@@ -47278,8 +47278,8 @@
         {
           "pdfPage": 494,
           "internalPage": "1214",
-          "label": "Motor Starter & Control",
-          "type": "starter",
+          "label": "Motor Control Circuit",
+          "type": "control",
           "cabinet": "MCC14"
         },
         {
@@ -47995,8 +47995,8 @@
         {
           "pdfPage": 639,
           "internalPage": "1618",
-          "label": "Motor Starter & Control",
-          "type": "starter",
+          "label": "Motor Control Circuit",
+          "type": "control",
           "cabinet": "MCC19"
         },
         {
@@ -49613,8 +49613,8 @@
         {
           "pdfPage": 787,
           "internalPage": "2016",
-          "label": "Motor Starter & Control",
-          "type": "starter",
+          "label": "Motor Control Circuit",
+          "type": "control",
           "cabinet": "MCC25_26"
         },
         {
@@ -49767,8 +49767,8 @@
         {
           "pdfPage": 804,
           "internalPage": "2036",
-          "label": "Motor Starter & Control",
-          "type": "starter",
+          "label": "Motor Control Circuit",
+          "type": "control",
           "cabinet": "MCC25_26"
         },
         {

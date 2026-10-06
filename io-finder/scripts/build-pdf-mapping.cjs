@@ -333,14 +333,20 @@ function classifySchematicPage(text, title) {
   }
 
   // 4. Soft Starter Circuit (PSTX, ATS, 软起)
+  const hasMonitoringSensors = textLower.includes('sbwr') || textLower.includes('vibration') || textLower.includes('振动') || textLower.includes('测温') || textLower.includes('bearing temp') || textLower.includes('chamber temp');
+  const isSoftStarterAlarmOnly = (textLower.includes('软起故障') || textLower.includes('softer alarm') || textLower.includes('软起报警')) && !textLower.includes('pstx') && !textLower.includes('软起动器') && !titleLower.includes('软起');
+
   if (
-    titleLower.includes('软起') ||
-    titleLower.includes('soft start') ||
-    textLower.includes('pstx') ||
-    textLower.includes('-ats') ||
-    textLower.includes('软起动器') ||
-    textLower.includes('软起') ||
-    textLower.includes('soft start')
+    !isSoftStarterAlarmOnly &&
+    (
+      titleLower.includes('软起') ||
+      titleLower.includes('soft start') ||
+      textLower.includes('pstx') ||
+      textLower.includes('-ats') ||
+      textLower.includes('软起动器') ||
+      (textLower.includes('软起') && !hasMonitoringSensors) ||
+      (textLower.includes('soft start') && !hasMonitoringSensors)
+    )
   ) {
     return { label: 'Soft Starter Circuit', type: 'starter' };
   }
@@ -387,8 +393,9 @@ function classifySchematicPage(text, title) {
     return { label: 'Level Sensor Circuit', type: 'level' };
   }
 
-  // 8. Temperature Monitoring (安全栅, 测温, PT100, YB930H, 轴承温度)
-  if (
+  // 8. Sensors & Monitoring (振动, 测温, 温度, PT100, YB930H, 轴承温度, SBWR)
+  const hasVibration = titleLower.includes('振动') || titleLower.includes('vibration') || textLower.includes('振动') || textLower.includes('vibration');
+  const hasTempMonitoring = (
     titleLower.includes('测温') ||
     titleLower.includes('温度') ||
     titleLower.includes('temperature') ||
@@ -396,28 +403,42 @@ function classifySchematicPage(text, title) {
     textLower.includes('测温') ||
     textLower.includes('热电阻') ||
     textLower.includes('pt100') ||
+    textLower.includes('sbwr') ||
     textLower.includes('安全栅') ||
     textLower.includes('bearing temp') ||
     textLower.includes('chamber temp')
-  ) {
+  );
+
+  if (hasVibration && hasTempMonitoring) {
+    return { label: 'Sensors & Monitoring', type: 'monitoring' };
+  }
+  if (hasTempMonitoring) {
     return { label: 'Temperature Monitoring', type: 'monitoring' };
   }
+  if (hasVibration) {
+    return { label: 'Sensors & Monitoring', type: 'monitoring' };
+  }
 
-  // 9. Valve & Actuator (电磁阀, 气动阀, 闸门, 换向)
-  if (
-    titleLower.includes('阀') ||
-    titleLower.includes('valve') ||
-    titleLower.includes('换向') ||
-    titleLower.includes('闸门') ||
-    textLower.includes('电磁阀') ||
-    textLower.includes('导向阀') ||
-    textLower.includes('气动阀') ||
-    textLower.includes('开门到位') ||
-    textLower.includes('关门到位') ||
-    textLower.includes('slide gate') ||
-    textLower.includes('v型闸门')
-  ) {
-    return { label: 'Valve & Actuator', type: 'valve' };
+  // 9. Valve & Actuator (电磁阀, 气动阀, 闸门, 换向) - guarded against motor power and motor control circuits
+  const hasMotorPower = (textLower.includes('3~m') || /[-_]m\d*\b/i.test(text) || /(?:\b|_)\d+(?:\.\d+)?kw(?:\b|_)/i.test(text)) && (textLower.includes('-km') || textLower.includes('-qm') || textLower.includes('-qf'));
+  const hasMainMotorControl = (textLower.includes('粉碎机启动') || textLower.includes('grinder start') || (textLower.includes('start') && textLower.includes('running') && (textLower.includes('breaker') || textLower.includes('合闸') || textLower.includes('estop') || textLower.includes('急停'))));
+
+  if (!hasMotorPower && !hasMainMotorControl) {
+    if (
+      titleLower.includes('阀') ||
+      titleLower.includes('valve') ||
+      titleLower.includes('换向') ||
+      titleLower.includes('闸门') ||
+      textLower.includes('电磁阀') ||
+      textLower.includes('导向阀') ||
+      textLower.includes('气动阀') ||
+      textLower.includes('开门到位') ||
+      textLower.includes('关门到位') ||
+      textLower.includes('slide gate') ||
+      textLower.includes('v型闸门')
+    ) {
+      return { label: 'Valve & Actuator', type: 'valve' };
+    }
   }
 
   // 10. Auxiliary Controller (步进电机控制仪, 喂料器控制器, step controller)
@@ -444,11 +465,11 @@ function classifySchematicPage(text, title) {
   }
 
   // 12. Combined DOL Motor Starter & Control vs Pure Main Power vs Pure Motor Control (IEC standards)
-  const hasPowerBreaker = textLower.includes('-qf') || textLower.includes('gv2') || textLower.includes('nsc') || textLower.includes('ae1');
+  const hasPowerBreaker = textLower.includes('-qf') || textLower.includes('gv2') || textLower.includes('nsc') || textLower.includes('ae1') || textLower.includes('-qm');
   const hasPowerContactor = /-[a-z0-9_\.]*-km\b/i.test(text) && (textLower.includes('1 2') || textLower.includes('3 4') || textLower.includes('5 6') || textLower.includes('zkm') || textLower.includes('fkm') || textLower.includes('d09') || textLower.includes('d18') || textLower.includes('d25') || textLower.includes('d32'));
-  const hasMotor = textLower.includes('3~m') || /[-_]m\d*\b/i.test(text) || /(?:\b|_)\d+(?:\.\d+)?kw(?:\b|_)/i.test(text);
+  const hasMotor = textLower.includes('3~m') || /[-_]m\d*\b/i.test(text) || (/(?:\b|_)\d+(?:\.\d+)?kw(?:\b|_)/i.test(text) && !textLower.includes('355kw_粉碎机'));
   const isScrewFeederPower = (textLower.includes('配料绞龙') || titleLower.includes('配料绞龙')) && (textLower.includes('-km') || textLower.includes('-fr') || textLower.includes('contactor') || textLower.includes('lrd'));
-  const isPowerCircuit = titleLower.includes('主回路') || textLower.includes('主回路') || (hasPowerBreaker && (hasPowerContactor || hasMotor)) || /\b(250KW|355KW|200KW|160KW|132KW|110KW)\b/i.test(text) || isScrewFeederPower;
+  const isPowerCircuit = titleLower.includes('主回路') || textLower.includes('主回路') || (hasPowerBreaker && (hasPowerContactor || hasMotor)) || isScrewFeederPower;
 
   const hasControlCoils = (textLower.includes('a1') && textLower.includes('a2')) || textLower.includes('coil');
   const hasControlRelays = textLower.includes('-ka') || textLower.includes('-k1') || textLower.includes('-k2');

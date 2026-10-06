@@ -659,7 +659,7 @@ export default function MachineDetail({ params }) {
                            draw.type === 'vfd' ? '🔌' : 
                            draw.type === 'speed' || draw.type === 'level' ? '📡' : 
                            draw.type === 'safety' ? '🛡️' : 
-                           draw.type === 'monitoring' ? '🌡️' : 
+                           draw.type === 'monitoring' ? (draw.label?.includes('Sensor') ? '📡' : '🌡️') : 
                            draw.type === 'meter' ? '📊' : 
                            draw.type === 'auxiliary' ? '⚙️' : 
                            draw.type === 'valve' ? '🔧' : '🎛️'}
