@@ -630,55 +630,58 @@ export default function MachineDetail({ params }) {
             )}
 
             {/* Quick-Access Electrical Schematic Sheet Pills */}
-            {allDrawings.length > 0 && (
-              <div style={styles.schematicBar} className="no-print">
-                <div style={styles.schematicBarLabel}>
-                  <span>⚡ Electrical Schematic Sheets ({allDrawings.length}):</span>
-                </div>
-                <div style={styles.schematicPills}>
-                  {allDrawings.map((draw) => {
-                    const isSelected = currentDrawing && (
-                      (currentDrawing.internalPage && currentDrawing.internalPage === draw.internalPage) ||
-                      (currentDrawing.cabinet === draw.cabinet && String(currentDrawing.page) === String(draw.page))
-                    );
-                    return (
-                      <button
-                        key={`${draw.cabinet}-${draw.internalPage || draw.page}`}
-                        style={{
-                          ...styles.schematicPill,
-                          ...(isSelected ? styles.schematicPillActive : {})
-                        }}
-                        onClick={() => {
-                          setCurrentDrawing(draw);
-                          setMobileView("drawing");
-                        }}
-                        title={`View Sheet ${draw.internalPage} (${draw.label || 'Schematic'})`}
-                      >
-                        <span style={styles.pillIcon}>
-                          {draw.type === 'power' || draw.type === 'starter' ? '⚡' : 
-                           draw.type === 'vfd' ? '🔌' : 
-                           draw.type === 'speed' || draw.type === 'level' ? '📡' : 
-                           draw.type === 'safety' ? '🛡️' : 
-                           draw.type === 'monitoring' ? (draw.label?.includes('Sensor') ? '📡' : '🌡️') : 
-                           draw.type === 'meter' ? '📊' : 
-                           draw.type === 'auxiliary' ? '⚙️' : 
-                           draw.type === 'valve' ? '🔧' : '🎛️'}
-                        </span>
-                        <span>Sheet {draw.internalPage}</span>
-                        {draw.label && (
-                          <span style={{
-                            ...styles.pillSubLabel,
-                            ...(isSelected ? styles.pillSubLabelActive : {})
-                          }}>
-                            • {draw.label}
+            {allDrawings.length > 0 && (() => {
+              const hasMultiCabinets = new Set(allDrawings.map(d => d.cabinet).filter(Boolean)).size > 1;
+              return (
+                <div style={styles.schematicBar} className="no-print">
+                  <div style={styles.schematicBarLabel}>
+                    <span>⚡ Electrical Schematic Sheets ({allDrawings.length}):</span>
+                  </div>
+                  <div style={styles.schematicPills}>
+                    {allDrawings.map((draw) => {
+                      const isSelected = currentDrawing && (
+                        (currentDrawing.internalPage && currentDrawing.internalPage === draw.internalPage) ||
+                        (currentDrawing.cabinet === draw.cabinet && String(currentDrawing.page) === String(draw.page))
+                      );
+                      return (
+                        <button
+                          key={`${draw.cabinet}-${draw.internalPage || draw.page}`}
+                          style={{
+                            ...styles.schematicPill,
+                            ...(isSelected ? styles.schematicPillActive : {})
+                          }}
+                          onClick={() => {
+                            setCurrentDrawing(draw);
+                            setMobileView("drawing");
+                          }}
+                          title={`View Sheet ${draw.internalPage} (${draw.label || 'Schematic'})`}
+                        >
+                          <span style={styles.pillIcon}>
+                            {draw.type === 'power' || draw.type === 'starter' ? '⚡' : 
+                             draw.type === 'vfd' ? '🔌' : 
+                             draw.type === 'speed' || draw.type === 'level' ? '📡' : 
+                             draw.type === 'safety' ? '🛡️' : 
+                             draw.type === 'monitoring' ? (draw.label?.includes('Sensor') ? '📡' : '🌡️') : 
+                             draw.type === 'meter' ? '📊' : 
+                             draw.type === 'auxiliary' ? '⚙️' : 
+                             draw.type === 'valve' ? '🔧' : '🎛️'}
                           </span>
-                        )}
-                      </button>
-                    );
-                  })}
+                          <span>Sheet {draw.internalPage}</span>
+                          {draw.label && (
+                            <span style={{
+                              ...styles.pillSubLabel,
+                              ...(isSelected ? styles.pillSubLabelActive : {})
+                            }}>
+                              • {draw.label}{hasMultiCabinets && draw.cabinet ? ` (${draw.cabinet})` : ''}
+                            </span>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            )}
+              );
+            })()}
           </div>
 
           {/* Search inside table */}

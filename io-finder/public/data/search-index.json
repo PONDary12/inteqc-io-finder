@@ -30902,12 +30902,12 @@
   },
   {
     "code": "5_13_V1",
-    "name": "Schematic Diagram",
+    "name": "Safety & Interlock",
     "normalizedCode": "5_13_v1",
     "signals": [],
     "addresses": [],
     "types": [
-      "schematic"
+      "safety"
     ],
     "cabinets": [
       "MCC6"
@@ -30925,12 +30925,12 @@
   },
   {
     "code": "5_13_V2",
-    "name": "Schematic Diagram",
+    "name": "Safety & Interlock",
     "normalizedCode": "5_13_v2",
     "signals": [],
     "addresses": [],
     "types": [
-      "schematic"
+      "safety"
     ],
     "cabinets": [
       "MCC6"
@@ -30948,12 +30948,12 @@
   },
   {
     "code": "5_13_V3",
-    "name": "Schematic Diagram",
+    "name": "Safety & Interlock",
     "normalizedCode": "5_13_v3",
     "signals": [],
     "addresses": [],
     "types": [
-      "schematic"
+      "safety"
     ],
     "cabinets": [
       "MCC6"
@@ -30971,12 +30971,12 @@
   },
   {
     "code": "5_13_V4",
-    "name": "Schematic Diagram",
+    "name": "Safety & Interlock",
     "normalizedCode": "5_13_v4",
     "signals": [],
     "addresses": [],
     "types": [
-      "schematic"
+      "safety"
     ],
     "cabinets": [
       "MCC6"
@@ -31111,18 +31111,6 @@
         "page": 21,
         "internalPage": "540",
         "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC6_page_21.png"
-      },
-      {
-        "cabinet": "MCC6",
-        "page": 17,
-        "internalPage": "536",
-        "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC6_page_17.png"
-      },
-      {
-        "cabinet": "MCC6",
-        "page": 18,
-        "internalPage": "537",
-        "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC6_page_18.png"
       },
       {
         "cabinet": "MCC6",
@@ -31741,12 +31729,6 @@
         "page": 38,
         "internalPage": "937",
         "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC11_page_38.png"
-      },
-      {
-        "cabinet": "MCC11",
-        "page": 35,
-        "internalPage": "934",
-        "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC11_page_35.png"
       },
       {
         "cabinet": "MCC11",
@@ -32442,8 +32424,7 @@
       "DO"
     ],
     "cabinets": [
-      "MCC3",
-      "MCC11"
+      "MCC3"
     ],
     "drawings": [
       {
@@ -32460,27 +32441,9 @@
       },
       {
         "cabinet": "MCC3",
-        "page": 35,
-        "internalPage": "333",
-        "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC3_page_35.png"
-      },
-      {
-        "cabinet": "MCC3",
-        "page": 36,
-        "internalPage": "334",
-        "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC3_page_36.png"
-      },
-      {
-        "cabinet": "MCC3",
         "page": 38,
         "internalPage": "336",
         "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC3_page_38.png"
-      },
-      {
-        "cabinet": "MCC11",
-        "page": 34,
-        "internalPage": "933",
-        "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC11_page_34.png"
       }
     ],
     "location": "Tower 3",
@@ -33552,24 +33515,6 @@
         "page": 56,
         "internalPage": "354",
         "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC3_page_56.png"
-      },
-      {
-        "cabinet": "MCC4",
-        "page": 35,
-        "internalPage": "433",
-        "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC4_page_35.png"
-      },
-      {
-        "cabinet": "MCC4",
-        "page": 36,
-        "internalPage": "434",
-        "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC4_page_36.png"
-      },
-      {
-        "cabinet": "MCC4",
-        "page": 37,
-        "internalPage": "435",
-        "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC4_page_37.png"
       },
       {
         "cabinet": "MCC4",
@@ -47981,18 +47926,6 @@
       },
       {
         "cabinet": "MCC16_17",
-        "page": 27,
-        "internalPage": "1426",
-        "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC16_17_page_27.png"
-      },
-      {
-        "cabinet": "MCC16_17",
-        "page": 28,
-        "internalPage": "1427",
-        "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC16_17_page_28.png"
-      },
-      {
-        "cabinet": "MCC16_17",
         "page": 30,
         "internalPage": "1429",
         "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC16_17_page_30.png"
@@ -49065,12 +48998,6 @@
         "page": 29,
         "internalPage": "1528",
         "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC18_page_29.png"
-      },
-      {
-        "cabinet": "MCC18",
-        "page": 26,
-        "internalPage": "1525",
-        "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC18_page_26.png"
       },
       {
         "cabinet": "MCC18",

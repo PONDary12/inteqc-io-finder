@@ -261,8 +261,14 @@ function stripSubdeviceSuffix(str) {
 
 const IEC_SUFFIX_REGEX = SUBDEVICE_SUFFIX_REGEX;
 
+function isIpAddress(str) {
+  if (!str) return false;
+  return /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(str) || /^192\.168\./i.test(str);
+}
+
 function isWireMarkerOrCoordinate(str) {
   if (!str) return false;
+  if (isIpAddress(str)) return true;
   // CAD wire coordinates like 719.21, 719.42, 714.22
   if (/^\d{3,4}\.\d{2,}$/.test(str)) return true;
   // Branch ferrules like 2_9.1A, 2_9.1B, 2_9.1a
@@ -334,18 +340,24 @@ function classifySchematicPage(text, title) {
 
   // 4. Soft Starter Circuit (PSTX, ATS, 软起)
   const hasMonitoringSensors = textLower.includes('sbwr') || textLower.includes('vibration') || textLower.includes('振动') || textLower.includes('测温') || textLower.includes('bearing temp') || textLower.includes('chamber temp');
-  const isSoftStarterAlarmOnly = (textLower.includes('软起故障') || textLower.includes('softer alarm') || textLower.includes('软起报警')) && !textLower.includes('pstx') && !textLower.includes('软起动器') && !titleLower.includes('软起');
+  const isSoftStarterAlarmOnly = /(?:软起\s*故障|softer\s*alarm|软起\s*报警)/i.test(textLower) && !textLower.includes('pstx') && !textLower.includes('软起动器') && !titleLower.includes('软起');
+
+  // Check if this sheet is purely the control / coil / interlock section of a softstarter (not the main power starter unit)
+  const hasStarterUnitPower = /\b3\s*~?\s*m\b/i.test(text) || textLower.includes('3~m') || textLower.includes('1/l1') || textLower.includes('2/t1') || textLower.includes('pstx');
+  const hasStarterControlCoils = (textLower.includes('a1') && textLower.includes('a2')) || textLower.includes('pulverizerstart') || textLower.includes('合闸') || textLower.includes('启动');
+  const isSoftStarterControlOnly = hasStarterControlCoils && !hasStarterUnitPower && !titleLower.includes('软起动器');
 
   if (
     !isSoftStarterAlarmOnly &&
+    !isSoftStarterControlOnly &&
     (
       titleLower.includes('软起') ||
       titleLower.includes('soft start') ||
       textLower.includes('pstx') ||
-      textLower.includes('-ats') ||
+      (textLower.includes('-ats') && hasStarterUnitPower) ||
       textLower.includes('软起动器') ||
-      (textLower.includes('软起') && !hasMonitoringSensors) ||
-      (textLower.includes('soft start') && !hasMonitoringSensors)
+      (textLower.includes('软起') && hasStarterUnitPower && !hasMonitoringSensors) ||
+      (textLower.includes('soft start') && hasStarterUnitPower && !hasMonitoringSensors)
     )
   ) {
     return { label: 'Soft Starter Circuit', type: 'starter' };
@@ -492,12 +504,13 @@ function classifySchematicPage(text, title) {
     }
   }
 
-  // 13. Safety & Interlock (门保, 急停, 正反转选择, FOR/REV, 跑偏, 拉绳)
+  // 13. Safety & Interlock (门保, 急停, 正反转选择, FOR/REV, 跑偏, 拉绳, 压辊安全开关)
   if (
     titleLower.includes('门保') ||
     titleLower.includes('急停') ||
     titleLower.includes('安全') ||
     titleLower.includes('正反转') ||
+    titleLower.includes('压辊自动调节') ||
     textLower.includes('门保') ||
     textLower.includes('door protect') ||
     textLower.includes('防堵') ||
@@ -505,7 +518,11 @@ function classifySchematicPage(text, title) {
     textLower.includes('拉绳') ||
     textLower.includes('正反转选择') ||
     textLower.includes('for./rev.') ||
-    textLower.includes('estop')
+    textLower.includes('estop') ||
+    textLower.includes('protection switch') ||
+    textLower.includes('safety pin') ||
+    textLower.includes('safety shield') ||
+    textLower.includes('压辊自动调节')
   ) {
     return { label: 'Safety & Interlock', type: 'safety' };
   }
@@ -744,6 +761,7 @@ async function scanPdf(loc) {
       } else if (loc.cabinetRanges && loc.cabinetRanges.length > 0) {
         // ─── Tower 3 Style (MUYANG-WEM / 泰国inteqc) ───
         let pageTitle = '';
+        const titleEquips = new Set();
 
         // 1. Title block: '版权声明 设计 泰国inteqc <REST>'
         const mTitle = text.match(/版权声明\s+设计\s+泰国inteqc\s+([^\n\r]+)/);
@@ -754,7 +772,10 @@ async function scanPdf(loc) {
             const raw = eqMatch[1];
             const addCode = (r) => {
               const code = stripSubdeviceSuffix(r.trim().toUpperCase().replace(/-/g, '_'));
-              if (code && !SUBDEVICE_SUFFIX_REGEX.test(code)) foundEquips.add(code);
+              if (code && !SUBDEVICE_SUFFIX_REGEX.test(code) && !isIpAddress(code)) {
+                foundEquips.add(code);
+                titleEquips.add(code);
+              }
             };
             if (raw.includes('~')) {
               raw.split('~').forEach(addCode);
@@ -776,8 +797,9 @@ async function scanPdf(loc) {
             const eqMatch = combo.match(/\b([Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.\-]*|(?:LA|LW|Y)[0-9]+(?:[_\.][0-9]+)?(?:[A-Za-z0-9_\.\-]*))\b/i);
             if (eqMatch) {
               const code = stripSubdeviceSuffix(eqMatch[1].trim().toUpperCase().replace(/-/g, '_'));
-              if (code && !SUBDEVICE_SUFFIX_REGEX.test(code)) {
+              if (code && !SUBDEVICE_SUFFIX_REGEX.test(code) && !isIpAddress(code)) {
                 foundEquips.add(code);
+                titleEquips.add(code);
               }
             }
           }
@@ -790,7 +812,7 @@ async function scanPdf(loc) {
             const tm = tag.match(/-([Vv]?[0-9]+[_\.][0-9]+[A-Za-z0-9_\.]*|(?:LA|LW|Y)[0-9]+(?:[_\.][0-9]+)?[A-Za-z0-9_\.]*)-(KM\d*|QF\d*|K\d*|ATS|KA\d*|W|M\d*|SQ\d*|SES|QK|PU|YV|SV|HA|SP|ST|BF|BZSO|HL|LL|PT|TT|LT|FU\d*|SA|PM\d*|L\d*|U\d*)\b/i);
             if (tm) {
               const code = stripSubdeviceSuffix(tm[1].trim().toUpperCase().replace(/-/g, '_'));
-              if (code && !SUBDEVICE_SUFFIX_REGEX.test(code) && !isWireMarkerOrCoordinate(code)) {
+              if (code && !SUBDEVICE_SUFFIX_REGEX.test(code) && !isWireMarkerOrCoordinate(code) && !isIpAddress(code)) {
                 foundEquips.add(code);
               }
             }
@@ -849,10 +871,10 @@ async function scanPdf(loc) {
         if (!isSharedCardOrLayout && foundEquips.size === 0) {
           for (const line of lines) {
             const trimmed = line.trim().toUpperCase().replace(/-/g, '_');
-            if (/[0-9]+/.test(trimmed) && trimmed.length <= 15 && !isUnitOrRating(trimmed) && !isWireMarkerOrCoordinate(trimmed)) {
+            if (/[0-9]+/.test(trimmed) && trimmed.length <= 15 && !isUnitOrRating(trimmed) && !isWireMarkerOrCoordinate(trimmed) && !isIpAddress(trimmed)) {
               if (/^(?:[Vv]?[0-9]+[_\.][0-9]+|(?:LA|LW|Y)[0-9]+(?:[_\.][0-9]+)?)[A-Za-z0-9_\.]*$/i.test(trimmed)) {
                 const code = stripSubdeviceSuffix(trimmed);
-                if (code && !SUBDEVICE_SUFFIX_REGEX.test(code) && !isWireMarkerOrCoordinate(code)) {
+                if (code && !SUBDEVICE_SUFFIX_REGEX.test(code) && !isWireMarkerOrCoordinate(code) && !isIpAddress(code)) {
                   foundEquips.add(code);
                 }
               }
@@ -867,7 +889,13 @@ async function scanPdf(loc) {
           if (classification.type !== 'layout' && classification.type !== 'terminal') {
             foundEquips.forEach(rawEq => {
               const eq = stripSubdeviceSuffix(rawEq);
-              if (ignoreWords.has(eq) || isUnitOrRating(eq) || /^\d+KW$/i.test(eq) || /^\d+A$/i.test(eq) || SUBDEVICE_SUFFIX_REGEX.test(eq) || isWireMarkerOrCoordinate(eq)) return;
+              if (ignoreWords.has(eq) || isUnitOrRating(eq) || /^\d+KW$/i.test(eq) || /^\d+A$/i.test(eq) || SUBDEVICE_SUFFIX_REGEX.test(eq) || isWireMarkerOrCoordinate(eq) || isIpAddress(eq)) return;
+
+              // Prevent cross-machine auxiliary interlock contacts from attaching external starter pages
+              if (classification.type === 'starter' && titleEquips.size > 0 && !titleEquips.has(eq)) {
+                return;
+              }
+
               if (!equipmentDrawings[eq]) equipmentDrawings[eq] = [];
               if (!equipmentDrawings[eq].some(d => d.internalPage === internalPageStr)) {
                 equipmentDrawings[eq].push({

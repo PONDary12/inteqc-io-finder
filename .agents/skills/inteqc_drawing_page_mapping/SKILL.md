@@ -533,3 +533,28 @@ node system-audit.cjs
      - If a drawing has 3-phase motor power (`3~M`, contactors `-KM`) or main motor control circuits (`START`, `RUNNING`, `BREAKER ON`, `ESTOP`), do not classify as `Valve & Actuator` due to incidental auxiliary solenoid valves.
   4. **Dynamic Sensor Pill Rendering**:
      - In `page.js`, render `📡` for `draw.type === 'monitoring'` with "Sensor" or "Monitoring" in the label, `🌡️` for temperature-only sheets, and `🎛️` for control circuits.
+
+
+### Pitfall 23: Soft Starter Twin Circuit Classification, Phantom IP Address Scraping, Interlock Relay Bleed, and Multi-Cabinet Pill Disambiguation
+- **Symptom**:
+  1. 19 high-power machines across Tower 2 Phase 1, Phase 2, and Tower 3 (e.g. `2G0102_2`, `2G0202_2`, `2CG0302_3`, `2_9`, `5_13`, `10_25`) showed duplicate `⚡ Soft Starter Circuit` pills for consecutive sheets (e.g. Sheet 714 & 715 for `2_9`).
+  2. Pellet Mill 5_13 roller adjustment protection switches (`5_13_V1`..`V4` on Sheet 526 in MCC6) displayed generic `Schematic Diagram`.
+  3. 55 IP addresses (`192.168.10.x`) appeared as pseudo-equipment keys in `equipmentDrawings`.
+  4. Interlock relay contacts (e.g. `-5_71-KA5` on Sheet 933) caused another machine's entire motor starter sheet (`5_42` Airlock in MCC11) to attach to `5_71` in MCC3.
+  5. Cross-cabinet machines (e.g. `1_7` with Sheet 2226 in `LCB_1` and Sheet 3015 in `LCB_10`) displayed identical pill labels without indicating the physical cabinet location.
+- **Root Cause**:
+  1. Soft starter motors span 2 sheets: (1) Power & Soft Starter Unit (PSTX/ATS, Breaker, Bypass Contactors, 3~M), and (2) Control Circuit (Start/Stop, Run/Trip, Breaker status, Current transducer, contactor coils). Sheet 2 referenced softstarter auxiliary contacts (`-ATS` or `软起\n故障`), and lacked newline normalization or control-only guards, causing both sheets to match `Soft Starter Circuit`.
+  2. Sheet 526 contained `protection switch`, `safety pin`, and `safety shield` text which lacked matching keywords in `classifySchematicPage()`.
+  3. Network topology diagrams (Sheets 19-22) contained IP addresses matching numeric equipment patterns.
+  4. Device tag scanner attached any machine referenced in `-XX-KA` relay contacts, ignoring that the sheet's title block clearly belonged to another machine (`5_42`).
+- **Fix**:
+  1. **Soft Starter Unit vs Control Circuit Separation**:
+     - Check `hasStarterUnitPower` (`3~M`, `PSTX`) vs `hasStarterControlCoils` (`A1/A2`, `Start`, `合闸`). Control-only sheets fall through to `🎛️ Motor Control Circuit` / `⚡ Motor Starter & Control`. Duplicate soft starter pills dropped from 19 to 0.
+  2. **Roller Adjustment Safety Classification**:
+     - Added `protection switch`, `safety pin`, `safety shield`, `压辊自动调节` to `Safety & Interlock` (`type: 'safety'`). Sheet 526 is now classified as `🛡️ Safety & Interlock`.
+  3. **IP Address Filtering**:
+     - Defined `isIpAddress()` rejecting IPv4 formats (`/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/` and `192.168.*`). 55 phantom keys eliminated.
+  4. **Title-Aware Starter Sheet Ownership**:
+     - For `type === 'starter'` sheets with a primary title block equipment code (`titleEquips`), auxiliary relay contacts (`-KA`) from other machines are strictly forbidden from attaching the motor starter page to the external machine.
+  5. **Context-Aware Cabinet Disambiguation in Pills**:
+     - In `page.js`, when a machine has drawings spanning multiple cabinets (`hasMultiCabinets`), append ` (${draw.cabinet})` to the pill label (e.g. `• Safety & Interlock (LCB_1)` and `• Safety & Interlock (LCB_10)`), while leaving single-cabinet machines clean and uncluttered.

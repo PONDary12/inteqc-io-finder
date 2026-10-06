@@ -36194,7 +36194,7 @@
             "pdfPage": 113,
             "page": 13,
             "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/MCC3-4_page_13.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCC3-4"
           },
@@ -36382,7 +36382,7 @@
             "pdfPage": 132,
             "page": 32,
             "drawingPdfUrl": "/drawings/tower2_p1/cabinets/images/MCC3-4_page_32.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCC3-4"
           },
@@ -79198,7 +79198,7 @@
             "pdfPage": 267,
             "page": 11,
             "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB5_page_11.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCCB5"
           },
@@ -79384,7 +79384,7 @@
             "pdfPage": 300,
             "page": 12,
             "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB6_page_12.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCCB6"
           },
@@ -79570,7 +79570,7 @@
             "pdfPage": 330,
             "page": 11,
             "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB7_page_11.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCCB7"
           },
@@ -79736,7 +79736,7 @@
             "pdfPage": 359,
             "page": 12,
             "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB8_page_12.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCCB8"
           },
@@ -79902,7 +79902,7 @@
             "pdfPage": 390,
             "page": 12,
             "drawingPdfUrl": "/drawings/tower2_p2/cabinets/images/MCCB9_page_12.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCCB9"
           },
@@ -124214,46 +124214,15 @@
         }
       ],
       "equipmentDrawings": {
-        "192.168.10.2": [],
-        "192.168.10.3": [],
-        "192.168.10.30": [],
-        "192.168.10.32": [],
-        "192.168.10.33": [],
-        "192.168.10.34": [],
-        "192.168.10.35": [],
-        "192.168.10.31": [],
-        "192.168.10.37": [],
-        "192.168.10.36": [],
-        "192.168.10.38": [],
-        "192.168.10.10": [],
-        "192.168.10.11": [],
-        "192.168.10.12": [],
-        "192.168.10.13": [],
-        "192.168.10.14": [],
-        "192.168.10.220": [],
-        "192.168.10.221": [],
         "10.31": [],
         "10.220": [],
         "10.221": [],
-        "192.168.10.39": [],
-        "192.168.10.41": [],
-        "192.168.10.40": [],
-        "192.168.10.200": [],
-        "192.168.10.201": [],
-        "192.168.10.202": [],
-        "192.168.10.203": [],
-        "192.168.10.204": [],
-        "192.168.10.15": [],
-        "192.168.": [],
         "10.103": [],
         "10.104": [],
-        "192.168.10.16": [],
         "10.105": [],
         "10.106": [],
-        "192.168.10.17": [],
         "10.107": [],
         "10.108": [],
-        "192.168.10.18": [],
         "10.114": [],
         "10.115": [],
         "10.30": [],
@@ -124276,44 +124245,25 @@
         "10.17": [],
         "10.1087": [],
         "10.18": [],
-        "192.168.10.60": [],
-        "192.168.10.61": [],
-        "192.168.10.62": [],
-        "192.168.10.63": [],
-        "192.168.10.64": [],
-        "192.168.10.65": [],
-        "192.168.10.66": [],
-        "192.168.10.67": [],
-        "192.168.10.68": [],
-        "192.168.10.69": [],
-        "192.168.10.70": [],
-        "192.168.10.71": [],
-        "192.168.10.43": [],
         "10.100": [],
-        "192.168.10.42": [],
         "10.101": [],
         "10.102": [],
-        "192.168.10.44": [],
         "10.109": [],
         "10.110": [],
         "10.111": [],
-        "192.168.10.45": [],
         "10.112": [],
         "10.113": [],
         "10.116": [],
         "10.117": [],
-        "192.168.10.46": [],
         "10.118": [],
         "10.119": [],
         "10.120": [],
-        "192.168.10.47": [],
         "10.122": [],
         "10.123": [],
         "10.124": [],
         "10.125": [],
         "10.126": [],
         "10.36": [],
-        "192.168.10.52": [],
         "10.198": [],
         "10.127": [],
         "10.128": [],
@@ -124321,12 +124271,7 @@
         "10.130": [],
         "10.38": [],
         "10.131": [],
-        "192.168.10.50": [],
-        "192.168.10.19": [],
         "10.132": [],
-        "192.168.10.20": [],
-        "192.168.10.51": [],
-        "192.168.10.53": [],
         "1_3": [
           {
             "internalPage": "204",
@@ -124826,7 +124771,7 @@
             "pdfPage": 129,
             "page": 21,
             "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC3_page_21.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCC3"
           },
@@ -124926,33 +124871,6 @@
         ],
         "5_71": [
           {
-            "internalPage": "333",
-            "pdfPage": 143,
-            "page": 35,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC3_page_35.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC3"
-          },
-          {
-            "internalPage": "334",
-            "pdfPage": 144,
-            "page": 36,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC3_page_36.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC3"
-          },
-          {
-            "internalPage": "335",
-            "pdfPage": 145,
-            "page": 37,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC3_page_37.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC3"
-          },
-          {
             "internalPage": "336",
             "pdfPage": 146,
             "page": 38,
@@ -124969,15 +124887,6 @@
             "label": "Motor Control Circuit",
             "type": "control",
             "cabinet": "MCC3"
-          },
-          {
-            "internalPage": "933",
-            "pdfPage": 410,
-            "page": 34,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC11_page_34.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC11"
           }
         ],
         "5_72": [
@@ -125257,7 +125166,7 @@
             "pdfPage": 187,
             "page": 21,
             "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC4_page_21.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCC4"
           },
@@ -125312,33 +125221,6 @@
           }
         ],
         "5_117": [
-          {
-            "internalPage": "433",
-            "pdfPage": 201,
-            "page": 35,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC4_page_35.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC4"
-          },
-          {
-            "internalPage": "434",
-            "pdfPage": 202,
-            "page": 36,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC4_page_36.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC4"
-          },
-          {
-            "internalPage": "435",
-            "pdfPage": 203,
-            "page": 37,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC4_page_37.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC4"
-          },
           {
             "internalPage": "436",
             "pdfPage": 204,
@@ -125635,7 +125517,7 @@
             "pdfPage": 241,
             "page": 21,
             "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC5_page_21.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCC5"
           },
@@ -125695,8 +125577,8 @@
             "pdfPage": 248,
             "page": 7,
             "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC6_page_7.png",
-            "label": "Schematic Diagram",
-            "type": "schematic",
+            "label": "Safety & Interlock",
+            "type": "safety",
             "cabinet": "MCC6"
           }
         ],
@@ -125706,8 +125588,8 @@
             "pdfPage": 248,
             "page": 7,
             "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC6_page_7.png",
-            "label": "Schematic Diagram",
-            "type": "schematic",
+            "label": "Safety & Interlock",
+            "type": "safety",
             "cabinet": "MCC6"
           }
         ],
@@ -125717,8 +125599,8 @@
             "pdfPage": 248,
             "page": 7,
             "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC6_page_7.png",
-            "label": "Schematic Diagram",
-            "type": "schematic",
+            "label": "Safety & Interlock",
+            "type": "safety",
             "cabinet": "MCC6"
           }
         ],
@@ -125728,8 +125610,8 @@
             "pdfPage": 248,
             "page": 7,
             "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC6_page_7.png",
-            "label": "Schematic Diagram",
-            "type": "schematic",
+            "label": "Safety & Interlock",
+            "type": "safety",
             "cabinet": "MCC6"
           }
         ],
@@ -125767,33 +125649,6 @@
           }
         ],
         "5_15": [
-          {
-            "internalPage": "536",
-            "pdfPage": 258,
-            "page": 17,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC6_page_17.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC6"
-          },
-          {
-            "internalPage": "537",
-            "pdfPage": 259,
-            "page": 18,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC6_page_18.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC6"
-          },
-          {
-            "internalPage": "538",
-            "pdfPage": 260,
-            "page": 19,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC6_page_19.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC6"
-          },
           {
             "internalPage": "539",
             "pdfPage": 261,
@@ -126442,7 +126297,7 @@
             "pdfPage": 336,
             "page": 17,
             "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC8_9_page_17.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCC8_9"
           },
@@ -126636,7 +126491,7 @@
             "pdfPage": 353,
             "page": 34,
             "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC8_9_page_34.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCC8_9"
           },
@@ -126854,7 +126709,7 @@
             "pdfPage": 396,
             "page": 20,
             "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC11_page_20.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCC11"
           },
@@ -126920,24 +126775,6 @@
           }
         ],
         "5_43": [
-          {
-            "internalPage": "934",
-            "pdfPage": 411,
-            "page": 35,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC11_page_35.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC11"
-          },
-          {
-            "internalPage": "935",
-            "pdfPage": 412,
-            "page": 36,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC11_page_36.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC11"
-          },
           {
             "internalPage": "936",
             "pdfPage": 413,
@@ -127580,7 +127417,7 @@
             "pdfPage": 493,
             "page": 12,
             "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC14_page_12.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCC14"
           },
@@ -127874,7 +127711,7 @@
             "pdfPage": 530,
             "page": 15,
             "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC16_17_page_15.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCC16_17"
           },
@@ -127920,33 +127757,6 @@
           }
         ],
         "10_27": [
-          {
-            "internalPage": "1426",
-            "pdfPage": 542,
-            "page": 27,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC16_17_page_27.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC16_17"
-          },
-          {
-            "internalPage": "1427",
-            "pdfPage": 543,
-            "page": 28,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC16_17_page_28.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC16_17"
-          },
-          {
-            "internalPage": "1428",
-            "pdfPage": 544,
-            "page": 29,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC16_17_page_29.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC16_17"
-          },
           {
             "internalPage": "1429",
             "pdfPage": 545,
@@ -128221,7 +128031,7 @@
             "pdfPage": 579,
             "page": 13,
             "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC18_page_13.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCC18"
           },
@@ -128276,15 +128086,6 @@
           }
         ],
         "11_13": [
-          {
-            "internalPage": "1525",
-            "pdfPage": 592,
-            "page": 26,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC18_page_26.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC18"
-          },
           {
             "internalPage": "1526",
             "pdfPage": 593,
@@ -128479,7 +128280,7 @@
             "pdfPage": 638,
             "page": 18,
             "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC19_page_18.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCC19"
           },
@@ -130517,7 +130318,7 @@
             "pdfPage": 786,
             "page": 18,
             "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC25_26_page_18.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCC25_26"
           },
@@ -130711,7 +130512,7 @@
             "pdfPage": 803,
             "page": 35,
             "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC25_26_page_35.png",
-            "label": "Soft Starter Circuit",
+            "label": "Motor Starter & Control",
             "type": "starter",
             "cabinet": "MCC25_26"
           },
@@ -131119,17 +130920,6 @@
             "cabinet": "MCC27"
           }
         ],
-        "LA601_2": [
-          {
-            "internalPage": "4016",
-            "pdfPage": 842,
-            "page": 17,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC27_page_17.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC27"
-          }
-        ],
         "LA701_1": [
           {
             "internalPage": "4017",
@@ -131140,17 +130930,6 @@
             "type": "starter",
             "cabinet": "MCC27"
           },
-          {
-            "internalPage": "4018",
-            "pdfPage": 844,
-            "page": 19,
-            "drawingPdfUrl": "/drawings/tower3/cabinets/images/MCC27_page_19.png",
-            "label": "Motor Starter & Control",
-            "type": "starter",
-            "cabinet": "MCC27"
-          }
-        ],
-        "LA701_2": [
           {
             "internalPage": "4018",
             "pdfPage": 844,

@@ -8484,7 +8484,7 @@
         {
           "pdfPage": 113,
           "internalPage": "315",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCC3-4"
         },
@@ -8636,7 +8636,7 @@
         {
           "pdfPage": 132,
           "internalPage": "345",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCC3-4"
         },
@@ -23734,7 +23734,7 @@
         {
           "pdfPage": 267,
           "internalPage": "2512",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCCB5"
         },
@@ -23884,7 +23884,7 @@
         {
           "pdfPage": 300,
           "internalPage": "2613",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCCB6"
         },
@@ -24034,7 +24034,7 @@
         {
           "pdfPage": 330,
           "internalPage": "2712",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCCB7"
         },
@@ -24168,7 +24168,7 @@
         {
           "pdfPage": 359,
           "internalPage": "2813",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCCB8"
         },
@@ -24302,7 +24302,7 @@
         {
           "pdfPage": 390,
           "internalPage": "2913",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCCB9"
         },
@@ -43708,182 +43708,6 @@
       }
     },
     "equipmentDrawings": {
-      "192.168.10.2": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.3": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.30": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.32": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.33": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.34": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.35": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.31": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.37": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.36": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        },
-        {
-          "pdfPage": 59,
-          "internalPage": "21",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.38": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        },
-        {
-          "pdfPage": 60,
-          "internalPage": "22",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.10": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.11": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.12": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.13": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.14": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.220": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.221": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
       "10.31": [
         {
           "pdfPage": 57,
@@ -43911,110 +43735,6 @@
           "cabinet": null
         }
       ],
-      "192.168.10.39": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.41": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.40": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.200": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.201": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.202": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.203": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.204": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.15": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        },
-        {
-          "pdfPage": 59,
-          "internalPage": "21",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        },
-        {
-          "pdfPage": 60,
-          "internalPage": "22",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
       "10.103": [
         {
           "pdfPage": 57,
@@ -44025,15 +43745,6 @@
         }
       ],
       "10.104": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.16": [
         {
           "pdfPage": 57,
           "internalPage": "19",
@@ -44060,15 +43771,6 @@
           "cabinet": null
         }
       ],
-      "192.168.10.17": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
       "10.107": [
         {
           "pdfPage": 57,
@@ -44079,15 +43781,6 @@
         }
       ],
       "10.108": [
-        {
-          "pdfPage": 57,
-          "internalPage": "19",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.18": [
         {
           "pdfPage": 57,
           "internalPage": "19",
@@ -44211,133 +43904,7 @@
           "cabinet": null
         }
       ],
-      "192.168.10.60": [
-        {
-          "pdfPage": 58,
-          "internalPage": "20",
-          "label": "PLC Control Circuit",
-          "type": "control",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.61": [
-        {
-          "pdfPage": 58,
-          "internalPage": "20",
-          "label": "PLC Control Circuit",
-          "type": "control",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.62": [
-        {
-          "pdfPage": 58,
-          "internalPage": "20",
-          "label": "PLC Control Circuit",
-          "type": "control",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.63": [
-        {
-          "pdfPage": 58,
-          "internalPage": "20",
-          "label": "PLC Control Circuit",
-          "type": "control",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.64": [
-        {
-          "pdfPage": 58,
-          "internalPage": "20",
-          "label": "PLC Control Circuit",
-          "type": "control",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.65": [
-        {
-          "pdfPage": 58,
-          "internalPage": "20",
-          "label": "PLC Control Circuit",
-          "type": "control",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.66": [
-        {
-          "pdfPage": 58,
-          "internalPage": "20",
-          "label": "PLC Control Circuit",
-          "type": "control",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.67": [
-        {
-          "pdfPage": 58,
-          "internalPage": "20",
-          "label": "PLC Control Circuit",
-          "type": "control",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.68": [
-        {
-          "pdfPage": 58,
-          "internalPage": "20",
-          "label": "PLC Control Circuit",
-          "type": "control",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.69": [
-        {
-          "pdfPage": 58,
-          "internalPage": "20",
-          "label": "PLC Control Circuit",
-          "type": "control",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.70": [
-        {
-          "pdfPage": 58,
-          "internalPage": "20",
-          "label": "PLC Control Circuit",
-          "type": "control",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.71": [
-        {
-          "pdfPage": 58,
-          "internalPage": "20",
-          "label": "PLC Control Circuit",
-          "type": "control",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.43": [
-        {
-          "pdfPage": 59,
-          "internalPage": "21",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
       "10.100": [
-        {
-          "pdfPage": 59,
-          "internalPage": "21",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.42": [
         {
           "pdfPage": 59,
           "internalPage": "21",
@@ -44356,15 +43923,6 @@
         }
       ],
       "10.102": [
-        {
-          "pdfPage": 59,
-          "internalPage": "21",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.44": [
         {
           "pdfPage": 59,
           "internalPage": "21",
@@ -44392,15 +43950,6 @@
         }
       ],
       "10.111": [
-        {
-          "pdfPage": 59,
-          "internalPage": "21",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.45": [
         {
           "pdfPage": 59,
           "internalPage": "21",
@@ -44445,15 +43994,6 @@
           "cabinet": null
         }
       ],
-      "192.168.10.46": [
-        {
-          "pdfPage": 59,
-          "internalPage": "21",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
       "10.118": [
         {
           "pdfPage": 59,
@@ -44473,15 +44013,6 @@
         }
       ],
       "10.120": [
-        {
-          "pdfPage": 59,
-          "internalPage": "21",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.47": [
         {
           "pdfPage": 59,
           "internalPage": "21",
@@ -44536,15 +44067,6 @@
         }
       ],
       "10.36": [
-        {
-          "pdfPage": 59,
-          "internalPage": "21",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.52": [
         {
           "pdfPage": 59,
           "internalPage": "21",
@@ -44616,52 +44138,7 @@
           "cabinet": null
         }
       ],
-      "192.168.10.50": [
-        {
-          "pdfPage": 60,
-          "internalPage": "22",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.19": [
-        {
-          "pdfPage": 60,
-          "internalPage": "22",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
       "10.132": [
-        {
-          "pdfPage": 60,
-          "internalPage": "22",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.20": [
-        {
-          "pdfPage": 60,
-          "internalPage": "22",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.51": [
-        {
-          "pdfPage": 60,
-          "internalPage": "22",
-          "label": "VFD Drive Circuit",
-          "type": "vfd",
-          "cabinet": null
-        }
-      ],
-      "192.168.10.53": [
         {
           "pdfPage": 60,
           "internalPage": "22",
@@ -45069,7 +44546,7 @@
         {
           "pdfPage": 129,
           "internalPage": "319",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCC3"
         },
@@ -45151,27 +44628,6 @@
       ],
       "5_71": [
         {
-          "pdfPage": 143,
-          "internalPage": "333",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC3"
-        },
-        {
-          "pdfPage": 144,
-          "internalPage": "334",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC3"
-        },
-        {
-          "pdfPage": 145,
-          "internalPage": "335",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC3"
-        },
-        {
           "pdfPage": 146,
           "internalPage": "336",
           "label": "Motor Control Circuit",
@@ -45184,13 +44640,6 @@
           "label": "Motor Control Circuit",
           "type": "control",
           "cabinet": "MCC3"
-        },
-        {
-          "pdfPage": 410,
-          "internalPage": "933",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC11"
         }
       ],
       "5_72": [
@@ -45414,7 +44863,7 @@
         {
           "pdfPage": 187,
           "internalPage": "419",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCC4"
         },
@@ -45459,27 +44908,6 @@
         }
       ],
       "5_117": [
-        {
-          "pdfPage": 201,
-          "internalPage": "433",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC4"
-        },
-        {
-          "pdfPage": 202,
-          "internalPage": "434",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC4"
-        },
-        {
-          "pdfPage": 203,
-          "internalPage": "435",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC4"
-        },
         {
           "pdfPage": 204,
           "internalPage": "436",
@@ -45716,7 +45144,7 @@
         {
           "pdfPage": 241,
           "internalPage": "519",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCC5"
         },
@@ -45764,8 +45192,8 @@
         {
           "pdfPage": 248,
           "internalPage": "526",
-          "label": "Schematic Diagram",
-          "type": "schematic",
+          "label": "Safety & Interlock",
+          "type": "safety",
           "cabinet": "MCC6"
         }
       ],
@@ -45773,8 +45201,8 @@
         {
           "pdfPage": 248,
           "internalPage": "526",
-          "label": "Schematic Diagram",
-          "type": "schematic",
+          "label": "Safety & Interlock",
+          "type": "safety",
           "cabinet": "MCC6"
         }
       ],
@@ -45782,8 +45210,8 @@
         {
           "pdfPage": 248,
           "internalPage": "526",
-          "label": "Schematic Diagram",
-          "type": "schematic",
+          "label": "Safety & Interlock",
+          "type": "safety",
           "cabinet": "MCC6"
         }
       ],
@@ -45791,8 +45219,8 @@
         {
           "pdfPage": 248,
           "internalPage": "526",
-          "label": "Schematic Diagram",
-          "type": "schematic",
+          "label": "Safety & Interlock",
+          "type": "safety",
           "cabinet": "MCC6"
         }
       ],
@@ -45824,27 +45252,6 @@
         }
       ],
       "5_15": [
-        {
-          "pdfPage": 258,
-          "internalPage": "536",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC6"
-        },
-        {
-          "pdfPage": 259,
-          "internalPage": "537",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC6"
-        },
-        {
-          "pdfPage": 260,
-          "internalPage": "538",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC6"
-        },
         {
           "pdfPage": 261,
           "internalPage": "539",
@@ -46365,7 +45772,7 @@
         {
           "pdfPage": 336,
           "internalPage": "715",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCC8_9"
         },
@@ -46519,7 +45926,7 @@
         {
           "pdfPage": 353,
           "internalPage": "735",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCC8_9"
         },
@@ -46693,7 +46100,7 @@
         {
           "pdfPage": 396,
           "internalPage": "919",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCC11"
         },
@@ -46747,20 +46154,6 @@
         }
       ],
       "5_43": [
-        {
-          "pdfPage": 411,
-          "internalPage": "934",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC11"
-        },
-        {
-          "pdfPage": 412,
-          "internalPage": "935",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC11"
-        },
         {
           "pdfPage": 413,
           "internalPage": "936",
@@ -47271,7 +46664,7 @@
         {
           "pdfPage": 493,
           "internalPage": "1213",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCC14"
         },
@@ -47505,7 +46898,7 @@
         {
           "pdfPage": 530,
           "internalPage": "1414",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCC16_17"
         },
@@ -47543,27 +46936,6 @@
         }
       ],
       "10_27": [
-        {
-          "pdfPage": 542,
-          "internalPage": "1426",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC16_17"
-        },
-        {
-          "pdfPage": 543,
-          "internalPage": "1427",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC16_17"
-        },
-        {
-          "pdfPage": 544,
-          "internalPage": "1428",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC16_17"
-        },
         {
           "pdfPage": 545,
           "internalPage": "1429",
@@ -47782,7 +47154,7 @@
         {
           "pdfPage": 579,
           "internalPage": "1512",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCC18"
         },
@@ -47827,13 +47199,6 @@
         }
       ],
       "11_13": [
-        {
-          "pdfPage": 592,
-          "internalPage": "1525",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC18"
-        },
         {
           "pdfPage": 593,
           "internalPage": "1526",
@@ -47988,7 +47353,7 @@
         {
           "pdfPage": 638,
           "internalPage": "1617",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCC19"
         },
@@ -49606,7 +48971,7 @@
         {
           "pdfPage": 786,
           "internalPage": "2015",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCC25_26"
         },
@@ -49760,7 +49125,7 @@
         {
           "pdfPage": 803,
           "internalPage": "2035",
-          "label": "Soft Starter Circuit",
+          "label": "Motor Starter & Control",
           "type": "starter",
           "cabinet": "MCC25_26"
         },
@@ -50090,15 +49455,6 @@
           "cabinet": "MCC27"
         }
       ],
-      "LA601_2": [
-        {
-          "pdfPage": 842,
-          "internalPage": "4016",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC27"
-        }
-      ],
       "LA701_1": [
         {
           "pdfPage": 843,
@@ -50107,15 +49463,6 @@
           "type": "starter",
           "cabinet": "MCC27"
         },
-        {
-          "pdfPage": 844,
-          "internalPage": "4018",
-          "label": "Motor Starter & Control",
-          "type": "starter",
-          "cabinet": "MCC27"
-        }
-      ],
-      "LA701_2": [
         {
           "pdfPage": 844,
           "internalPage": "4018",
