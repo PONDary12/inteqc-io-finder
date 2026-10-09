@@ -376,6 +376,14 @@ const FILES = [
     format: 'plctags',
     sheets: ['PLC Tags'],
   },
+  {
+    folder: 'Intake2',
+    file: 'PLC_1PLCAllTags.xlsx',
+    locationId: 'intake2',
+    locationName: 'Intake 2',
+    format: 'intake2',
+    sheets: ['PLC Tags'],
+  },
 ];
 
 // ──────────────────────── Helpers ────────────────────────
@@ -1152,6 +1160,186 @@ function parsePLCTagsSheet(wb, sheetName, locationId) {
   return cabinetMap;
 }
 
+// ──────────────────────── Intake 2 Parser ────────────────────────
+
+function parseIntake2Sheet(wb, locationId) {
+  const ws = wb.Sheets['PLC Tags'];
+  if (!ws) {
+    console.warn(`  ⚠ Sheet "PLC Tags" not found in Intake 2 workbook.`);
+    return new Map();
+  }
+
+  const partsPath = path.join(DATA_DIR, 'Intake2', 'Parts IO Intake Update.xlsx');
+  const mccMachineMap = {};
+  if (fs.existsSync(partsPath)) {
+    try {
+      const wbParts = XLSX.readFile(partsPath);
+      const sheetParts = wbParts.Sheets['Epuipment MC Intake'];
+      if (sheetParts) {
+        const partsRows = XLSX.utils.sheet_to_json(sheetParts, { header: 1 });
+        partsRows.slice(1).forEach(r => {
+          const mcc = r[2] ? String(r[2]).trim() : '';
+          const name = r[3] ? String(r[3]).trim() : '';
+          if (mcc && mcc !== 'xxx' && mcc !== 'ALL' && name && !mccMachineMap[mcc.toUpperCase()]) {
+            mccMachineMap[mcc.toUpperCase()] = name;
+          }
+        });
+      }
+    } catch (e) {
+      console.warn('  ⚠ Could not parse Parts IO Intake Update.xlsx:', e.message);
+    }
+  }
+
+  function extractPoint(r, seq) {
+    const rawName = String(r.Name || '').trim();
+    const rawPath = String(r.Path || '').trim();
+    const rawAddr = String(r['Logical Address'] || '').replace(/^%/, '').trim();
+    if (!rawAddr || !/^(I|Q|IW|QW|PIW|PQW)/i.test(rawAddr)) return null;
+
+    let code = '';
+    let signal = '';
+    let equipName = '';
+
+    const mBracket = rawName.match(/[\(\[]\s*([A-Za-z0-9_\-]+)\s*[\)\]]/);
+    if (mBracket && !/^(Open|Close|Fwd|Rev|Left|Right|\d+)$/i.test(mBracket[1])) {
+      code = mBracket[1].toUpperCase();
+      signal = rawName.replace(mBracket[0], '').trim();
+    }
+
+    if (!code) {
+      const mEquip = rawName.match(/\b(M\d+(?:[A-Za-z]\d*|-[\w\d]+)?|AV\d+|Y\d+(?:-\d+)?)\b/i);
+      if (mEquip) {
+        code = mEquip[1].toUpperCase();
+        signal = rawName.replace(mEquip[0], '').replace(/\s+/g, ' ').trim();
+      }
+    }
+
+    if (!code && rawName.toUpperCase().startsWith('FLOW ')) {
+      code = rawName.replace(/^FLOW\s+/i, '').trim();
+      signal = 'Flow Pulse / Rate';
+      equipName = 'Flow Meter ' + code;
+    }
+
+    if (!code) {
+      const mSys = rawName.match(/\b(STOLZ\s+[A-Z]|STOLZ|LAYER|DRUMPER|BACK\s+FILTER|BLOWER|BIN\s+F\d|HOPPER)\b/i);
+      if (mSys) {
+        code = mSys[1].toUpperCase().replace(/\s+/g, '_');
+        signal = rawName.replace(mSys[0], '').trim();
+      }
+    }
+
+    if (!code) {
+      code = rawName;
+      signal = 'Signal';
+    }
+
+    if (!equipName) {
+      if (mccMachineMap[code]) {
+        equipName = mccMachineMap[code];
+      } else {
+        if (code.startsWith('M')) equipName = 'Motor / Drive Unit';
+        else if (code.startsWith('AV')) equipName = 'Pneumatic Solenoid Valve';
+        else if (code.startsWith('Y')) equipName = 'Flap Box / Gate';
+        else equipName = code.replace(/_/g, ' ');
+      }
+    }
+
+    let cabinet = 'PLC_Intake';
+    if (rawPath.includes('Remote1')) cabinet = 'Remote_1';
+    else if (rawPath.includes('Remote2')) cabinet = 'Remote_2';
+    else if (rawPath.includes('Main')) cabinet = 'Main_Cabinet';
+    else if (rawPath.includes('Motor F1') || rawPath.includes('Input2') || rawPath.includes('Output2') || rawPath.includes('Output Motor')) cabinet = 'MCC_Intake';
+
+    let type = 'DI';
+    if (/^IW/i.test(rawAddr) || /^PIW/i.test(rawAddr)) type = 'AI';
+    else if (/^QW/i.test(rawAddr) || /^PQW/i.test(rawAddr)) type = 'AO';
+    else if (/^Q/i.test(rawAddr)) type = 'DO';
+    else if (/^I/i.test(rawAddr)) type = 'DI';
+
+    return {
+      type,
+      seq,
+      address: rawAddr,
+      equipmentCode: code,
+      equipmentName: equipName,
+      signalName: signal,
+      cabinet,
+      drawingPage: null,
+      internalPage: null,
+      drawingPdfUrl: null,
+      normalizedCode: normalizeCode(code, locationId),
+      normalizedAddress: normalizeAddress(rawAddr),
+    };
+  }
+
+  const cabinetMap = new Map();
+  const seenAddresses = new Set();
+
+  const rows1 = XLSX.utils.sheet_to_json(ws);
+  let seq = 1;
+  rows1.forEach(r => {
+    const pt = extractPoint(r, seq++);
+    if (pt) {
+      const normA = pt.normalizedAddress;
+      if (!seenAddresses.has(normA)) {
+        seenAddresses.add(normA);
+        if (!cabinetMap.has(pt.cabinet)) cabinetMap.set(pt.cabinet, []);
+        cabinetMap.get(pt.cabinet).push(pt);
+      }
+    }
+  });
+
+  const allTagsPath = path.join(DATA_DIR, 'Intake2', 'PLCAllTags.xlsx');
+  if (fs.existsSync(allTagsPath)) {
+    try {
+      const wbAll = XLSX.readFile(allTagsPath);
+      const wsAll = wbAll.Sheets['PLC Tags'];
+      if (wsAll) {
+        const rowsAll = XLSX.utils.sheet_to_json(wsAll);
+        rowsAll.forEach(r => {
+          const pt = extractPoint(r, seq++);
+          if (pt) {
+            const normA = pt.normalizedAddress;
+            if (!seenAddresses.has(normA)) {
+              seenAddresses.add(normA);
+              if (!cabinetMap.has(pt.cabinet)) cabinetMap.set(pt.cabinet, []);
+              cabinetMap.get(pt.cabinet).push(pt);
+            }
+          }
+        });
+      }
+    } catch (e) {
+      console.warn('  ⚠ Could not merge PLCAllTags.xlsx:', e.message);
+    }
+  }
+
+  const rem2Path = path.join(DATA_DIR, 'Intake2', 'IORemote2PLCTags[16].xlsx');
+  if (fs.existsSync(rem2Path)) {
+    try {
+      const wbRem = XLSX.readFile(rem2Path);
+      const wsRem = wbRem.Sheets['PLC Tags'];
+      if (wsRem) {
+        const rowsRem = XLSX.utils.sheet_to_json(wsRem);
+        rowsRem.forEach(r => {
+          const pt = extractPoint(r, seq++);
+          if (pt) {
+            const normA = pt.normalizedAddress;
+            if (!seenAddresses.has(normA)) {
+              seenAddresses.add(normA);
+              if (!cabinetMap.has(pt.cabinet)) cabinetMap.set(pt.cabinet, []);
+              cabinetMap.get(pt.cabinet).push(pt);
+            }
+          }
+        });
+      }
+    } catch (e) {
+      console.warn('  ⚠ Could not merge IORemote2PLCTags[16].xlsx:', e.message);
+    }
+  }
+
+  return cabinetMap;
+}
+
 // ──────────────────────── Main ────────────────────────
 
 function main() {
@@ -1191,6 +1379,22 @@ function main() {
         }
         console.log(`${sheetTotal} I/O points across ${sortedCabinets.length} cabinets`);
       }
+    } else if (config.format === 'intake2') {
+      // ── Intake 2 format ──
+      process.stdout.write(`  📋 Parsing Intake 2 PLC tags ... `);
+      const cabinetMap = parseIntake2Sheet(wb, config.locationId);
+      let sheetTotal = 0;
+      const sortedCabinets = [...cabinetMap.keys()].sort();
+      for (const cabName of sortedCabinets) {
+        const ioPoints = cabinetMap.get(cabName);
+        sheetTotal += ioPoints.length;
+        cabinets.push({
+          id: cabName,
+          name: cabName,
+          io: ioPoints,
+        });
+      }
+      console.log(`${sheetTotal} I/O points across ${sortedCabinets.length} cabinets`);
     } else {
       // ── Original multi-sheet format (Premixer, Tower 2) ──
       for (const sheetName of config.sheets) {
@@ -1218,7 +1422,10 @@ function main() {
           let drawingPage = null;
           let actualCab = s.cabinet || null;
 
-          if (locMap.cabinets) {
+          if (s.drawingPdfUrl && fs.existsSync(path.join(PUBLIC_DIR, s.drawingPdfUrl))) {
+            drawingPdfUrl = s.drawingPdfUrl;
+            drawingPage = s.page || 1;
+          } else if (locMap.cabinets) {
             if (!actualCab) {
               for (const [cabName, pagesMap] of Object.entries(locMap.cabinets)) {
                 if (Object.values(pagesMap).map(Number).includes(s.pdfPage)) {
