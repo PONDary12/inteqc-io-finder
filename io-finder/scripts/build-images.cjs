@@ -19,6 +19,11 @@ const DRAWINGS_OUT_DIR = path.resolve(__dirname, '../public/drawings');
 // Configurations matching our locations
 const LOCATIONS = [
   {
+    locationId: 'premixer',
+    folder: 'Premixer',
+    pdfFile: 'INTEQC PREMIXER.pdf',
+  },
+  {
     locationId: 'tower2_p1',
     folder: 'Tower 2',
     pdfFile: 'Electrical schematic diagram_Feed mill Tower2 revamp phase1.pdf',

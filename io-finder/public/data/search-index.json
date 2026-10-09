@@ -13,7 +13,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 2,
+        "internalPage": "302",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_2.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -33,7 +40,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 50,
+        "internalPage": "351",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_50.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -51,7 +65,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 52,
+        "internalPage": "353",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_52.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -53855,7 +53876,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 7,
+        "internalPage": "105",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_7.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -53883,7 +53911,20 @@
       "MCCY1_2",
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 8,
+        "internalPage": "106",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_8.png"
+      },
+      {
+        "cabinet": "PLC",
+        "page": 49,
+        "internalPage": "350",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_49.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -53918,7 +53959,26 @@
       "MCCY1_2",
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 10,
+        "internalPage": "108",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_10.png"
+      },
+      {
+        "cabinet": "PLC",
+        "page": 48,
+        "internalPage": "349",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_48.png"
+      },
+      {
+        "cabinet": "PLC",
+        "page": 51,
+        "internalPage": "352",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_51.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -53942,7 +54002,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 9,
+        "internalPage": "107",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_9.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -53967,7 +54034,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 12,
+        "internalPage": "110",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_12.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -53991,7 +54065,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 11,
+        "internalPage": "109",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_11.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54023,7 +54104,20 @@
       "MCCY1_2",
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 13,
+        "internalPage": "111",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_13.png"
+      },
+      {
+        "cabinet": "PLC",
+        "page": 57,
+        "internalPage": "358",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_57.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54070,7 +54164,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 14,
+        "internalPage": "112",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_14.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54094,7 +54195,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 15,
+        "internalPage": "113",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_15.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54118,7 +54226,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 16,
+        "internalPage": "114",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_16.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54142,7 +54257,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 17,
+        "internalPage": "115",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_17.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54162,7 +54284,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 31,
+        "internalPage": "129",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_31.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54182,7 +54311,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 49,
+        "internalPage": "147",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_49.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54206,7 +54342,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 18,
+        "internalPage": "116",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_18.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54226,7 +54369,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 49,
+        "internalPage": "147",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_49.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54249,7 +54399,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 19,
+        "internalPage": "117",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_19.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54284,7 +54441,32 @@
       "MCCY1_2",
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 25,
+        "internalPage": "123",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_25.png"
+      },
+      {
+        "cabinet": "MCCY1_2",
+        "page": 20,
+        "internalPage": "118",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_20.png"
+      },
+      {
+        "cabinet": "PLC",
+        "page": 48,
+        "internalPage": "349",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_48.png"
+      },
+      {
+        "cabinet": "PLC",
+        "page": 51,
+        "internalPage": "352",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_51.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54308,7 +54490,20 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 26,
+        "internalPage": "124",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_26.png"
+      },
+      {
+        "cabinet": "MCCY1_2",
+        "page": 21,
+        "internalPage": "119",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_21.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54328,7 +54523,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 50,
+        "internalPage": "148",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_50.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54346,7 +54548,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 121,
+        "internalPage": "236",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_121.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54366,7 +54575,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 123,
+        "internalPage": "238",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_123.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54402,7 +54618,38 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 30,
+        "internalPage": "128",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_30.png"
+      },
+      {
+        "cabinet": "MCCY1_2",
+        "page": 31,
+        "internalPage": "129",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_31.png"
+      },
+      {
+        "cabinet": "MCCY1_2",
+        "page": 34,
+        "internalPage": "132",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_34.png"
+      },
+      {
+        "cabinet": "MCCY1_2",
+        "page": 25,
+        "internalPage": "123",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_25.png"
+      },
+      {
+        "cabinet": "MCCY1_2",
+        "page": 24,
+        "internalPage": "122",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_24.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54422,7 +54669,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 123,
+        "internalPage": "238",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_123.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54442,7 +54696,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 123,
+        "internalPage": "238",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_123.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54460,7 +54721,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 121,
+        "internalPage": "236",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_121.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54483,7 +54751,20 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 26,
+        "internalPage": "124",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_26.png"
+      },
+      {
+        "cabinet": "MCCY1_2",
+        "page": 27,
+        "internalPage": "125",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_27.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54524,7 +54805,26 @@
       "MCCY1_2",
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 28,
+        "internalPage": "126",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_28.png"
+      },
+      {
+        "cabinet": "MCCY1_2",
+        "page": 29,
+        "internalPage": "127",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_29.png"
+      },
+      {
+        "cabinet": "PLC",
+        "page": 58,
+        "internalPage": "359",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_58.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54547,7 +54847,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 30,
+        "internalPage": "128",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_30.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54567,7 +54874,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 51,
+        "internalPage": "149",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_51.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54587,7 +54901,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 32,
+        "internalPage": "333",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_32.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54607,7 +54928,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 31,
+        "internalPage": "332",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_31.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54627,7 +54955,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 51,
+        "internalPage": "149",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_51.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54647,7 +54982,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 51,
+        "internalPage": "149",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_51.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54667,7 +55009,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 32,
+        "internalPage": "333",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_32.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54687,7 +55036,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 31,
+        "internalPage": "332",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_31.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54707,7 +55063,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 51,
+        "internalPage": "149",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_51.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54727,7 +55090,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 52,
+        "internalPage": "150",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_52.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54747,7 +55117,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 32,
+        "internalPage": "333",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_32.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54767,7 +55144,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 31,
+        "internalPage": "332",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_31.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54787,7 +55171,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 52,
+        "internalPage": "150",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_52.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54807,7 +55198,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 52,
+        "internalPage": "150",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_52.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54827,7 +55225,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 32,
+        "internalPage": "333",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_32.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54847,7 +55252,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 31,
+        "internalPage": "332",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_31.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54867,7 +55279,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 52,
+        "internalPage": "150",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_52.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54887,7 +55306,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 53,
+        "internalPage": "151",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_53.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54907,7 +55333,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 32,
+        "internalPage": "333",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_32.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54927,7 +55360,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 31,
+        "internalPage": "332",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_31.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54947,7 +55387,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 53,
+        "internalPage": "151",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_53.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54967,7 +55414,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 53,
+        "internalPage": "151",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_53.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -54987,7 +55441,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 32,
+        "internalPage": "333",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_32.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55007,7 +55468,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 31,
+        "internalPage": "332",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_31.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55027,7 +55495,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 53,
+        "internalPage": "151",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_53.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55047,7 +55522,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 54,
+        "internalPage": "152",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_54.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55067,7 +55549,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 32,
+        "internalPage": "333",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_32.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55087,7 +55576,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 31,
+        "internalPage": "332",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_31.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55107,7 +55603,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 54,
+        "internalPage": "152",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_54.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55127,7 +55630,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 54,
+        "internalPage": "152",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_54.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55147,7 +55657,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 32,
+        "internalPage": "333",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_32.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55167,7 +55684,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 31,
+        "internalPage": "332",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_31.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55187,7 +55711,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 54,
+        "internalPage": "152",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_54.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55207,7 +55738,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 55,
+        "internalPage": "153",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_55.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55227,7 +55765,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 55,
+        "internalPage": "153",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_55.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55247,7 +55792,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 55,
+        "internalPage": "153",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_55.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55267,7 +55819,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 55,
+        "internalPage": "153",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_55.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55287,7 +55846,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 56,
+        "internalPage": "154",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_56.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55307,7 +55873,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 56,
+        "internalPage": "154",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_56.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55327,7 +55900,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 56,
+        "internalPage": "154",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_56.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55347,7 +55927,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 56,
+        "internalPage": "154",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_56.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55367,7 +55954,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 57,
+        "internalPage": "155",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_57.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55387,7 +55981,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 57,
+        "internalPage": "155",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_57.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55407,7 +56008,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 57,
+        "internalPage": "155",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_57.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55427,7 +56035,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 57,
+        "internalPage": "155",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_57.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55447,7 +56062,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 58,
+        "internalPage": "156",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_58.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55467,7 +56089,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 58,
+        "internalPage": "156",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_58.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55487,7 +56116,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 58,
+        "internalPage": "156",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_58.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55507,7 +56143,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 58,
+        "internalPage": "156",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_58.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55527,7 +56170,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 59,
+        "internalPage": "157",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_59.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55547,7 +56197,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 59,
+        "internalPage": "157",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_59.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55567,7 +56224,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 59,
+        "internalPage": "157",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_59.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55587,7 +56251,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 59,
+        "internalPage": "157",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_59.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55607,7 +56278,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 60,
+        "internalPage": "158",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_60.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55627,7 +56305,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 60,
+        "internalPage": "158",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_60.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55647,7 +56332,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 60,
+        "internalPage": "158",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_60.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55667,7 +56359,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 60,
+        "internalPage": "158",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_60.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55687,7 +56386,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 61,
+        "internalPage": "159",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_61.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55707,7 +56413,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 61,
+        "internalPage": "159",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_61.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55727,7 +56440,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 61,
+        "internalPage": "159",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_61.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55747,7 +56467,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 61,
+        "internalPage": "159",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_61.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55767,7 +56494,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 62,
+        "internalPage": "160",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_62.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55787,7 +56521,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 62,
+        "internalPage": "160",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_62.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55807,7 +56548,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 62,
+        "internalPage": "160",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_62.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55827,7 +56575,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 62,
+        "internalPage": "160",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_62.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55847,7 +56602,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 63,
+        "internalPage": "161",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_63.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55867,7 +56629,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 63,
+        "internalPage": "161",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_63.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55887,7 +56656,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 63,
+        "internalPage": "161",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_63.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55907,7 +56683,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 63,
+        "internalPage": "161",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_63.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55927,7 +56710,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 64,
+        "internalPage": "163",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_64.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55947,7 +56737,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 64,
+        "internalPage": "163",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_64.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55967,7 +56764,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 64,
+        "internalPage": "163",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_64.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -55987,7 +56791,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 64,
+        "internalPage": "163",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_64.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56005,7 +56816,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 117,
+        "internalPage": "232",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_117.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56023,7 +56841,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 117,
+        "internalPage": "232",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_117.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56041,7 +56866,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 117,
+        "internalPage": "232",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_117.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56059,7 +56891,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 117,
+        "internalPage": "232",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_117.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56077,7 +56916,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 117,
+        "internalPage": "232",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_117.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56095,7 +56941,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 117,
+        "internalPage": "232",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_117.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56113,7 +56966,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 117,
+        "internalPage": "232",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_117.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56131,7 +56991,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 117,
+        "internalPage": "232",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_117.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56149,7 +57016,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 118,
+        "internalPage": "233",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_118.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56167,7 +57041,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 118,
+        "internalPage": "233",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_118.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56185,7 +57066,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 118,
+        "internalPage": "233",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_118.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56203,7 +57091,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 118,
+        "internalPage": "233",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_118.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56221,7 +57116,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 118,
+        "internalPage": "233",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_118.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56239,7 +57141,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 118,
+        "internalPage": "233",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_118.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56257,7 +57166,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 118,
+        "internalPage": "233",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_118.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56275,7 +57191,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 118,
+        "internalPage": "233",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_118.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56293,7 +57216,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 119,
+        "internalPage": "234",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_119.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56311,7 +57241,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 119,
+        "internalPage": "234",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_119.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56329,7 +57266,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 119,
+        "internalPage": "234",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_119.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56347,7 +57291,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 119,
+        "internalPage": "234",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_119.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56365,7 +57316,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 119,
+        "internalPage": "234",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_119.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56383,7 +57341,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 119,
+        "internalPage": "234",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_119.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56401,7 +57366,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 119,
+        "internalPage": "234",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_119.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56419,7 +57391,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 119,
+        "internalPage": "234",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_119.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56437,7 +57416,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 120,
+        "internalPage": "235",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_120.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56455,7 +57441,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 120,
+        "internalPage": "235",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_120.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56473,7 +57466,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 120,
+        "internalPage": "235",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_120.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56491,7 +57491,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 120,
+        "internalPage": "235",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_120.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56509,7 +57516,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 120,
+        "internalPage": "235",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_120.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56527,7 +57541,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 120,
+        "internalPage": "235",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_120.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56545,7 +57566,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 120,
+        "internalPage": "235",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_120.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56563,7 +57591,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 120,
+        "internalPage": "235",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_120.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56581,7 +57616,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 121,
+        "internalPage": "236",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_121.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56599,7 +57641,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 121,
+        "internalPage": "236",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_121.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56617,7 +57666,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 121,
+        "internalPage": "236",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_121.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56635,7 +57691,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 121,
+        "internalPage": "236",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_121.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56655,7 +57718,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 33,
+        "internalPage": "334",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_33.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56675,7 +57745,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 33,
+        "internalPage": "334",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_33.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56695,7 +57772,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 125,
+        "internalPage": "240",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_125.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56715,7 +57799,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 33,
+        "internalPage": "334",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_33.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56735,7 +57826,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 33,
+        "internalPage": "334",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_33.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56755,7 +57853,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 125,
+        "internalPage": "240",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_125.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56775,7 +57880,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 34,
+        "internalPage": "335",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_34.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56795,7 +57907,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 34,
+        "internalPage": "335",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_34.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56815,7 +57934,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 125,
+        "internalPage": "240",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_125.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56835,7 +57961,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 34,
+        "internalPage": "335",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_34.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56855,7 +57988,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 34,
+        "internalPage": "335",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_34.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56875,7 +58015,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 125,
+        "internalPage": "240",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_125.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56895,7 +58042,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 35,
+        "internalPage": "336",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_35.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56915,7 +58069,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 35,
+        "internalPage": "336",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_35.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56935,7 +58096,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 125,
+        "internalPage": "240",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_125.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56955,7 +58123,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 35,
+        "internalPage": "336",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_35.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56975,7 +58150,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 35,
+        "internalPage": "336",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_35.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -56995,7 +58177,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 125,
+        "internalPage": "240",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_125.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57015,7 +58204,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 36,
+        "internalPage": "337",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_36.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57035,7 +58231,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 36,
+        "internalPage": "337",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_36.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57055,7 +58258,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 125,
+        "internalPage": "240",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_125.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57075,7 +58285,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 36,
+        "internalPage": "337",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_36.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57095,7 +58312,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 36,
+        "internalPage": "337",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_36.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57115,7 +58339,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 125,
+        "internalPage": "240",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_125.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57135,7 +58366,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 37,
+        "internalPage": "338",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_37.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57155,7 +58393,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 37,
+        "internalPage": "338",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_37.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57175,7 +58420,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 126,
+        "internalPage": "241",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_126.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57195,7 +58447,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 37,
+        "internalPage": "338",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_37.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57215,7 +58474,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 37,
+        "internalPage": "338",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_37.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57235,7 +58501,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 126,
+        "internalPage": "241",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_126.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57255,7 +58528,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 38,
+        "internalPage": "339",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_38.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57275,7 +58555,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 38,
+        "internalPage": "339",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_38.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57295,7 +58582,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 126,
+        "internalPage": "241",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_126.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57315,7 +58609,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 38,
+        "internalPage": "339",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_38.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57335,7 +58636,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 38,
+        "internalPage": "339",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_38.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57355,7 +58663,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 126,
+        "internalPage": "241",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_126.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57375,7 +58690,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 39,
+        "internalPage": "340",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_39.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57395,7 +58717,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 39,
+        "internalPage": "340",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_39.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57415,7 +58744,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 126,
+        "internalPage": "241",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_126.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57435,7 +58771,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 39,
+        "internalPage": "340",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_39.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57455,7 +58798,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 39,
+        "internalPage": "340",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_39.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57475,7 +58825,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 126,
+        "internalPage": "241",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_126.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57495,7 +58852,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 40,
+        "internalPage": "341",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_40.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57515,7 +58879,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 40,
+        "internalPage": "341",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_40.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57535,7 +58906,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 126,
+        "internalPage": "241",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_126.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57555,7 +58933,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 40,
+        "internalPage": "341",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_40.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57575,7 +58960,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 40,
+        "internalPage": "341",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_40.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57595,7 +58987,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 126,
+        "internalPage": "241",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_126.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57615,7 +59014,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 41,
+        "internalPage": "342",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_41.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57635,7 +59041,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 41,
+        "internalPage": "342",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_41.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57655,7 +59068,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 127,
+        "internalPage": "242",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_127.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57675,7 +59095,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 41,
+        "internalPage": "342",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_41.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57695,7 +59122,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 41,
+        "internalPage": "342",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_41.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57715,7 +59149,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 127,
+        "internalPage": "242",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_127.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57735,7 +59176,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 42,
+        "internalPage": "343",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_42.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57755,7 +59203,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 42,
+        "internalPage": "343",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_42.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57775,7 +59230,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 127,
+        "internalPage": "242",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_127.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57795,7 +59257,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 42,
+        "internalPage": "343",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_42.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57815,7 +59284,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 42,
+        "internalPage": "343",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_42.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57835,7 +59311,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 127,
+        "internalPage": "242",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_127.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57855,7 +59338,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 43,
+        "internalPage": "344",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_43.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57875,7 +59365,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 43,
+        "internalPage": "344",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_43.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57895,7 +59392,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 127,
+        "internalPage": "242",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_127.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57915,7 +59419,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 43,
+        "internalPage": "344",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_43.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57935,7 +59446,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 43,
+        "internalPage": "344",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_43.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57955,7 +59473,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 127,
+        "internalPage": "242",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_127.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57975,7 +59500,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 44,
+        "internalPage": "345",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_44.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -57995,7 +59527,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 44,
+        "internalPage": "345",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_44.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58015,7 +59554,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 127,
+        "internalPage": "242",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_127.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58035,7 +59581,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 44,
+        "internalPage": "345",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_44.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58055,7 +59608,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 44,
+        "internalPage": "345",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_44.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58075,7 +59635,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 127,
+        "internalPage": "242",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_127.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58095,7 +59662,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 45,
+        "internalPage": "346",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_45.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58115,7 +59689,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 45,
+        "internalPage": "346",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_45.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58135,7 +59716,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 128,
+        "internalPage": "243",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_128.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58155,7 +59743,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 45,
+        "internalPage": "346",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_45.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58175,7 +59770,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 45,
+        "internalPage": "346",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_45.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58195,7 +59797,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 128,
+        "internalPage": "243",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_128.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58215,7 +59824,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 46,
+        "internalPage": "347",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_46.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58235,7 +59851,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 46,
+        "internalPage": "347",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_46.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58255,7 +59878,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 128,
+        "internalPage": "243",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_128.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58275,7 +59905,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 46,
+        "internalPage": "347",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_46.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58295,7 +59932,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 46,
+        "internalPage": "347",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_46.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58315,7 +59959,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 128,
+        "internalPage": "243",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_128.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58335,7 +59986,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 47,
+        "internalPage": "348",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_47.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58355,7 +60013,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 47,
+        "internalPage": "348",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_47.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58375,7 +60040,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 128,
+        "internalPage": "243",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_128.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58395,7 +60067,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 129,
+        "internalPage": "244",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_129.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58415,7 +60094,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 129,
+        "internalPage": "244",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_129.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58435,7 +60121,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 129,
+        "internalPage": "244",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_129.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58455,7 +60148,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 129,
+        "internalPage": "244",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_129.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58475,7 +60175,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 129,
+        "internalPage": "244",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_129.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58495,7 +60202,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 129,
+        "internalPage": "244",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_129.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58515,7 +60229,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 129,
+        "internalPage": "244",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_129.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58539,7 +60260,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 47,
+        "internalPage": "145",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_47.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58559,7 +60287,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 49,
+        "internalPage": "147",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_49.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58579,7 +60314,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 49,
+        "internalPage": "147",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_49.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58599,7 +60341,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 49,
+        "internalPage": "147",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_49.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58619,7 +60368,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 49,
+        "internalPage": "147",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_49.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58639,7 +60395,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 50,
+        "internalPage": "148",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_50.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58659,7 +60422,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 50,
+        "internalPage": "148",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_50.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58682,7 +60452,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 35,
+        "internalPage": "133",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_35.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58706,7 +60483,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 36,
+        "internalPage": "134",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_36.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58726,7 +60510,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 50,
+        "internalPage": "148",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_50.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58750,7 +60541,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 37,
+        "internalPage": "135",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_37.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58786,7 +60584,20 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 39,
+        "internalPage": "137",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_39.png"
+      },
+      {
+        "cabinet": "MCCY1_2",
+        "page": 40,
+        "internalPage": "138",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_40.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58806,7 +60617,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 124,
+        "internalPage": "239",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_124.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58826,7 +60644,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 124,
+        "internalPage": "239",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_124.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58844,7 +60669,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 121,
+        "internalPage": "236",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_121.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58867,7 +60699,20 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 41,
+        "internalPage": "139",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_41.png"
+      },
+      {
+        "cabinet": "MCCY1_2",
+        "page": 42,
+        "internalPage": "140",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_42.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58887,7 +60732,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 49,
+        "internalPage": "147",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_49.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58911,7 +60763,20 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 28,
+        "internalPage": "126",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_28.png"
+      },
+      {
+        "cabinet": "MCCY1_2",
+        "page": 22,
+        "internalPage": "120",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_22.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58932,7 +60797,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 124,
+        "internalPage": "239",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_124.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58950,7 +60822,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 121,
+        "internalPage": "236",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_121.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58968,7 +60847,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 122,
+        "internalPage": "237",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_122.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -58992,7 +60878,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 43,
+        "internalPage": "141",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_43.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -59012,7 +60905,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 124,
+        "internalPage": "239",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_124.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -59030,7 +60930,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 122,
+        "internalPage": "237",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_122.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -59054,7 +60961,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 44,
+        "internalPage": "142",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_44.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -59077,7 +60991,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 45,
+        "internalPage": "143",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_45.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -59101,7 +61022,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 46,
+        "internalPage": "144",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_46.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -60744,7 +62672,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 68,
+        "internalPage": "369",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_68.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -71737,7 +73672,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 89,
+        "internalPage": "204",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_89.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -71808,7 +73750,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 96,
+        "internalPage": "211",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_96.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -71879,7 +73828,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 101,
+        "internalPage": "216",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_101.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -71950,7 +73906,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 105,
+        "internalPage": "220",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_105.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -72052,7 +74015,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 111,
+        "internalPage": "226",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_111.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94399,7 +96369,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 94,
+        "internalPage": "209",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_94.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94422,7 +96399,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 94,
+        "internalPage": "209",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_94.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94445,7 +96429,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 94,
+        "internalPage": "209",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_94.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94468,7 +96459,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 94,
+        "internalPage": "209",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_94.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94491,7 +96489,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 94,
+        "internalPage": "209",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_94.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94514,7 +96519,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 94,
+        "internalPage": "209",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_94.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94537,7 +96549,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 94,
+        "internalPage": "209",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_94.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94560,7 +96579,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 94,
+        "internalPage": "209",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_94.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94583,7 +96609,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 94,
+        "internalPage": "209",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_94.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94606,7 +96639,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 95,
+        "internalPage": "210",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_95.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94629,7 +96669,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 100,
+        "internalPage": "215",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_100.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94652,7 +96699,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 100,
+        "internalPage": "215",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_100.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94675,7 +96729,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 100,
+        "internalPage": "215",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_100.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94698,7 +96759,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 100,
+        "internalPage": "215",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_100.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94721,7 +96789,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 100,
+        "internalPage": "215",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_100.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94744,7 +96819,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 100,
+        "internalPage": "215",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_100.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94767,7 +96849,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 100,
+        "internalPage": "215",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_100.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94790,7 +96879,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 104,
+        "internalPage": "219",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_104.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94813,7 +96909,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 104,
+        "internalPage": "219",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_104.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94836,7 +96939,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 104,
+        "internalPage": "219",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_104.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94859,7 +96969,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 104,
+        "internalPage": "219",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_104.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94882,7 +96999,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 104,
+        "internalPage": "219",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_104.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94905,7 +97029,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 104,
+        "internalPage": "219",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_104.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94928,7 +97059,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 110,
+        "internalPage": "225",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_110.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94951,7 +97089,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 110,
+        "internalPage": "225",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_110.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94974,7 +97119,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 110,
+        "internalPage": "225",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_110.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -94997,7 +97149,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 110,
+        "internalPage": "225",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_110.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -95020,7 +97179,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 110,
+        "internalPage": "225",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_110.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -95043,7 +97209,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 110,
+        "internalPage": "225",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_110.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -95066,7 +97239,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 110,
+        "internalPage": "225",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_110.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -95089,7 +97269,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 110,
+        "internalPage": "225",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_110.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -95112,7 +97299,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 110,
+        "internalPage": "225",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_110.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -95135,7 +97329,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 114,
+        "internalPage": "229",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_114.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -95158,7 +97359,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 114,
+        "internalPage": "229",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_114.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -95181,7 +97389,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 114,
+        "internalPage": "229",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_114.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -95204,7 +97419,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 114,
+        "internalPage": "229",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_114.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -96536,7 +98758,20 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 68,
+        "internalPage": "167",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_68.png"
+      },
+      {
+        "cabinet": "MCCY1_2",
+        "page": 72,
+        "internalPage": "171",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_72.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -96559,7 +98794,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 34,
+        "internalPage": "132",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_34.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -96577,7 +98819,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 115,
+        "internalPage": "230",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_115.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -96595,7 +98844,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 116,
+        "internalPage": "231",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_116.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -96615,7 +98871,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 123,
+        "internalPage": "238",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_123.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -96638,7 +98901,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 34,
+        "internalPage": "132",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_34.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -96656,7 +98926,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 115,
+        "internalPage": "230",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_115.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -96674,7 +98951,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 116,
+        "internalPage": "231",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_116.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -96694,7 +98978,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 123,
+        "internalPage": "238",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_123.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -96717,7 +99008,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 34,
+        "internalPage": "132",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_34.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -96735,7 +99033,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 115,
+        "internalPage": "230",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_115.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -96753,7 +99058,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 116,
+        "internalPage": "231",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_116.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -96773,7 +99085,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 123,
+        "internalPage": "238",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_123.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -96796,7 +99115,14 @@
     "cabinets": [
       "MCCY1_2"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY1_2",
+        "page": 34,
+        "internalPage": "132",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY1_2_page_34.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -96814,7 +99140,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 115,
+        "internalPage": "230",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_115.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -96832,7 +99165,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 116,
+        "internalPage": "231",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_116.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -96852,7 +99192,14 @@
     "cabinets": [
       "MCCY3"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "MCCY3",
+        "page": 123,
+        "internalPage": "238",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/MCCY3_page_123.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107077,7 +109424,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 13,
+        "internalPage": "314",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_13.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107102,7 +109456,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 13,
+        "internalPage": "314",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_13.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107127,7 +109488,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 14,
+        "internalPage": "315",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_14.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107152,7 +109520,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 14,
+        "internalPage": "315",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_14.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107177,7 +109552,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 15,
+        "internalPage": "316",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_15.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107202,7 +109584,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 15,
+        "internalPage": "316",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_15.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107227,7 +109616,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 16,
+        "internalPage": "317",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_16.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107252,7 +109648,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 16,
+        "internalPage": "317",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_16.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107277,7 +109680,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 17,
+        "internalPage": "318",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_17.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107302,7 +109712,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 17,
+        "internalPage": "318",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_17.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107327,7 +109744,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 18,
+        "internalPage": "319",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_18.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107352,7 +109776,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 18,
+        "internalPage": "319",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_18.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107377,7 +109808,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 19,
+        "internalPage": "320",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_19.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107402,7 +109840,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 19,
+        "internalPage": "320",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_19.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107427,7 +109872,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 20,
+        "internalPage": "321",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_20.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107452,7 +109904,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 20,
+        "internalPage": "321",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_20.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107477,7 +109936,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 21,
+        "internalPage": "322",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_21.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107502,7 +109968,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 21,
+        "internalPage": "322",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_21.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107527,7 +110000,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 22,
+        "internalPage": "323",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_22.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107552,7 +110032,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 22,
+        "internalPage": "323",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_22.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107577,7 +110064,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 23,
+        "internalPage": "324",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_23.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107602,7 +110096,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 23,
+        "internalPage": "324",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_23.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107627,7 +110128,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 24,
+        "internalPage": "325",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_24.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107652,7 +110160,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 24,
+        "internalPage": "325",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_24.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107677,7 +110192,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 25,
+        "internalPage": "326",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_25.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107702,7 +110224,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 25,
+        "internalPage": "326",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_25.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107727,7 +110256,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 26,
+        "internalPage": "327",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_26.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107752,7 +110288,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 26,
+        "internalPage": "327",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_26.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107777,7 +110320,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 27,
+        "internalPage": "328",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_27.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107802,7 +110352,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 29,
+        "internalPage": "330",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_29.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107827,7 +110384,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 30,
+        "internalPage": "331",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_30.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107852,7 +110416,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 27,
+        "internalPage": "328",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_27.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -107877,7 +110448,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 28,
+        "internalPage": "329",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_28.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -113388,7 +115966,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 11,
+        "internalPage": "312",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_11.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -113413,7 +115998,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 11,
+        "internalPage": "312",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_11.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -113438,7 +116030,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 12,
+        "internalPage": "313",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_12.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -113462,7 +116061,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 53,
+        "internalPage": "354",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_53.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -113490,7 +116096,26 @@
       "20211111",
       "20220107"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 54,
+        "internalPage": "355",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_54.png"
+      },
+      {
+        "cabinet": "20211111",
+        "page": 64,
+        "internalPage": "365",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_64.png"
+      },
+      {
+        "cabinet": "20220107",
+        "page": 68,
+        "internalPage": "369",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_68.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -113512,7 +116137,14 @@
     "cabinets": [
       "PLC"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 55,
+        "internalPage": "356",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_55.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },
@@ -113540,7 +116172,26 @@
       "20211111",
       "20220107"
     ],
-    "drawings": [],
+    "drawings": [
+      {
+        "cabinet": "PLC",
+        "page": 56,
+        "internalPage": "357",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_56.png"
+      },
+      {
+        "cabinet": "20211111",
+        "page": 64,
+        "internalPage": "365",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_64.png"
+      },
+      {
+        "cabinet": "20220107",
+        "page": 68,
+        "internalPage": "369",
+        "drawingPdfUrl": "/drawings/premixer/cabinets/images/PLC_page_68.png"
+      }
+    ],
     "location": "Premixer",
     "locationId": "premixer"
   },

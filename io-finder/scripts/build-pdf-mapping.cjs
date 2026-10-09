@@ -78,8 +78,9 @@ const LOCATIONS = [
   {
     locationId: 'premixer',
     folder: 'Premixer',
-    pdfFile: null,                             // No drawing PDF yet
-    drawingUrl: null,
+    pdfFile: 'INTEQC PREMIXER.pdf',
+    drawingUrl: '/drawings/premixer/electrical_schematic.pdf',
+    cabinetList: ['MCCY1_2', 'MCCY1-2', 'MCCY1', 'MCCY2', 'MCCY3', 'PLC'],
     cabinetRanges: [],
   },
   {
@@ -223,6 +224,7 @@ function extractTitle(text) {
 }
 
 const CAB_PREFIXES = [
+  'MCCY1_2', 'MCCY1-2', 'MCCY1', 'MCCY2', 'MCCY3', 'MCCY',
   'MCCB10', 'MCCB13', 'MCCB18', 'MCCB19', 'MCCB1', 'MCCB2', 'MCCB3', 'MCCB4', 'MCCB5', 'MCCB6', 'MCCB7', 'MCCB8', 'MCCB9',
   'MCC1_2', 'MCC1-2', 'MCC3_4', 'MCC3-4', 'MCC5_6', 'MCC5-6', 'MCC7_8', 'MCC7-8', 'MCC9_10', 'MCC9-10', 'MCC11',
   'RCB10', 'RCB1', 'RCB2', 'RCB3', 'RCB4', 'RCB5', 'RCB6', 'RCB7', 'RCB8', 'RCB9', 'RCB12', '新增RCB4',
@@ -1139,7 +1141,12 @@ async function main() {
   console.log('║  Multi-Location Support                        ║');
   console.log('╚════════════════════════════════════════════════╝\n');
 
-  const output = {};
+  let output = {};
+  if (fs.existsSync(OUT_PATH)) {
+    try {
+      output = JSON.parse(fs.readFileSync(OUT_PATH, 'utf8'));
+    } catch (e) {}
+  }
 
   for (const loc of LOCATIONS) {
     console.log(`\n📍 ${loc.locationId.toUpperCase()}:`);
@@ -1147,9 +1154,13 @@ async function main() {
       console.log('  ℹ No PDF configured — skipping.');
       continue;
     }
-    const result = await scanPdf(loc);
-    if (result) {
-      output[loc.locationId] = result;
+    try {
+      const result = await scanPdf(loc);
+      if (result) {
+        output[loc.locationId] = result;
+      }
+    } catch (err) {
+      console.warn(`  ⚠ Could not process ${loc.pdfFile}: ${err.message}`);
     }
   }
 
