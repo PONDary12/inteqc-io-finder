@@ -839,6 +839,167 @@ async function scanPdf(loc) {
   };
 }
 
+// ──────────────────────── Intake 2 Deterministic Mapping ────────────────────────
+
+function buildIntake2Mapping() {
+  console.log(`\n📍 INTAKE2 (Deterministic Image Mapping):`);
+  const xlsxPath = path.join(DATA_DIR, 'Intake2', 'PLC_1PLCAllTags.xlsx');
+  if (!fs.existsSync(xlsxPath)) {
+    console.warn(`  ⚠ ${xlsxPath} not found!`);
+    return null;
+  }
+
+  const XLSX = require('xlsx');
+  const wb = XLSX.readFile(xlsxPath);
+  const ws = wb.Sheets['PLC Tags '] || wb.Sheets['PLC Tags'];
+  if (!ws) {
+    console.warn(`  ⚠ Sheet "PLC Tags " not found in ${xlsxPath}`);
+    return null;
+  }
+
+  const rows = XLSX.utils.sheet_to_json(ws);
+
+  // Control Motor Sheets (Q output address -> sheet number)
+  const cmMap = {
+    'Q200.0': 2, 'Q200.1': 2, 'Q200.2': 2, 'Q200.3': 2, 'Q200.4': 2, 'Q200.5': 2, 'Q200.6': 2, 'Q200.7': 2,
+    'Q201.0': 3, 'Q201.1': 3, 'Q201.2': 3, 'Q201.3': 3, 'Q201.4': 3, 'Q201.5': 3, 'Q201.6': 3, 'Q201.7': 3,
+    'Q202.0': 4, 'Q202.1': 4, 'Q202.2': 4, 'Q202.4': 4, 'Q202.5': 4, 'Q202.6': 4, 'Q202.7': 4,
+    'Q203.0': 5, 'Q203.1': 5, 'Q203.2': 5, 'Q203.3': 5, 'Q203.4': 5,
+    'Q203.6': 6, 'Q203.7': 6,
+    'Q204.2': 7, 'Q204.3': 7,
+    'Q204.1': 8, 'Q203.5': 8,
+    'Q204.4': 9, 'Q204.0': 9
+  };
+
+  // Output Motor DQ Sheets (Q output byte -> sheet number)
+  const omMap = {
+    200: 2, 201: 3, 202: 4, 203: 5, 204: 6, 205: 7, 206: 8,
+    326: 9, 327: 10,
+    207: 11, 208: 12,
+    210: 14, 211: 15, 212: 16, 213: 17
+  };
+
+  function getSheetsForAddr(addr) {
+    const list = [];
+    if (cmMap[addr]) {
+      const pad = String(cmMap[addr]).padStart(3, '0');
+      list.push({
+        drawingPdfUrl: `/drawings/intake2/cabinets/images/Control_Motor_Intake2_sheet_${pad}.png`,
+        internalPage: String(cmMap[addr]),
+        page: cmMap[addr],
+        label: 'Motor Control Diagram',
+        type: 'control',
+        cabinet: 'MCC_Intake'
+      });
+    }
+    const mQ = addr.match(/^Q(\d+)\.(\d+)$/);
+    if (mQ) {
+      const b = parseInt(mQ[1], 10);
+      if (omMap[b]) {
+        const pad = String(omMap[b]).padStart(3, '0');
+        list.push({
+          drawingPdfUrl: `/drawings/intake2/cabinets/images/Output_Motor_Intake_2_sheet_${pad}.png`,
+          internalPage: String(omMap[b]),
+          page: omMap[b],
+          label: 'Digital Output Diagram (DQ)',
+          type: 'output',
+          cabinet: 'MCC_Intake'
+        });
+      }
+    }
+    const mI = addr.match(/^I(\d+)\.(\d+)$/);
+    if (mI) {
+      const b = parseInt(mI[1], 10);
+      if (b >= 200 && b <= 231) {
+        const sNum = b - 200 + 2;
+        const pad = String(sNum).padStart(3, '0');
+        list.push({
+          drawingPdfUrl: `/drawings/intake2/cabinets/images/MCC_Remote_IO_Intake2_F1_sheet_${pad}.png`,
+          internalPage: String(sNum),
+          page: sNum,
+          label: b <= 216 ? 'Digital Input (Motor Feedback)' : 'Digital Input (Sensors & Gates)',
+          type: 'input',
+          cabinet: 'MCC_Intake'
+        });
+      }
+      if (b >= 232 && b <= 239) {
+        const sNum = b - 232 + 2;
+        const pad = String(sNum).padStart(3, '0');
+        list.push({
+          drawingPdfUrl: `/drawings/intake2/cabinets/images/Input_Desription_Intake2_sheet_${pad}.png`,
+          internalPage: String(sNum),
+          page: sNum,
+          label: 'Digital Input Diagram (DI)',
+          type: 'input',
+          cabinet: 'MCC_Intake'
+        });
+      }
+    }
+    return list;
+  }
+
+  const addressesMap = {};
+  const eqDrawings = {};
+
+  rows.forEach(r => {
+    const name = String(r.Name || '').trim();
+    const addr = String(r['Logical Address'] || '').replace('%', '').trim();
+    if (!addr) return;
+
+    const sheets = getSheetsForAddr(addr);
+    if (sheets.length > 0) {
+      addressesMap[addr] = {
+        pdfPage: sheets[0].page,
+        internalPage: sheets[0].internalPage,
+        drawingPdfUrl: sheets[0].drawingPdfUrl,
+        label: sheets[0].label,
+        type: sheets[0].type,
+        cabinet: sheets[0].cabinet
+      };
+    }
+
+    let eqCode = '';
+    const mBracket = name.match(/[\(\[]\s*([A-Za-z0-9_\-]+)\s*[\)\]]/);
+    if (mBracket && !/^(Open|Close|Fwd|Rev|Left|Right|\d+)$/i.test(mBracket[1])) {
+      eqCode = mBracket[1].toUpperCase();
+    }
+    if (!eqCode) {
+      const mM = name.match(/\b(M\d+(?:[A-Za-z]\d*|-[\w\d]+)?)\b/i);
+      const mY = name.match(/\b(Y\d+(?:-[A-Za-z0-9]+)?|YF\d+(?:-[A-Za-z0-9]+)?)\b/i);
+      const mF = name.match(/\b(F\d+(?:-[A-Za-z0-9]+)?|ZC\d+)\b/i);
+
+      if (mM) eqCode = mM[1].toUpperCase();
+      else if (mY) eqCode = mY[1].toUpperCase();
+      else if (mF) eqCode = mF[1].toUpperCase();
+    }
+
+    if (eqCode) {
+      sheets.forEach(s => {
+        if (!eqDrawings[eqCode]) eqDrawings[eqCode] = [];
+        if (!eqDrawings[eqCode].some(x => x.drawingPdfUrl === s.drawingPdfUrl)) {
+          eqDrawings[eqCode].push(s);
+        }
+      });
+    }
+  });
+
+  console.log(`  ⚡ Intake 2 Mapped Addresses: ${Object.keys(addressesMap).length}`);
+  console.log(`  ⚡ Intake 2 Mapped Equipments: ${Object.keys(eqDrawings).length}`);
+
+  return {
+    drawingUrl: '/drawings/intake2/cabinets/images/MCC_Remote_IO_Intake2_sheet_001.png',
+    cabinets: {
+      MCC_Intake: { '1': 1, '2': 2 },
+      PLC_Intake: { '1': 1 },
+      Remote_1: { '1': 1 },
+      Remote_2: { '1': 1 },
+      Main_Cabinet: { '1': 1 }
+    },
+    addresses: addressesMap,
+    equipmentDrawings: eqDrawings
+  };
+}
+
 async function main() {
   console.log('╔════════════════════════════════════════════════╗');
   console.log('║  PDF Drawing Page Mapping Builder (V3)         ║');
@@ -857,6 +1018,12 @@ async function main() {
     if (result) {
       output[loc.locationId] = result;
     }
+  }
+
+  // Build Intake 2 deterministic mapping
+  const intake2Result = buildIntake2Mapping();
+  if (intake2Result) {
+    output['intake2'] = intake2Result;
   }
 
   fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true });

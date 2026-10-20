@@ -1163,7 +1163,7 @@ function parsePLCTagsSheet(wb, sheetName, locationId) {
 // ──────────────────────── Intake 2 Parser ────────────────────────
 
 function parseIntake2Sheet(wb, locationId) {
-  const ws = wb.Sheets['PLC Tags'];
+  const ws = wb.Sheets['PLC Tags'] || wb.Sheets['PLC Tags '];
   if (!ws) {
     console.warn(`  ⚠ Sheet "PLC Tags" not found in Intake 2 workbook.`);
     return new Map();
@@ -1189,6 +1189,8 @@ function parseIntake2Sheet(wb, locationId) {
       console.warn('  ⚠ Could not parse Parts IO Intake Update.xlsx:', e.message);
     }
   }
+
+  const locMap = pdfPageMap[locationId] || {};
 
   function extractPoint(r, seq) {
     const rawName = String(r.Name || '').trim();
@@ -1256,6 +1258,30 @@ function parseIntake2Sheet(wb, locationId) {
     else if (/^Q/i.test(rawAddr)) type = 'DO';
     else if (/^I/i.test(rawAddr)) type = 'DI';
 
+    const normA = normalizeAddress(rawAddr);
+    let drawingPdfUrl = null;
+    let drawingPage = null;
+    let internalPage = null;
+
+    if (locMap.addresses && locMap.addresses[normA]) {
+      const addrInfo = locMap.addresses[normA];
+      if (typeof addrInfo === 'object') {
+        drawingPdfUrl = addrInfo.drawingPdfUrl || null;
+        drawingPage = addrInfo.page || addrInfo.pdfPage || null;
+        internalPage = addrInfo.internalPage || null;
+        if (addrInfo.cabinet) cabinet = addrInfo.cabinet;
+      } else {
+        drawingPage = addrInfo;
+        drawingPdfUrl = locMap.drawingUrl || null;
+      }
+    }
+
+    if (drawingPdfUrl && !fs.existsSync(path.join(PUBLIC_DIR, drawingPdfUrl))) {
+      drawingPdfUrl = null;
+      drawingPage = null;
+      internalPage = null;
+    }
+
     return {
       type,
       seq,
@@ -1264,11 +1290,11 @@ function parseIntake2Sheet(wb, locationId) {
       equipmentName: equipName,
       signalName: signal,
       cabinet,
-      drawingPage: null,
-      internalPage: null,
-      drawingPdfUrl: null,
+      drawingPage,
+      internalPage,
+      drawingPdfUrl,
       normalizedCode: normalizeCode(code, locationId),
-      normalizedAddress: normalizeAddress(rawAddr),
+      normalizedAddress: normA,
     };
   }
 
@@ -1293,7 +1319,7 @@ function parseIntake2Sheet(wb, locationId) {
   if (fs.existsSync(allTagsPath)) {
     try {
       const wbAll = XLSX.readFile(allTagsPath);
-      const wsAll = wbAll.Sheets['PLC Tags'];
+      const wsAll = wbAll.Sheets['PLC Tags'] || wbAll.Sheets['PLC Tags '];
       if (wsAll) {
         const rowsAll = XLSX.utils.sheet_to_json(wsAll);
         rowsAll.forEach(r => {
@@ -1317,7 +1343,7 @@ function parseIntake2Sheet(wb, locationId) {
   if (fs.existsSync(rem2Path)) {
     try {
       const wbRem = XLSX.readFile(rem2Path);
-      const wsRem = wbRem.Sheets['PLC Tags'];
+      const wsRem = wbRem.Sheets['PLC Tags'] || wbRem.Sheets['PLC Tags '];
       if (wsRem) {
         const rowsRem = XLSX.utils.sheet_to_json(wsRem);
         rowsRem.forEach(r => {
@@ -1334,6 +1360,30 @@ function parseIntake2Sheet(wb, locationId) {
       }
     } catch (e) {
       console.warn('  ⚠ Could not merge IORemote2PLCTags[16].xlsx:', e.message);
+    }
+  }
+
+  const plc2Path = path.join(DATA_DIR, 'Intake2', 'PLC_2PLCAllTags.xlsx');
+  if (fs.existsSync(plc2Path)) {
+    try {
+      const wb2 = XLSX.readFile(plc2Path);
+      const ws2 = wb2.Sheets['PLC Tags'] || wb2.Sheets['PLC Tags '];
+      if (ws2) {
+        const rows2 = XLSX.utils.sheet_to_json(ws2);
+        rows2.forEach(r => {
+          const pt = extractPoint(r, seq++);
+          if (pt) {
+            const normA = pt.normalizedAddress;
+            if (!seenAddresses.has(normA)) {
+              seenAddresses.add(normA);
+              if (!cabinetMap.has(pt.cabinet)) cabinetMap.set(pt.cabinet, []);
+              cabinetMap.get(pt.cabinet).push(pt);
+            }
+          }
+        });
+      }
+    } catch (e) {
+      console.warn('  ⚠ Could not merge PLC_2PLCAllTags.xlsx:', e.message);
     }
   }
 

@@ -102,6 +102,48 @@ Text runs in the bottom border or title line:
 - Equipment markers: `TOWARDS THE SILO FEEDING G0104_3`, `4_10.V`, `MCC14-01-M1`
 - Noise to filter out: Electrical ratings (`5.5KW`, `6.9A`, `380V`, `24VDC`, wire gauges).
 
+### 3.4 Intake 2 Plotted CAD Drawing Reading Heuristics (Deterministic 1:1 Mapping)
+
+Unlike standard multi-page bundled PDFs, Intake 2 drawings originate from plotted AutoCAD sheets organized into distinct functional diagram sets (281 image sheets).
+
+To avoid "over-mapping" (e.g. equipment `M12` matching 15+ false schematic pills), the mapping must strictly follow the deterministic 3-step physical reading procedure:
+
+#### 1. Output (Q) Circuit Extraction
+- **Location**: Top column header of the CAD motor starter drawing.
+- **Example**: Equipment `M12` specifies `OUTPUT Q200.6`, contactor label `M12KM`, and description `M12 DISTRIBUTOR START`.
+- **Drawing Sheet Mapping**:
+  - `Control_Motor_Intake2_sheet_00X.png` (Motor Control Wiring Diagram):
+    - Sheet 2: `Q200.0` – `Q200.7` (contains M12 on Q200.6)
+    - Sheet 3: `Q201.0` – `Q201.7`
+    - Sheet 4: `Q202.0` – `Q202.7`
+    - Sheet 5: `Q203.0` – `Q203.4`
+    - Sheet 6: `Q203.6`, `Q203.7`
+    - Sheet 7: `Q204.2`, `Q204.3`
+    - Sheet 8: `Q204.1`, `Q203.5`
+    - Sheet 9: `Q204.4`, `Q204.0`
+  - `Output_Motor_Intake_2_sheet_00X.png` (Digital Output DQ Diagram):
+    - Sheets 2–8: `OUTPUT 200` to `OUTPUT 206`
+    - Sheets 9–10: Vibrators (`OUTPUT 326` & `327`)
+    - Sheets 11–12: Stolz B (`OUTPUT 207` & `208`)
+    - Sheets 14–17: Valves/Gates (`OUTPUT 210` to `OUTPUT 213`)
+
+#### 2. Input (I) Machine Association & Address Decoding
+- **Step 1 (Machine Association)**: Look at the bottom description box under each vertical signal line:
+  - e.g., `M12 DISTRIBUTOR AUX.RUN` and `M12 DISTRIBUTOR OVERLOAD TRIP`.
+- **Step 2 (Base Address Byte)**: Look at the top/center header block for the DI module base byte:
+  - e.g., `INPUT 201` $\rightarrow$ Base byte `I201.`.
+- **Step 3 (Sub-bit Address)**: Look directly below the terminal circuit switch at the sub-bit box:
+  - Decimal `.4` $\rightarrow$ `I201.4` (Aux.Run feedback).
+  - Decimal `.5` $\rightarrow$ `I201.5` (Overload trip feedback).
+- **Drawing Sheet Mapping**:
+  - `MCC_Remote_IO_Intake2_F1_sheet_{byte - 200 + 2}.png` for DI bytes 200 to 231 (e.g., `INPUT 201` $\rightarrow$ Sheet 3).
+  - `Input_Desription_Intake2_sheet_{byte - 232 + 2}.png` for DI bytes 232 to 239.
+
+#### 3. Strict 1:1 Equipment Pill Resolution
+- In `build-pdf-mapping.cjs`, do NOT use substring matching across all filenames for Intake 2.
+- Instead, map each equipment's assigned I/O addresses (`addresses` from `PLC_1PLCAllTags.xlsx`) against the deterministic address sheet index.
+- Result: Every machine in Intake 2 receives only its true, verified drawings (typically 2 to 3 pills, max 4 for reversible/multi-drive machines; zero false pills).
+
 ---
 
 ## 4. Standard 6-Category Schematic Classification
